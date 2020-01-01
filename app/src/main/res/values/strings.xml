@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Patanga Suchaka</string>
+
+    <string-array name="navigation_drawer_items_array">
+        <item>Home</item>
+        <item>About</item>
+        <item>Introduction</item>
+        <item>How it work</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aboutus">We at School of Ecology and Conservation (SEC) work on diverse arenas of ecology, biodiversity,
+        conservation and prospecting. This premier division has put in efforts to collate a diverse array of unconsolidated
+        information on biodiversity and bioresource of India from the past 20 years. We are the torch bearers of digitized the
+        Indian bioresources (both flora and fauna) coupled with spatial maps obtained from ISRO and hold the credit of being
+        the biggest biodiversity and bioresource database in India and world. This division is functioning under the hood of
+        University of Agricultural Sciences, Bengaluru located in the lush green ecologically fragile forest ecosystem of
+        Bengaluru.</string>
+    <string name="introduction">India is blessed with rich flora and fauna. Among all, the birds and butterflies captures
+        the attention of most of us for being able to fly and showcase striking colours and patterns. India has about 1677
+        (Paul Van Gasse, 2013. Butterflies of India Annotated Checklist) species of butterflies. Though many butterflies are
+        not sighted and captured that often, rest are largely sighted and well recorded. With due development of Information
+        Technology and affordable image capturing devices, the record of these butterfly sighting has grown than ever before.
+        However, the hurdles for identification remains unchanged. The countable number of experts spend a lot of time
+        identifying these common butterflies and find less time to do what they were supposed to do i.e., Taxonomy.
+        On the other hand, it is very important to identify every butterfly species captured either for sheer enthusiasm or
+        for ecological studies. We as a team at the School of Ecology and Conservation tried to break this never- ending
+        loop of identification of butterflies and getting these field samples identified with the help of Artificial
+        Intelligence. A complex set of algorithms trains itself on the sample set of field images and learns to identify a
+        new image of the butterfly in a matter of few seconds with great accuracy without a need to leave your chair. To begin
+        with, we have trained the model to identify 356 most common butterflies (the list is available in the species section)
+        of India and we are trying our best to include all the butterflies of India in days to come.</string>
+    <string name="howitworks1">Once logged in the user has to upload the field image of the butterfly in question along with
+        the date and location of capture. The image uploaded by the user will be compared with the simulated models of the
+        Artificial Intelligence Neural Network System to best fit it to the existing trained datasets. The best-fit match to
+        the sample butterfly will be shown to the user with a confidence level in percentage. In the end, the user has to
+        select the most appropriate name to complete the identification cycle and can continue to identify an unlimited number
+        of butterflies.\n\n
+        1. The programme is trained to identify the butterflies (not moths, larva or eggs) in its natural environment and hence the background does not influence on the identification of the butterfly\n\n
+        2. In case the butterfly occupies a small portion of the image canvas users are suggested to crop the image (as close as shown in the first image) for the best result\n\n
+        3. Cropping too close to the butterfly may end up in poor identification percentage\n\n
+        4. In case of multiple butterflies the programme identifies the butterfly randomly from the image however, it is advised to crop (group of same species) and submit the image for better results\n\n
+        5. In case of poor identification percentage user can resize cropping or uncropped images for better identification. Please refer the sample images for clarification\n\n
+        6. If a butterfly is identified with less confidence percent suggests that the submitted image might be blur, or captured in uncommon angles or the butterfly itself might be new to the trained dataset (other than 241 butterflies listed)\n\n</string>
+    <string name="howitworks2"> a. Butterfly in natural condition\n
+        b. Wide area image\n
+        c. Close cropping\n
+        d. Multiple butterflies in a single image\n</string>
+    <string name="howitworks3">1. The programme is trained to identify the butterflies (not moths, larva or eggs) in its
+        natural environment and hence the background does not influence on the identification of the butterfly</string>
+</resources>

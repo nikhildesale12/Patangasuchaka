@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".patangasuchaka.main.IdentificationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color1"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/displayImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.40"
+            android:background="@drawable/image_border"
+            android:padding="3dp"
+            android:src="@drawable/select_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.60"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/result1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/displayImage"
+                android:layout_margin="5dp"
+                android:background="@drawable/adback">
+
+                <TextView
+                    android:id="@+id/textSciName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif"
+                    android:paddingTop="10dp"
+                    android:text="Scientific Name : "
+                    android:textColor="@color/color1"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textComName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textSciName1"
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif"
+                    android:paddingBottom="10dp"
+                    android:text="Common Name"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textProbability1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif"
+                        android:text="0%"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar1"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/circular_progress_bar" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/result2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/result1"
+                android:layout_margin="5dp"
+                android:background="@drawable/adback">
+
+                <TextView
+                    android:id="@+id/textSciName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:paddingTop="10dp"
+                    android:text="Scientific Name : "
+                    android:textColor="@color/color1"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textComName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textSciName2"
+                    android:layout_margin="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="Common Name"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textProbability2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif"
+                        android:text="0%"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar2"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/circular_progress_bar" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/result3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/result2"
+                android:layout_margin="5dp"
+                android:background="@drawable/adback">
+
+                <TextView
+                    android:id="@+id/textSciName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:paddingTop="10dp"
+                    android:text="Scientific Name : "
+                    android:textColor="@color/color1"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textComName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textSciName3"
+                    android:layout_margin="5dp"
+                    android:paddingBottom="10dp"
+                    android:text="Common Name"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textProbability3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif"
+                        android:text="0%"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar3"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progressDrawable="@drawable/circular_progress_bar" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/buttonBackIdentify"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_shape_capsule"
+                android:backgroundTint="#FFFFFF"
+                android:padding="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="BACK"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
