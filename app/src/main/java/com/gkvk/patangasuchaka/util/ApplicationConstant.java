@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Environment;
 import android.provider.Settings;
 
@@ -79,12 +81,18 @@ public class ApplicationConstant {
 
     public static void requestPermission(Activity activity) {
         ActivityCompat.requestPermissions(activity, new String[]
-                {
-                        ACCESS_FINE_LOCATION,
-                        ACCESS_COARSE_LOCATION,
-                        INTERNET,
-                        WRITE_EXTERNAL_STORAGE,
-                        READ_EXTERNAL_STORAGE
-                }, ApplicationConstant.REQUESTPERMISSIONCODE);
+            {
+                    ACCESS_FINE_LOCATION,
+                    ACCESS_COARSE_LOCATION,
+                    INTERNET,
+                    WRITE_EXTERNAL_STORAGE,
+                    READ_EXTERNAL_STORAGE
+            }, ApplicationConstant.REQUESTPERMISSIONCODE);
+    }
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

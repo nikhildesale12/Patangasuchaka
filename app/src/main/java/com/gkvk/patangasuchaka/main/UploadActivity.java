@@ -106,8 +106,12 @@ public class UploadActivity extends AppCompatActivity {
         buttonAnalyze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //check image is selected or not
-                new UploadFileToServer(pathtoUpload).execute();
+                if (ApplicationConstant.isNetworkAvailable(UploadActivity.this)) {
+                    //check image is selected or not
+                    new UploadFileToServer(pathtoUpload).execute();
+                }else{
+                    Toast.makeText(UploadActivity.this, "Please check internet connection", Toast.LENGTH_LONG).show();
+                }
             }
         });
         txtDate.setOnClickListener(new View.OnClickListener() {

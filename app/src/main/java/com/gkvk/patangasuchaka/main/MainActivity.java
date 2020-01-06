@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
         setupToolbar();
 
         NavigationDataModel[] drawerItem = new NavigationDataModel[4];
-        drawerItem[0] = new NavigationDataModel(R.drawable.connect, "Home");
+        drawerItem[0] = new NavigationDataModel(R.drawable.homeicon, "Home");
         drawerItem[1] = new NavigationDataModel(R.drawable.fixtures, "About Us");
-        drawerItem[2] = new NavigationDataModel(R.drawable.table, "Introduction");
-        drawerItem[3] = new NavigationDataModel(R.drawable.table, "How it works");
+        drawerItem[2] = new NavigationDataModel(R.drawable.introductionicon, "Introduction");
+        drawerItem[3] = new NavigationDataModel(R.drawable.howitworksicon, "How it works");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
