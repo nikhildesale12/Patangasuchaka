@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.DashboardViewpagerBean;
+import com.gkvk.patangasuchaka.main.DistributionSearchActivity;
+import com.gkvk.patangasuchaka.main.SpeciesSearchActivity;
 import com.gkvk.patangasuchaka.main.UploadActivity;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 
@@ -75,9 +77,16 @@ public class ViewPagerAdapter extends PagerAdapter {
                     i.putExtra(ApplicationConstant.FROM_MODULE,ApplicationConstant.MODULE_GALLERY);
                     view.getContext().startActivity(i);
                 }else if(models.get(position).getModule().equals(ApplicationConstant.MODULE_SPECIES)){
-                    Toast.makeText(v.getContext(),"Species Under Development",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(v.getContext(),"Species Under Development",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(view.getContext(), SpeciesSearchActivity.class);
+                    i.putExtra(ApplicationConstant.FROM_MODULE,ApplicationConstant.MODULE_SPECIES);
+                    view.getContext().startActivity(i);
+
                 }else if(models.get(position).getModule().equals(ApplicationConstant.MODULE_DISTRIBUTION)){
-                    Toast.makeText(v.getContext(),"Distribution Under Development",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(v.getContext(),"Distribution Under Development",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(view.getContext(), DistributionSearchActivity.class);
+                    i.putExtra(ApplicationConstant.FROM_MODULE,ApplicationConstant.MODULE_DISTRIBUTION);
+                    view.getContext().startActivity(i);
                 }
             }
         });

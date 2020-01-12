@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/main_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".patangasuchaka.main.DistributionSearchActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarDistribution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:elevation="8dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <SearchView
+        android:id="@+id/searchAddressView"
+        android:layout_below="@+id/toolbarDistribution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+    </SearchView>
+
+    <LinearLayout
+        android:layout_below="@+id/searchAddressView"
+        android:id="@+id/spinnerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/butterflyTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Butterfly"
+            android:layout_marginLeft="30dp">
+
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spinnerButterfly"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:id="@+id/stateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="State"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp">
+
+        </TextView>
+        <Spinner
+            android:id="@+id/spinnerState"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:spinnerMode="dropdown" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:background="@drawable/btn_shape_capsule"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

@@ -39,6 +39,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.gkvk.BuildConfig;
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
@@ -65,13 +66,13 @@ import java.util.List;
 
 public class UploadActivity extends AppCompatActivity {
     RelativeLayout imageInfoRelativeLayout;
-    double latitude =0;
-    double longitude =0;
+    double latitude = 0;
+    double longitude = 0;
     private String finalAddress = "";
     Button buttonAnalyze;
     ImageView captureImage;
     String pathtoUpload;
-    EditText autocompletePlaces,txtDate;
+    EditText autocompletePlaces, txtDate;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
@@ -80,25 +81,25 @@ public class UploadActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         setContentView(R.layout.activity_upload);
         initViews();
-        if(android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23){
-            if(ApplicationConstant.checkPermission(UploadActivity.this)){
-                if(!ApplicationConstant.isGPSEnabled(UploadActivity.this)){
+        if (android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23) {
+            if (ApplicationConstant.checkPermission(UploadActivity.this)) {
+                if (!ApplicationConstant.isGPSEnabled(UploadActivity.this)) {
                     ApplicationConstant.showSettingsAlert(UploadActivity.this);
                 }
-            }else {
+            } else {
                 ApplicationConstant.requestPermission(UploadActivity.this);
             }
-        }else{
-            if(!ApplicationConstant.isGPSEnabled(UploadActivity.this)){
+        } else {
+            if (!ApplicationConstant.isGPSEnabled(UploadActivity.this)) {
                 ApplicationConstant.showSettingsAlert(UploadActivity.this);
             }
         }
         Intent intent = getIntent();
         String fromModule = intent.getStringExtra(ApplicationConstant.FROM_MODULE);
-        if(fromModule.equals(ApplicationConstant.MODULE_CAPTURE)){
+        if (fromModule.equals(ApplicationConstant.MODULE_CAPTURE)) {
             //imageInfoRelativeLayout.setVisibility(View.INVISIBLE);
             openCamera();
-        }else if(fromModule.equals(ApplicationConstant.MODULE_GALLERY)){
+        } else if (fromModule.equals(ApplicationConstant.MODULE_GALLERY)) {
             //imageInfoRelativeLayout.setVisibility(View.VISIBLE);
             openGallery();
         }
@@ -109,7 +110,7 @@ public class UploadActivity extends AppCompatActivity {
                 if (ApplicationConstant.isNetworkAvailable(UploadActivity.this)) {
                     //check image is selected or not
                     new UploadFileToServer(pathtoUpload).execute();
-                }else{
+                } else {
                     Toast.makeText(UploadActivity.this, "Please check internet connection", Toast.LENGTH_LONG).show();
                 }
             }
@@ -125,7 +126,7 @@ public class UploadActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(UploadActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker view, int year,int monthOfYear, int dayOfMonth) {
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                             }
                         }, mYear, mMonth, mDay);
@@ -137,8 +138,7 @@ public class UploadActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode)
-        {
+        switch (requestCode) {
             case ApplicationConstant.RESULT_OPEN_CAMERA:
                 try {
                     if (resultCode == Activity.RESULT_OK) {
@@ -190,7 +190,7 @@ public class UploadActivity extends AppCompatActivity {
                         finish();
                         finishAffinity();
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
@@ -199,7 +199,7 @@ public class UploadActivity extends AppCompatActivity {
                     if (requestCode == ApplicationConstant.RESULT_OPEN_GALLERY && resultCode == RESULT_OK
                             && null != data) {
                         Uri URI = data.getData();
-                        String[] FILE = { MediaStore.Images.Media.DATA };
+                        String[] FILE = {MediaStore.Images.Media.DATA};
                         Cursor cursor = getContentResolver().query(URI,
                                 FILE, null, null, null);
 
@@ -210,12 +210,11 @@ public class UploadActivity extends AppCompatActivity {
                         cursor.close();
 
                         pathtoUpload = ImageDecode;
-                        compressImage(pathtoUpload,ApplicationConstant.MODULE_GALLERY);
+                        compressImage(pathtoUpload, ApplicationConstant.MODULE_GALLERY);
 
-                    }
-                    else if(resultCode==Activity.RESULT_CANCELED) {
+                    } else if (resultCode == Activity.RESULT_CANCELED) {
                         Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(UploadActivity.this,MainActivity.class);
+                        Intent i = new Intent(UploadActivity.this, MainActivity.class);
                         //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
                         finish();
@@ -236,9 +235,10 @@ public class UploadActivity extends AppCompatActivity {
     String currentDateTimeString;
     private File mFileTemp;
     GPSTracker gps;
+
     private void openCamera() {
         ///currentDateTimeString =new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a").format(new Date());
-        currentDateTimeString =new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        currentDateTimeString = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         txtDate.setText(currentDateTimeString);
         txtDate.setEnabled(false);
         String state = Environment.getExternalStorageState();
@@ -247,20 +247,19 @@ public class UploadActivity extends AppCompatActivity {
             rootDirectory.mkdir();
         }
         if (Environment.MEDIA_MOUNTED.equals(state)) {
-            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, ApplicationConstant.IMAGE_NAME+currentDateTimeString+ApplicationConstant.ExTNTION_JPG);
-        }
-        else {
-            mFileTemp = new File(getFilesDir(), ApplicationConstant.IMAGE_NAME+currentDateTimeString+ApplicationConstant.ExTNTION_JPG);
+            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, ApplicationConstant.IMAGE_NAME + currentDateTimeString + ApplicationConstant.ExTNTION_JPG);
+        } else {
+            mFileTemp = new File(getFilesDir(), ApplicationConstant.IMAGE_NAME + currentDateTimeString + ApplicationConstant.ExTNTION_JPG);
         }
         /*Uri.fromFile(mFileTemp)*/
         Uri photoURI = null;
-        if(android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23 ){
-            photoURI = FileProvider.getUriForFile(UploadActivity.this, BuildConfig.APPLICATION_ID+ ".provider", mFileTemp);
-        }else {
+        if (android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23) {
+            photoURI = FileProvider.getUriForFile(UploadActivity.this, BuildConfig.APPLICATION_ID + ".provider", mFileTemp);
+        } else {
             photoURI = Uri.fromFile(mFileTemp);
         }
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         } else {
             List<ResolveInfo> resInfoList = UploadActivity.this.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
@@ -270,7 +269,7 @@ public class UploadActivity extends AppCompatActivity {
             }
         }
         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-        startActivityForResult(intent,ApplicationConstant.RESULT_OPEN_CAMERA);
+        startActivityForResult(intent, ApplicationConstant.RESULT_OPEN_CAMERA);
     }
 
     private void openGallery() {
@@ -286,17 +285,18 @@ public class UploadActivity extends AppCompatActivity {
         autocompletePlaces = (EditText) findViewById(R.id.autocompletePlaces);
         txtDate = (EditText) findViewById(R.id.txtDate);
 
-        if (android.os.Build.VERSION.SDK_INT > 9)
-        {
+        if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new
-            StrictMode.ThreadPolicy.Builder().permitAll().build();
+                    StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
     }
 
     ProgressDialog dialog;
+
     private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
         String path;
+
         private UploadFileToServer(String path) {
             this.path = path;
         }
@@ -315,23 +315,23 @@ public class UploadActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             return uploadFile(path);
         }
+
         @SuppressWarnings("deprecation")
         private String uploadFile(String filePath) {
             String result = "";
             final String boundary = "-------------" + System.currentTimeMillis();
             MultipartEntityBuilder entity = MultipartEntityBuilder.create();
-            Log.d("path : ",path);
+            Log.d("path : ", path);
             URLConnection connection = null;
             HttpURLConnection httpConn = null;
-            try
-            {
+            try {
                 entity.setBoundary(boundary);
                 File sourceFile = new File(filePath);
                 entity.addPart("image", new FileBody(sourceFile));
                 java.net.URL url = new URL(ApplicationConstant.ENDPOINT_URL_AI_UPLOAD);
                 connection = url.openConnection();
                 httpConn = (HttpURLConnection) connection;
-                httpConn.setRequestProperty("Content-Type", "multipart/form-data; boundary="+boundary);
+                httpConn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
                 httpConn.setConnectTimeout(50000);
                 httpConn.setRequestMethod("POST");
                 httpConn.setDoInput(true);
@@ -365,26 +365,18 @@ public class UploadActivity extends AppCompatActivity {
                 while ((line = br.readLine()) != null)
                     tempResponse = tempResponse + line;
                 result = tempResponse;
-            }
-            catch (MalformedURLException e)
-            {
+            } catch (MalformedURLException e) {
                 e.printStackTrace();
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 showErrorToast();
-                if(e.toString().contains("failed to connect")){
+                if (e.toString().contains("failed to connect")) {
                     result = "failed to connect AI Server";
                 }
                 e.printStackTrace();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
-            }
-            finally
-            {
-                if(httpConn != null){
+            } finally {
+                if (httpConn != null) {
                     httpConn.disconnect();
                 }
             }
@@ -395,12 +387,12 @@ public class UploadActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             Log.d("ImageUploadService", "Response from server: " + result);
             super.onPostExecute(result);
-            if(dialog != null && dialog.isShowing()){
+            if (dialog != null && dialog.isShowing()) {
                 dialog.dismiss();
             }
-            Intent intent = new Intent(UploadActivity.this,IdentificationActivity.class);
-            intent.putExtra("result",result);
-            intent.putExtra("path",path);
+            Intent intent = new Intent(UploadActivity.this, IdentificationActivity.class);
+            intent.putExtra("result", result);
+            intent.putExtra("path", path);
             startActivity(intent);
             finish();
         }
@@ -409,21 +401,25 @@ public class UploadActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(dialog != null && dialog.isShowing()){
+        if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
     }
 
-    private void showErrorToast() {
+    private void
+
+
+    showErrorToast() {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(),"Failed to connect to Server",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Failed to connect to Server", Toast.LENGTH_LONG).show();
             }
         });
         finishAffinity();
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -435,9 +431,8 @@ public class UploadActivity extends AppCompatActivity {
                     boolean WriteInternalStoragePermission = grantResults[3] == PackageManager.PERMISSION_GRANTED;
                     boolean ReadInternalStoragePermission = grantResults[4] == PackageManager.PERMISSION_GRANTED;
                     if (AccessFineLocationPermission && AccessCoarseLocPermission && InternetPermission && WriteInternalStoragePermission && ReadInternalStoragePermission) {
-                    }
-                    else {
-                        Toast.makeText(UploadActivity.this,"Permission Denied",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(UploadActivity.this, "Permission Denied", Toast.LENGTH_LONG).show();
                     }
                 }
                 break;
@@ -445,17 +440,17 @@ public class UploadActivity extends AppCompatActivity {
     }
 
 
-    public List<Address> getAddress(double lat ,double lng) {
+    public List<Address> getAddress(double lat, double lng) {
         try {
             Geocoder geocoder;
             List<Address> addresses;
             geocoder = new Geocoder(this);
             if (lat != 0 || lng != 0) {
-                addresses = geocoder.getFromLocation(lat ,lng , 1);
+                addresses = geocoder.getFromLocation(lat, lng, 1);
                 String address = addresses.get(0).getAddressLine(0);
                 String city = addresses.get(0).getAddressLine(1);
                 String country = addresses.get(0).getAddressLine(2);
-                System.out.println(address+" - "+city+" - "+country);
+                System.out.println(address + " - " + city + " - " + country);
 
                 return addresses;
 
@@ -469,7 +464,7 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     /*Image Compression new starts*/
-    public void compressImage(String path,String module) {
+    public void compressImage(String path, String module) {
         pathtoUpload = path;
         String imagePath = getRealPathFromURI(path);
         Bitmap scaledBitmap = null;
@@ -481,15 +476,15 @@ public class UploadActivity extends AppCompatActivity {
         int actualHeight = options.outHeight;
         int actualWidth = options.outWidth;
 //      max Height and width values of the compressed image is taken as 816x612
-        if(actualWidth>0 && actualHeight>0){
+        if (actualWidth > 0 && actualHeight > 0) {
             float maxHeight = 816.0f;
             float maxWidth = 612.0f;
             float imgRatio = 0;
             float maxRatio = 0;
-            if(actualHeight != 0){
+            if (actualHeight != 0) {
                 imgRatio = actualWidth / actualHeight;
             }
-            if(maxHeight != 0){
+            if (maxHeight != 0) {
                 maxRatio = maxWidth / maxHeight;
             }
             // width and height values are set maintaining the aspect ratio of the image
@@ -518,7 +513,7 @@ public class UploadActivity extends AppCompatActivity {
                 exception.printStackTrace();
             }
             try {
-                scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight,Bitmap.Config.ARGB_8888);
+                scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888);
             } catch (OutOfMemoryError exception) {
                 exception.printStackTrace();
             }
@@ -560,7 +555,7 @@ public class UploadActivity extends AppCompatActivity {
             FileOutputStream out = null;
             //String filename = getFilename();
             File outFile = new File(imagePath);
-            if(outFile != null && outFile.exists()){
+            if (outFile != null && outFile.exists()) {
                 outFile.delete();
             }
             try {
@@ -569,10 +564,10 @@ public class UploadActivity extends AppCompatActivity {
                 out.flush();
                 out.close();
 
-                if(module.equals(ApplicationConstant.MODULE_CAPTURE)){
+                if (module.equals(ApplicationConstant.MODULE_CAPTURE)) {
                     captureImage.setImageURI(Uri.parse(pathtoUpload));
                 }
-                if(module.equals(ApplicationConstant.MODULE_GALLERY)){
+                if (module.equals(ApplicationConstant.MODULE_GALLERY)) {
                     captureImage.setImageBitmap(BitmapFactory.decodeFile(pathtoUpload));
                 }
 
@@ -599,7 +594,7 @@ public class UploadActivity extends AppCompatActivity {
         final int width = options.outWidth;
         int inSampleSize = 1;
         if (height > reqHeight || width > reqWidth) {
-            final int heightRatio = Math.round((float) height/ (float) reqHeight);
+            final int heightRatio = Math.round((float) height / (float) reqHeight);
             final int widthRatio = Math.round((float) width / (float) reqWidth);
             inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
         }
