@@ -54,4 +54,5 @@ dependencies {
     //implementation 'com.android.support:appcompat-v7:29.0.0'
     implementation 'org.apache.httpcomponents:httpmime:4.5.6'
     implementation 'ch.acra:acra:4.9.2'
+    implementation 'com.google.android.material:material:1.0.0'
 }

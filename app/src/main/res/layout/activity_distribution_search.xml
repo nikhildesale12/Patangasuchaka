@@ -60,7 +60,6 @@
             android:text="State"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="30dp">
-
         </TextView>
         <Spinner
             android:id="@+id/spinnerState"
