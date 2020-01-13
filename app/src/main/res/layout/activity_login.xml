@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".patangasuchaka.main.LoginActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/logoimg"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/logo">
+    </ImageView>
+
+    <EditText
+        android:id="@+id/editText_email"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:ems="10"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/logoimg"
+        android:layout_marginTop="72dp"
+        android:hint="Enter email"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/btn_shape_capsule"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editText_password"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@+id/editText_email"
+        android:background="@drawable/btn_shape_capsule"
+        android:layout_alignLeft="@+id/editText_email"
+        android:layout_alignStart="@+id/editText_email"
+        android:layout_marginTop="28dp"
+        android:hint="Enter Password"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogin"
+        android:background="@drawable/btn_shape_capsule"
+        android:layout_below="@id/editText_password"
+        android:layout_marginTop="60dp"
+        >
+    </Button>
+
+
+</RelativeLayout>

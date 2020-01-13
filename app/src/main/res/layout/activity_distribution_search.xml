@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".patangasuchaka.main.DistributionSearchActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -24,6 +25,7 @@
         android:layout_below="@+id/toolbarDistribution"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_shape_capsule"
         android:layout_marginTop="20dp">
 
     </SearchView>
@@ -41,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Butterfly"
+            android:textColor="#ffffff"
             android:layout_marginLeft="30dp">
 
         </TextView>
@@ -51,6 +54,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:background="#ffffff"
             android:spinnerMode="dropdown" />
 
         <TextView
@@ -58,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="State"
+            android:textColor="#ffffff"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="30dp">
         </TextView>
@@ -67,6 +72,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:background="#ffffff"
             android:spinnerMode="dropdown" />
 
         <Button
@@ -75,7 +81,6 @@
             android:layout_height="wrap_content"
             android:text="Search"
             android:background="@drawable/btn_shape_capsule"
-            android:textColor="#ffffff"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"/>
 
