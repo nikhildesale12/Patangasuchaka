@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".patangasuchaka.main.MapActivity"></activity>
+        <activity android:name=".patangasuchaka.main.LoginActivity"></activity>
+        <activity android:name=".patangasuchaka.main.MapActivity" />
         <activity android:name=".patangasuchaka.main.DistributionSearchActivity" />
         <activity
             android:name=".patangasuchaka.main.SpeciesSearchActivity"

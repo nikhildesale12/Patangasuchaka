@@ -2,15 +2,24 @@ package com.gkvk.patangasuchaka.util;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Environment;
 import android.provider.Settings;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.gkvk.R;
 
 import java.io.File;
 
@@ -22,6 +31,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.INTERNET;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.Context.MODE_PRIVATE;
 
 public class ApplicationConstant {
 
@@ -40,6 +50,9 @@ public class ApplicationConstant {
 
     public static final String ENDPOINT_URL_AI_UPLOAD = "http://45.117.30.211:8080/classify";
     public static final String ExTNTION_JPG=".jpg";
+
+    public static final String BASE_URL = "http://www.pathangasuchaka.in";
+    public static final String LOGIN_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/login";
 
     public static boolean checkPermission(Context context) {
         int FirstPermissionResult = ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION);
@@ -95,4 +108,25 @@ public class ApplicationConstant {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
+    /*No Internet Connection*/
+    public static void dispalyDialogInternet(final Context context , final String title, String message, boolean cancelDialog , final boolean isFinish) {
+        final Dialog interrnetConnection = new Dialog(context);
+        interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        interrnetConnection.setContentView(R.layout.dialog_popup);
+        interrnetConnection.setCanceledOnTouchOutside(cancelDialog);
+        TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
+        tv.setText(message);
+        TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
+        titleText.setText(title);
+        Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
+        btnLogoutNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interrnetConnection.dismiss();
+            }
+        });
+        interrnetConnection.show();
+    }
+
 }
