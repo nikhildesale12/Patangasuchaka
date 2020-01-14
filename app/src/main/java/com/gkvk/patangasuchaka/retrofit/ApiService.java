@@ -14,6 +14,7 @@ import retrofit2.http.Query;
  */
 
 public interface ApiService {
+
     @POST(ApplicationConstant.LOGIN_SERVICE_URL)
     Call<CommonResponse> loginService(
             @Query("email") String email,
@@ -25,8 +26,7 @@ public interface ApiService {
             @Query("email") String email,
             @Query("password") String password,
             @Query("full_name") String full_name,
-            @Query("username") String username,
-            @Query("confirm_password") String confirm_password
+            @Query("username") String username
     );
 
     @POST(ApplicationConstant.SIGNUP_SERVICE_URL)

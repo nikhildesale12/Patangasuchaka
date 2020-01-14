@@ -66,7 +66,7 @@ public class FeedbackFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view=inflater.inflate(R.layout.fragment_feedback, container, false);
-        initview();
+        initView();
 
         btnFeedbacksubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,15 +104,6 @@ public class FeedbackFragment extends Fragment {
 
     }
 
-    private void initview() {
-        editTextFBName=(EditText) getView().findViewById(R.id.editTextFBName);
-        editTextFBEmailId=(EditText) getView().findViewById(R.id.editTextFBEmailId);
-        editTextFBContact=(EditText) getView().findViewById(R.id.editTextFBContact);
-        edittext_FBcomment=(EditText) getView().findViewById(R.id.edittext_FBcomment);
-        btnFeedbacksubmit=(Button) getView().findViewById(R.id.btnFeedbacksubmit);
-
-    }
-
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -140,5 +131,13 @@ public class FeedbackFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void initView() {
+        editTextFBName=(EditText) getView().findViewById(R.id.editTextFBName);
+        editTextFBEmailId=(EditText) getView().findViewById(R.id.editTextFBEmailId);
+        editTextFBContact=(EditText) getView().findViewById(R.id.editTextFBContact);
+        edittext_FBcomment=(EditText) getView().findViewById(R.id.edittext_FBcomment);
+        btnFeedbacksubmit=(Button) getView().findViewById(R.id.btnFeedbacksubmit);
     }
 }

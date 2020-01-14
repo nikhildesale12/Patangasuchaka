@@ -46,7 +46,6 @@ public class SignUpActivity extends AppCompatActivity {
                 /*Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);*/
 
-
                 if(editTextName.getText().toString().trim().length() == 0){
                     editTextName.requestFocus();
                     editTextName.setError("Please Enter Full Name");
@@ -59,7 +58,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }else if(editTextPassword.getText().toString().trim().length() == 0){
                     editTextPassword.requestFocus();
                     editTextPassword.setError("Please Enter Password");
-                }else if(editTextConfirmPassword.getText().toString().trim().length() == 0 && editTextPassword.equals(editTextConfirmPassword)){
+                }else if(editTextConfirmPassword.getText().toString().trim().length() == 0 && !editTextPassword.equals(editTextConfirmPassword)){
                     editTextConfirmPassword.requestFocus();
                     editTextConfirmPassword.setError("Password Not Match");
                 }else{
@@ -91,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
                 .build();
         ApiService service = retrofit.create(ApiService.class);
         Call<CommonResponse> call = service.signUpService(editTextName.getText().toString(),editTextEmailId.getText().toString(),
-                editTextUsername.getText().toString(),editTextPassword.getText().toString(),editTextConfirmPassword.getText().toString());
+                editTextUsername.getText().toString(),editTextPassword.getText().toString());
         call.enqueue(new Callback<CommonResponse>() {
             @Override
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
@@ -121,14 +120,11 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private void initView() {
-
         cardviewSignUp = (CardView) findViewById(R.id.cardviewSignUp);
         editTextName = (EditText) findViewById(R.id.editTextName) ;
         editTextEmailId = (EditText) findViewById(R.id.editTextEmailId) ;
         editTextUsername = (EditText) findViewById(R.id.editTextUsername) ;
         editTextPassword = (EditText) findViewById(R.id.editTextPassword) ;
         editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword) ;
-
-
     }
 }
