@@ -19,4 +19,22 @@ public interface ApiService {
             @Query("email") String email,
             @Query("password") String password
     );
+
+    @POST(ApplicationConstant.SIGNUP_SERVICE_URL)
+    Call<CommonResponse> signUpService(
+            @Query("email") String email,
+            @Query("password") String password,
+            @Query("full_name") String full_name,
+            @Query("username") String username,
+            @Query("confirm_password") String confirm_password
+    );
+
+    @POST(ApplicationConstant.SIGNUP_SERVICE_URL)
+    Call<CommonResponse> feedbackService(
+            @Query("full_name") String full_name,
+            @Query("email") String email,
+            @Query("contact") String contact,
+            @Query("feedback") String feedback
+    );
+
 }

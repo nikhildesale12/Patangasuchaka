@@ -43,9 +43,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(editText_email.getText().toString().length()==0){
-                    //Show toast pls enter emil
+                  // Toast.makeText(getApplicationContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
+                    editText_email.requestFocus();
+                    editText_email.setError("Please Enter Email id");
                 } else if(editText_password.getText().toString().length()==0){
-                    //Show toast pls enter password
+                    // Toast.makeText(getApplicationContext(),"Please enter Password",Toast.LENGTH_SHORT).show();
+                    editText_password.requestFocus();
+                    editText_password.setError("Please Enter Password");
                 }else {
                     if (ApplicationConstant.isNetworkAvailable(LoginActivity.this)) {
                         executeLoginService();

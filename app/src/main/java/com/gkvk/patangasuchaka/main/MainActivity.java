@@ -18,6 +18,7 @@ import com.gkvk.R;
 import com.gkvk.patangasuchaka.adapter.DrawerItemCustomAdapter;
 import com.gkvk.patangasuchaka.bean.NavigationDataModel;
 import com.gkvk.patangasuchaka.fragment.AboutUsFragment;
+import com.gkvk.patangasuchaka.fragment.FeedbackFragment;
 import com.gkvk.patangasuchaka.fragment.HomeFragment;
 import com.gkvk.patangasuchaka.fragment.HowItWorksFragment;
 import com.gkvk.patangasuchaka.fragment.IntroductionFragment;
@@ -59,11 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
         setupToolbar();
 
-        NavigationDataModel[] drawerItem = new NavigationDataModel[4];
+        NavigationDataModel[] drawerItem = new NavigationDataModel[5];
         drawerItem[0] = new NavigationDataModel(R.drawable.homeicon, "Home");
         drawerItem[1] = new NavigationDataModel(R.drawable.fixtures, "About Us");
         drawerItem[2] = new NavigationDataModel(R.drawable.introductionicon, "Introduction");
         drawerItem[3] = new NavigationDataModel(R.drawable.howitworksicon, "How it works");
+        drawerItem[4] = new NavigationDataModel(R.drawable.introductionicon, "Feedback");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -102,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 fragment = new HowItWorksFragment();
+                break;
+
+            case 4:
+                fragment = new FeedbackFragment();
                 break;
 
             default:

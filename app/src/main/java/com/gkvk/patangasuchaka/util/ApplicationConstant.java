@@ -53,6 +53,10 @@ public class ApplicationConstant {
 
     public static final String BASE_URL = "http://www.pathangasuchaka.in";
     public static final String LOGIN_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/login";
+    public static final String SIGNUP_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/registration";
+    public static final String FEEDBACK_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
+
+
 
     public static boolean checkPermission(Context context) {
         int FirstPermissionResult = ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION);
