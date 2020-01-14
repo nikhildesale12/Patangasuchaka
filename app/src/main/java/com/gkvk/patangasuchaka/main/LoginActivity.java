@@ -1,17 +1,15 @@
 package com.gkvk.patangasuchaka.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gkvk.R;
+import com.gkvk.patangasuchaka.bean.CommonResponse;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
@@ -19,21 +17,54 @@ import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class LoginActivity extends AppCompatActivity {
     ProgressDialog dialog;
+    CardView card_view;
+    TextView textviewRegisterHere;
+    EditText editText_email,editText_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        /*if (ApplicationConstant.isNetworkAvailable(LoginActivity.this)) {
-            executeLoginService();
-        } else {
-            ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Internet Connection Issue", "Please check internet connection ...", false, false);
-        }
-    }
+        initView();
 
+        card_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(editText_email.getText().toString().length()==0){
+                    //Show toast pls enter emil
+                } else if(editText_password.getText().toString().length()==0){
+                    //Show toast pls enter password
+                }else {
+                    if (ApplicationConstant.isNetworkAvailable(LoginActivity.this)) {
+                        executeLoginService();
+                    } else {
+                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Internet Connection Issue", "Please check internet connection ...", false, false);
+                    }
+                }
+            }
+        });
+
+        textviewRegisterHere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
     private void executeLoginService() {
         dialog = new ProgressDialog(LoginActivity.this);
         dialog.setMessage("Please Wait...");
@@ -52,81 +83,39 @@ public class LoginActivity extends AppCompatActivity {
                 .client(okHttpClient)
                 .build();
         ApiService service = retrofit.create(ApiService.class);
-        Call<LoginResponse> call = service.loginService(USER, PASS, GOOG_ID);
-        call.enqueue(new Callback<LoginResponse>() {
+        Call<CommonResponse> call = service.loginService(editText_email.getText().toString(), editText_password.getText().toString());
+        call.enqueue(new Callback<CommonResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
                 if (response != null && response.body() != null) {
                     if (dialog != null && dialog.isShowing()) {
                         dialog.dismiss();
                     }
-                    if (response.body().getSuccess().toString().trim().equals("1")) {
-                        //dispalyToast(response.body().getResult());
-                        SharedPreferences.Editor editor1 = getSharedPreferences(Constants.MY_PREFS_LOGIN, MODE_PRIVATE).edit();
-                        editor1.putString(Constants.KEY_USERNAME, USER);
-                        editor1.putString(Constants.KEY_USERID, response.body().getUserId());
-                        editor1.putString(Constants.KEY_PHOTO, personPhotoUrl);
-                        editor1.putBoolean(Constants.KEY_IS_LOGIN, true);
-                        *//*if(keepMeSignin.isChecked()){
-                            editor1.putBoolean(Constants.KEY_IS_LOGIN,true);
-                        }else{
-                            editor1.putBoolean(Constants.KEY_IS_LOGIN,false);
-                        }*//*
-                        editor1.commit();
-                        if (response.body().getIsNameAvailable().equals("YES")) {
-                            SharedPreferences.Editor editor2 = getSharedPreferences(Constants.MY_PREFS_USER_INFO, MODE_PRIVATE).edit();
-                            editor2.putString(Constants.KEY_FIRSTNAME, response.body().getFirstName());
-                            editor2.putString(Constants.KEY_MIDDLENAME, response.body().getMiddleName());
-                            editor2.putString(Constants.KEY_LASTNAME, response.body().getLastName());
-                            editor2.putString(Constants.KEY_OCCUPATION, response.body().getOccupation());
-                            editor2.putString(SyncStateContract.Constants.KEY_MOBILE, response.body().getMobile());
-                            editor2.commit();
-                            SharedPreferences prefs = getSharedPreferences(SyncStateContract.Constants.MY_PREFS_SWIPE, MODE_PRIVATE);
-                            boolean isShowScreen = prefs.getBoolean(SyncStateContract.Constants.KEY_ONE_TIME_PAGE, true);
-                            if (isShowScreen) {
-                                SharedPreferences.Editor editor3 = getSharedPreferences(SyncStateContract.Constants.MY_PREFS_SWIPE, MODE_PRIVATE).edit();
-                                editor3.putBoolean(SyncStateContract.Constants.KEY_ONE_TIME_PAGE, false);
-                                editor3.commit();
-                                Intent intent = new Intent(LoginActivity.this, AboutActivity.class);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Intent intent = new Intent(LoginActivity.this, Dashboard.class);
-                                intent.putExtra("uploadedCount", Constants.FROM_);
-                                startActivity(intent);
-                                finish();
-                            }
-                        } else {
-                            getUserDetailPopup(response.body().getUserId());
-                        }
-                    } else if (response.body().getSuccess().toString().trim().equals("0")) {
-                        if (dialog != null && dialog.isShowing()) {
-                            dialog.dismiss();
-                        }
-                        Constants.dispalyDialogInternet(LoginMainActivity.this, "Result", response.body().getResult(), true, false);
-                    } else {
-                        if (dialog != null && dialog.isShowing()) {
-                            dialog.dismiss();
-                        }
-                        Constants.dispalyDialogInternet(LoginMainActivity.this, "Error", "Technical Error !!!", false, false);
+                    if (response.body().getStatus() != null && response.body().getStatus().toString().trim().equals("true")) {
+                        Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
                     }
-                } else {
-                    if (dialog != null && dialog.isShowing()) {
-                        dialog.dismiss();
-                    }
-                    Constants.dispalyDialogInternet(LoginMainActivity.this, "Error", "Technical Error !!!", false, false);
                 }
             }
-
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                //Log.d("response :","");
+            public void onFailure(Call<CommonResponse> call, Throwable t) {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                Constants.dispalyDialogInternet(LoginMainActivity.this, "Result", t.toString(), false, false);
+                ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Result", t.toString(), false, false);
             }
-        });*/
-
+        });
     }
+
+    private void initView() {
+        card_view = (CardView) findViewById(R.id.cardviewLogin);
+        textviewRegisterHere = (TextView) findViewById(R.id.textviewRegisterHere);
+        editText_email = (EditText) findViewById(R.id.editText_email) ;
+        editText_password = (EditText) findViewById(R.id.editText_password) ;
+    }
+
+
 }

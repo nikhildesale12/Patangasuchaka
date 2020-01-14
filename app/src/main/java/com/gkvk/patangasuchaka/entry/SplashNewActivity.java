@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.gkvk.R;
+import com.gkvk.patangasuchaka.main.LoginActivity;
 import com.gkvk.patangasuchaka.main.MainActivity;
 
 public class SplashNewActivity extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class SplashNewActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(3000);
-                    Intent i = new Intent(SplashNewActivity.this,MainActivity.class);
+                    Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
                     startActivity(i);
                     finish();
                 } catch (InterruptedException e) {
