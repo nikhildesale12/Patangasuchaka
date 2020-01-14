@@ -46,6 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
                 /*Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);*/
 
+
                 if(editTextName.getText().toString().trim().length() == 0){
                     editTextName.requestFocus();
                     editTextName.setError("Please Enter Full Name");
