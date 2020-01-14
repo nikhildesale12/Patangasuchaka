@@ -4,6 +4,9 @@ import com.gkvk.patangasuchaka.bean.CommonResponse;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -15,10 +18,11 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
+    @FormUrlEncoded
     @POST(ApplicationConstant.LOGIN_SERVICE_URL)
     Call<CommonResponse> loginService(
-            @Query("email") String email,
-            @Query("password") String password
+            @Field("email") String email,
+            @Field("password") String password
     );
 
     @POST(ApplicationConstant.SIGNUP_SERVICE_URL)

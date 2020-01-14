@@ -30,6 +30,7 @@
         android:hint="Enter email id"
         android:drawableLeft="@drawable/ic_action_admin"
         android:background="#ffffff"
+        android:text="admin@admin.com"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -45,6 +46,7 @@
         android:background="#ffffff"
         android:layout_marginTop="28dp"
         android:hint="Enter Password"
+        android:text="admin123"
         android:drawableLeft="@drawable/ic_action_password"/>
 
     <androidx.cardview.widget.CardView
