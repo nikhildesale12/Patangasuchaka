@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.CommonResponse;
+import com.gkvk.patangasuchaka.bean.LoginRequest;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
@@ -87,7 +88,10 @@ public class LoginActivity extends AppCompatActivity {
                 .client(okHttpClient)
                 .build();
         ApiService service = retrofit.create(ApiService.class);
-        Call<CommonResponse> call = service.loginService(editText_email.getText().toString(), editText_password.getText().toString());
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setEmail(editText_email.getText().toString());
+        loginRequest.setPassword(editText_password.getText().toString());
+        Call<CommonResponse> call = service.loginService(loginRequest);
         call.enqueue(new Callback<CommonResponse>() {
             @Override
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
