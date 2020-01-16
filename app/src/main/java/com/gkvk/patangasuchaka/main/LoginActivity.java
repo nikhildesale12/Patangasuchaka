@@ -32,7 +32,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class LoginActivity extends AppCompatActivity {
+public class tivity extends AppCompatActivity {
     ProgressDialog dialog;
     CardView card_view;
     TextView textviewRegisterHere;
@@ -57,10 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                     editText_password.requestFocus();
                     editText_password.setError("Please Enter Password");
                 }else {
-                    if (ApplicationConstant.isNetworkAvailable(LoginActivity.this)) {
+                    if (ApplicationConstant.isNetworkAvailable(tivity.this)) {
                         executeLoginService();
                     } else {
-                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Internet Connection Issue", "Please check internet connection ...", false, false);
+                        ApplicationConstant.dispalyDialogInternet(tivity.this, "Internet Connection Issue", "Please check internet connection ...", false, false);
                     }
                 }
             }

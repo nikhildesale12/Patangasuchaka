@@ -18,7 +18,7 @@ import com.gkvk.R;
 import com.gkvk.patangasuchaka.adapter.DrawerItemCustomAdapter;
 import com.gkvk.patangasuchaka.bean.NavigationDataModel;
 import com.gkvk.patangasuchaka.fragment.AboutUsFragment;
-import com.gkvk.patangasuchaka.fragment.FeedbackFragment;
+import com.gkvk.patangasuchaka.fragment.Fragment;
 import com.gkvk.patangasuchaka.fragment.HomeFragment;
 import com.gkvk.patangasuchaka.fragment.HowItWorksFragment;
 import com.gkvk.patangasuchaka.fragment.IntroductionFragment;
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new AboutUsFragment();
                 break;
             case 2:
-                fragment = new IntroductionFragment();
+                fragment = new Fragment();
                 break;
             case 3:
                 fragment = new HowItWorksFragment();

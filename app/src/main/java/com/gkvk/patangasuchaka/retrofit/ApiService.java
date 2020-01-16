@@ -1,5 +1,6 @@
 package com.gkvk.patangasuchaka.retrofit;
 
+import com.gkvk.patangasuchaka.bean.AboutUsResponse;
 import com.gkvk.patangasuchaka.bean.CommonResponse;
 import com.gkvk.patangasuchaka.bean.LoginRequest;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
@@ -8,6 +9,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -40,4 +42,6 @@ public interface ApiService {
             @Query("feedback") String feedback
     );
 
+    @GET(ApplicationConstant.ABOUT_US_URL)
+    Call<AboutUsResponse> loadAboutData();
 }

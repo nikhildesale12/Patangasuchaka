@@ -50,12 +50,16 @@ public class ApplicationConstant {
 
     public static final String ENDPOINT_URL_AI_UPLOAD = "http://45.117.30.211:8080/classify";
     public static final String ExTNTION_JPG=".jpg";
+    public static final String MY_PREFS_NAME = "myPref";
+    public static final String KEY_INTRO = "KEY_INTRO";
+    public static final String KEY_ABOUT = "KEY_ABOUT";
+    public static final String KEY_HOWITWORKS = "KEY_HOWITWORKS";
 
     public static final String BASE_URL = "http://www.pathangasuchaka.in";
     public static final String LOGIN_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/login";
     public static final String SIGNUP_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/registration";
     public static final String FEEDBACK_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
-
+    public static final String ABOUT_US_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
 
 
     public static boolean checkPermission(Context context) {
