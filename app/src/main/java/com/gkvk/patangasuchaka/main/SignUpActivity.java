@@ -2,6 +2,10 @@ package com.gkvk.patangasuchaka.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+
+import okhttp3.Credentials;
+import okhttp3.Headers;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,10 +27,11 @@ import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
-public class SignUpActivity extends AppCompatActivity {
+public class Activity extends AppCompatActivity {
 
     ProgressDialog dialog;
     EditText editTextName,editTextEmailId,editTextUsername,editTextPassword,editTextConfirmPassword;
@@ -81,9 +86,25 @@ public class SignUpActivity extends AppCompatActivity {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
+
+        //Basic Auth
+        final String authToken = Credentials.basic("admin", "1234");
+
+        //Create a new Interceptor.
+        Interceptor headerAuthorizationInterceptor = new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                okhttp3.Request request = chain.request();
+                Headers headers = request.headers().newBuilder().add("Authorization", authToken).build();
+                request = request.newBuilder().headers(headers).build();
+                return chain.proceed(request);
+            }
+        };
+
         final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .readTimeout(30, TimeUnit.SECONDS)
                 .connectTimeout(30, TimeUnit.SECONDS)
+                .addInterceptor(headerAuthorizationInterceptor)
                 .build();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(ApplicationConstant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
