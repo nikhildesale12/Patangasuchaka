@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.gkvk.R;
+import com.gkvk.patangasuchaka.entry.SplashNewActivity;
+import com.gkvk.patangasuchaka.main.MainActivity;
 
 import java.io.File;
 
@@ -59,7 +61,7 @@ public class ApplicationConstant {
     public static final String LOGIN_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/login";
     public static final String SIGNUP_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/registration";
     public static final String FEEDBACK_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
-    public static final String ABOUT_US_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
+    public static final String ABOUT_US_URL = "/pathanga_api/index.php/api_auth/Authentication/contentedit";
 
 
     public static boolean checkPermission(Context context) {

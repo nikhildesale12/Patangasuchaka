@@ -1,20 +1,15 @@
 package com.gkvk.patangasuchaka.entry;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.Window;
+import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.AboutUsResponse;
-import com.gkvk.patangasuchaka.bean.CommonResponse;
-import com.gkvk.patangasuchaka.bean.LoginRequest;
 import com.gkvk.patangasuchaka.main.LoginActivity;
 import com.gkvk.patangasuchaka.main.MainActivity;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
@@ -25,6 +20,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.Credentials;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
@@ -35,7 +31,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class hNewActivity extends AppCompatActivity {
+public class SplashNewActivity extends AppCompatActivity {
 
     TextView versionName;
     String version;
@@ -106,7 +102,7 @@ public class hNewActivity extends AppCompatActivity {
                         public void run() {
                             try {
                                 sleep(3000);
-                                Intent i = new Intent(SplashNewActivity.this, MainActivity.class);
+                                Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
                                 startActivity(i);
                                 finish();
                             } catch (InterruptedException e) {
@@ -119,7 +115,11 @@ public class hNewActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<AboutUsResponse> call, Throwable t) {
-               ApplicationConstant.dispalyDialogInternet(SplashNewActivity.this, "Result", t.toString(), false, false);
+                Log.e("Error",t.getMessage());
+               //ApplicationConstant.dispalyDialogInternet(SplashNewActivity.this, "Result", t.toString(), false, true);
+                Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 

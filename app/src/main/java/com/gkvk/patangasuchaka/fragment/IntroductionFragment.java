@@ -74,32 +74,41 @@ public class IntroductionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_introduction, container, false);
+        //View view = inflater.inflate(R.layout.fragment_introduction, container, false);
 
-        SharedPreferences sharedPreferences = view.getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
-        String introduction = sharedPreferences.getString(ApplicationConstant.KEY_INTRO, "Data Not found");
+        //String introxml = getResources().getString(R.string.introduction);
 
-        final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
-        progressDialog.setMessage("Loading Data...");
-        progressDialog.setCancelable(false);
-        WebView web_view = view.findViewById(R.id.web_view);
-        web_view.requestFocus();
-        web_view.getSettings().setLightTouchEnabled(true);
-        web_view.getSettings().setJavaScriptEnabled(true);
-        web_view.getSettings().setGeolocationEnabled(true);
-        web_view.setSoundEffectsEnabled(true);
-        web_view.loadData("<html><body>"+introduction+"</body></html>",
-                "text/html", "UTF-8");
-        web_view.setWebChromeClient(new WebChromeClient() {
-            public void onProgressChanged(WebView view, int progress) {
-                if (progress < 100) {
-                    progressDialog.show();
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        String introduction = sharedPreferences.getString(ApplicationConstant.KEY_INTRO, "");
+
+        View view= null;
+        if(introduction != null && introduction.length()==0){
+            view = inflater.inflate(R.layout.fragment_introduction_static, container, false);
+        }else{
+            inflater.inflate(R.layout.fragment_introduction, container, false);
+
+            final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
+            progressDialog.setMessage("Loading Data...");
+            progressDialog.setCancelable(false);
+            WebView web_view = view.findViewById(R.id.web_view);
+            web_view.requestFocus();
+            web_view.getSettings().setLightTouchEnabled(true);
+            web_view.getSettings().setJavaScriptEnabled(true);
+            web_view.getSettings().setGeolocationEnabled(true);
+            web_view.setSoundEffectsEnabled(true);
+            web_view.loadData("<html><body>"+introduction+"</body></html>",
+                    "text/html", "UTF-8");
+            web_view.setWebChromeClient(new WebChromeClient() {
+                public void onProgressChanged(WebView view, int progress) {
+                    if (progress < 100) {
+                        progressDialog.show();
+                    }
+                    if (progress == 100) {
+                        progressDialog.dismiss();
+                    }
                 }
-                if (progress == 100) {
-                    progressDialog.dismiss();
-                }
-            }
-        });
+            });
+        }
 
         return view;
     }

@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
 import okhttp3.Credentials;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
@@ -32,7 +31,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class tivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     ProgressDialog dialog;
     CardView card_view;
     TextView textviewRegisterHere;
@@ -57,10 +56,10 @@ public class tivity extends AppCompatActivity {
                     editText_password.requestFocus();
                     editText_password.setError("Please Enter Password");
                 }else {
-                    if (ApplicationConstant.isNetworkAvailable(tivity.this)) {
+                    if (ApplicationConstant.isNetworkAvailable(LoginActivity.this)) {
                         executeLoginService();
                     } else {
-                        ApplicationConstant.dispalyDialogInternet(tivity.this, "Internet Connection Issue", "Please check internet connection ...", false, false);
+                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Internet Connection Issue", "Please check internet connection ...", false, false);
                     }
                 }
             }

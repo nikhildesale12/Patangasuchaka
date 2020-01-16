@@ -6,91 +6,113 @@
     android:background="@drawable/gradient"
     tools:context=".patangasuchaka.fragment.FeedbackFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textviewFeedback"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:text="Feedback"
-        android:textColor="@color/colorAccent"
-        android:textSize="35sp"
-        android:textStyle="bold">
-    </TextView>
-
-    <EditText
-        android:id="@+id/editTextFBName"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textviewFeedback"
-        android:layout_marginTop="72dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        android:paddingLeft="10dp"
-        android:hint="Name"
-        android:textColorHint="@color/white"
-        android:backgroundTint="@color/white"/>
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editTextFBEmailId"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="10dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextFBName"
-        android:layout_marginTop="25dp"
-        android:hint="Email id"
-        android:textColorHint="@color/white"
-        android:backgroundTint="@color/white"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editTextFBContact"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:paddingLeft="10dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextFBEmailId"
-        android:layout_marginTop="25dp"
-        android:hint="Contact"
-        android:textColorHint="@color/white"
-        android:backgroundTint="@color/white"/>
+            <TextView
+                android:id="@+id/textviewFeedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:text="Feedback"
+                android:textColor="@color/colorAccent"
+                android:textSize="35sp"
+                android:textStyle="bold"></TextView>
 
-    <EditText
-        android:id="@+id/edittext_FBcomment"
-        android:layout_width="match_parent"
-        android:layout_height="102dp"
-        android:backgroundTint="@color/white"
-        android:gravity="bottom|left"
-        android:hint="Feedback"
-        android:textColorHint="@color/white"
-        android:scrollbars="vertical"
-        android:inputType="textMultiLine"
-        android:paddingLeft="10dp"
-        android:maxLength="100"
-        android:layout_below="@+id/editTextFBContact"
-        android:layout_marginRight="50dp"
-        android:layout_marginLeft="50dp" />
+            <TextView
+                android:id="@+id/textviewFeedback2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textviewFeedback"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:text="Have a suggestion? Fill out the form below and we'll take a look!"
+                android:textColor="@color/white"
+                android:textSize="15sp"></TextView>
 
+            <EditText
+                android:id="@+id/editTextFBName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/textviewFeedback2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="40dp"
+                android:backgroundTint="@color/white"
+                android:hint="Name"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint" />
 
-    <Button
-        android:id="@+id/btnFeedbacksubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="submit"
-        android:layout_below="@id/edittext_FBcomment"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/btn_shape_capsule">
+            <EditText
+                android:id="@+id/editTextFBEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editTextFBName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:backgroundTint="@color/white"
+                android:hint="Email id"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint" />
 
-    </Button>
+            <EditText
+                android:id="@+id/editTextFBContact"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/editTextFBEmailId"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="40dp"
+                android:backgroundTint="@color/white"
+                android:hint="Contact"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint" />
 
+            <EditText
+                android:id="@+id/editText_FBComment"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_below="@+id/editTextFBContact"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:backgroundTint="@color/white"
+                android:gravity="bottom|left"
+                android:hint="Enter your Feedback here!"
+                android:inputType="textMultiLine"
+                android:maxLength="100"
+                android:paddingLeft="10dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint" />
 
+            <Button
+                android:id="@+id/btnFeedbacksubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editText_FBComment"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/btn_shape_capsule"
+                android:padding="20dp"
+                android:text="Send Feedback">
 
+            </Button>
+        </RelativeLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

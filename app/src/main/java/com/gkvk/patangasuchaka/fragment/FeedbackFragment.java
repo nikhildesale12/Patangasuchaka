@@ -4,27 +4,22 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.gkvk.R;
-import com.gkvk.patangasuchaka.main.LoginActivity;
-import com.gkvk.patangasuchaka.main.SignUpActivity;
-import com.gkvk.patangasuchaka.util.ApplicationConstant;
+
+import androidx.fragment.app.Fragment;
 
 
 public class FeedbackFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     ProgressDialog dialog;
-    EditText editTextFBName,editTextFBEmailId,editTextFBContact,edittext_FBcomment;
+    EditText editTextFBName,editTextFBEmailId,editTextFBContact,editText_FBComment;
     Button btnFeedbacksubmit;
 
     private static final String ARG_PARAM1 = "param1";
@@ -66,28 +61,31 @@ public class FeedbackFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view=inflater.inflate(R.layout.fragment_feedback, container, false);
-        initView();
+        initView(view);
 
         btnFeedbacksubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(editTextFBName.getText().toString().length()==0){
 
-                    /*editTextFBName.requestFocus();
-                    editTextFBName.setError("Please Enter Full Name");*/
-                    Toast.makeText(getContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
+                    editTextFBName.requestFocus();
+                    editTextFBName.setError("Please Enter Full Name");
+                    //Toast.makeText(getContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
 
                 } else if(editTextFBEmailId.getText().toString().length()==0){
-
-                    Toast.makeText(getContext(),"Please enter Emai id",Toast.LENGTH_SHORT).show();
+                    editTextFBEmailId.requestFocus();
+                    editTextFBEmailId.setError("Please Enter EmailId");
+                    //Toast.makeText(getContext(),"Please enter Emai id",Toast.LENGTH_SHORT).show();
                 }
                 else if(editTextFBContact.getText().toString().length()==0){
+                    editTextFBContact.requestFocus();
+                    editTextFBContact.setError("Please Enter Contact No");
+                    //Toast.makeText(getContext(),"Please enter contact",Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(getContext(),"Please enter contact",Toast.LENGTH_SHORT).show();
-
-                } else if(edittext_FBcomment.getText().toString().length()==0){
-
-                    Toast.makeText(getContext(),"Please enter Feedback",Toast.LENGTH_SHORT).show();
+                } else if(editText_FBComment.getText().toString().length()==0){
+                    editText_FBComment.requestFocus();
+                    editText_FBComment.setError("Please Give Feedback");
+                    //Toast.makeText(getContext(),"Please enter Feedback",Toast.LENGTH_SHORT).show();
 
                 }else {
                     executeFeedbackService();
@@ -101,7 +99,67 @@ public class FeedbackFragment extends Fragment {
 
     private void executeFeedbackService() {
 
+        /*dialog = new ProgressDialog(FeedbackFragment.this);
+        dialog.setMessage("Please Wait...");
+        dialog.setIndeterminate(false);
+        dialog.setCancelable(false);
+        dialog.show();
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
 
+        //Basic Auth
+        final String authToken = Credentials.basic("admin", "1234");
+
+        //Create a new Interceptor.
+        Interceptor headerAuthorizationInterceptor = new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                okhttp3.Request request = chain.request();
+                Headers headers = request.headers().newBuilder().add("Authorization", authToken).build();
+                request = request.newBuilder().headers(headers).build();
+                return chain.proceed(request);
+            }
+        };
+
+        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .addInterceptor(headerAuthorizationInterceptor)
+                .build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(ApplicationConstant.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(okHttpClient)
+                .build();
+        ApiService service = retrofit.create(ApiService.class);
+        Call<CommonResponse> call = service.feedbackService(editTextFBName.getText().toString(),editTextFBEmailId.getText().toString(),
+                editTextFBContact.getText().toString(),editText_FBComment.getText().toString());
+        call.enqueue(new Callback<CommonResponse>() {
+            @Override
+            public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+                if (response != null && response.body() != null) {
+                    if (dialog != null && dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
+                    if (response.body().getStatus() != null && response.body().getStatus().toString().trim().equals("true")) {
+                        Toast.makeText(SignUpActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }else{
+                        ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<CommonResponse> call, Throwable t) {
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+                ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Result", t.toString(), false, false);
+            }
+        });
+
+*/
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -114,12 +172,12 @@ public class FeedbackFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
+        /*if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
-        }
+        }*/
     }
 
     @Override
@@ -133,11 +191,11 @@ public class FeedbackFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private void initView() {
-        editTextFBName=(EditText) getView().findViewById(R.id.editTextFBName);
-        editTextFBEmailId=(EditText) getView().findViewById(R.id.editTextFBEmailId);
-        editTextFBContact=(EditText) getView().findViewById(R.id.editTextFBContact);
-        edittext_FBcomment=(EditText) getView().findViewById(R.id.edittext_FBcomment);
-        btnFeedbacksubmit=(Button) getView().findViewById(R.id.btnFeedbacksubmit);
+    private void initView(View view) {
+        editTextFBName=(EditText) view.findViewById(R.id.editTextFBName);
+        editTextFBEmailId=(EditText) view.findViewById(R.id.editTextFBEmailId);
+        editTextFBContact=(EditText) view.findViewById(R.id.editTextFBContact);
+        editText_FBComment=(EditText) view.findViewById(R.id.editText_FBComment);
+        btnFeedbacksubmit=(Button) view.findViewById(R.id.btnFeedbacksubmit);
     }
 }

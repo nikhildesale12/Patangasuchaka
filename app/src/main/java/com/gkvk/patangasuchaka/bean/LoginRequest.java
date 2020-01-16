@@ -4,7 +4,9 @@ package com.gkvk.patangasuchaka.bean;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginRequest {
+import java.io.Serializable;
+
+public class LoginRequest implements Serializable {
 
     private String email;
 

@@ -1,5 +1,6 @@
 package com.gkvk.patangasuchaka.main;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -16,8 +17,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gkvk.R;
@@ -31,11 +37,12 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
-public class Activity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     ProgressDialog dialog;
     EditText editTextName,editTextEmailId,editTextUsername,editTextPassword,editTextConfirmPassword;
     CardView cardviewSignUp;
+    TextView textviewRefreshCaptcha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,20 @@ public class Activity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         initView();
+
+        String text="Can't read the image? click here to refresh.";
+        SpannableString s=new SpannableString(text);
+        ClickableSpan clickableSpan=new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+
+                Toast.makeText(SignUpActivity.this,"new captcha here",Toast.LENGTH_SHORT).show();
+            }
+        };
+        s.setSpan(clickableSpan,28,32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textviewRefreshCaptcha.setText(s);
+        textviewRefreshCaptcha.setMovementMethod(LinkMovementMethod.getInstance());
+
 
         cardviewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,5 +169,6 @@ public class Activity extends AppCompatActivity {
         editTextUsername = (EditText) findViewById(R.id.editTextUsername) ;
         editTextPassword = (EditText) findViewById(R.id.editTextPassword) ;
         editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword) ;
+        textviewRefreshCaptcha=(TextView)findViewById(R.id.textviewRefreshCaptcha);
     }
 }

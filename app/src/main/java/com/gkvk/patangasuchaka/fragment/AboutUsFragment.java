@@ -76,33 +76,37 @@ public class AboutUsFragment extends Fragment {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_about_us, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_introduction, container, false);
+        //String aboutusfromxml = getResources().getString(R.string.aboutus);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        String aboutUs = sharedPreferences.getString(ApplicationConstant.KEY_ABOUT, "");
+        View view= null;
+        if(aboutUs != null && aboutUs.length()==0){
+            view = inflater.inflate(R.layout.fragment_about_us, container, false);
+        }else{
+            view = inflater.inflate(R.layout.fragment_introduction, container, false);
 
-        SharedPreferences sharedPreferences = view.getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
-        String aboutUs = sharedPreferences.getString(ApplicationConstant.KEY_ABOUT, "Data Not found");
-
-        final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
-        progressDialog.setMessage("Loading Data...");
-        progressDialog.setCancelable(false);
-        WebView web_view = view.findViewById(R.id.web_view);
-        web_view.requestFocus();
-        web_view.getSettings().setLightTouchEnabled(true);
-        web_view.getSettings().setJavaScriptEnabled(true);
-        web_view.getSettings().setGeolocationEnabled(true);
-        web_view.setSoundEffectsEnabled(true);
-        web_view.loadData("<html><body>"+aboutUs+"</body></html>",
-                "text/html", "UTF-8");
-        web_view.setWebChromeClient(new WebChromeClient() {
-            public void onProgressChanged(WebView view, int progress) {
-                if (progress < 100) {
-                    progressDialog.show();
+            final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
+            progressDialog.setMessage("Loading Data...");
+            progressDialog.setCancelable(false);
+            WebView web_view = view.findViewById(R.id.web_view);
+            web_view.requestFocus();
+            web_view.getSettings().setLightTouchEnabled(true);
+            web_view.getSettings().setJavaScriptEnabled(true);
+            web_view.getSettings().setGeolocationEnabled(true);
+            web_view.setSoundEffectsEnabled(true);
+            web_view.loadData("<html><body>"+aboutUs+"</body></html>",
+                    "text/html", "UTF-8");
+            web_view.setWebChromeClient(new WebChromeClient() {
+                public void onProgressChanged(WebView view, int progress) {
+                    if (progress < 100) {
+                        progressDialog.show();
+                    }
+                    if (progress == 100) {
+                        progressDialog.dismiss();
+                    }
                 }
-                if (progress == 100) {
-                    progressDialog.dismiss();
-                }
-            }
-        });
-
+            });
+        }
         return view;
     }
 

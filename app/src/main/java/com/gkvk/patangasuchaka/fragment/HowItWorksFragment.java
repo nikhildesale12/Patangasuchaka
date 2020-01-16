@@ -76,32 +76,41 @@ public class HowItWorksFragment extends Fragment {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_how_it_works, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_introduction, container, false);
+        ///View view = inflater.inflate(R.layout.fragment_introduction, container, false);
 
-        SharedPreferences sharedPreferences = view.getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
-        String howItWorks = sharedPreferences.getString(ApplicationConstant.KEY_HOWITWORKS, "Data Not found");
+        //String howItWorksFromXml = getResources().getString(R.string.howitworks1)+"\n"+getResources().getString(R.string.howitworks2)+"\n"+getResources().getString(R.string.howitworks3);
 
-        final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
-        progressDialog.setMessage("Loading Data...");
-        progressDialog.setCancelable(false);
-        WebView web_view = view.findViewById(R.id.web_view);
-        web_view.requestFocus();
-        web_view.getSettings().setLightTouchEnabled(true);
-        web_view.getSettings().setJavaScriptEnabled(true);
-        web_view.getSettings().setGeolocationEnabled(true);
-        web_view.setSoundEffectsEnabled(true);
-        web_view.loadData("<html><body>"+howItWorks+"</body></html>",
-                "text/html", "UTF-8");
-        web_view.setWebChromeClient(new WebChromeClient() {
-            public void onProgressChanged(WebView view, int progress) {
-                if (progress < 100) {
-                    progressDialog.show();
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        String howItWorks = sharedPreferences.getString(ApplicationConstant.KEY_HOWITWORKS, "");
+        View view= null;
+        if(howItWorks != null && howItWorks.length()==0){
+            view = inflater.inflate(R.layout.fragment_how_it_works, container, false);
+        }else{
+            view = inflater.inflate(R.layout.fragment_introduction, container, false);
+
+            final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
+            progressDialog.setMessage("Loading Data...");
+            progressDialog.setCancelable(false);
+            WebView web_view = view.findViewById(R.id.web_view);
+            web_view.requestFocus();
+            web_view.getSettings().setLightTouchEnabled(true);
+            web_view.getSettings().setJavaScriptEnabled(true);
+            web_view.getSettings().setGeolocationEnabled(true);
+            web_view.setSoundEffectsEnabled(true);
+            web_view.loadData("<html><body>"+howItWorks+"</body></html>",
+                    "text/html", "UTF-8");
+            web_view.setWebChromeClient(new WebChromeClient() {
+                public void onProgressChanged(WebView view, int progress) {
+                    if (progress < 100) {
+                        progressDialog.show();
+                    }
+                    if (progress == 100) {
+                        progressDialog.dismiss();
+                    }
                 }
-                if (progress == 100) {
-                    progressDialog.dismiss();
-                }
-            }
-        });
+            });
+        }
+
         return view;
     }
 
