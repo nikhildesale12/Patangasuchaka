@@ -101,7 +101,7 @@ public class SplashNewActivity extends AppCompatActivity {
                     Thread init = new Thread() {
                         public void run() {
                             try {
-                                sleep(3000);
+                                sleep(1000);
                                 Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
                                 startActivity(i);
                                 finish();

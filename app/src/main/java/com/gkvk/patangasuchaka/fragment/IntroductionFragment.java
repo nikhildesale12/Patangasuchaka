@@ -85,7 +85,7 @@ public class IntroductionFragment extends Fragment {
         if(introduction != null && introduction.length()==0){
             view = inflater.inflate(R.layout.fragment_introduction_static, container, false);
         }else{
-            inflater.inflate(R.layout.fragment_introduction, container, false);
+            view = inflater.inflate(R.layout.fragment_introduction, container, false);
 
             final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
             progressDialog.setMessage("Loading Data...");
