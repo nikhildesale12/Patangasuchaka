@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         drawerItem[1] = new NavigationDataModel(R.drawable.fixtures, "About Us");
         drawerItem[2] = new NavigationDataModel(R.drawable.introductionicon, "Introduction");
         drawerItem[3] = new NavigationDataModel(R.drawable.howitworksicon, "How it works");
-        drawerItem[4] = new NavigationDataModel(R.drawable.introductionicon, "Feedback");
+        drawerItem[4] = new NavigationDataModel(R.drawable.feedbackicon, "Feedback");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 

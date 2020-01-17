@@ -1,6 +1,5 @@
 package com.gkvk.patangasuchaka.main;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -17,16 +16,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gkvk.R;
+import com.gkvk.patangasuchaka.bean.CaptchaImageView;
 import com.gkvk.patangasuchaka.bean.CommonResponse;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
@@ -42,7 +40,11 @@ public class SignUpActivity extends AppCompatActivity {
     ProgressDialog dialog;
     EditText editTextName,editTextEmailId,editTextUsername,editTextPassword,editTextConfirmPassword;
     CardView cardviewSignUp;
-    TextView textviewRefreshCaptcha;
+    ImageView refresh;
+    EditText captchEditText;
+    CaptchaImageView captcha_Image_View;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +53,12 @@ public class SignUpActivity extends AppCompatActivity {
 
         initView();
 
-        String text="Can't read the image? click here to refresh.";
-        SpannableString s=new SpannableString(text);
-        ClickableSpan clickableSpan=new ClickableSpan() {
-            @Override
-            public void onClick(@NonNull View widget) {
-
-                Toast.makeText(SignUpActivity.this,"new captcha here",Toast.LENGTH_SHORT).show();
+        captcha_Image_View.setCaptchaType(3);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                SignUpActivity.this.captcha_Image_View.regenerate();
             }
-        };
-        s.setSpan(clickableSpan,28,32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textviewRefreshCaptcha.setText(s);
-        textviewRefreshCaptcha.setMovementMethod(LinkMovementMethod.getInstance());
+        });
 
 
         cardviewSignUp.setOnClickListener(new View.OnClickListener() {
@@ -85,10 +81,16 @@ public class SignUpActivity extends AppCompatActivity {
                 }else if(editTextPassword.getText().toString().trim().length() == 0){
                     editTextPassword.requestFocus();
                     editTextPassword.setError("Please Enter Password");
-                }else if(editTextConfirmPassword.getText().toString().trim().length() == 0 && !editTextPassword.equals(editTextConfirmPassword)){
+                }else if(editTextConfirmPassword.getText().toString().trim().length() == 0 && !editTextPassword.equals(editTextConfirmPassword)) {
                     editTextConfirmPassword.requestFocus();
                     editTextConfirmPassword.setError("Password Not Match");
-                }else{
+
+                }else if (SignUpActivity.this.captchEditText.getText().toString().equals(SignUpActivity.this.captcha_Image_View.getCaptchaCode())){
+                    Toast.makeText(SignUpActivity.this, "You Have successfully Matched", Toast.LENGTH_SHORT).show();
+                } else if(SignUpActivity.this.captchEditText.getText().toString().equals(SignUpActivity.this.captcha_Image_View.getCaptchaCode())){
+                    Toast.makeText(SignUpActivity.this, "You Have Successfully Not Matching", Toast.LENGTH_SHORT).show();
+                }
+                else {
                     executeSignUpService();
                 }
 
@@ -168,7 +170,10 @@ public class SignUpActivity extends AppCompatActivity {
         editTextEmailId = (EditText) findViewById(R.id.editTextEmailId) ;
         editTextUsername = (EditText) findViewById(R.id.editTextUsername) ;
         editTextPassword = (EditText) findViewById(R.id.editTextPassword) ;
-        editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword) ;
-        textviewRefreshCaptcha=(TextView)findViewById(R.id.textviewRefreshCaptcha);
+        editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword);
+        refresh=(ImageView)findViewById(R.id.refresh);
+        captchEditText=(EditText)findViewById(R.id.captchEditText);
+        captcha_Image_View = (CaptchaImageView)findViewById(R.id.captcha_image_view);
+
     }
 }

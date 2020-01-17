@@ -13,7 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_below="@+id/textviewSignUp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginRight="40dp"
                 android:backgroundTint="@color/white"
                 android:hint="Name"
@@ -119,73 +119,51 @@
 
             </CheckBox>
 
-            <TextView
-                android:id="@+id/textviewCaptcha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkboxTermCondition"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
-                android:text="Captcha"
-                android:textColor="@color/white"
-                android:textSize="15sp"></TextView>
-
-
-            <TableLayout
-                android:id="@+id/tableLayout"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="25dp"
                 android:layout_below="@+id/checkboxTermCondition"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="140dp"
-                android:layout_toRightOf="@+id/textviewCaptcha"
-                android:background="@drawable/image_border"
-                android:stretchColumns="*">
+                android:gravity="center" >
 
-                <TableRow
-                    android:id="@+id/tableRow"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <com.gkvk.patangasuchaka.bean.CaptchaImageView
+                    android:id="@+id/captcha_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_weight="3" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/captchEditText"
+                    android:hint="Enter here"
+                    android:textColorHint="@color/hint"
+                    android:textColor="@color/white">
+                </EditText>
 
-                    <TextView
-                        android:id="@+id/simpleImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#b0b0b0"
-                        android:padding="18dip"
-                        android:text="Text 1"
-                        android:textColor="#000"
-                        android:textSize="12dp">
+                <ImageView
+                    android:id="@+id/refresh"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="false"
+                    android:background="@drawable/refresh"
+                    android:cropToPadding="false"
+                    android:gravity="center" />
 
-                    </TextView>
+            </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/simpleTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#FF0000"
-                        android:padding="18dip"
-                        android:text="Text 2"
-                        android:textColor="@color/white"
-                        android:textSize="14dp" />
-
-                </TableRow>
-
-
-            </TableLayout>
-
-            <TextView
+            <!--<TextView
                 android:id="@+id/textviewRefreshCaptcha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tableLayout"
+                android:layout_below="@+id/textviewCaptcha"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:text="Can't read the image? click here to refresh."
                 android:textColor="@color/white"></TextView>
-
+-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardviewSignUp"
                 android:layout_width="200dp"
