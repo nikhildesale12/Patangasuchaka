@@ -16,8 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,8 @@ import android.widget.Toast;
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.CaptchaImageView;
 import com.gkvk.patangasuchaka.bean.CommonResponse;
+import com.gkvk.patangasuchaka.bean.RegisterRequest;
+import com.gkvk.patangasuchaka.bean.RegisterResponse;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
@@ -43,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
     ImageView refresh;
     EditText captchEditText;
     CaptchaImageView captcha_Image_View;
-
+    CheckBox checkboxTermCondition;
 
 
     @Override
@@ -64,36 +68,48 @@ public class SignUpActivity extends AppCompatActivity {
         cardviewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // do whatever you want to do on click (to launch any fragment or activity you need to put intent here.)
-                /*Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                startActivity(intent);*/
-
-
                 if(editTextName.getText().toString().trim().length() == 0){
                     editTextName.requestFocus();
-                    editTextName.setError("Please Enter Full Name");
+                    editTextName.setError("Please enter full name");
                 }else if(editTextEmailId.getText().toString().trim().length() == 0) {
+                    editTextName.clearFocus();
+                    editTextName.setError(null);
                     editTextEmailId.requestFocus();
-                    editTextEmailId.setError("Please Enter Email Id");
+                    editTextEmailId.setError("Please enter email Id");
                 }else if(editTextUsername.getText().toString().trim().length() == 0){
+                    editTextEmailId.clearFocus();
+                    editTextEmailId.setError(null);
                     editTextUsername.requestFocus();
-                    editTextUsername.setError("Please Enter Username");
-                }else if(editTextPassword.getText().toString().trim().length() == 0){
+                    editTextUsername.setError("Please enter username");
+                }else if(editTextPassword.getText().toString().trim().length() < 6){
+                    editTextUsername.clearFocus();
+                    editTextUsername.setError(null);
                     editTextPassword.requestFocus();
-                    editTextPassword.setError("Please Enter Password");
-                }else if(editTextConfirmPassword.getText().toString().trim().length() == 0 && !editTextPassword.equals(editTextConfirmPassword)) {
+                    editTextPassword.setError("Please enter minimum 6 character password");
+                }else if(editTextConfirmPassword.getText().toString().trim().length() == 0 || !editTextPassword.getText().toString().trim().equals(editTextConfirmPassword.getText().toString().trim())) {
+                    editTextPassword.clearFocus();
+                    editTextPassword.setError(null);
                     editTextConfirmPassword.requestFocus();
-                    editTextConfirmPassword.setError("Password Not Match");
-
-                }else if (SignUpActivity.this.captchEditText.getText().toString().equals(SignUpActivity.this.captcha_Image_View.getCaptchaCode())){
-                    Toast.makeText(SignUpActivity.this, "You Have successfully Matched", Toast.LENGTH_SHORT).show();
-                } else if(SignUpActivity.this.captchEditText.getText().toString().equals(SignUpActivity.this.captcha_Image_View.getCaptchaCode())){
-                    Toast.makeText(SignUpActivity.this, "You Have Successfully Not Matching", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                    editTextConfirmPassword.setError("Password not match");
+                } else if (captchEditText.getText().toString().trim().length() == 0) {
+                    editTextConfirmPassword.clearFocus();
+                    editTextConfirmPassword.setError(null);
+                    //Toast.makeText(SignUpActivity.this, "Please enter captcha", Toast.LENGTH_SHORT).show();
+                    captchEditText.setError("Please enter minimum 6 character password");
+                } else if(!captchEditText.getText().toString().equals(captcha_Image_View.getCaptchaCode())){
+                    //Toast.makeText(SignUpActivity.this, "Invalid captcha", Toast.LENGTH_SHORT).show();
+                    captchEditText.setError(null);
+                    Toast toast = Toast.makeText(SignUpActivity.this,"Invalid captcha", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                } else if(!checkboxTermCondition.isChecked()) {
+                    //Toast.makeText(SignUpActivity.this, "Accept terms and condition", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(SignUpActivity.this,"Accept terms and condition", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                } else{
                     executeSignUpService();
                 }
-
             }
         });
     }
@@ -134,11 +150,15 @@ public class SignUpActivity extends AppCompatActivity {
                 .client(okHttpClient)
                 .build();
         ApiService service = retrofit.create(ApiService.class);
-        Call<CommonResponse> call = service.signUpService(editTextName.getText().toString(),editTextEmailId.getText().toString(),
-                editTextUsername.getText().toString(),editTextPassword.getText().toString());
-        call.enqueue(new Callback<CommonResponse>() {
+        RegisterRequest registerRequest = new RegisterRequest();
+        registerRequest.setEmail(editTextEmailId.getText().toString());
+        registerRequest.setFull_name(editTextName.getText().toString());
+        registerRequest.setPassword(editTextPassword.getText().toString());
+        registerRequest.setUsername(editTextUsername.getText().toString());
+        Call<RegisterResponse> call = service.signUpService(registerRequest);
+        call.enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if (response != null && response.body() != null) {
                     if (dialog != null && dialog.isShowing()) {
                         dialog.dismiss();
@@ -148,12 +168,12 @@ public class SignUpActivity extends AppCompatActivity {
                         Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }else{
-                        ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
+                        ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Failed", "Failed to register user !!!", false, false);
                     }
                 }
             }
             @Override
-            public void onFailure(Call<CommonResponse> call, Throwable t) {
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
@@ -161,8 +181,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     private void initView() {
         cardviewSignUp = (CardView) findViewById(R.id.cardviewSignUp);
@@ -174,6 +192,6 @@ public class SignUpActivity extends AppCompatActivity {
         refresh=(ImageView)findViewById(R.id.refresh);
         captchEditText=(EditText)findViewById(R.id.captchEditText);
         captcha_Image_View = (CaptchaImageView)findViewById(R.id.captcha_image_view);
-
+        checkboxTermCondition = (CheckBox) findViewById(R.id.checkboxTermCondition);
     }
 }

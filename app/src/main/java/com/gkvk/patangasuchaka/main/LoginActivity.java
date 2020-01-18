@@ -2,7 +2,9 @@ package com.gkvk.patangasuchaka.main;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,9 +55,11 @@ public class LoginActivity extends AppCompatActivity {
                     editText_email.setError("Please Enter Email id");
                 } else if(editText_password.getText().toString().length()==0){
                     // Toast.makeText(getApplicationContext(),"Please enter Password",Toast.LENGTH_SHORT).show();
+                    editText_email.setError(null);
                     editText_password.requestFocus();
                     editText_password.setError("Please Enter Password");
                 }else {
+                    editText_password.setError(null);
                     if (ApplicationConstant.isNetworkAvailable(LoginActivity.this)) {
                         executeLoginService();
                     } else {
@@ -120,8 +124,17 @@ public class LoginActivity extends AppCompatActivity {
                     if (dialog != null && dialog.isShowing()) {
                         dialog.dismiss();
                     }
-                    if (response.body().getStatus() != null && response.body().getStatus().toString().trim().equals("true")) {
-                        Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
+                    if (response.body().getStatus()) {
+
+                        SharedPreferences.Editor editor1 = getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
+                        editor1.putBoolean(ApplicationConstant.KEY_IS_LOGIN,true);
+                        editor1.commit();
+
+                        //Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
+                        Toast toast = Toast.makeText(LoginActivity.this,response.body().getMessage(), Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     }else{

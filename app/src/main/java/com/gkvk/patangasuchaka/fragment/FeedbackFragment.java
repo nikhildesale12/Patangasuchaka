@@ -1,18 +1,43 @@
 package com.gkvk.patangasuchaka.fragment;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.gkvk.R;
+import com.gkvk.patangasuchaka.bean.FeedbackRequest;
+import com.gkvk.patangasuchaka.bean.RegisterResponse;
+import com.gkvk.patangasuchaka.main.MainActivity;
+import com.gkvk.patangasuchaka.retrofit.ApiService;
+import com.gkvk.patangasuchaka.util.ApplicationConstant;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import androidx.fragment.app.Fragment;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Credentials;
+import okhttp3.Headers;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class FeedbackFragment extends Fragment {
@@ -28,15 +53,16 @@ public class FeedbackFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    Activity activity;
     private OnFragmentInteractionListener mListener;
 
-    public FeedbackFragment() {
+    public FeedbackFragment(MainActivity mainActivity) {
         // Required empty public constructor
+        activity = mainActivity;
     }
 
 
-    // TODO: Rename and change types and number of parameters
+   /* // TODO: Rename and change types and number of parameters
     public static FeedbackFragment newInstance(String param1, String param2) {
         FeedbackFragment fragment = new FeedbackFragment();
         Bundle args = new Bundle();
@@ -44,7 +70,7 @@ public class FeedbackFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +86,7 @@ public class FeedbackFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view=inflater.inflate(R.layout.fragment_feedback, container, false);
+        final View view=inflater.inflate(R.layout.fragment_feedback, container, false);
         initView(view);
 
         btnFeedbacksubmit.setOnClickListener(new View.OnClickListener() {
@@ -73,22 +99,24 @@ public class FeedbackFragment extends Fragment {
                     //Toast.makeText(getContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
 
                 } else if(editTextFBEmailId.getText().toString().length()==0){
+                    editTextFBName.setError(null);
                     editTextFBEmailId.requestFocus();
                     editTextFBEmailId.setError("Please Enter EmailId");
                     //Toast.makeText(getContext(),"Please enter Emai id",Toast.LENGTH_SHORT).show();
                 }
                 else if(editTextFBContact.getText().toString().length()==0){
+                    editTextFBEmailId.setError(null);
                     editTextFBContact.requestFocus();
                     editTextFBContact.setError("Please Enter Contact No");
                     //Toast.makeText(getContext(),"Please enter contact",Toast.LENGTH_SHORT).show();
 
                 } else if(editText_FBComment.getText().toString().length()==0){
+                    editTextFBContact.setError(null);
                     editText_FBComment.requestFocus();
                     editText_FBComment.setError("Please Give Feedback");
                     //Toast.makeText(getContext(),"Please enter Feedback",Toast.LENGTH_SHORT).show();
-
                 }else {
-                    executeFeedbackService();
+                    executeFeedbackService(view);
                 }
             }
 
@@ -97,9 +125,8 @@ public class FeedbackFragment extends Fragment {
         return view;
     }
 
-    private void executeFeedbackService() {
-
-        /*dialog = new ProgressDialog(FeedbackFragment.this);
+    private void executeFeedbackService(final View view) {
+        dialog = new ProgressDialog(view.getContext());
         dialog.setMessage("Please Wait...");
         dialog.setIndeterminate(false);
         dialog.setCancelable(false);
@@ -132,34 +159,57 @@ public class FeedbackFragment extends Fragment {
                 .client(okHttpClient)
                 .build();
         ApiService service = retrofit.create(ApiService.class);
-        Call<CommonResponse> call = service.feedbackService(editTextFBName.getText().toString(),editTextFBEmailId.getText().toString(),
-                editTextFBContact.getText().toString(),editText_FBComment.getText().toString());
-        call.enqueue(new Callback<CommonResponse>() {
+        FeedbackRequest feedbackRequest = new FeedbackRequest();
+        feedbackRequest.setContact(editTextFBContact.getText().toString());
+        feedbackRequest.setEmail(editTextFBEmailId.getText().toString());
+        feedbackRequest.setFull_name(editTextFBName.getText().toString());
+        feedbackRequest.setFeedback(editText_FBComment.getText().toString());
+        Call<RegisterResponse> call = service.feedbackService(feedbackRequest);
+        call.enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if (response != null && response.body() != null) {
                     if (dialog != null && dialog.isShowing()) {
                         dialog.dismiss();
                     }
-                    if (response.body().getStatus() != null && response.body().getStatus().toString().trim().equals("true")) {
-                        Toast.makeText(SignUpActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                        startActivity(intent);
+                    if (response.body().getStatus()) {
+                        dispalyDialog(activity,view.getContext(), "Result", response.body().getMessage());
                     }else{
-                        ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
+                        dispalyDialog(activity,view.getContext(), "Result", "Failed to submit your feedback");
                     }
                 }
             }
             @Override
-            public void onFailure(Call<CommonResponse> call, Throwable t) {
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Result", t.toString(), false, false);
+                dispalyDialog(activity,view.getContext(), "Result", t.toString());
+            }
+
+            private void dispalyDialog(final Activity activity, final Context context, String result, String message) {
+                final Dialog interrnetConnection = new Dialog(context);
+                interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                interrnetConnection.setContentView(R.layout.dialog_popup);
+                interrnetConnection.setCanceledOnTouchOutside(false);
+                TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
+                tv.setText(message);
+                TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
+                titleText.setText(result);
+                Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
+                btnLogoutNo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        interrnetConnection.dismiss();
+                        Intent i = new Intent(view.getContext(),MainActivity.class);
+                        startActivity(i);
+                        activity.finish();
+                        activity.finishAffinity();
+                    }
+                });
+                interrnetConnection.show();
             }
         });
-
-*/
     }
 
     // TODO: Rename method, update argument and hook method into UI event

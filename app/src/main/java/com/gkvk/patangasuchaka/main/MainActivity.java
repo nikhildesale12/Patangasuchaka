@@ -7,6 +7,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -60,12 +62,13 @@ public class MainActivity extends AppCompatActivity {
 
         setupToolbar();
 
-        NavigationDataModel[] drawerItem = new NavigationDataModel[5];
+        NavigationDataModel[] drawerItem = new NavigationDataModel[6];
         drawerItem[0] = new NavigationDataModel(R.drawable.homeicon, "Home");
         drawerItem[1] = new NavigationDataModel(R.drawable.fixtures, "About Us");
         drawerItem[2] = new NavigationDataModel(R.drawable.introductionicon, "Introduction");
         drawerItem[3] = new NavigationDataModel(R.drawable.howitworksicon, "How it works");
         drawerItem[4] = new NavigationDataModel(R.drawable.feedbackicon, "Feedback");
+        drawerItem[5] = new NavigationDataModel(R.drawable.icon_exit, "Logout");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -107,7 +110,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 4:
-                fragment = new FeedbackFragment();
+                fragment = new FeedbackFragment(MainActivity.this);
+                break;
+
+            case 5:
+                SharedPreferences.Editor editor = getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.clear();
+                editor.commit();
+
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
+                finishAffinity();
+
                 break;
 
             default:

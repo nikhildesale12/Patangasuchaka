@@ -1,5 +1,6 @@
 package com.gkvk.patangasuchaka.bean;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,6 +13,7 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import java.util.Random;
 
+@SuppressLint("AppCompatCustomView")
 public class CaptchaImageView extends ImageView {
     private CaptchaImageView.CaptchaGenerator.Captcha generatedCaptcha;
     private int captchaLength = 6;
@@ -92,9 +94,10 @@ public class CaptchaImageView extends ImageView {
         private static CaptchaImageView.CaptchaGenerator.Captcha regenerate(int width, int height, int length, int type, boolean isDot) {
             Paint border = new Paint();
             border.setStyle(Style.STROKE);
-            border.setColor(Color.parseColor("#CCCCCC"));
+            border.setColor(Color.parseColor("#FFFFFF"));
             Paint paint = new Paint();
-            paint.setColor(-16777216);
+            //paint.setColor(-16777216);
+            paint.setColor(Color.parseColor("#FFFFFF"));
             paint.setStyle(Style.FILL_AND_STROKE);
             if (isDot) {
                 paint.setTypeface(Typeface.DEFAULT_BOLD);
@@ -104,7 +107,7 @@ public class CaptchaImageView extends ImageView {
 
             Bitmap bitMap = Bitmap.createBitmap(width, height, Config.ARGB_8888);
             Canvas canvas = new Canvas(bitMap);
-            canvas.drawColor(Color.parseColor("#F7F7FF"));
+            canvas.drawColor(Color.parseColor("#3C3837"));
             int textX = generateRandomInt(width - width / 5 * 4, width / 2);
             int textY = generateRandomInt(height - height / 3, height - height / 4);
             String generatedText = drawRandomText(canvas, paint, textX, textY, length, type, isDot);
@@ -146,7 +149,7 @@ public class CaptchaImageView extends ImageView {
         private static String drawRandomText(Canvas canvas, Paint paint, int textX, int textY, int length, int type, boolean isDot) {
             String generatedCaptcha = "";
             int[] scewRange = new int[]{-1, 1};
-            int[] textSizeRange = new int[]{40, 42, 44, 45};
+            int[] textSizeRange = new int[]{70, 72, 74, 75};
             Random random = new Random();
             paint.setTextSkewX((float)scewRange[random.nextInt(scewRange.length)]);
 
@@ -155,9 +158,9 @@ public class CaptchaImageView extends ImageView {
                 generatedCaptcha = generatedCaptcha + temp;
                 paint.setTextSize((float)textSizeRange[random.nextInt(textSizeRange.length)]);
                 if (isDot) {
-                    canvas.drawText(temp, (float)(textX + index * 25), (float)textY, paint);
+                    canvas.drawText(temp, (float)(textX + index * 45), (float)textY, paint);
                 } else {
-                    canvas.drawText(temp, (float)(textX + index * 20), (float)textY, paint);
+                    canvas.drawText(temp, (float)(textX + index * 40), (float)textY, paint);
                 }
             }
 

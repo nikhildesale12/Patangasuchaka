@@ -21,7 +21,6 @@
         android:id="@+id/editText_email"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:elevation="2dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:layout_centerHorizontal="true"
@@ -30,9 +29,7 @@
         android:hint="Enter email id"
         android:backgroundTint="@color/white"
         android:textColor="@color/white"
-        android:textColorHint="@color/hint"
-        android:text="admin@admin.com"
-        android:inputType="textEmailAddress" />
+        android:textColorHint="@color/hint"/>
 
     <EditText
         android:id="@+id/editText_password"
@@ -40,8 +37,6 @@
         android:layout_height="40dp"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
-        android:ems="10"
-        android:elevation="2dp"
         android:inputType="textPassword"
         android:layout_marginTop="28dp"
         android:layout_below="@id/editText_email"
@@ -49,7 +44,7 @@
         android:hint="Enter Password"
         android:textColorHint="@color/hint"
         android:textColor="@color/white"
-        android:text="admin123" />
+        />
 
     <androidx.cardview.widget.CardView
         android:layout_width="250dp"

@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:text="Registration"
                 android:textColor="@color/colorAccent"
                 android:textSize="35sp"
@@ -40,7 +40,7 @@
                 android:hint="Name"
                 android:paddingLeft="10dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/hint" />
+                android:textColorHint="@color/hint"/>
 
             <EditText
                 android:id="@+id/editTextEmailId"
@@ -105,72 +105,80 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/hint" />
 
+            <LinearLayout
+                android:id="@+id/linearLayoutCaptcha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical"
+                android:layout_below="@+id/editTextConfirmPassword"
+                android:gravity="center" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <com.gkvk.patangasuchaka.bean.CaptchaImageView
+                        android:id="@+id/captcha_image_view"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_weight="0.80"/>
+
+                    <ImageView
+                        android:id="@+id/refresh"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.10"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:adjustViewBounds="false"
+                        android:background="@drawable/refresh"
+                        android:cropToPadding="false"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/captchEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/editTextUsername"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:backgroundTint="@color/white"
+                    android:hint="Enter Captche"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:maxLength="6"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/hint" />
+
+            </LinearLayout>
+
             <CheckBox
                 android:id="@+id/checkboxTermCondition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editTextConfirmPassword"
+                android:layout_below="@id/linearLayoutCaptcha"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
                 android:buttonTint="@color/white"
                 android:text="Accept Terms and Coditions"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold">
-
             </CheckBox>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:layout_marginRight="80dp"
-                android:layout_marginTop="25dp"
-                android:layout_below="@+id/checkboxTermCondition"
-                android:gravity="center" >
-
-                <com.gkvk.patangasuchaka.bean.CaptchaImageView
-                    android:id="@+id/captcha_image_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_weight="3" />
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/captchEditText"
-                    android:hint="Enter here"
-                    android:textColorHint="@color/hint"
-                    android:textColor="@color/white">
-                </EditText>
-
-                <ImageView
-                    android:id="@+id/refresh"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="false"
-                    android:background="@drawable/refresh"
-                    android:cropToPadding="false"
-                    android:gravity="center" />
-
-            </LinearLayout>
-
-            <!--<TextView
-                android:id="@+id/textviewRefreshCaptcha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textviewCaptcha"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="40dp"
-                android:text="Can't read the image? click here to refresh."
-                android:textColor="@color/white"></TextView>
--->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardviewSignUp"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
-                android:layout_below="@+id/editTextConfirmPassword"
+                android:layout_below="@+id/checkboxTermCondition"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="175dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="25dp"
                 app:cardMaxElevation="10dp">
 

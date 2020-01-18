@@ -40,7 +40,14 @@ public class SplashNewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_new);
-        //databaseHelper = DatabaseHelper.getDatabaseInstance(SplashScreen.this);
+
+        SharedPreferences sharedPreferences = SplashNewActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        boolean isFieldModeOn = sharedPreferences.getBoolean(ApplicationConstant.KEY_IS_LOGIN, false);
+        if(isFieldModeOn){
+            Intent i = new Intent(SplashNewActivity.this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
         versionName = (TextView) findViewById(R.id.version_name);
         PackageInfo pInfo = null;
         try {
@@ -52,6 +59,30 @@ public class SplashNewActivity extends AppCompatActivity {
         }
 
         getAppDataFromServer();
+
+        Thread init = new Thread() {
+            public void run() {
+                try {
+                    sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    SharedPreferences sharedPreferences = SplashNewActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+                    //boolean login = sharedPreferences.getBoolean(ApplicationConstant.KEY_IS_LOGIN, false);
+                    boolean login = true;
+                    if (login) {
+                        Intent i = new Intent(SplashNewActivity.this, MainActivity.class);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }
+            }
+        };
+        init.start();
 
     }//end create
 
@@ -98,28 +129,15 @@ public class SplashNewActivity extends AppCompatActivity {
                         editor1.putString(ApplicationConstant.KEY_HOWITWORKS,response.body().getHowItworks());
                         editor1.commit();
                     }
-                    Thread init = new Thread() {
-                        public void run() {
-                            try {
-                                sleep(1000);
-                                Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
-                                startActivity(i);
-                                finish();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    };
-                    init.start();
                 }
             }
             @Override
             public void onFailure(Call<AboutUsResponse> call, Throwable t) {
                 Log.e("Error",t.getMessage());
                //ApplicationConstant.dispalyDialogInternet(SplashNewActivity.this, "Result", t.toString(), false, true);
-                Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
-                startActivity(i);
-                finish();
+//                Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
+//                startActivity(i);
+//                finish();
             }
         });
 

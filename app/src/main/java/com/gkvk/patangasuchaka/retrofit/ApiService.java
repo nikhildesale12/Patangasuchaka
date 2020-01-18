@@ -2,7 +2,10 @@ package com.gkvk.patangasuchaka.retrofit;
 
 import com.gkvk.patangasuchaka.bean.AboutUsResponse;
 import com.gkvk.patangasuchaka.bean.CommonResponse;
+import com.gkvk.patangasuchaka.bean.FeedbackRequest;
 import com.gkvk.patangasuchaka.bean.LoginRequest;
+import com.gkvk.patangasuchaka.bean.RegisterRequest;
+import com.gkvk.patangasuchaka.bean.RegisterResponse;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 
 import retrofit2.Call;
@@ -22,25 +25,13 @@ import retrofit2.http.Query;
 public interface ApiService {
 
     @POST(ApplicationConstant.LOGIN_SERVICE_URL)
-    Call<CommonResponse> loginService(
-            @Body LoginRequest loginRequest
-    );
+    Call<CommonResponse> loginService(@Body LoginRequest loginRequest);
 
     @POST(ApplicationConstant.SIGNUP_SERVICE_URL)
-    Call<CommonResponse> signUpService(
-            @Query("email") String email,
-            @Query("password") String password,
-            @Query("full_name") String full_name,
-            @Query("username") String username
-    );
+    Call<RegisterResponse> signUpService(@Body RegisterRequest registerRequest);
 
-    @POST(ApplicationConstant.SIGNUP_SERVICE_URL)
-    Call<CommonResponse> feedbackService(
-            @Query("full_name") String full_name,
-            @Query("email") String email,
-            @Query("contact") String contact,
-            @Query("feedback") String feedback
-    );
+    @POST(ApplicationConstant.FEEDBACK_SERVICE_URL)
+    Call<RegisterResponse> feedbackService(@Body FeedbackRequest feedbackRequest);
 
     @GET(ApplicationConstant.ABOUT_US_URL)
     Call<AboutUsResponse> loadAboutData();
