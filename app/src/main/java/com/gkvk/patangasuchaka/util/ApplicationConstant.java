@@ -63,6 +63,16 @@ public class ApplicationConstant {
     public static final String SIGNUP_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/registration";
     public static final String FEEDBACK_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
     public static final String ABOUT_US_URL = "/pathanga_api/index.php/api_auth/Authentication/contentedit";
+    public static final String KEY_USERNAME = "KEY_USERNAME";
+    public static final String KEY_EMAIL = "KEY_EMAIL";
+    public static final String KEY_FULL_NAME = "KEY_FULL_NAME";
+    public static final String KEY_PROFILE_IMG = "KEY_PROFILE_IMG";
+    public static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
+    public static final String TYPE_AUTOCOMPLETE = "/autocomplete";
+    public static final String OUT_JSON = "/json";
+    //debug
+//    public static final String API_KEY = "AIzaSyCoNT5vDSVQmxhG2kS_JXsozKtym48r_54";
+    public static final String API_KEY = "AIzaSyCRIriw_45fLM8_Qa-K2MNj5FC32JfRljQ";
 
 
     public static boolean checkPermission(Context context) {

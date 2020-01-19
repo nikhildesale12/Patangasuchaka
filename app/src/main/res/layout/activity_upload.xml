@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color1"
+    android:background="@drawable/gradient"
     tools:context="com.gkvk.patangasuchaka.main.UploadActivity">
 
     <LinearLayout
@@ -33,9 +33,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:background="#FFFFFF"
                 android:hint="Location"
                 android:padding="10dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/hint"
+                android:backgroundTint="@color/white"
                 android:tooltipText="Enter Place" />
 
             <EditText
@@ -46,8 +48,10 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
-                android:background="#FFFFFF"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/white"
                 android:hint="Date"
+                android:textColorHint="@color/hint"
                 android:padding="10dp"
                 android:editable="false"
                 android:tooltipText="Enter Date" />

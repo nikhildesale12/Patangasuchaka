@@ -68,8 +68,7 @@ public class SplashNewActivity extends AppCompatActivity {
                     e.printStackTrace();
                 } finally {
                     SharedPreferences sharedPreferences = SplashNewActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
-                    //boolean login = sharedPreferences.getBoolean(ApplicationConstant.KEY_IS_LOGIN, false);
-                    boolean login = true;
+                    boolean login = sharedPreferences.getBoolean(ApplicationConstant.KEY_IS_LOGIN, false);
                     if (login) {
                         Intent i = new Intent(SplashNewActivity.this, MainActivity.class);
                         startActivity(i);

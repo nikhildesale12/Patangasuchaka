@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -32,9 +33,13 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,6 +52,9 @@ import com.gkvk.patangasuchaka.util.GPSTracker;
 
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.EOFException;
@@ -59,7 +67,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -72,7 +82,9 @@ public class UploadActivity extends AppCompatActivity {
     Button buttonAnalyze;
     ImageView captureImage;
     String pathtoUpload;
-    EditText autocompletePlaces, txtDate;
+    EditText txtDate;
+    AutoCompleteTextView autocompletePlaces;
+
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
@@ -81,6 +93,7 @@ public class UploadActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         setContentView(R.layout.activity_upload);
         initViews();
+        autocompletePlaces.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_text_item));
         if (android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23) {
             if (ApplicationConstant.checkPermission(UploadActivity.this)) {
                 if (!ApplicationConstant.isGPSEnabled(UploadActivity.this)) {
@@ -282,7 +295,7 @@ public class UploadActivity extends AppCompatActivity {
         imageInfoRelativeLayout = (RelativeLayout) findViewById(R.id.imageInfoRelativeLayout);
         buttonAnalyze = (Button) findViewById(R.id.buttonAnalyze);
         captureImage = (ImageView) findViewById(R.id.selectedImage);
-        autocompletePlaces = (EditText) findViewById(R.id.autocompletePlaces);
+        autocompletePlaces = (AutoCompleteTextView) findViewById(R.id.autocompletePlaces);
         txtDate = (EditText) findViewById(R.id.txtDate);
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -406,10 +419,7 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-    private void
-
-
-    showErrorToast() {
+    private void showErrorToast() {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
@@ -606,4 +616,105 @@ public class UploadActivity extends AppCompatActivity {
         return inSampleSize;
     }
 
+    /*place coed start*/
+    class GooglePlacesAutocompleteAdapter extends ArrayAdapter<String> implements Filterable {
+        private ArrayList<String> resultList;
+
+        public GooglePlacesAutocompleteAdapter(Context context, int textViewResourceId) {
+            super(context, textViewResourceId);
+        }
+
+        @Override
+        public int getCount() {
+            return resultList.size();
+        }
+
+        @Override
+        public String getItem(int index) {
+            return resultList.get(index);
+        }
+
+        @Override
+        public Filter getFilter() {
+            Filter filter = new Filter() {
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint) {
+                    FilterResults filterResults = new FilterResults();
+                    if (constraint != null) {
+                        // Retrieve the autocomplete results.
+                        resultList = autocomplete(constraint.toString());
+
+                        // Assign the data to the FilterResults
+                        filterResults.values = resultList;
+                        filterResults.count = resultList.size();
+                    }
+                    return filterResults;
+                }
+
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results) {
+                    if (results != null && results.count > 0) {
+                        notifyDataSetChanged();
+                    } else {
+                        notifyDataSetInvalidated();
+                    }
+                }
+            };
+            return filter;
+        }
+    }
+
+    public static ArrayList<String> autocomplete(String input) {
+        ArrayList<String> resultList = null;
+
+        HttpURLConnection conn = null;
+        StringBuilder jsonResults = new StringBuilder();
+        try {
+            StringBuilder sb = new StringBuilder(ApplicationConstant.PLACES_API_BASE + ApplicationConstant.TYPE_AUTOCOMPLETE + ApplicationConstant.OUT_JSON);
+            sb.append("?key=" + ApplicationConstant.API_KEY);
+            sb.append("&components=");
+            sb.append("&input=" + URLEncoder.encode(input, "utf8"));
+
+            URL url = new URL(sb.toString());
+
+            System.out.println("URL: "+url);
+            conn = (HttpURLConnection) url.openConnection();
+            InputStreamReader in = new InputStreamReader(conn.getInputStream());
+
+            // Load the results into a StringBuilder
+            int read;
+            char[] buff = new char[1024];
+            while ((read = in.read(buff)) != -1) {
+                jsonResults.append(buff, 0, read);
+            }
+        } catch (MalformedURLException e) {
+            Log.e("UploadActiviy", "Error processing Places API URL", e);
+            return resultList;
+        } catch (IOException e) {
+            Log.e("UploadActivity", "Error connecting to Places API", e);
+            return resultList;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+        try {
+            // Create a JSON object hierarchy from the results
+            JSONObject jsonObj = new JSONObject(jsonResults.toString());
+            JSONArray predsJsonArray = jsonObj.getJSONArray("predictions");
+
+            // Extract the Place descriptions from the results
+            resultList = new ArrayList<String>(predsJsonArray.length());
+            for (int i = 0; i < predsJsonArray.length(); i++) {
+                System.out.println(predsJsonArray.getJSONObject(i).getString("description"));
+                System.out.println("============================================================");
+                resultList.add(predsJsonArray.getJSONObject(i).getString("description"));
+            }
+        } catch (JSONException e) {
+            Log.e("UploadActivity", "Cannot process JSON results", e);
+        }
+
+        return resultList;
+    }
+    /*place coed end*/
 }

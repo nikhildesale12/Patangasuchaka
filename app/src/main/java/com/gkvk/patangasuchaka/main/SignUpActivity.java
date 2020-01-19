@@ -13,11 +13,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,7 +37,9 @@ import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 
@@ -48,7 +52,6 @@ public class SignUpActivity extends AppCompatActivity {
     EditText captchEditText;
     CaptchaImageView captcha_Image_View;
     CheckBox checkboxTermCondition;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,6 @@ public class SignUpActivity extends AppCompatActivity {
                 SignUpActivity.this.captcha_Image_View.regenerate();
             }
         });
-
 
         cardviewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,8 +116,6 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-
-
     private void executeSignUpService() {
         dialog = new ProgressDialog(SignUpActivity.this);
         dialog.setMessage("Please Wait...");
@@ -159,17 +159,32 @@ public class SignUpActivity extends AppCompatActivity {
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
                 if (response != null && response.body() != null) {
-                    if (dialog != null && dialog.isShowing()) {
-                        dialog.dismiss();
-                    }
-                    if (response.body().getStatus() != null && response.body().getStatus().toString().trim().equals("true")) {
-                        Toast.makeText(SignUpActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                        startActivity(intent);
+                    if (response.body().getStatus()) {
+                        dispalyDialog(SignUpActivity.this, "One more step", "Check email for verification");
                     }else{
                         ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Failed", "Failed to register user !!!", false, false);
                     }
+                } else if(response != null && response.errorBody() != null){
+                    BufferedReader reader = null;
+                    StringBuilder sb = new StringBuilder();
+                    reader = new BufferedReader(new InputStreamReader(response.errorBody().byteStream()));
+                    String line;
+                    try {
+                        while ((line = reader.readLine()) != null) {
+                            sb.append(line);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    String finallyError = sb.toString();
+                    ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Result", finallyError, false, false);
+                } else{
+                    ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Failed", "Failed to register user !!!", false, false);
                 }
             }
             @Override
@@ -180,6 +195,28 @@ public class SignUpActivity extends AppCompatActivity {
                 ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Result", t.toString(), false, false);
             }
         });
+    }
+
+    private void dispalyDialog(SignUpActivity signUpActivity, String one_more_step, String check_email_for_verification) {
+        final Dialog interrnetConnection = new Dialog(signUpActivity);
+        interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        interrnetConnection.setContentView(R.layout.dialog_popup);
+        interrnetConnection.setCanceledOnTouchOutside(false);
+        TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
+        tv.setText(check_email_for_verification);
+        TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
+        titleText.setText(one_more_step);
+        Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
+        btnLogoutNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interrnetConnection.dismiss();
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        interrnetConnection.show();
     }
 
     private void initView() {

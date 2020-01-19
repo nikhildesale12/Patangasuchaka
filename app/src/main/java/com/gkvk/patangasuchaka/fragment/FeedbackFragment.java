@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.FeedbackRequest;
 import com.gkvk.patangasuchaka.bean.RegisterResponse;
+import com.gkvk.patangasuchaka.entry.SplashNewActivity;
 import com.gkvk.patangasuchaka.main.MainActivity;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
@@ -38,6 +40,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class FeedbackFragment extends Fragment {
@@ -89,6 +93,11 @@ public class FeedbackFragment extends Fragment {
         final View view=inflater.inflate(R.layout.fragment_feedback, container, false);
         initView(view);
 
+        SharedPreferences sharedPreferences = view.getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        String fullName = sharedPreferences.getString(ApplicationConstant.KEY_FULL_NAME, "");
+        String email = sharedPreferences.getString(ApplicationConstant.KEY_EMAIL, "");
+        editTextFBName.setText(fullName);
+        editTextFBEmailId.setText(email);
         btnFeedbacksubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

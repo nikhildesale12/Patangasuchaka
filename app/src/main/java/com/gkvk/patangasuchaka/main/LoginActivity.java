@@ -124,19 +124,24 @@ public class LoginActivity extends AppCompatActivity {
                     if (dialog != null && dialog.isShowing()) {
                         dialog.dismiss();
                     }
-                    if (response.body().getStatus()) {
+                    if (response.body().getId() != null) {
 
                         SharedPreferences.Editor editor1 = getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
                         editor1.putBoolean(ApplicationConstant.KEY_IS_LOGIN,true);
+                        editor1.putString(ApplicationConstant.KEY_USERNAME,response.body().getUsername());
+                        editor1.putString(ApplicationConstant.KEY_EMAIL,response.body().getEmail());
+                        editor1.putString(ApplicationConstant.KEY_FULL_NAME,response.body().getFull_name());
+                        editor1.putString(ApplicationConstant.KEY_PROFILE_IMG,response.body().getProfile_img());
                         editor1.commit();
 
                         //Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
-                        Toast toast = Toast.makeText(LoginActivity.this,response.body().getMessage(), Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }else{
                         ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
                     }
@@ -147,7 +152,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Result", t.toString(), false, false);
+                //ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Result", t.toString(), false, false);
+                ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Invalid credentials", "Invalid Credentials or verification is pending ", false, false);
+
             }
         });
     }
