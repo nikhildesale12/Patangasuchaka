@@ -88,6 +88,11 @@ public class UploadActivity extends AppCompatActivity {
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
@@ -106,6 +111,11 @@ public class UploadActivity extends AppCompatActivity {
             if (!ApplicationConstant.isGPSEnabled(UploadActivity.this)) {
                 ApplicationConstant.showSettingsAlert(UploadActivity.this);
             }
+        }
+        //File rootDirectory = new File(ApplicationConstant.FOLDER_PATH);
+        File rootDirectory = new File(Environment.getExternalStorageDirectory(), ApplicationConstant.FOLDER_PATH);
+        if (!rootDirectory.exists()) {
+            rootDirectory.mkdir();
         }
         Intent intent = getIntent();
         String fromModule = intent.getStringExtra(ApplicationConstant.FROM_MODULE);
@@ -286,8 +296,9 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     private void openGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, ApplicationConstant.RESULT_OPEN_GALLERY);
     }
 

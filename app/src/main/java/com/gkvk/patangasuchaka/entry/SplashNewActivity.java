@@ -47,42 +47,42 @@ public class SplashNewActivity extends AppCompatActivity {
             Intent i = new Intent(SplashNewActivity.this, MainActivity.class);
             startActivity(i);
             finish();
-        }
-        versionName = (TextView) findViewById(R.id.version_name);
-        PackageInfo pInfo = null;
-        try {
-            pInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), 0);
-            version = pInfo.versionName;
-            versionName.setText("Version : "+version);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+        } else{
+            versionName = (TextView) findViewById(R.id.version_name);
+            PackageInfo pInfo = null;
+            try {
+                pInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), 0);
+                version = pInfo.versionName;
+                versionName.setText("Version : "+version);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
 
-        getAppDataFromServer();
+            getAppDataFromServer();
 
-        Thread init = new Thread() {
-            public void run() {
-                try {
-                    sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } finally {
-                    SharedPreferences sharedPreferences = SplashNewActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
-                    boolean login = sharedPreferences.getBoolean(ApplicationConstant.KEY_IS_LOGIN, false);
-                    if (login) {
-                        Intent i = new Intent(SplashNewActivity.this, MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    } else {
-                        Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
-                        startActivity(i);
-                        finish();
+            Thread init = new Thread() {
+                public void run() {
+                    try {
+                        sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
+                        SharedPreferences sharedPreferences = SplashNewActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+                        boolean login = sharedPreferences.getBoolean(ApplicationConstant.KEY_IS_LOGIN, false);
+                        if (login) {
+                            Intent i = new Intent(SplashNewActivity.this, MainActivity.class);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            Intent i = new Intent(SplashNewActivity.this, LoginActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
                     }
                 }
-            }
-        };
-        init.start();
-
+            };
+            init.start();
+        }
     }//end create
 
     private void getAppDataFromServer() {
