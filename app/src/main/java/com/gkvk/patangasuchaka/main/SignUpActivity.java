@@ -231,4 +231,12 @@ public class SignUpActivity extends AppCompatActivity {
         captcha_Image_View = (CaptchaImageView)findViewById(R.id.captcha_image_view);
         checkboxTermCondition = (CheckBox) findViewById(R.id.checkboxTermCondition);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

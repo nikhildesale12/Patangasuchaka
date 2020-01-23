@@ -36,8 +36,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
     ProgressDialog dialog;
     CardView card_view;
-    TextView textviewRegisterHere;
+    TextView textViewRegisterHere;
     EditText editText_email,editText_password;
+    TextView skipLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +70,23 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        textviewRegisterHere.setOnClickListener(new View.OnClickListener() {
+        textViewRegisterHere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
+
+        /*skipLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });*/
 
     }
     private void executeLoginService() {
@@ -161,10 +172,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initView() {
         card_view = (CardView) findViewById(R.id.cardviewLogin);
-        textviewRegisterHere = (TextView) findViewById(R.id.textviewRegisterHere);
+        textViewRegisterHere = (TextView) findViewById(R.id.textviewRegisterHere);
         editText_email = (EditText) findViewById(R.id.editText_email) ;
         editText_password = (EditText) findViewById(R.id.editText_password) ;
+        skipLogin = (TextView) findViewById(R.id.skipLogin);
     }
-
-
 }

@@ -13,7 +13,7 @@
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="90dp"
         android:background="@drawable/logo">
     </ImageView>
 
@@ -25,7 +25,7 @@
         android:layout_marginLeft="50dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/logoimg"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="70dp"
         android:hint="Enter email id"
         android:backgroundTint="@color/white"
         android:textColor="@color/white"
@@ -52,7 +52,7 @@
         android:id="@+id/cardviewLogin"
         android:layout_below="@+id/editText_password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         app:cardCornerRadius="25dp"
         app:cardMaxElevation="10dp">
 
@@ -77,9 +77,22 @@
         android:text="Don't have account?  Register Here.."
         android:layout_below="@id/cardviewLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:textSize="18sp"
+        android:layout_marginTop="25dp"
         android:textStyle="bold"
         android:textColor="@color/Wheat"/>
 
+    <TextView
+        android:id="@+id/skipLogin"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skip login"
+        android:textStyle="bold|italic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textSize="18dp"
+        android:layout_below="@id/textviewRegisterHere"
+        android:textColor="@color/Wheat"/>
 
 </RelativeLayout>
