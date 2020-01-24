@@ -42,7 +42,7 @@ public class SplashNewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_new);
 
         SharedPreferences sharedPreferences = SplashNewActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
-        boolean isFieldModeOn = sharedPreferences.getBoolean(ApplicationConstant.KEY_IS_LOGIN, false);
+        boolean isFieldModeOn = sharedPreferences.getBoolean(ApplicationConstant.KEY_IS_FEILDMODE, false);
         if(isFieldModeOn){
             Intent i = new Intent(SplashNewActivity.this, MainActivity.class);
             startActivity(i);
@@ -123,9 +123,9 @@ public class SplashNewActivity extends AppCompatActivity {
                 if (response != null && response.body() != null) {
                     if (response.body() != null) {
                         SharedPreferences.Editor editor1 = getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
-                        editor1.putString(ApplicationConstant.KEY_INTRO, response.body().getIntro());
-                        editor1.putString(ApplicationConstant.KEY_ABOUT, response.body().getAbout());
-                        editor1.putString(ApplicationConstant.KEY_HOWITWORKS,response.body().getHowItworks());
+                        editor1.putString(ApplicationConstant.KEY_INTRO, response.body().getData().get(0).getIntro());
+                        editor1.putString(ApplicationConstant.KEY_ABOUT, response.body().getData().get(0).getAbout());
+                        editor1.putString(ApplicationConstant.KEY_HOWITWORKS,response.body().getData().get(0).getHowItworks());
                         editor1.commit();
                     }
                 }

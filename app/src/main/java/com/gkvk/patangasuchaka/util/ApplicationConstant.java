@@ -57,6 +57,7 @@ public class ApplicationConstant {
     public static final String KEY_ABOUT = "KEY_ABOUT";
     public static final String KEY_HOWITWORKS = "KEY_HOWITWORKS";
     public static final String KEY_IS_LOGIN = "KEY_IS_LOGIN";
+    public static final String KEY_IS_FEILDMODE = "KEY_IS_FEILDMODE";
 
     public static final String BASE_URL = "http://www.pathangasuchaka.in";
     public static final String LOGIN_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/login";

@@ -1,54 +1,44 @@
 
 package com.gkvk.patangasuchaka.bean;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class AboutUsResponse {
 
-    @SerializedName("content_id")
+    @SerializedName("status")
     @Expose
-    private String contentId;
-    @SerializedName("intro")
+    private Boolean status;
+    @SerializedName("message")
     @Expose
-    private String intro;
-    @SerializedName("about")
+    private String message;
+    @SerializedName("data")
     @Expose
-    private String about;
-    @SerializedName("howItworks")
-    @Expose
-    private String howItworks;
+    private List<AboutUsData> data = null;
 
-    public String getContentId() {
-        return contentId;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public void setContentId(String contentId) {
-        this.contentId = contentId;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
-    public String getIntro() {
-        return intro;
+    public String getMessage() {
+        return message;
     }
 
-    public void setIntro(String intro) {
-        this.intro = intro;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getAbout() {
-        return about;
+    public List<AboutUsData> getData() {
+        return data;
     }
 
-    public void setAbout(String about) {
-        this.about = about;
-    }
-
-    public String getHowItworks() {
-        return howItworks;
-    }
-
-    public void setHowItworks(String howItworks) {
-        this.howItworks = howItworks;
+    public void setData(List<AboutUsData> data) {
+        this.data = data;
     }
 
 }
