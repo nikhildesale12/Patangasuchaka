@@ -8,29 +8,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.gkvk.R;
-import com.gkvk.patangasuchaka.bean.FeedbackRequest;
-import com.gkvk.patangasuchaka.bean.RegisterResponse;
-import com.gkvk.patangasuchaka.entry.SplashNewActivity;
-import com.gkvk.patangasuchaka.main.MainActivity;
-import com.gkvk.patangasuchaka.retrofit.ApiService;
-import com.gkvk.patangasuchaka.util.ApplicationConstant;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Credentials;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
@@ -41,15 +25,52 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.gkvk.R;
+import com.gkvk.patangasuchaka.adapter.HistoryAdapter;
+import com.gkvk.patangasuchaka.bean.FeedbackRequest;
+import com.gkvk.patangasuchaka.bean.History;
+import com.gkvk.patangasuchaka.bean.HistoryData;
+import com.gkvk.patangasuchaka.bean.HistoryRequest;
+import com.gkvk.patangasuchaka.bean.HistoryResponse;
+import com.gkvk.patangasuchaka.bean.RegisterResponse;
+import com.gkvk.patangasuchaka.entry.SplashNewActivity;
+import com.gkvk.patangasuchaka.main.MainActivity;
+import com.gkvk.patangasuchaka.main.SignUpActivity;
+import com.gkvk.patangasuchaka.retrofit.ApiService;
+import com.gkvk.patangasuchaka.util.ApplicationConstant;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class FeedbackFragment extends Fragment {
+public class HistoryFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private ProgressDialog dialog;
-    EditText editTextFBName,editTextFBEmailId,editTextFBContact,editText_FBComment;
-    Button btnFeedbacksubmit;
+    ProgressDialog dialog;
+
+    TextView textViewSpeciesName, textViewCommonName,textViewPlace,textViewDate;
+    CircleImageView speciesCircleImageView;
+    Activity activity;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -57,18 +78,21 @@ public class FeedbackFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Activity activity;
+
     private OnFragmentInteractionListener mListener;
 
-    public FeedbackFragment(MainActivity mainActivity) {
+    public HistoryFragment(MainActivity mainActivity) {
         // Required empty public constructor
         activity = mainActivity;
     }
 
+    public HistoryFragment() {
 
-   /* // TODO: Rename and change types and number of parameters
-    public static FeedbackFragment newInstance(String param1, String param2) {
-        FeedbackFragment fragment = new FeedbackFragment();
+    }
+
+    // TODO: Rename and change types and number of parameters
+ /*   public static HistoryFragment newInstance(String param1, String param2) {
+        HistoryFragment fragment = new HistoryFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,56 +109,29 @@ public class FeedbackFragment extends Fragment {
         }
     }
 
+    private List<HistoryData> historyList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private HistoryAdapter mAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        final View view=inflater.inflate(R.layout.fragment_feedback, container, false);
+        View view=inflater.inflate(R.layout.fragment_history, container, false);
         initView(view);
+        mAdapter = new HistoryAdapter(historyList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
 
-        SharedPreferences sharedPreferences = view.getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
-        String fullName = sharedPreferences.getString(ApplicationConstant.KEY_FULL_NAME, "");
-        String email = sharedPreferences.getString(ApplicationConstant.KEY_EMAIL, "");
-        editTextFBName.setText(fullName);
-        editTextFBEmailId.setText(email);
-        btnFeedbacksubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(editTextFBName.getText().toString().length()==0){
-
-                    editTextFBName.requestFocus();
-                    editTextFBName.setError("Please Enter Full Name");
-                    //Toast.makeText(getContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
-
-                } else if(editTextFBEmailId.getText().toString().length()==0){
-                    editTextFBName.setError(null);
-                    editTextFBEmailId.requestFocus();
-                    editTextFBEmailId.setError("Please Enter EmailId");
-                    //Toast.makeText(getContext(),"Please enter Emai id",Toast.LENGTH_SHORT).show();
-                }
-                else if(editTextFBContact.getText().toString().length()==0){
-                    editTextFBEmailId.setError(null);
-                    editTextFBContact.requestFocus();
-                    editTextFBContact.setError("Please Enter Contact No");
-                    //Toast.makeText(getContext(),"Please enter contact",Toast.LENGTH_SHORT).show();
-
-                } else if(editText_FBComment.getText().toString().length()==0){
-                    editTextFBContact.setError(null);
-                    editText_FBComment.requestFocus();
-                    editText_FBComment.setError("Please Give Feedback");
-                    //Toast.makeText(getContext(),"Please enter Feedback",Toast.LENGTH_SHORT).show();
-                }else {
-                    executeFeedbackService(view);
-                }
-            }
-
-        });
+        executeHistoryService(view);
 
         return view;
     }
 
-    private void executeFeedbackService(final View view) {
+
+    private void executeHistoryService(final View view) {
         dialog = new ProgressDialog(view.getContext());
         dialog.setMessage("Please Wait...");
         dialog.setIndeterminate(false);
@@ -167,29 +164,52 @@ public class FeedbackFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();
+
+        SharedPreferences sharedPreferences = view.getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        String userName = sharedPreferences.getString(ApplicationConstant.KEY_USERNAME, "");
+
         ApiService service = retrofit.create(ApiService.class);
-        FeedbackRequest feedbackRequest = new FeedbackRequest();
-        feedbackRequest.setContact(editTextFBContact.getText().toString());
-        feedbackRequest.setEmail(editTextFBEmailId.getText().toString());
-        feedbackRequest.setFull_name(editTextFBName.getText().toString());
-        feedbackRequest.setFeedback(editText_FBComment.getText().toString());
-        Call<RegisterResponse> call = service.feedbackService(feedbackRequest);
-        call.enqueue(new Callback<RegisterResponse>() {
+        HistoryRequest HistoryRequest = new HistoryRequest();
+        //HistoryRequest.setUsername(userName);
+        HistoryRequest.setUsername("charan123");
+        Call<HistoryResponse> call = service.historyService(HistoryRequest);
+        call.enqueue(new Callback<HistoryResponse>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                if (response != null && response.body() != null) {
-                    if (dialog != null && dialog.isShowing()) {
-                        dialog.dismiss();
+            public void onResponse(Call<HistoryResponse> call, Response<HistoryResponse> response) {
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+                if (response != null && response.errorBody() != null) {
+                    BufferedReader reader = null;
+                    StringBuilder sb = new StringBuilder();
+                    reader = new BufferedReader(new InputStreamReader(response.errorBody().byteStream()));
+                    String line;
+                    try {
+                        while ((line = reader.readLine()) != null) {
+                            sb.append(line);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    if (response.body().getStatus()) {
-                        dispalyDialog(activity,view.getContext(), "Result", response.body().getMessage());
-                    }else{
-                        dispalyDialog(activity,view.getContext(), "Result", "Failed to submit your feedback");
+                    String finallyError = sb.toString();
+                    String message="";
+                    try {
+                        JSONObject jsonObject = new JSONObject(finallyError);
+                        message = jsonObject.optString("message");
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
+                    dispalyDialog(activity,view.getContext(), "Result", message);
+                }else
+                if (response != null && response.body().getData() != null) {
+                    historyList.addAll(response.body().getData());
+                    mAdapter.notifyDataSetChanged();
+                }else{
+                    dispalyDialog(activity,view.getContext(), "Failed", "Failed to get history of user !!!");
                 }
             }
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            public void onFailure(Call<HistoryResponse> call, Throwable t) {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
@@ -205,20 +225,21 @@ public class FeedbackFragment extends Fragment {
                 tv.setText(message);
                 TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
                 titleText.setText(result);
-                Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
-                btnLogoutNo.setOnClickListener(new View.OnClickListener() {
+                Button btnOk = (Button) interrnetConnection.findViewById(R.id.ok);
+                btnOk.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         interrnetConnection.dismiss();
-                        Intent i = new Intent(view.getContext(),MainActivity.class);
+                        Intent i = new Intent(view.getContext(), MainActivity.class);
                         startActivity(i);
-                        activity.finish();
-                        activity.finishAffinity();
+                        //activity.finish();
+                        //activity.finishAffinity();
                     }
                 });
                 interrnetConnection.show();
             }
         });
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -245,16 +266,18 @@ public class FeedbackFragment extends Fragment {
         mListener = null;
     }
 
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 
     private void initView(View view) {
-        editTextFBName=(EditText) view.findViewById(R.id.editTextFBName);
-        editTextFBEmailId=(EditText) view.findViewById(R.id.editTextFBEmailId);
-        editTextFBContact=(EditText) view.findViewById(R.id.editTextFBContact);
-        editText_FBComment=(EditText) view.findViewById(R.id.editText_FBComment);
-        btnFeedbacksubmit=(Button) view.findViewById(R.id.btnFeedbacksubmit);
+        recyclerView=(RecyclerView) view.findViewById(R.id.recyclerView);
+        textViewCommonName=(TextView)view.findViewById(R.id.textViewCommonName);
+        textViewSpeciesName=(TextView)view.findViewById(R.id.textViewSpeciesName);
+        textViewPlace=(TextView)view.findViewById(R.id.textViewPlace);
+        textViewDate=(TextView)view.findViewById(R.id.textViewDate);
+        speciesCircleImageView=(CircleImageView) view.findViewById(R.id.speciesCircleImageView);
     }
 }

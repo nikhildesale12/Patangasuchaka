@@ -23,9 +23,11 @@ import com.gkvk.patangasuchaka.adapter.DrawerItemCustomAdapter;
 import com.gkvk.patangasuchaka.bean.NavigationDataModel;
 import com.gkvk.patangasuchaka.fragment.AboutUsFragment;
 import com.gkvk.patangasuchaka.fragment.FeedbackFragment;
+import com.gkvk.patangasuchaka.fragment.HistoryFragment;
 import com.gkvk.patangasuchaka.fragment.HomeFragment;
 import com.gkvk.patangasuchaka.fragment.HowItWorksFragment;
 import com.gkvk.patangasuchaka.fragment.IntroductionFragment;
+import com.gkvk.patangasuchaka.fragment.ProfileFragment;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 
 public class MainActivity extends AppCompatActivity {
@@ -68,13 +70,15 @@ public class MainActivity extends AppCompatActivity {
 
         setupToolbar();
 
-        NavigationDataModel[] drawerItem = new NavigationDataModel[6];
+        NavigationDataModel[] drawerItem = new NavigationDataModel[8];
         drawerItem[0] = new NavigationDataModel(R.drawable.homeicon, "Home");
         drawerItem[1] = new NavigationDataModel(R.drawable.fixtures, "About Us");
         drawerItem[2] = new NavigationDataModel(R.drawable.introductionicon, "Introduction");
         drawerItem[3] = new NavigationDataModel(R.drawable.howitworksicon, "How it works");
         drawerItem[4] = new NavigationDataModel(R.drawable.feedbackicon, "Feedback");
-        drawerItem[5] = new NavigationDataModel(R.drawable.icon_exit, "Logout");
+        drawerItem[5] = new NavigationDataModel(R.drawable.history, "History");
+        drawerItem[6] = new NavigationDataModel(R.drawable.profile, "Profile");
+        drawerItem[7] = new NavigationDataModel(R.drawable.icon_exit, "Logout");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -120,6 +124,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case 5:
+                fragment = new HistoryFragment();
+                break;
+
+            case 6:
+                fragment = new ProfileFragment();
+                break;
+
+            case 7:
                 SharedPreferences.Editor editor = getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.clear();
                 editor.commit();

@@ -8,29 +8,39 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gkvk.R;
-import com.gkvk.patangasuchaka.bean.FeedbackRequest;
-import com.gkvk.patangasuchaka.bean.RegisterResponse;
-import com.gkvk.patangasuchaka.entry.SplashNewActivity;
+import com.gkvk.patangasuchaka.bean.CommonResponse;
+import com.gkvk.patangasuchaka.bean.HistoryRequest;
+import com.gkvk.patangasuchaka.bean.HistoryResponse;
+import com.gkvk.patangasuchaka.bean.ProfileRequest;
+import com.gkvk.patangasuchaka.bean.ProfileResponse;
 import com.gkvk.patangasuchaka.main.MainActivity;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import androidx.fragment.app.Fragment;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Credentials;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
@@ -43,13 +53,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.content.Context.MODE_PRIVATE;
 
-
-public class FeedbackFragment extends Fragment {
+public class ProfileFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private ProgressDialog dialog;
-    EditText editTextFBName,editTextFBEmailId,editTextFBContact,editText_FBComment;
-    Button btnFeedbacksubmit;
+    ProgressDialog dialog;
+
+    TextView fullname_Profile, username_Profile,email_Profile;
+    CircleImageView profile_image;
+    CardView cardviewBackProfile;
+    Activity activity;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -57,24 +69,22 @@ public class FeedbackFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Activity activity;
+
     private OnFragmentInteractionListener mListener;
 
-    public FeedbackFragment(MainActivity mainActivity) {
+    public ProfileFragment() {
         // Required empty public constructor
-        activity = mainActivity;
     }
 
-
-   /* // TODO: Rename and change types and number of parameters
-    public static FeedbackFragment newInstance(String param1, String param2) {
-        FeedbackFragment fragment = new FeedbackFragment();
+    // TODO: Rename and change types and number of parameters
+    public static ProfileFragment newInstance(String param1, String param2) {
+        ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }*/
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,52 +99,24 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        final View view=inflater.inflate(R.layout.fragment_feedback, container, false);
+        View view=inflater.inflate(R.layout.fragment_profile, container, false);
         initView(view);
 
-        SharedPreferences sharedPreferences = view.getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
-        String fullName = sharedPreferences.getString(ApplicationConstant.KEY_FULL_NAME, "");
-        String email = sharedPreferences.getString(ApplicationConstant.KEY_EMAIL, "");
-        editTextFBName.setText(fullName);
-        editTextFBEmailId.setText(email);
-        btnFeedbacksubmit.setOnClickListener(new View.OnClickListener() {
+        cardviewBackProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(editTextFBName.getText().toString().length()==0){
-
-                    editTextFBName.requestFocus();
-                    editTextFBName.setError("Please Enter Full Name");
-                    //Toast.makeText(getContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
-
-                } else if(editTextFBEmailId.getText().toString().length()==0){
-                    editTextFBName.setError(null);
-                    editTextFBEmailId.requestFocus();
-                    editTextFBEmailId.setError("Please Enter EmailId");
-                    //Toast.makeText(getContext(),"Please enter Emai id",Toast.LENGTH_SHORT).show();
-                }
-                else if(editTextFBContact.getText().toString().length()==0){
-                    editTextFBEmailId.setError(null);
-                    editTextFBContact.requestFocus();
-                    editTextFBContact.setError("Please Enter Contact No");
-                    //Toast.makeText(getContext(),"Please enter contact",Toast.LENGTH_SHORT).show();
-
-                } else if(editText_FBComment.getText().toString().length()==0){
-                    editTextFBContact.setError(null);
-                    editText_FBComment.requestFocus();
-                    editText_FBComment.setError("Please Give Feedback");
-                    //Toast.makeText(getContext(),"Please enter Feedback",Toast.LENGTH_SHORT).show();
-                }else {
-                    executeFeedbackService(view);
-                }
+                /*Intent intent = new Intent(ProfileFragment.this, MainActivity.class);
+                startActivity(intent);
+                finish();*/
             }
-
         });
+
+        executeProfileService(view);
 
         return view;
     }
 
-    private void executeFeedbackService(final View view) {
+    private void executeProfileService(final View view) {
         dialog = new ProgressDialog(view.getContext());
         dialog.setMessage("Please Wait...");
         dialog.setIndeterminate(false);
@@ -167,29 +149,36 @@ public class FeedbackFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();
+
         ApiService service = retrofit.create(ApiService.class);
-        FeedbackRequest feedbackRequest = new FeedbackRequest();
-        feedbackRequest.setContact(editTextFBContact.getText().toString());
-        feedbackRequest.setEmail(editTextFBEmailId.getText().toString());
-        feedbackRequest.setFull_name(editTextFBName.getText().toString());
-        feedbackRequest.setFeedback(editText_FBComment.getText().toString());
-        Call<RegisterResponse> call = service.feedbackService(feedbackRequest);
-        call.enqueue(new Callback<RegisterResponse>() {
+        ProfileRequest profileRequest = new ProfileRequest();
+        SharedPreferences sharedPreferences = view.getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        String id = sharedPreferences.getString(ApplicationConstant.KEY_ID, "");
+        profileRequest.setId(id);
+
+        Call<ProfileResponse> call = service.profileService(profileRequest);
+        call.enqueue(new Callback<ProfileResponse>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
                 if (response != null && response.body() != null) {
-                    if (dialog != null && dialog.isShowing()) {
-                        dialog.dismiss();
-                    }
                     if (response.body().getStatus()) {
-                        dispalyDialog(activity,view.getContext(), "Result", response.body().getMessage());
+                        //dispalyDialog(activity,view.getContext(), "Result", response.body().getMessage());
+                        fullname_Profile.setText(response.body().getData().getFullName());
+                        username_Profile.setText(response.body().getData().getUsername());
+                        email_Profile.setText(response.body().getData().getEmail());
+
                     }else{
-                        dispalyDialog(activity,view.getContext(), "Result", "Failed to submit your feedback");
+                        //set data from sharedpreference
                     }
+                }else{
+                    //set data from sharedpreference
                 }
             }
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
@@ -205,20 +194,21 @@ public class FeedbackFragment extends Fragment {
                 tv.setText(message);
                 TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
                 titleText.setText(result);
-                Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
-                btnLogoutNo.setOnClickListener(new View.OnClickListener() {
+                Button btnOk = (Button) interrnetConnection.findViewById(R.id.ok);
+                btnOk.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         interrnetConnection.dismiss();
-                        Intent i = new Intent(view.getContext(),MainActivity.class);
+                        Intent i = new Intent(view.getContext(), MainActivity.class);
                         startActivity(i);
-                        activity.finish();
-                        activity.finishAffinity();
+                        //activity.finish();
+                        //activity.finishAffinity();
                     }
                 });
                 interrnetConnection.show();
             }
         });
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -251,10 +241,10 @@ public class FeedbackFragment extends Fragment {
     }
 
     private void initView(View view) {
-        editTextFBName=(EditText) view.findViewById(R.id.editTextFBName);
-        editTextFBEmailId=(EditText) view.findViewById(R.id.editTextFBEmailId);
-        editTextFBContact=(EditText) view.findViewById(R.id.editTextFBContact);
-        editText_FBComment=(EditText) view.findViewById(R.id.editText_FBComment);
-        btnFeedbacksubmit=(Button) view.findViewById(R.id.btnFeedbacksubmit);
+        profile_image=(CircleImageView) view.findViewById(R.id.profile_image);
+        fullname_Profile=(TextView)view.findViewById(R.id.fullname_profile);
+        username_Profile=(TextView)view.findViewById(R.id.username_profile);
+        email_Profile=(TextView)view.findViewById(R.id.email_profile);
+        cardviewBackProfile=(CardView)view.findViewById(R.id.cardviewBackProfile);
     }
 }

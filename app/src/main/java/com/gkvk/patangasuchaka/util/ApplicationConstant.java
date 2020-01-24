@@ -64,6 +64,9 @@ public class ApplicationConstant {
     public static final String SIGNUP_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/registration";
     public static final String FEEDBACK_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
     public static final String ABOUT_US_URL = "/pathanga_api/index.php/api_auth/Authentication/contentedit";
+    public static final String HISTORY_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/history";
+    public static final String PROFILE_SERVICE_URL ="/pathanga_api/index.php/api_auth/Authentication/profile" ;
+    public static final String KEY_ID = "KEY_ID";
     public static final String KEY_USERNAME = "KEY_USERNAME";
     public static final String KEY_EMAIL = "KEY_EMAIL";
     public static final String KEY_FULL_NAME = "KEY_FULL_NAME";
