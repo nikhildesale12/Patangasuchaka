@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:fontFamily="sans-serif"
-                    android:paddingTop="10dp"
+                    android:paddingTop="7dp"
                     android:text="Scientific Name : "
                     android:textColor="@color/color1"
                     android:textSize="18sp"
@@ -55,10 +55,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textSciName1"
-                    android:layout_margin="5dp"
+                    android:layout_margin="3dp"
                     android:fontFamily="sans-serif"
-                    android:paddingBottom="10dp"
                     android:text="Common Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textCategory1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textComName1"
+                    android:fontFamily="sans-serif"
+                    android:text="Category"
+                    android:layout_marginLeft="4dp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
@@ -103,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:paddingTop="10dp"
+                    android:paddingTop="7dp"
                     android:text="Scientific Name : "
                     android:textColor="@color/color1"
                     android:textSize="18sp"
@@ -114,9 +123,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textSciName2"
-                    android:layout_margin="5dp"
-                    android:paddingBottom="10dp"
+                    android:layout_margin="3dp"
                     android:text="Common Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textCategory2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textComName2"
+                    android:fontFamily="sans-serif"
+                    android:text="Category"
+                    android:layout_marginLeft="4dp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
@@ -162,7 +180,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:paddingTop="10dp"
+                    android:paddingTop="7dp"
                     android:text="Scientific Name : "
                     android:textColor="@color/color1"
                     android:textSize="18sp"
@@ -173,9 +191,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textSciName3"
-                    android:layout_margin="5dp"
-                    android:paddingBottom="10dp"
+                    android:layout_margin="4dp"
                     android:text="Common Name"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textCategory3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textComName3"
+                    android:fontFamily="sans-serif"
+                    android:text="Category"
+                    android:layout_marginLeft="4dp"
                     android:textStyle="bold" />
 
                 <RelativeLayout

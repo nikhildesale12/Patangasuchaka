@@ -10,6 +10,8 @@ import com.gkvk.patangasuchaka.bean.ProfileRequest;
 import com.gkvk.patangasuchaka.bean.ProfileResponse;
 import com.gkvk.patangasuchaka.bean.RegisterRequest;
 import com.gkvk.patangasuchaka.bean.RegisterResponse;
+import com.gkvk.patangasuchaka.bean.UploadDataToWebRequest;
+import com.gkvk.patangasuchaka.bean.UploadDataToWebResponse;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 
 import retrofit2.Call;
@@ -41,4 +43,11 @@ public interface ApiService {
 
     @GET(ApplicationConstant.ABOUT_US_URL)
     Call<AboutUsResponse> loadAboutData();
+
+    @POST(ApplicationConstant.UPLOAD_DATA_WEB_BUTTERFLY_URL)
+    Call<UploadDataToWebResponse> uploadDataToWebServerButterFly(@Body UploadDataToWebRequest uploadDataToWebRequest);
+
+    @POST(ApplicationConstant.UPLOAD_DATA_MOTH_URL)
+    Call<UploadDataToWebResponse> uploadDataToWebServerMoth(@Body UploadDataToWebRequest uploadDataToWebRequest);
+
 }

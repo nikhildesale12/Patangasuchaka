@@ -72,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationDataModel[] drawerItem = new NavigationDataModel[8];
         drawerItem[0] = new NavigationDataModel(R.drawable.homeicon, "Home");
-        drawerItem[1] = new NavigationDataModel(R.drawable.fixtures, "About Us");
-        drawerItem[2] = new NavigationDataModel(R.drawable.introductionicon, "Introduction");
-        drawerItem[3] = new NavigationDataModel(R.drawable.howitworksicon, "How it works");
-        drawerItem[4] = new NavigationDataModel(R.drawable.feedbackicon, "Feedback");
-        drawerItem[5] = new NavigationDataModel(R.drawable.history, "History");
-        drawerItem[6] = new NavigationDataModel(R.drawable.profile, "Profile");
+        drawerItem[1] = new NavigationDataModel(R.drawable.history, "History");
+        drawerItem[2] = new NavigationDataModel(R.drawable.profile, "Profile");
+        drawerItem[3] = new NavigationDataModel(R.drawable.feedbackicon, "Feedback");
+        drawerItem[4] = new NavigationDataModel(R.drawable.aboutusicon, "About Us");
+        drawerItem[5] = new NavigationDataModel(R.drawable.introductionicon, "Introduction");
+        drawerItem[6] = new NavigationDataModel(R.drawable.howitworksicon, "How it works");
         drawerItem[7] = new NavigationDataModel(R.drawable.icon_exit, "Logout");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -110,25 +110,25 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                fragment = new AboutUsFragment();
+                fragment = new HistoryFragment();
                 break;
             case 2:
-                fragment = new IntroductionFragment();
+                fragment = new ProfileFragment();
                 break;
             case 3:
-                fragment = new HowItWorksFragment();
+                fragment = new FeedbackFragment();
                 break;
 
             case 4:
-                fragment = new FeedbackFragment(MainActivity.this);
+                fragment = new AboutUsFragment();
                 break;
 
             case 5:
-                fragment = new HistoryFragment();
+                fragment = new IntroductionFragment();
                 break;
 
             case 6:
-                fragment = new ProfileFragment();
+                fragment = new HowItWorksFragment();
                 break;
 
             case 7:

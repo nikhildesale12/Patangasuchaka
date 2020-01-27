@@ -66,17 +66,22 @@ public class ApplicationConstant {
     public static final String ABOUT_US_URL = "/pathanga_api/index.php/api_auth/Authentication/contentedit";
     public static final String HISTORY_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/history";
     public static final String PROFILE_SERVICE_URL ="/pathanga_api/index.php/api_auth/Authentication/profile" ;
+    public static final String UPLOAD_DATA_WEB_BUTTERFLY_URL = "/pathanga_api/index.php/api_auth/Imagesync/imagebutterfly";
+    public static final String UPLOAD_DATA_MOTH_URL = "/pathanga_api/index.php/api_auth/Imagesync/imagemoth";
+    public static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
+
     public static final String KEY_ID = "KEY_ID";
     public static final String KEY_USERNAME = "KEY_USERNAME";
     public static final String KEY_EMAIL = "KEY_EMAIL";
     public static final String KEY_FULL_NAME = "KEY_FULL_NAME";
     public static final String KEY_PROFILE_IMG = "KEY_PROFILE_IMG";
-    public static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
     public static final String TYPE_AUTOCOMPLETE = "/autocomplete";
     public static final String OUT_JSON = "/json";
     //debug
 //    public static final String API_KEY = "AIzaSyCoNT5vDSVQmxhG2kS_JXsozKtym48r_54";
     public static final String API_KEY = "AIzaSyCRIriw_45fLM8_Qa-K2MNj5FC32JfRljQ";
+    public static final String Butterfly="Butterfly";
+    public static final String Moth = "Moth";
 
 
     public static boolean checkPermission(Context context) {

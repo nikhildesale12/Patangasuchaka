@@ -19,7 +19,6 @@ import android.widget.TextView;
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.FeedbackRequest;
 import com.gkvk.patangasuchaka.bean.RegisterResponse;
-import com.gkvk.patangasuchaka.entry.SplashNewActivity;
 import com.gkvk.patangasuchaka.main.MainActivity;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
@@ -57,12 +56,10 @@ public class FeedbackFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    Activity activity;
     private OnFragmentInteractionListener mListener;
 
-    public FeedbackFragment(MainActivity mainActivity) {
+    public FeedbackFragment() {
         // Required empty public constructor
-        activity = mainActivity;
     }
 
 
@@ -177,14 +174,14 @@ public class FeedbackFragment extends Fragment {
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
                 if (response != null && response.body() != null) {
-                    if (dialog != null && dialog.isShowing()) {
-                        dialog.dismiss();
-                    }
                     if (response.body().getStatus()) {
-                        dispalyDialog(activity,view.getContext(), "Result", response.body().getMessage());
+                        dispalyDialog(view.getContext(), "Result", response.body().getMessage());
                     }else{
-                        dispalyDialog(activity,view.getContext(), "Result", "Failed to submit your feedback");
+                        dispalyDialog(view.getContext(), "Result", "Failed to submit your feedback");
                     }
                 }
             }
@@ -193,10 +190,10 @@ public class FeedbackFragment extends Fragment {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                dispalyDialog(activity,view.getContext(), "Result", t.toString());
+                dispalyDialog(view.getContext(), "Result", t.toString());
             }
 
-            private void dispalyDialog(final Activity activity, final Context context, String result, String message) {
+            private void dispalyDialog(final Context context, String result, String message) {
                 final Dialog interrnetConnection = new Dialog(context);
                 interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 interrnetConnection.setContentView(R.layout.dialog_popup);
@@ -210,10 +207,14 @@ public class FeedbackFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         interrnetConnection.dismiss();
-                        Intent i = new Intent(view.getContext(),MainActivity.class);
-                        startActivity(i);
-                        activity.finish();
-                        activity.finishAffinity();
+//                        Intent i = new Intent(view.getContext(),MainActivity.class);
+//                        startActivity(i);
+//                        activity.finish();
+//                        activity.finishAffinity();
+                        ((MainActivity) getActivity()).setTitle("Home");
+                        Fragment fragment = new HomeFragment();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+
                     }
                 });
                 interrnetConnection.show();

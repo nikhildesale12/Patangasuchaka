@@ -24,7 +24,6 @@ public class ButterflyFragment extends Fragment{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
     }
@@ -34,8 +33,9 @@ public class ButterflyFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_butterfly, container, false);
-        searchView=(SearchView)view.findViewById(R.id.searchView);
-        searchView.setQueryHint("Search Species");
+        searchView=(SearchView)view.findViewById(R.id.searchViewSpecies);
+
+
         return view;
     }
 

@@ -123,9 +123,9 @@ public class SplashNewActivity extends AppCompatActivity {
                 if (response != null && response.body() != null) {
                     if (response.body() != null) {
                         SharedPreferences.Editor editor1 = getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
-                        editor1.putString(ApplicationConstant.KEY_INTRO, response.body().getData().get(0).getIntro());
-                        editor1.putString(ApplicationConstant.KEY_ABOUT, response.body().getData().get(0).getAbout());
-                        editor1.putString(ApplicationConstant.KEY_HOWITWORKS,response.body().getData().get(0).getHowItworks());
+                        editor1.putString(ApplicationConstant.KEY_INTRO, response.body().getData().getIntro());
+                        editor1.putString(ApplicationConstant.KEY_ABOUT, response.body().getData().getAbout());
+                        editor1.putString(ApplicationConstant.KEY_HOWITWORKS,response.body().getData().getHowItworks());
                         editor1.commit();
                     }
                 }

@@ -3,11 +3,12 @@
 
     <string-array name="navigation_drawer_items_array">
         <item>Home</item>
+        <item>History</item>
+        <item>Profile</item>
+        <item>Feedback</item>
         <item>About</item>
         <item>Introduction</item>
         <item>How it work</item>
-        <item>Feedback</item>
-        <item>History</item>
         <item>Logout</item>
     </string-array>
 

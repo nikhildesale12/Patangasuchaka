@@ -53,10 +53,26 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         HistoryData history = historyList.get(position);
-        holder.textViewSpeciesName.setText(history.getOneScientificName());
-        holder.textViewCommonName.setText(history.getOneCommonName());
-        holder.textViewPlace.setText(history.getPlaceCap());
-        holder.textViewDate.setText(history.getDateUploaded());
+        if(history.getOneScientificName() != null && history.getOneScientificName().length()>0) {
+            holder.textViewSpeciesName.setText(history.getOneScientificName());
+        }else{
+            holder.textViewSpeciesName.setText("NA");
+        }
+        if(history.getOneCommonName() != null && history.getOneCommonName().length()>0) {
+            holder.textViewCommonName.setText(history.getOneCommonName());
+        }else{
+            holder.textViewCommonName.setText("NA");
+        }
+        if(history.getDateUploaded() != null && history.getDateUploaded().length()>0) {
+            holder.textViewDate.setText(history.getDateUploaded());
+        }else{
+            holder.textViewDate.setText("NA");
+        }
+        if(history.getPlaceCap() != null && history.getPlaceCap().length()>0) {
+            holder.textViewPlace.setText(history.getPlaceCap());
+        }else{
+            holder.textViewPlace.setText("NA");
+        }
     }
 
     @Override

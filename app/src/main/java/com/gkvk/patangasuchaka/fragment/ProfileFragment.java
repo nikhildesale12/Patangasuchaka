@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -61,7 +62,6 @@ public class ProfileFragment extends Fragment {
     TextView fullname_Profile, username_Profile,email_Profile;
     CircleImageView profile_image;
     CardView cardviewBackProfile;
-    Activity activity;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -105,9 +105,11 @@ public class ProfileFragment extends Fragment {
         cardviewBackProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(ProfileFragment.this, MainActivity.class);
-                startActivity(intent);
-                finish();*/
+                ((MainActivity) getActivity()).setTitle("Home");
+                Fragment fragment = new HomeFragment();
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frame, fragment).commit();
             }
         });
 
@@ -115,6 +117,7 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
+
 
     private void executeProfileService(final View view) {
         dialog = new ProgressDialog(view.getContext());
@@ -182,10 +185,10 @@ public class ProfileFragment extends Fragment {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                dispalyDialog(activity,view.getContext(), "Result", t.toString());
+                dispalyDialog(view.getContext(), "Result", t.toString());
             }
 
-            private void dispalyDialog(final Activity activity, final Context context, String result, String message) {
+            private void dispalyDialog(final Context context, String result, String message) {
                 final Dialog interrnetConnection = new Dialog(context);
                 interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 interrnetConnection.setContentView(R.layout.dialog_popup);
@@ -199,11 +202,15 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         interrnetConnection.dismiss();
-                        Intent i = new Intent(view.getContext(), MainActivity.class);
-                        startActivity(i);
+//                        Intent i = new Intent(view.getContext(), MainActivity.class);
+//                        startActivity(i);
                         //activity.finish();
                         //activity.finishAffinity();
-                    }
+                        ((MainActivity) getActivity()).setTitle("Home");
+                        Fragment fragment = new HomeFragment();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+                   }
                 });
                 interrnetConnection.show();
             }

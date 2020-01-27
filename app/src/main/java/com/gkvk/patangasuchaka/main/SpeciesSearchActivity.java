@@ -19,7 +19,7 @@ import java.util.List;
 
 public class SpeciesSearchActivity extends AppCompatActivity {
 
-        private Toolbar toolbar;
+        //private Toolbar toolbar;
         private TabLayout tabLayout;
         private ViewPager viewPager;
 
@@ -28,11 +28,11 @@ public class SpeciesSearchActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_species_search);
 
-            toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
+            //toolbar = (Toolbar) findViewById(R.id.toolbar);
+            //setSupportActionBar(toolbar);
 
-            getSupportActionBar().setTitle("Species");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            //getSupportActionBar().setTitle("Species");
+            //getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
             viewPager = (ViewPager) findViewById(R.id.viewpager);
             setupViewPager(viewPager);

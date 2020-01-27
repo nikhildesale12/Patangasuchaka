@@ -146,10 +146,9 @@ public class LoginActivity extends AppCompatActivity {
                         editor1.putString(ApplicationConstant.KEY_PROFILE_IMG,response.body().getProfile_img());
                         editor1.commit();
 
-                        //Toast.makeText(LoginActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
-                        Toast toast = Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
+//                        Toast toast = Toast.makeText(LoginActivity.this,"Login Successful", Toast.LENGTH_LONG);
+//                        toast.setGravity(Gravity.CENTER, 0, 0);
+//                        toast.show();
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);

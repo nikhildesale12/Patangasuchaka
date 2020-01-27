@@ -70,7 +70,7 @@ public class HistoryFragment extends Fragment {
 
     TextView textViewSpeciesName, textViewCommonName,textViewPlace,textViewDate;
     CircleImageView speciesCircleImageView;
-    Activity activity;
+    //Activity activity;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -81,13 +81,8 @@ public class HistoryFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public HistoryFragment(MainActivity mainActivity) {
-        // Required empty public constructor
-        activity = mainActivity;
-    }
-
     public HistoryFragment() {
-
+        // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
@@ -169,10 +164,10 @@ public class HistoryFragment extends Fragment {
         String userName = sharedPreferences.getString(ApplicationConstant.KEY_USERNAME, "");
 
         ApiService service = retrofit.create(ApiService.class);
-        HistoryRequest HistoryRequest = new HistoryRequest();
-        //HistoryRequest.setUsername(userName);
-        HistoryRequest.setUsername("charan123");
-        Call<HistoryResponse> call = service.historyService(HistoryRequest);
+        HistoryRequest historyRequest = new HistoryRequest();
+        historyRequest.setUsername(userName);
+//        historyRequest.setUsername("charan123");
+        Call<HistoryResponse> call = service.historyService(historyRequest);
         call.enqueue(new Callback<HistoryResponse>() {
             @Override
             public void onResponse(Call<HistoryResponse> call, Response<HistoryResponse> response) {
@@ -199,13 +194,13 @@ public class HistoryFragment extends Fragment {
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-                    dispalyDialog(activity,view.getContext(), "Result", message);
+                    dispalyDialog(view.getContext(), "Result", message);
                 }else
                 if (response != null && response.body().getData() != null) {
                     historyList.addAll(response.body().getData());
                     mAdapter.notifyDataSetChanged();
                 }else{
-                    dispalyDialog(activity,view.getContext(), "Failed", "Failed to get history of user !!!");
+                    dispalyDialog(view.getContext(), "Failed", "Failed to get history of user !!!");
                 }
             }
             @Override
@@ -213,10 +208,10 @@ public class HistoryFragment extends Fragment {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                dispalyDialog(activity,view.getContext(), "Result", t.toString());
+                dispalyDialog(view.getContext(), "Result", t.toString());
             }
 
-            private void dispalyDialog(final Activity activity, final Context context, String result, String message) {
+            private void dispalyDialog(final Context context, String result, String message) {
                 final Dialog interrnetConnection = new Dialog(context);
                 interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 interrnetConnection.setContentView(R.layout.dialog_popup);
@@ -230,10 +225,13 @@ public class HistoryFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         interrnetConnection.dismiss();
-                        Intent i = new Intent(view.getContext(), MainActivity.class);
-                        startActivity(i);
+//                        Intent i = new Intent(view.getContext(), MainActivity.class);
+//                        startActivity(i);
                         //activity.finish();
                         //activity.finishAffinity();
+                        ((MainActivity) getActivity()).setTitle("Home");
+                        Fragment fragment = new HomeFragment();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                     }
                 });
                 interrnetConnection.show();

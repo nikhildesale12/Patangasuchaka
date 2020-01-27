@@ -24,14 +24,16 @@
         android:usesCleartextTraffic="true"
         android:largeHeap="true">
 
-        <activity android:name=".patangasuchaka.main.SignUpActivity"></activity>
-        <activity android:name=".patangasuchaka.main.LoginActivity" />
-        <activity android:name=".patangasuchaka.main.MapActivity" />
-        <activity android:name=".patangasuchaka.main.DistributionSearchActivity" />
-        <activity
-            android:name=".patangasuchaka.main.SpeciesSearchActivity"
-            android:parentActivityName=".patangasuchaka.main.MainActivity" />
-        <activity android:name=".patangasuchaka.main.MainActivity" />
+        <activity android:name=".patangasuchaka.main.SignUpActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".patangasuchaka.main.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".patangasuchaka.main.MapActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".patangasuchaka.main.DistributionSearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".patangasuchaka.main.MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".patangasuchaka.main.IdentificationActivity"
             android:screenOrientation="portrait" />
@@ -40,6 +42,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".patangasuchaka.main.DashboardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".patangasuchaka.main.SpeciesSearchActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".patangasuchaka.entry.SplashNewActivity"

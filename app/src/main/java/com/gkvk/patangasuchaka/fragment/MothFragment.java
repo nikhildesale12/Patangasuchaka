@@ -31,8 +31,8 @@ public class MothFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_moth, container, false);
-        searchView=(SearchView)view.findViewById(R.id.searchView);
-        searchView.setQueryHint("Search Species");
+        searchView=(SearchView)view.findViewById(R.id.searchViewMoth);
+
         return view;
 
     }
