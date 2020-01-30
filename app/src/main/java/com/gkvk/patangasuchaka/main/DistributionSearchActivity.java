@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -45,7 +46,7 @@ public class DistributionSearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i=new Intent(getApplicationContext(),MapActivity.class);
+                Intent i=new Intent(getApplicationContext(),GoogleMapActivity.class);
                 startActivity(i);
             }
         });
@@ -53,7 +54,7 @@ public class DistributionSearchActivity extends AppCompatActivity {
 
         // Initializing a String Array
         String[] butterfly = new String[]{
-                "Select an item...",
+                "Select Buterfly...",
                 "California sycamore",
                 "Mountain mahogany",
                 "Butterfly weed",
@@ -61,11 +62,11 @@ public class DistributionSearchActivity extends AppCompatActivity {
         };
 
         String[] state = new String[]{
-                "Select an item...",
-                "California sycamore",
-                "Mountain mahogany",
-                "Butterfly weed",
-                "Carrot weed"
+                "Select State...",
+                "Maharashtra",
+                "Goa",
+                "Gujrat",
+                "Bihar"
         };
 
 
@@ -82,19 +83,25 @@ public class DistributionSearchActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
-            public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView tv = (TextView) view;
-                if(position == 0){
-                    // Set the hint text color gray
-                    tv.setTextColor(Color.GRAY);
-                }
-                else {
-                    tv.setTextColor(Color.BLACK);
-                }
-                return view;
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                TextView txt = new TextView(DistributionSearchActivity.this);
+                txt.setPadding(16, 16, 16, 16);
+                txt.setTextSize(18);
+                txt.setGravity(Gravity.CENTER_VERTICAL);
+                txt.setText(butterflyList.get(position));
+                txt.setTextColor(Color.parseColor("#000000"));
+                return  txt;
+            }
+
+            public View getView(int i, View view, ViewGroup viewgroup) {
+                TextView txt = new TextView(DistributionSearchActivity.this);
+                txt.setGravity(Gravity.CENTER);
+                txt.setPadding(16, 16, 16, 16);
+                txt.setTextSize(16);
+                txt.setCompoundDrawablesWithIntrinsicBounds(0, 0, android.R.drawable.arrow_down_float, 0);
+                txt.setText(butterflyList.get(i));
+                txt.setTextColor(Color.parseColor("#909092"));
+                return  txt;
             }
         };
 
@@ -134,19 +141,27 @@ public class DistributionSearchActivity extends AppCompatActivity {
             }
 
             @Override
-            public View getDropDownView(int position, View convertView,
-                                        ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView tv = (TextView) view;
-                if(position == 0){
-                    // Set the hint text color gray
-                    tv.setTextColor(Color.GRAY);
-                }
-                else {
-                    tv.setTextColor(Color.BLACK);
-                }
-                return view;
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                TextView txt = new TextView(DistributionSearchActivity.this);
+                txt.setPadding(16, 16, 16, 16);
+                txt.setTextSize(18);
+                txt.setGravity(Gravity.CENTER_VERTICAL);
+                txt.setText(stateList.get(position));
+                txt.setTextColor(Color.parseColor("#000000"));
+                return  txt;
             }
+
+            public View getView(int i, View view, ViewGroup viewgroup) {
+                TextView txt = new TextView(DistributionSearchActivity.this);
+                txt.setGravity(Gravity.CENTER);
+                txt.setPadding(16, 16, 16, 16);
+                txt.setTextSize(16);
+                txt.setCompoundDrawablesWithIntrinsicBounds(0, 0, android.R.drawable.arrow_down_float, 0);
+                txt.setText(stateList.get(i));
+                txt.setTextColor(Color.parseColor("#909092"));
+                return  txt;
+            }
+
         };
 
         spinnerArrayAdapter1.setDropDownViewResource(R.layout.spinner_item);

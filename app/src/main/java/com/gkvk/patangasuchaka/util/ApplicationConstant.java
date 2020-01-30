@@ -61,6 +61,7 @@ public class ApplicationConstant {
 
     public static final String BASE_URL = "http://www.pathangasuchaka.in";
     public static final String LOGIN_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/login";
+    public static final String FORGOTPASS_SERVICE_URL ="/pathanga_api/index.php/api_auth/Authentication/passreset" ;
     public static final String SIGNUP_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/registration";
     public static final String FEEDBACK_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
     public static final String ABOUT_US_URL = "/pathanga_api/index.php/api_auth/Authentication/contentedit";

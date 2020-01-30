@@ -1,23 +1,24 @@
 package com.gkvk.patangasuchaka.adapter;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.HistoryData;
-
+import java.net.URL;
 import java.util.List;
-
+import com.bumptech.glide.Glide;
 import androidx.recyclerview.widget.RecyclerView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
 
-
+    private Context mContext;
     private List<HistoryData> historyList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -29,6 +30,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
         public MyViewHolder(View view) {
             super(view);
+            mContext = view.getContext();
             speciesCircleImageView = (CircleImageView) view.findViewById(R.id.speciesCircleImageView);
             textViewSpeciesName = (TextView) view.findViewById(R.id.textViewSpeciesName);
             textViewCommonName = (TextView) view.findViewById(R.id.textViewCommonName);
@@ -73,6 +75,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         }else{
             holder.textViewPlace.setText("NA");
         }
+
+        Glide.with(mContext)
+                .load(history.getImage())
+                .placeholder(R.drawable.logo)
+                .error(R.drawable.logo)
+                .into(holder.speciesCircleImageView);
+
+        /*URL url = null;
+        try {
+            url = new URL(history.getImage());
+            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            holder.speciesCircleImageView.setImageBitmap(bmp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Override

@@ -1,18 +1,26 @@
 package com.gkvk.patangasuchaka.main;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.CommonResponse;
+import com.gkvk.patangasuchaka.bean.FeedbackRequest;
+import com.gkvk.patangasuchaka.bean.ForgotPassRequest;
+import com.gkvk.patangasuchaka.bean.ForgotPassResponse;
 import com.gkvk.patangasuchaka.bean.LoginRequest;
+import com.gkvk.patangasuchaka.bean.RegisterResponse;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
@@ -38,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     CardView card_view;
     TextView textViewRegisterHere;
     EditText editText_email,editText_password;
-    TextView skipLogin;
+    TextView textviewForgetPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +59,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(editText_email.getText().toString().length()==0){
-                  // Toast.makeText(getApplicationContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
-                    editText_email.requestFocus();
-                    editText_email.setError("Please Enter Email id");
+                        // Toast.makeText(getApplicationContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
+                        editText_email.requestFocus();
+                        editText_email.setError("Please Enter Email id");
                 } else if(editText_password.getText().toString().length()==0){
                     // Toast.makeText(getApplicationContext(),"Please enter Password",Toast.LENGTH_SHORT).show();
                     editText_email.setError(null);
@@ -79,14 +87,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        /*skipLogin.setOnClickListener(new View.OnClickListener() {
+        textviewForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                displayDialog();
             }
-        });*/
+        });
 
     }
     private void executeLoginService() {
@@ -170,11 +176,114 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
+    Dialog dialogForgotPassword;
+    EditText ed;
+    public void displayDialog() {
+        dialogForgotPassword = new Dialog(LoginActivity.this);
+        dialogForgotPassword.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogForgotPassword.setContentView(R.layout.forgotpassword_popup);
+        dialogForgotPassword.setCanceledOnTouchOutside(false);
+        ed = (EditText) dialogForgotPassword.findViewById(R.id.editEmailForgotPass);
+        final Button btnOk = (Button) dialogForgotPassword.findViewById(R.id.ok);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String emailId=ed.getText().toString();
+                if(emailId.length()==0){
+                    // Toast.makeText(getApplicationContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
+                    ed.requestFocus();
+                    ed.setError("Please Enter Email id");
+                }else {
+                    executeForgotPasService(emailId);
+                }
+            }
+        });
+        Button btnCancel = (Button) dialogForgotPassword.findViewById(R.id.cancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogForgotPassword.dismiss();
+            }
+        });
+        dialogForgotPassword.show();
+    }
+
+    private void executeForgotPasService(String emailId) {
+
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Please Wait...");
+        dialog.setIndeterminate(false);
+        dialog.setCancelable(false);
+        dialog.show();
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        //Basic Auth
+        final String authToken = Credentials.basic("admin", "1234");
+
+        //Create a new Interceptor.
+        Interceptor headerAuthorizationInterceptor = new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                okhttp3.Request request = chain.request();
+                Headers headers = request.headers().newBuilder().add("Authorization", authToken).build();
+                request = request.newBuilder().headers(headers).build();
+                return chain.proceed(request);
+            }
+        };
+
+        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .addInterceptor(headerAuthorizationInterceptor)
+                .build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(ApplicationConstant.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(okHttpClient)
+                .build();
+        ApiService service = retrofit.create(ApiService.class);
+        ForgotPassRequest forgotPassRequest = new ForgotPassRequest();
+        forgotPassRequest.setEmail(emailId);
+
+        Call<ForgotPassResponse> call = service.forgotPassService(forgotPassRequest);
+        call.enqueue(new Callback<ForgotPassResponse>() {
+            @Override
+            public void onResponse(Call<ForgotPassResponse> call, Response<ForgotPassResponse> response) {
+                if(dialogForgotPassword != null)
+                dialogForgotPassword.dismiss();
+
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+                if (response != null && response.body() != null) {
+                    if (response.body().getStatus()) {
+                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this,"Result",response.body().getData(),false,false);
+                    }else{
+                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this,"Result","Failed to send password reset link",false,false);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ForgotPassResponse> call, Throwable t) {
+                if(dialogForgotPassword != null)
+                dialogForgotPassword.dismiss();
+
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+                ApplicationConstant.dispalyDialogInternet(LoginActivity.this,"Result",t.getMessage(),false,false);
+            }
+        });
+    }
+
     private void initView() {
         card_view = (CardView) findViewById(R.id.cardviewLogin);
         textViewRegisterHere = (TextView) findViewById(R.id.textviewRegisterHere);
         editText_email = (EditText) findViewById(R.id.editText_email) ;
         editText_password = (EditText) findViewById(R.id.editText_password) ;
-        skipLogin = (TextView) findViewById(R.id.skipLogin);
+        textviewForgetPassword = (TextView) findViewById(R.id.textviewForgetPassword);
     }
 }

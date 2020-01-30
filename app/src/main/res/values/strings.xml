@@ -53,4 +53,5 @@
         d. Multiple butterflies in a single image\n</string>
     <string name="howitworks3">1. The programme is trained to identify the butterflies (not moths, larva or eggs) in its
         natural environment and hence the background does not influence on the identification of the butterfly</string>
+    <string name="title_activity_google_map">Map</string>
 </resources>

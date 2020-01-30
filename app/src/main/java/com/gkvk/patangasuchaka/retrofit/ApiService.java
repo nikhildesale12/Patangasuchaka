@@ -3,6 +3,8 @@ package com.gkvk.patangasuchaka.retrofit;
 import com.gkvk.patangasuchaka.bean.AboutUsResponse;
 import com.gkvk.patangasuchaka.bean.CommonResponse;
 import com.gkvk.patangasuchaka.bean.FeedbackRequest;
+import com.gkvk.patangasuchaka.bean.ForgotPassRequest;
+import com.gkvk.patangasuchaka.bean.ForgotPassResponse;
 import com.gkvk.patangasuchaka.bean.HistoryRequest;
 import com.gkvk.patangasuchaka.bean.HistoryResponse;
 import com.gkvk.patangasuchaka.bean.LoginRequest;
@@ -29,6 +31,9 @@ public interface ApiService {
     @POST(ApplicationConstant.LOGIN_SERVICE_URL)
     Call<CommonResponse> loginService(@Body LoginRequest loginRequest);
 
+    @POST(ApplicationConstant.FORGOTPASS_SERVICE_URL)
+    Call<ForgotPassResponse> forgotPassService(@Body ForgotPassRequest forgotPassRequest);
+
     @POST(ApplicationConstant.SIGNUP_SERVICE_URL)
     Call<RegisterResponse> signUpService(@Body RegisterRequest registerRequest);
 
@@ -49,5 +54,6 @@ public interface ApiService {
 
     @POST(ApplicationConstant.UPLOAD_DATA_MOTH_URL)
     Call<UploadDataToWebResponse> uploadDataToWebServerMoth(@Body UploadDataToWebRequest uploadDataToWebRequest);
+
 
 }

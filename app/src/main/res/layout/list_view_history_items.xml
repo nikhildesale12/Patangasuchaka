@@ -87,9 +87,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:paddingRight="2dp"
-                android:src="@drawable/two2"
+                android:src="@drawable/logo"
                 app:civ_border_color="#ffff"
                 app:civ_border_width="1dp" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

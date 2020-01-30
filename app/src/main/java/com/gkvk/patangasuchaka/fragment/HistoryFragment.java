@@ -165,8 +165,8 @@ public class HistoryFragment extends Fragment {
 
         ApiService service = retrofit.create(ApiService.class);
         HistoryRequest historyRequest = new HistoryRequest();
-        historyRequest.setUsername(userName);
-//        historyRequest.setUsername("charan123");
+//        historyRequest.setUsername(userName);
+        historyRequest.setUsername("charan123");
         Call<HistoryResponse> call = service.historyService(historyRequest);
         call.enqueue(new Callback<HistoryResponse>() {
             @Override
@@ -194,13 +194,13 @@ public class HistoryFragment extends Fragment {
                     }catch (Exception e){
                         e.printStackTrace();
                     }
-                    dispalyDialog(view.getContext(), "Result", message);
+                    displayDialog(view.getContext(), "Result", message);
                 }else
                 if (response != null && response.body().getData() != null) {
                     historyList.addAll(response.body().getData());
                     mAdapter.notifyDataSetChanged();
                 }else{
-                    dispalyDialog(view.getContext(), "Failed", "Failed to get history of user !!!");
+                    displayDialog(view.getContext(), "Failed", "Failed to get history of user !!!");
                 }
             }
             @Override
@@ -208,36 +208,35 @@ public class HistoryFragment extends Fragment {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                dispalyDialog(view.getContext(), "Result", t.toString());
-            }
-
-            private void dispalyDialog(final Context context, String result, String message) {
-                final Dialog interrnetConnection = new Dialog(context);
-                interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                interrnetConnection.setContentView(R.layout.dialog_popup);
-                interrnetConnection.setCanceledOnTouchOutside(false);
-                TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
-                tv.setText(message);
-                TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
-                titleText.setText(result);
-                Button btnOk = (Button) interrnetConnection.findViewById(R.id.ok);
-                btnOk.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        interrnetConnection.dismiss();
-//                        Intent i = new Intent(view.getContext(), MainActivity.class);
-//                        startActivity(i);
-                        //activity.finish();
-                        //activity.finishAffinity();
-                        ((MainActivity) getActivity()).setTitle("Home");
-                        Fragment fragment = new HomeFragment();
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
-                    }
-                });
-                interrnetConnection.show();
+                displayDialog(view.getContext(), "Result", t.toString());
             }
         });
+    }
 
+    private void displayDialog(final Context context, String result, String message) {
+        final Dialog historyDialog = new Dialog(context);
+        historyDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        historyDialog.setContentView(R.layout.dialog_popup);
+        historyDialog.setCanceledOnTouchOutside(false);
+        TextView tv = (TextView) historyDialog.findViewById(R.id.textMessage);
+        tv.setText(message);
+        TextView titleText = (TextView) historyDialog.findViewById(R.id.dialogHeading);
+        titleText.setText(result);
+        Button btnOk = (Button) historyDialog.findViewById(R.id.ok);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                historyDialog.dismiss();
+//                        Intent i = new Intent(view.getContext(), MainActivity.class);
+//                        startActivity(i);
+                //activity.finish();
+                //activity.finishAffinity();
+                ((MainActivity) getActivity()).setTitle("Home");
+                Fragment fragment = new HomeFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+            }
+        });
+        historyDialog.show();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

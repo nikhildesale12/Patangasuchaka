@@ -2,11 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gkvk">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature
         android:name="android.hardware.camera2"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,21 +25,38 @@
         android:allowBackup="true"
         android:icon="@mipmap/appicon_new"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        android:largeHeap="true">
+        android:usesCleartextTraffic="true">
 
-        <activity android:name=".patangasuchaka.main.SignUpActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".patangasuchaka.main.LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".patangasuchaka.main.MapActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".patangasuchaka.main.DistributionSearchActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".patangasuchaka.main.MainActivity"
-            android:screenOrientation="portrait"/>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".patangasuchaka.main.GoogleMapActivity"
+            android:label="@string/title_activity_google_map"></activity>
+        <activity
+            android:name=".patangasuchaka.main.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".patangasuchaka.main.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".patangasuchaka.main.DistributionSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".patangasuchaka.main.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".patangasuchaka.main.IdentificationActivity"
             android:screenOrientation="portrait" />
@@ -65,11 +88,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAwyU917TkQ5XOD0BK8qA_H7M9AcveTefY"/>
-
     </application>
 
 </manifest>

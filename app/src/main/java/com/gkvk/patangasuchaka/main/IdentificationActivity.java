@@ -208,9 +208,9 @@ public class IdentificationActivity extends AppCompatActivity {
                 }
                 if (response != null && response.body() != null) {
                     if (response.body().getStatus()) {
-                        dispalyDialog( "Result", response.body().getMessage());
+                        displayDialog( "Result", response.body().getMessage());
                     }else{
-                        dispalyDialog( "Result", "Failed to upload data");
+                        displayDialog( "Result", "Failed to upload data");
                     }
                 }
             }
@@ -219,33 +219,28 @@ public class IdentificationActivity extends AppCompatActivity {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                dispalyDialog("Result", t.toString());
-            }
-
-            private void dispalyDialog(String result, String message) {
-                final Dialog interrnetConnection = new Dialog(IdentificationActivity.this);
-                interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                interrnetConnection.setContentView(R.layout.dialog_popup);
-                interrnetConnection.setCanceledOnTouchOutside(false);
-                TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
-                tv.setText(message);
-                TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
-                titleText.setText(result);
-                Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
-                btnLogoutNo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        interrnetConnection.dismiss();
-//                        Intent i = new Intent(view.getContext(),MainActivity.class);
-//                        startActivity(i);
-//                        activity.finish();
-//                        activity.finishAffinity();
-
-                    }
-                });
-                interrnetConnection.show();
+                displayDialog("Result", t.toString());
             }
         });
+    }
+
+    private void displayDialog(String result, String message) {
+        final Dialog identificationDialog = new Dialog(IdentificationActivity.this);
+        identificationDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        identificationDialog.setContentView(R.layout.dialog_popup);
+        identificationDialog.setCanceledOnTouchOutside(false);
+        TextView tv = (TextView) identificationDialog.findViewById(R.id.textMessage);
+        tv.setText(message);
+        TextView titleText = (TextView) identificationDialog.findViewById(R.id.dialogHeading);
+        titleText.setText(result);
+        Button btnLogoutNo = (Button) identificationDialog.findViewById(R.id.ok);
+        btnLogoutNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                identificationDialog.dismiss();
+            }
+        });
+        identificationDialog.show();
     }
 
     private void initView() {

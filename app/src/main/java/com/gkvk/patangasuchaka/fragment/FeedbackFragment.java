@@ -192,34 +192,35 @@ public class FeedbackFragment extends Fragment {
                 }
                 dispalyDialog(view.getContext(), "Result", t.toString());
             }
+        });
+    }
 
-            private void dispalyDialog(final Context context, String result, String message) {
-                final Dialog interrnetConnection = new Dialog(context);
-                interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                interrnetConnection.setContentView(R.layout.dialog_popup);
-                interrnetConnection.setCanceledOnTouchOutside(false);
-                TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
-                tv.setText(message);
-                TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
-                titleText.setText(result);
-                Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
-                btnLogoutNo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        interrnetConnection.dismiss();
+
+    private void dispalyDialog(final Context context, String result, String message) {
+        final Dialog interrnetConnection = new Dialog(context);
+        interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        interrnetConnection.setContentView(R.layout.dialog_popup);
+        interrnetConnection.setCanceledOnTouchOutside(false);
+        TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
+        tv.setText(message);
+        TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
+        titleText.setText(result);
+        Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
+        btnLogoutNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                interrnetConnection.dismiss();
 //                        Intent i = new Intent(view.getContext(),MainActivity.class);
 //                        startActivity(i);
 //                        activity.finish();
 //                        activity.finishAffinity();
-                        ((MainActivity) getActivity()).setTitle("Home");
-                        Fragment fragment = new HomeFragment();
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+                ((MainActivity) getActivity()).setTitle("Home");
+                Fragment fragment = new HomeFragment();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
 
-                    }
-                });
-                interrnetConnection.show();
             }
         });
+        interrnetConnection.show();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
