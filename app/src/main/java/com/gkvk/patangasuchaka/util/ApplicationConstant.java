@@ -142,22 +142,22 @@ public class ApplicationConstant {
 
     /*No Internet Connection*/
     public static void dispalyDialogInternet(final Context context , final String title, String message, boolean cancelDialog , final boolean isFinish) {
-        final Dialog interrnetConnection = new Dialog(context);
-        interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        interrnetConnection.setContentView(R.layout.dialog_popup);
-        interrnetConnection.setCanceledOnTouchOutside(cancelDialog);
-        TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
+        final Dialog internetConn = new Dialog(context);
+        internetConn.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        internetConn.setContentView(R.layout.dialog_popup);
+        internetConn.setCanceledOnTouchOutside(cancelDialog);
+        TextView tv = (TextView) internetConn.findViewById(R.id.textMessage);
         tv.setText(message);
-        TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
+        TextView titleText = (TextView) internetConn.findViewById(R.id.dialogHeading);
         titleText.setText(title);
-        Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
+        Button btnLogoutNo = (Button) internetConn.findViewById(R.id.ok);
         btnLogoutNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                interrnetConnection.dismiss();
+                internetConn.dismiss();
             }
         });
-        interrnetConnection.show();
+        internetConn.show();
     }
 
 }

@@ -25,6 +25,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         public CircleImageView speciesCircleImageView;
         public TextView textViewSpeciesName;
         public TextView textViewCommonName;
+        public TextView textViewCategory;
         public TextView textViewPlace;
         public TextView textViewDate;
 
@@ -34,6 +35,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
             speciesCircleImageView = (CircleImageView) view.findViewById(R.id.speciesCircleImageView);
             textViewSpeciesName = (TextView) view.findViewById(R.id.textViewSpeciesName);
             textViewCommonName = (TextView) view.findViewById(R.id.textViewCommonName);
+            textViewCategory = (TextView) view.findViewById(R.id.textViewCategory);
             textViewPlace = (TextView) view.findViewById(R.id.textViewPlace);
             textViewDate = (TextView) view.findViewById(R.id.textViewDate);
         }
@@ -64,6 +66,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
             holder.textViewCommonName.setText(history.getOneCommonName());
         }else{
             holder.textViewCommonName.setText("NA");
+        }
+        if(history.getButtCategory() != null && history.getButtCategory().toString().length()>0) {
+            holder.textViewCategory.setText((CharSequence) history.getButtCategory());
+        }else{
+            holder.textViewCategory.setText("NA");
         }
         if(history.getDateUploaded() != null && history.getDateUploaded().length()>0) {
             holder.textViewDate.setText(history.getDateUploaded());

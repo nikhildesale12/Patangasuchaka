@@ -68,7 +68,7 @@ public class HistoryFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     ProgressDialog dialog;
 
-    TextView textViewSpeciesName, textViewCommonName,textViewPlace,textViewDate;
+    TextView textViewSpeciesName, textViewCommonName,textViewPlace,textViewDate,textViewCategory;
     CircleImageView speciesCircleImageView;
     //Activity activity;
 
@@ -273,6 +273,7 @@ public class HistoryFragment extends Fragment {
         recyclerView=(RecyclerView) view.findViewById(R.id.recyclerView);
         textViewCommonName=(TextView)view.findViewById(R.id.textViewCommonName);
         textViewSpeciesName=(TextView)view.findViewById(R.id.textViewSpeciesName);
+        textViewCategory=(TextView)view.findViewById(R.id.textViewCategory);
         textViewPlace=(TextView)view.findViewById(R.id.textViewPlace);
         textViewDate=(TextView)view.findViewById(R.id.textViewDate);
         speciesCircleImageView=(CircleImageView) view.findViewById(R.id.speciesCircleImageView);
