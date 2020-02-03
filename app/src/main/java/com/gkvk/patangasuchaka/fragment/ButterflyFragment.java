@@ -22,6 +22,9 @@ import android.widget.Toast;
 
 import com.gkvk.R;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 
 public class ButterflyFragment extends Fragment implements View.OnClickListener{
 
@@ -53,12 +56,29 @@ public class ButterflyFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_butterfly, container, false);
         searchView=(SearchView)view.findViewById(R.id.searchViewSpecies);
 
+        String response = loadJSONFromAsset();
+
         addData(view);
 
 
         return view;
     }
 
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getActivity().getAssets().open("butterfly.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
 
     private TextView getTextView(int id, String title, int color, int typeface, int bgColor) {
         TextView tv = new TextView(getContext());
@@ -103,7 +123,6 @@ public class ButterflyFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-
         int id = v.getId();
         TextView tv = v.findViewById(id);
         if (null != tv) {
