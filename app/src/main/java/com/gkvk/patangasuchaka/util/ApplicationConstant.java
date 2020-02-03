@@ -20,9 +20,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.gkvk.R;
-import com.gkvk.patangasuchaka.entry.SplashNewActivity;
-import com.gkvk.patangasuchaka.main.MainActivity;
-
 import java.io.File;
 
 import androidx.core.app.ActivityCompat;
@@ -48,10 +45,11 @@ public class ApplicationConstant {
     public static final int RESULT_OPEN_GALLERY = 3 ;
     public static final String FROM_MODULE = "FROM_MODULE";
     public static final String FOLDER_PATH = Environment.getExternalStorageDirectory() + File.separator + "PATANGASUCHAKA" ;
-    public static final String IMAGE_NAME = "Upload_" ;
+    //public static final String IMAGE_NAME = "Upload_" ;
 
     public static final String ENDPOINT_URL_AI_UPLOAD = "http://45.117.30.211:8080/classify";
-    public static final String ExTNTION_JPG=".jpg";
+    public static final String ENDPOINT_URL_WEB_UPLOAD = "http://www.pathangasuchaka.in/pathanga_api/index.php/api_auth/Imagesync/upload";
+    public static final String EXTENTION_JPG=".jpg";
     public static final String MY_PREFS_NAME = "myPref";
     public static final String KEY_INTRO = "KEY_INTRO";
     public static final String KEY_ABOUT = "KEY_ABOUT";
@@ -69,6 +67,7 @@ public class ApplicationConstant {
     public static final String PROFILE_SERVICE_URL ="/pathanga_api/index.php/api_auth/Authentication/profile" ;
     public static final String UPLOAD_DATA_WEB_BUTTERFLY_URL = "/pathanga_api/index.php/api_auth/Imagesync/imagebutterfly";
     public static final String UPLOAD_DATA_MOTH_URL = "/pathanga_api/index.php/api_auth/Imagesync/imagemoth";
+    public static final String GET_DISTRIBUTION_DATA ="/pathanga_api/index.php/api_auth/Authentication/distribution" ;
     public static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
 
     public static final String KEY_ID = "KEY_ID";
@@ -83,7 +82,6 @@ public class ApplicationConstant {
     public static final String API_KEY = "AIzaSyCRIriw_45fLM8_Qa-K2MNj5FC32JfRljQ";
     public static final String Butterfly="Butterfly";
     public static final String Moth = "Moth";
-
 
     public static boolean checkPermission(Context context) {
         int FirstPermissionResult = ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION);

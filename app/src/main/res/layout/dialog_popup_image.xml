@@ -4,6 +4,7 @@
                 android:layout_height="match_parent" >
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/dialogHeading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,25 +29,29 @@
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/largeImage"
+            android:id="@+id/large_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.70"
-            android:layout_margin="20dp"/>
+            android:layout_weight="0.85"
+            android:layout_margin="8dp"/>
 
-        <Button
-            android:id="@+id/cancelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Close"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:background="@color/colorPrimary"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.15">
 
+            <Button
+                android:id="@+id/cancel_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Close"
+                android:layout_centerInParent="true"
+                android:background="@color/colorPrimary"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

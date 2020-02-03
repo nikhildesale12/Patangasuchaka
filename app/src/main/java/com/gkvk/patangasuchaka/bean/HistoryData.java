@@ -1,10 +1,13 @@
 
 package com.gkvk.patangasuchaka.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class HistoryData {
+public class HistoryData implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -26,10 +29,10 @@ public class HistoryData {
     private String dateUploaded;
     @SerializedName("email")
     @Expose
-    private Object email;
+    private String email;
     @SerializedName("butt_category")
     @Expose
-    private Object buttCategory;
+    private String buttCategory;
     @SerializedName("one_choice")
     @Expose
     private String oneChoice;
@@ -72,6 +75,30 @@ public class HistoryData {
     @SerializedName("lng")
     @Expose
     private String lng;
+
+    public HistoryData(Parcel in) {
+        this.id = in.readString();
+        this.image = in.readString();
+        this.username = in.readString();
+        this.placeCap = in.readString();
+        this.dateCap = in.readString();
+        this.dateUploaded = in.readString();
+        this.email = in.readString();
+        this.oneChoice = in.readString();
+        this.oneProbability = in.readString();
+        this.oneScientificName = in.readString();
+        this.oneCommonName = in.readString();
+        this.twoChoice = in.readString();
+        this.twoProbability = in.readString();
+        this.twoScientificName = in.readString();
+        this.twoCommonName = in.readString();
+        this.threeChoice = in.readString();
+        this.threeCommonName = in.readString();
+        this.threeProbability = in.readString();
+        this.threeScientificName = in.readString();
+        this.lat = in.readString();
+        this.lng = in.readString();
+    }
 
     public String getId() {
         return id;
@@ -125,7 +152,7 @@ public class HistoryData {
         return email;
     }
 
-    public void setEmail(Object email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -133,7 +160,7 @@ public class HistoryData {
         return buttCategory;
     }
 
-    public void setButtCategory(Object buttCategory) {
+    public void setButtCategory(String buttCategory) {
         this.buttCategory = buttCategory;
     }
 
@@ -249,4 +276,43 @@ public class HistoryData {
         this.lng = lng;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.image);
+        dest.writeString(this.username);
+        dest.writeString(this.placeCap);
+        dest.writeString(this.dateCap);
+        dest.writeString(this.dateUploaded);
+        dest.writeString(this.email);
+        dest.writeString(this.oneChoice);
+        dest.writeString(this.oneProbability);
+        dest.writeString(this.oneScientificName);
+        dest.writeString(this.oneCommonName);
+        dest.writeString(this.twoChoice);
+        dest.writeString(this.twoCommonName);
+        dest.writeString(this.twoProbability);
+        dest.writeString(this.twoScientificName);
+        dest.writeString(this.threeChoice);
+        dest.writeString(this.threeCommonName);
+        dest.writeString(this.threeProbability);
+        dest.writeString(this.threeScientificName);
+        dest.writeString(this.lat);
+        dest.writeString(this.lng);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public HistoryData createFromParcel(Parcel in) {
+            return new HistoryData(in);
+        }
+
+        public HistoryData[] newArray(int size) {
+            return new HistoryData[size];
+        }
+    };
 }

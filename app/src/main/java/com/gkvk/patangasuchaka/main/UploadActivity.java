@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
@@ -68,6 +69,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -82,11 +84,13 @@ public class UploadActivity extends AppCompatActivity {
     Button buttonAnalyze;
     ImageView captureImage;
     String pathtoUpload;
+    String imageName;
     EditText txtDate;
     AutoCompleteTextView autocompletePlaces;
-
+    String userName;
     private int mYear, mMonth, mDay, mHour, mMinute;
-
+    Timestamp timestampObj ;
+    long timestamp;
     @Override
     public void onActivityReenter(int resultCode, Intent data) {
         super.onActivityReenter(resultCode, data);
@@ -98,6 +102,10 @@ public class UploadActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         setContentView(R.layout.activity_upload);
         initViews();
+        SharedPreferences sharedPreferences = UploadActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        userName  = sharedPreferences.getString(ApplicationConstant.KEY_USERNAME, "");
+        timestampObj = new Timestamp(System.currentTimeMillis());
+        timestamp = timestampObj.getTime();
         autocompletePlaces.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_text_item));
         if (android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23) {
             if (ApplicationConstant.checkPermission(UploadActivity.this)) {
@@ -165,7 +173,7 @@ public class UploadActivity extends AppCompatActivity {
             case ApplicationConstant.RESULT_OPEN_CAMERA:
                 try {
                     if (resultCode == Activity.RESULT_OK) {
-                        File file = new File(ApplicationConstant.FOLDER_PATH, ApplicationConstant.IMAGE_NAME + currentDateTimeString + ApplicationConstant.ExTNTION_JPG);
+                        File file = new File(ApplicationConstant.FOLDER_PATH, currentDateTimeString+"@"+userName+"@"+timestamp+ApplicationConstant.EXTENTION_JPG);
                         if (file != null) {
                             gps = new GPSTracker(UploadActivity.this);
                             if (gps.canGetLocation()) {
@@ -200,10 +208,10 @@ public class UploadActivity extends AppCompatActivity {
                             autocompletePlaces.setEnabled(false);
 
                             //captureImage.setImageURI(Uri.parse(ApplicationConstant.FOLDER_PATH+File.separator+ApplicationConstant.IMAGE_NAME+currentDateTimeString+ApplicationConstant.ExTNTION_JPG));
-                            pathtoUpload = ApplicationConstant.FOLDER_PATH + File.separator + ApplicationConstant.IMAGE_NAME + currentDateTimeString + ApplicationConstant.ExTNTION_JPG;
+                            pathtoUpload = ApplicationConstant.FOLDER_PATH + File.separator + currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG;
                             //compress and set image to image view
-
-                            compressImage(ApplicationConstant.FOLDER_PATH + File.separator + ApplicationConstant.IMAGE_NAME + currentDateTimeString + ApplicationConstant.ExTNTION_JPG, ApplicationConstant.MODULE_CAPTURE);
+                            imageName = currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG;
+                            compressImage(ApplicationConstant.FOLDER_PATH + File.separator + currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG, ApplicationConstant.MODULE_CAPTURE);
 
                         }
                     } else if (resultCode == Activity.RESULT_CANCELED) {
@@ -261,7 +269,7 @@ public class UploadActivity extends AppCompatActivity {
 
     private void openCamera() {
         ///currentDateTimeString =new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a").format(new Date());
-        currentDateTimeString = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        currentDateTimeString = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         txtDate.setText(currentDateTimeString);
         txtDate.setEnabled(false);
         String state = Environment.getExternalStorageState();
@@ -270,9 +278,9 @@ public class UploadActivity extends AppCompatActivity {
             rootDirectory.mkdir();
         }
         if (Environment.MEDIA_MOUNTED.equals(state)) {
-            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, ApplicationConstant.IMAGE_NAME + currentDateTimeString + ApplicationConstant.ExTNTION_JPG);
+            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG);
         } else {
-            mFileTemp = new File(getFilesDir(), ApplicationConstant.IMAGE_NAME + currentDateTimeString + ApplicationConstant.ExTNTION_JPG);
+            mFileTemp = new File(getFilesDir(), currentDateTimeString+"@"+userName+"@"+timestamp + ApplicationConstant.EXTENTION_JPG);
         }
         /*Uri.fromFile(mFileTemp)*/
         Uri photoURI = null;
@@ -299,6 +307,26 @@ public class UploadActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
+
+        String state = Environment.getExternalStorageState();
+        File rootDirectory = new File(ApplicationConstant.FOLDER_PATH);
+        if (!rootDirectory.exists()) {
+            rootDirectory.mkdir();
+        }
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG);
+        } else {
+            mFileTemp = new File(getFilesDir(), currentDateTimeString+"@"+userName+"@"+timestamp + ApplicationConstant.EXTENTION_JPG);
+        }
+        /*Uri.fromFile(mFileTemp)*/
+        Uri photoURI = null;
+        if (android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23) {
+            photoURI = FileProvider.getUriForFile(UploadActivity.this, BuildConfig.APPLICATION_ID + ".provider", mFileTemp);
+        } else {
+            photoURI = Uri.fromFile(mFileTemp);
+        }
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
         startActivityForResult(intent, ApplicationConstant.RESULT_OPEN_GALLERY);
     }
 
@@ -317,7 +345,6 @@ public class UploadActivity extends AppCompatActivity {
     }
 
     ProgressDialog dialog;
-
     private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
         String path;
 
@@ -417,6 +444,11 @@ public class UploadActivity extends AppCompatActivity {
             Intent intent = new Intent(UploadActivity.this, IdentificationActivity.class);
             intent.putExtra("result", result);
             intent.putExtra("path", path);
+            intent.putExtra("imageName",imageName);
+            intent.putExtra("autocompletePlaces",autocompletePlaces.getText().toString());
+            intent.putExtra("lat",latitude);
+            intent.putExtra("lng",longitude);
+            intent.putExtra("date",txtDate.getText().toString());
             startActivity(intent);
             finish();
         }
@@ -591,7 +623,6 @@ public class UploadActivity extends AppCompatActivity {
                 if (module.equals(ApplicationConstant.MODULE_GALLERY)) {
                     captureImage.setImageBitmap(BitmapFactory.decodeFile(pathtoUpload));
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

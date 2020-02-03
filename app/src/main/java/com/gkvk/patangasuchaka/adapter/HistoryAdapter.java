@@ -1,17 +1,23 @@
 package com.gkvk.patangasuchaka.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.HistoryData;
-import java.net.URL;
 import java.util.List;
 import com.bumptech.glide.Glide;
+import com.gkvk.patangasuchaka.fragment.LargeImageFragment;
+import com.gkvk.patangasuchaka.main.MainActivity;
+
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -56,7 +62,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        HistoryData history = historyList.get(position);
+        final HistoryData history = historyList.get(position);
         if(history.getOneScientificName() != null && history.getOneScientificName().length()>0) {
             holder.textViewSpeciesName.setText(history.getOneScientificName());
         }else{
@@ -89,14 +95,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                 .error(R.drawable.logo)
                 .into(holder.speciesCircleImageView);
 
-        /*URL url = null;
-        try {
-            url = new URL(history.getImage());
-            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            holder.speciesCircleImageView.setImageBitmap(bmp);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        holder.speciesCircleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //dialogViewLargeImage(v,history);
+
+                LargeImageFragment fragment = new LargeImageFragment();
+                FragmentManager fragmentManager =  ((MainActivity)mContext).getSupportFragmentManager();
+                Bundle args = new Bundle();
+                args.putString("imagepath", history.getImage());
+                fragment.setArguments(args);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment)
+                        .commit();
+            }
+        });
     }
 
     @Override
@@ -104,4 +117,24 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         return historyList.size();
     }
 
+    private void dialogViewLargeImage(View v,HistoryData history) {
+        final Dialog dialogLargeImage = new Dialog(v.getContext());
+        dialogLargeImage.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogLargeImage.setContentView(R.layout.dialog_popup_image);
+        dialogLargeImage.setCanceledOnTouchOutside(false);
+        ImageView imageView = (ImageView) dialogLargeImage.findViewById(R.id.large_image);
+        Glide.with(mContext)
+                .load(history.getImage())
+                .placeholder(R.drawable.logo)
+                .error(R.drawable.logo)
+                .into(imageView);
+        Button cancelBtn = (Button) dialogLargeImage.findViewById(R.id.cancel_btn);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogLargeImage.dismiss();
+            }
+        });
+        dialogLargeImage.show();
+    }
 }

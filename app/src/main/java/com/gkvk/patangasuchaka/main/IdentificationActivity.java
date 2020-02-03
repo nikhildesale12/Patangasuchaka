@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.UploadDataToWebRequest;
@@ -24,10 +29,24 @@ import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Credentials;
@@ -49,27 +68,39 @@ public class IdentificationActivity extends AppCompatActivity {
     RelativeLayout result3,result2;
     ProgressBar progressBar1,progressBar2,progressBar3;
     Button buttonBackIdentify;
-    private ProgressDialog dialog;
-
+    UploadDataToWebRequest uploadDataToWebRequest = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         setContentView(R.layout.activity_identification);
         initView();
+        SharedPreferences sharedPreferences = IdentificationActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+        String userName  = sharedPreferences.getString(ApplicationConstant.KEY_USERNAME, "");
         Intent intent = getIntent();
         String jsonResult = intent.getStringExtra("result");
         String path = intent.getStringExtra("path");
+        String imageName = intent.getStringExtra("imageName");
+        String autocompletePlaces = intent.getStringExtra("autocompletePlaces");
+        String lat = intent.getStringExtra("lat");
+        String lng = intent.getStringExtra("lng");
+        String date = intent.getStringExtra("date");
         Log.d("Result in Display page:",jsonResult);
         Log.d("path:",path);
-        UploadDataToWebRequest uploadDataToWebRequest = new UploadDataToWebRequest();
+        Log.d("imageName:",imageName);
+        Log.d("autocompletePlaces:",autocompletePlaces);
+        Log.d("lat:",lat);
+        Log.d("lng:",lng);
+        Log.d("date:",date);
+
+        uploadDataToWebRequest = new UploadDataToWebRequest();
         try {
-            uploadDataToWebRequest.setImage("");
-            uploadDataToWebRequest.setUsername("");
-            uploadDataToWebRequest.setPlace_cap("");
-            uploadDataToWebRequest.setDate_cap("");
-            uploadDataToWebRequest.setLat("");
-            uploadDataToWebRequest.setLng("");
+            uploadDataToWebRequest.setImage(imageName);
+            uploadDataToWebRequest.setUsername(userName);
+            uploadDataToWebRequest.setPlace_cap(autocompletePlaces);
+            uploadDataToWebRequest.setDate_cap(date);
+            uploadDataToWebRequest.setLat(lat);
+            uploadDataToWebRequest.setLng(lng);
 
             JSONArray jsonArray = new JSONArray(jsonResult);
             if(jsonArray != null && jsonArray.length()>0) {
@@ -139,9 +170,10 @@ public class IdentificationActivity extends AppCompatActivity {
                         result3.setVisibility(View.INVISIBLE);
                     }
                 }
-                //Call service to upload data to server
-                uploadDataToWebAppServer(uploadDataToWebRequest);
             }
+            /** Upload image to Webapp server */
+            uploadImageToWebAppServer(path,uploadDataToWebRequest);
+
             displayImage.setImageBitmap(BitmapFactory.decodeFile(path));
 
             buttonBackIdentify.setOnClickListener(new View.OnClickListener() {
@@ -156,6 +188,123 @@ public class IdentificationActivity extends AppCompatActivity {
 
     }
 
+    private void uploadImageToWebAppServer(String path,UploadDataToWebRequest uploadDataToWebRequest) {
+        new UploadFileToServer(path,uploadDataToWebRequest).execute();
+    }
+
+    ProgressDialog dialog1;
+    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
+        String path;
+        UploadDataToWebRequest uploadDataToWebRequest;
+
+        private UploadFileToServer(String path,UploadDataToWebRequest uploadDataToWebRequest) {
+            this.path = path;
+            this.uploadDataToWebRequest = uploadDataToWebRequest;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog1 = new ProgressDialog(IdentificationActivity.this);
+            dialog1.setMessage("Please Wait...");
+            dialog1.setIndeterminate(false);
+            dialog1.setCancelable(false);
+            dialog1.show();
+        }
+        @Override
+        protected String doInBackground(Void... params) {
+            return uploadFile(path);
+        }
+        @SuppressWarnings("deprecation")
+        private String uploadFile(String filePath) {
+            String result = "";
+            final String boundary = "-------------" + System.currentTimeMillis();
+            MultipartEntityBuilder entity = MultipartEntityBuilder.create();
+            Log.d("path : ", path);
+            URLConnection connection = null;
+            HttpURLConnection httpConn = null;
+            try {
+                entity.setBoundary(boundary);
+                File sourceFile = new File(filePath);
+                entity.addPart("file", new FileBody(sourceFile));
+                java.net.URL url = new URL(ApplicationConstant.ENDPOINT_URL_WEB_UPLOAD);
+                connection = url.openConnection();
+                httpConn = (HttpURLConnection) connection;
+                httpConn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+                httpConn.setConnectTimeout(50000);
+                httpConn.setRequestMethod("POST");
+                httpConn.setDoInput(true);
+                httpConn.setDoOutput(true);
+                httpConn.connect();
+
+                OutputStream os = httpConn.getOutputStream();
+                entity.build().writeTo(os);
+                os.flush();
+                os.close();
+
+                int statusCode;
+                try {
+                    statusCode = httpConn.getResponseCode();
+                } catch (EOFException e) {
+                    e.printStackTrace();
+                    return "";
+                }
+                InputStreamReader isr;
+                if (statusCode != 200 && statusCode != 204 && statusCode != 201) {
+                    isr = new InputStreamReader(
+                            httpConn.getErrorStream());
+                } else {
+                    isr = new InputStreamReader(
+                            httpConn.getInputStream());
+                }
+                BufferedReader br = new BufferedReader(isr);
+                String line;
+                String tempResponse = "";
+                // Create a string using response from web services
+                while ((line = br.readLine()) != null)
+                    tempResponse = tempResponse + line;
+                result = tempResponse;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                showErrorToast();
+                if (e.toString().contains("failed to connect")) {
+                    result = "failed to connect web Server";
+                }
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (httpConn != null) {
+                    httpConn.disconnect();
+                }
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("IdentificationActivity", "Response from server: " + result);
+            super.onPostExecute(result);
+            if (dialog1 != null && dialog1.isShowing()) {
+                dialog1.dismiss();
+            }
+            String uploadResult="";
+            try {
+                JSONObject jsonObject = new JSONObject(result);
+                uploadResult= jsonObject.optString("message");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            //Call service to upload data to server
+            if(uploadResult.equalsIgnoreCase("successful")) {
+                uploadDataToWebAppServer(uploadDataToWebRequest);
+            }else{
+                Toast.makeText(IdentificationActivity.this,"Failed to upload image on server",Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+    ProgressDialog dialog;
     private void uploadDataToWebAppServer(UploadDataToWebRequest uploadDataToWebRequest) {
         dialog = new ProgressDialog(this);
         dialog.setMessage("Please Wait...");
@@ -241,6 +390,17 @@ public class IdentificationActivity extends AppCompatActivity {
             }
         });
         identificationDialog.show();
+    }
+
+    private void showErrorToast() {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), "Failed to connect to Server", Toast.LENGTH_LONG).show();
+            }
+        });
+        finishAffinity();
     }
 
     private void initView() {

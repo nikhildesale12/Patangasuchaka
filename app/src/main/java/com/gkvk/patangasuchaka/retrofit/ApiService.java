@@ -55,5 +55,6 @@ public interface ApiService {
     @POST(ApplicationConstant.UPLOAD_DATA_MOTH_URL)
     Call<UploadDataToWebResponse> uploadDataToWebServerMoth(@Body UploadDataToWebRequest uploadDataToWebRequest);
 
-
+    @GET(ApplicationConstant.GET_DISTRIBUTION_DATA)
+    Call<HistoryResponse> getDistributionData();
 }

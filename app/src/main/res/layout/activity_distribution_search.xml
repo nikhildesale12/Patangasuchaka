@@ -20,71 +20,109 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <SearchView
-        android:id="@+id/searchAddressView"
+    <TextView
+        android:id="@+id/textHead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbarDistribution"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginRight="20dp"
-        android:iconifiedByDefault="false"
-        android:background="@drawable/btn_shape_capsule">
+        android:text="Distribution Search"
+        android:layout_below="@id/toolbarDistribution"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:gravity="center_horizontal">
+    </TextView>
 
-    </SearchView>
-
-    <LinearLayout
-        android:layout_below="@+id/searchAddressView"
-        android:id="@+id/spinnerlayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical" >
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/butterflyTextview"
+            android:id="@+id/addressText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Butterfly"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:layout_marginLeft="30dp">
-
-        </TextView>
-
-        <Spinner
-            android:id="@+id/spinnerButterfly"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:spinnerMode="dropdown"
-            android:background="@drawable/spinner_layout"/>
-
-        <TextView
-            android:id="@+id/stateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="State"
+            android:text="Address"
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="30dp">
         </TextView>
-        <Spinner
-            android:id="@+id/spinnerState"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:spinnerMode="dropdown"
-            android:background="@drawable/spinner_layout"/>
 
-    </LinearLayout>
+        <AutoCompleteTextView
+            android:id="@+id/searchAddressView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addressText"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/spinner_layout"
+            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:hint="Search by address"
+            android:padding="10dp"></AutoCompleteTextView>
+
+        <LinearLayout
+            android:layout_below="@+id/searchAddressView"
+            android:id="@+id/spinnerlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/butterflyTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Butterfly"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_marginLeft="30dp">
+            </TextView>
+
+            <Spinner
+                android:id="@+id/spinnerButterfly"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:spinnerMode="dropdown"
+                android:layout_marginTop="3dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:background="@drawable/spinner_layout"/>
+
+            <TextView
+                android:id="@+id/stateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="State"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp">
+            </TextView>
+            <Spinner
+                android:id="@+id/spinnerState"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="3dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/spinner_layout"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinnerlayout"
         android:layout_marginTop="100dp"
         android:weightSum="1">
 
