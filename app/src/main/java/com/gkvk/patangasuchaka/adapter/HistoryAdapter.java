@@ -2,7 +2,8 @@ package com.gkvk.patangasuchaka.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,8 @@ import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.HistoryData;
 import java.util.List;
 import com.bumptech.glide.Glide;
-import com.gkvk.patangasuchaka.fragment.LargeImageFragment;
-import com.gkvk.patangasuchaka.main.MainActivity;
+import com.gkvk.patangasuchaka.main.LargeImageActivity;
 
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -28,7 +27,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     private List<HistoryData> historyList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public CircleImageView speciesCircleImageView;
+        //public CircleImageView speciesCircleImageView;
+        public ImageView speciesCircleImageView;
         public TextView textViewSpeciesName;
         public TextView textViewCommonName;
         public TextView textViewCategory;
@@ -38,7 +38,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         public MyViewHolder(View view) {
             super(view);
             mContext = view.getContext();
-            speciesCircleImageView = (CircleImageView) view.findViewById(R.id.speciesCircleImageView);
+            //speciesCircleImageView = (CircleImageView) view.findViewById(R.id.speciesCircleImageView);
+            speciesCircleImageView = (ImageView) view.findViewById(R.id.speciesCircleImageView);
             textViewSpeciesName = (TextView) view.findViewById(R.id.textViewSpeciesName);
             textViewCommonName = (TextView) view.findViewById(R.id.textViewCommonName);
             textViewCategory = (TextView) view.findViewById(R.id.textViewCategory);
@@ -98,16 +99,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         holder.speciesCircleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //dialogViewLargeImage(v,history);
 
-                LargeImageFragment fragment = new LargeImageFragment();
-                FragmentManager fragmentManager =  ((MainActivity)mContext).getSupportFragmentManager();
-                Bundle args = new Bundle();
-                args.putString("imagepath", history.getImage());
-                fragment.setArguments(args);
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment)
-                        .commit();
+                Intent i = new Intent(mContext,LargeImageActivity.class);
+                i.putExtra("imagepath",history.getImage());
+                mContext.startActivity(i);
+
             }
         });
     }
@@ -117,24 +113,4 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         return historyList.size();
     }
 
-    private void dialogViewLargeImage(View v,HistoryData history) {
-        final Dialog dialogLargeImage = new Dialog(v.getContext());
-        dialogLargeImage.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogLargeImage.setContentView(R.layout.dialog_popup_image);
-        dialogLargeImage.setCanceledOnTouchOutside(false);
-        ImageView imageView = (ImageView) dialogLargeImage.findViewById(R.id.large_image);
-        Glide.with(mContext)
-                .load(history.getImage())
-                .placeholder(R.drawable.logo)
-                .error(R.drawable.logo)
-                .into(imageView);
-        Button cancelBtn = (Button) dialogLargeImage.findViewById(R.id.cancel_btn);
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogLargeImage.dismiss();
-            }
-        });
-        dialogLargeImage.show();
-    }
 }
