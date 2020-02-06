@@ -22,22 +22,16 @@ import android.widget.Toast;
 
 import com.gkvk.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 
 
 public class ButterflyFragment extends Fragment implements View.OnClickListener{
 
-    String companies[] = {"Google", "Windows", "iPhone", "Nokia", "Samsung",
-            "Google", "Windows", "iPhone", "Nokia", "Samsung",
-            "Google", "Windows", "iPhone", "Nokia", "Samsung"};
-    String os[] = {"Android", "Mango", "iOS", "Symbian", "Bada",
-            "Android", "Mango", "iOS", "Symbian", "Bada",
-            "Android", "Mango", "iOS", "Symbian", "Bada"};
-
-
     SearchView searchView;
-
 
     public ButterflyFragment() {
         // Required empty public constructor
@@ -58,7 +52,7 @@ public class ButterflyFragment extends Fragment implements View.OnClickListener{
 
         String response = loadJSONFromAsset();
 
-        addData(view);
+        addData(view,response);
 
 
         return view;
@@ -109,15 +103,23 @@ public class ButterflyFragment extends Fragment implements View.OnClickListener{
                 TableRow.LayoutParams.WRAP_CONTENT);
     }
 
-    public void addData(View view) {
-        int numCompanies = companies.length;
+    public void addData(View view,String response) {
         TableLayout tl = view.findViewById(R.id.table);
-        for (int i = 0; i < numCompanies; i++) {
-            TableRow tr = new TableRow(view.getContext());
-            tr.setLayoutParams(getLayoutParams());
-            tr.addView(getTextView(i + 1, companies[i], Color.BLACK, Typeface.NORMAL, ContextCompat.getColor(view.getContext(), R.color.white)));
-            tr.addView(getTextView(i + numCompanies, os[i], Color.BLACK, Typeface.NORMAL, ContextCompat.getColor(view.getContext(), R.color.white)));
-            tl.addView(tr, getTblLayoutParams());
+        if(response !=null){
+            try {
+                JSONArray jsonArray = new JSONArray(response);
+                if(jsonArray != null && jsonArray.length()>0){
+                    for(int i=0;i<jsonArray.length();i++){
+                        TableRow tr = new TableRow(view.getContext());
+                        tr.setLayoutParams(getLayoutParams());
+                        tr.addView(getTextView(i + 1, jsonArray.getJSONObject(i).optString("species_list"), Color.BLACK, Typeface.NORMAL, ContextCompat.getColor(view.getContext(), R.color.white)));
+                        tr.addView(getTextView(i + jsonArray.length(), jsonArray.getJSONObject(i).optString("common_name"), Color.BLACK, Typeface.NORMAL, ContextCompat.getColor(view.getContext(), R.color.white)));
+                        tl.addView(tr, getTblLayoutParams());
+                    }
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 

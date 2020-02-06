@@ -22,16 +22,13 @@ import android.widget.Toast;
 
 import com.gkvk.R;
 
+import org.json.JSONArray;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 
 public class MothFragment extends Fragment implements View.OnClickListener{
-
-    String companies[] = {"Google", "Windows", "iPhone", "Nokia", "Samsung",
-            "Google", "Windows", "iPhone", "Nokia", "Samsung",
-            "Google", "Windows", "iPhone", "Nokia", "Samsung"};
-    String os[] = {"Android", "Mango", "iOS", "Symbian", "Bada",
-            "Android", "Mango", "iOS", "Symbian", "Bada",
-            "Android", "Mango", "iOS", "Symbian", "Bada"};
-
 
     SearchView searchView;
 
@@ -52,13 +49,29 @@ public class MothFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_moth, container, false);
         searchView=(SearchView)view.findViewById(R.id.searchViewSpecies);
 
-        addData(view);
+        String response = loadJSONFromAsset();
+
+        addData(view,response);
 
 
         return view;
     }
 
-
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = getActivity().getAssets().open("moths.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
     private TextView getTextView(int id, String title, int color, int typeface, int bgColor) {
         TextView tv = new TextView(getContext());
         tv.setId(id);
@@ -88,15 +101,23 @@ public class MothFragment extends Fragment implements View.OnClickListener{
                 TableRow.LayoutParams.WRAP_CONTENT);
     }
 
-    public void addData(View view) {
-        int numCompanies = companies.length;
+    public void addData(View view,String response) {
         TableLayout tl = view.findViewById(R.id.table);
-        for (int i = 0; i < numCompanies; i++) {
-            TableRow tr = new TableRow(view.getContext());
-            tr.setLayoutParams(getLayoutParams());
-            tr.addView(getTextView(i + 1, companies[i], Color.BLACK, Typeface.NORMAL, ContextCompat.getColor(view.getContext(), R.color.white)));
-            tr.addView(getTextView(i + numCompanies, os[i], Color.BLACK, Typeface.NORMAL, ContextCompat.getColor(view.getContext(), R.color.white)));
-            tl.addView(tr, getTblLayoutParams());
+        if(response !=null){
+            try {
+                JSONArray jsonArray = new JSONArray(response);
+                if(jsonArray != null && jsonArray.length()>0){
+                    for(int i=0;i<jsonArray.length();i++){
+                        TableRow tr = new TableRow(view.getContext());
+                        tr.setLayoutParams(getLayoutParams());
+                        tr.addView(getTextView(i + 1, jsonArray.getJSONObject(i).optString("SPS_list"), Color.BLACK, Typeface.NORMAL, ContextCompat.getColor(view.getContext(), R.color.white)));
+                        tr.addView(getTextView(i + jsonArray.length(), jsonArray.getJSONObject(i).optString("CN"), Color.BLACK, Typeface.NORMAL, ContextCompat.getColor(view.getContext(), R.color.white)));
+                        tl.addView(tr, getTblLayoutParams());
+                    }
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 
