@@ -1,5 +1,6 @@
 package com.gkvk.patangasuchaka.util;
 
+import android.location.Geocoder;
 import android.util.Log;
 
 import java.sql.Timestamp;

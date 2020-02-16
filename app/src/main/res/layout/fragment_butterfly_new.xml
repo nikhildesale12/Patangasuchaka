@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".patangasuchaka.fragment.ButterflyFragment">
+
+    <SearchView
+        android:id="@+id/searchViewSpecies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="2dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Here" />
+
+    <LinearLayout
+        android:id="@+id/headerSpecies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_below="@id/searchViewSpecies"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.50"
+            android:layout_height="wrap_content"
+            android:text="Species List"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:layout_marginRight="1dp"
+            android:background="#000000"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.50"
+            android:layout_height="wrap_content"
+            android:text="Common Name"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:layout_marginLeft="1dp"
+            android:background="#000000"/>
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSpecies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/headerSpecies">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

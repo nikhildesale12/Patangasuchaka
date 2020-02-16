@@ -64,20 +64,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 
 public class HistoryFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     ProgressDialog dialog;
-
-    TextView textViewSpeciesName, textViewCommonName,textViewPlace,textViewDate,textViewCategory;
-    CircleImageView speciesCircleImageView;
-    //Activity activity;
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -85,22 +72,10 @@ public class HistoryFragment extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
- /*   public static HistoryFragment newInstance(String param1, String param2) {
-        HistoryFragment fragment = new HistoryFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }*/
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -165,8 +140,8 @@ public class HistoryFragment extends Fragment {
 
         ApiService service = retrofit.create(ApiService.class);
         HistoryRequest historyRequest = new HistoryRequest();
-//        historyRequest.setUsername(userName);
-        historyRequest.setUsername("charan123");
+        historyRequest.setUsername(userName);
+        //historyRequest.setUsername("charan123");
         Call<HistoryResponse> call = service.historyService(historyRequest);
         call.enqueue(new Callback<HistoryResponse>() {
             @Override
@@ -227,10 +202,6 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 historyDialog.dismiss();
-//                        Intent i = new Intent(view.getContext(), MainActivity.class);
-//                        startActivity(i);
-                //activity.finish();
-                //activity.finishAffinity();
                 ((MainActivity) getActivity()).setTitle("Home");
                 Fragment fragment = new HomeFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
@@ -239,7 +210,6 @@ public class HistoryFragment extends Fragment {
         historyDialog.show();
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -249,12 +219,6 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        /*if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
     }
 
     @Override
@@ -265,17 +229,10 @@ public class HistoryFragment extends Fragment {
 
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 
     private void initView(View view) {
         recyclerView=(RecyclerView) view.findViewById(R.id.recyclerView);
-        textViewCommonName=(TextView)view.findViewById(R.id.textViewCommonName);
-        textViewSpeciesName=(TextView)view.findViewById(R.id.textViewSpeciesName);
-        textViewCategory=(TextView)view.findViewById(R.id.textViewCategory);
-        textViewPlace=(TextView)view.findViewById(R.id.textViewPlace);
-        textViewDate=(TextView)view.findViewById(R.id.textViewDate);
-        speciesCircleImageView=(CircleImageView) view.findViewById(R.id.speciesCircleImageView);
     }
 }

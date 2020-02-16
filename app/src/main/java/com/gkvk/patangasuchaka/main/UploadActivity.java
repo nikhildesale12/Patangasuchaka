@@ -6,6 +6,7 @@ import androidx.core.content.FileProvider;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -34,6 +35,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -48,11 +50,13 @@ import android.widget.Toast;
 
 import com.gkvk.BuildConfig;
 import com.gkvk.R;
+import com.gkvk.patangasuchaka.bean.UploadImageToAIResponse;
+import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.gkvk.patangasuchaka.util.GPSTracker;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.FileBody;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,21 +64,33 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.nio.channels.FileChannel;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Credentials;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UploadActivity extends AppCompatActivity {
     RelativeLayout imageInfoRelativeLayout;
@@ -91,6 +107,10 @@ public class UploadActivity extends AppCompatActivity {
     private int mYear, mMonth, mDay, mHour, mMinute;
     Timestamp timestampObj ;
     long timestamp;
+    String currentDateTimeString;
+    private File mFileTemp;
+    GPSTracker gps;
+
     @Override
     public void onActivityReenter(int resultCode, Intent data) {
         super.onActivityReenter(resultCode, data);
@@ -125,6 +145,27 @@ public class UploadActivity extends AppCompatActivity {
         if (!rootDirectory.exists()) {
             rootDirectory.mkdir();
         }
+        getLocationDetail();
+
+        autocompletePlaces.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final String selectedPlace = (String) parent.getItemAtPosition(position);
+                Geocoder coder = new Geocoder(UploadActivity.this);
+                List<Address> address;
+                try {
+                    address = coder.getFromLocationName(selectedPlace, 5);
+                    Address location = address.get(0);
+                    latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+                    System.out.println("New latitude : "+latitude);
+                    System.out.println("New longitude : "+longitude);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
         Intent intent = getIntent();
         String fromModule = intent.getStringExtra(ApplicationConstant.FROM_MODULE);
         if (fromModule.equals(ApplicationConstant.MODULE_CAPTURE)) {
@@ -140,7 +181,13 @@ public class UploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (ApplicationConstant.isNetworkAvailable(UploadActivity.this)) {
                     //check image is selected or not
-                    new UploadFileToServer(pathtoUpload).execute();
+                    //new UploadFileToServer(pathtoUpload).execute();
+
+                    /**Upload Imgage by Retrofit*/
+                    Log.d("Lat", String.valueOf(latitude));
+                    Log.d("Lng", String.valueOf(longitude));
+
+                    executeUploadService(pathtoUpload);
                 } else {
                     Toast.makeText(UploadActivity.this, "Please check internet connection", Toast.LENGTH_LONG).show();
                 }
@@ -166,6 +213,99 @@ public class UploadActivity extends AppCompatActivity {
         });
     }
 
+    private void getLocationDetail() {
+        gps = new GPSTracker(UploadActivity.this);
+        if (gps.canGetLocation()) {
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
+            if (latitude != 0 && longitude != 0) {
+                List<Address> addresses = getAddress(latitude, longitude);
+                String address = "", city = "", country = "";
+                if (addresses != null) {
+                    address = addresses.get(0).getAddressLine(0);
+                    city = addresses.get(0).getAddressLine(1);
+                    country = addresses.get(0).getAddressLine(2);
+                }
+                if ((city == null || (city != null && city.equals("null")))
+                        && (country == null || (country != null && country.equals("null")))) {
+                    finalAddress = address;
+                } else if (city == null || (city != null && city.equals("null"))
+                        && country != null && !country.equals("null")) {
+                    finalAddress = address + "," + country;
+                } else if (country == null || (country != null && country.equals("null"))
+                        && city != null && !city.equals("null")) {
+                    finalAddress = address + "," + city;
+                } else {
+                    finalAddress = address + "," + city + "," + country;
+                }
+            } else {
+                Toast.makeText(UploadActivity.this, "Error while getting location , please restart mobile GPS", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    ProgressDialog dialog;
+    private void executeUploadService(final String pathtoUpload) {
+        dialog = new ProgressDialog(UploadActivity.this);
+        dialog.setMessage("Please Wait...");
+        dialog.setIndeterminate(false);
+        dialog.setCancelable(false);
+        dialog.show();
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(30, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(ApplicationConstant.BASE_URL_AI)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(okHttpClient)
+                .build();
+        ApiService service = retrofit.create(ApiService.class);
+        File file = new File(pathtoUpload);
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        final MultipartBody.Part body = MultipartBody.Part.createFormData("image", imageName, requestFile);
+        Call<List<UploadImageToAIResponse>> call = service.uploadImageToAI(body);
+        call.enqueue(new Callback<List<UploadImageToAIResponse>>() {
+            @Override
+            public void onResponse(Call<List<UploadImageToAIResponse>> call, Response<List<UploadImageToAIResponse>> response) {
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+                if (response != null && response.body() != null) {
+                    try {
+                        JSONArray jsonArray = new JSONArray(new Gson().toJson(response.body()));
+                        Intent intent = new Intent(UploadActivity.this, IdentificationActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("result", jsonArray.toString());
+                        bundle.putString("path", pathtoUpload);
+                        bundle.putString("imageName",imageName);
+                        bundle.putString("autocompletePlaces",autocompletePlaces.getText().toString());
+                        bundle.putDouble("lat",latitude);
+                        bundle.putDouble("lng",longitude);
+                        bundle.putString("date",txtDate.getText().toString());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        finish();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else if(response.errorBody() != null) {
+                    Log.d("Error",response.errorBody().toString());
+                }
+            }
+            @Override
+            public void onFailure(Call<List<UploadImageToAIResponse>> call, Throwable t) {
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+                displayDialog(UploadActivity.this, "Result", t.toString());
+            }
+        });
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -173,45 +313,16 @@ public class UploadActivity extends AppCompatActivity {
             case ApplicationConstant.RESULT_OPEN_CAMERA:
                 try {
                     if (resultCode == Activity.RESULT_OK) {
-                        File file = new File(ApplicationConstant.FOLDER_PATH, currentDateTimeString+"@"+userName+"@"+timestamp+ApplicationConstant.EXTENTION_JPG);
+                        File file = new File(ApplicationConstant.FOLDER_PATH, imageName);
                         if (file != null) {
-                            gps = new GPSTracker(UploadActivity.this);
-                            if (gps.canGetLocation()) {
-                                latitude = gps.getLatitude();
-                                longitude = gps.getLongitude();
-                                if (latitude != 0 && longitude != 0) {
-                                    List<Address> addresses = getAddress(latitude, longitude);
-                                    String address = "", city = "", country = "";
-                                    if (addresses != null) {
-                                        address = addresses.get(0).getAddressLine(0);
-                                        city = addresses.get(0).getAddressLine(1);
-                                        country = addresses.get(0).getAddressLine(2);
-                                    }
-                                    if ((city == null || (city != null && city.equals("null")))
-                                            && (country == null || (country != null && country.equals("null")))) {
-                                        finalAddress = address;
-                                    } else if (city == null || (city != null && city.equals("null"))
-                                            && country != null && !country.equals("null")) {
-                                        finalAddress = address + "," + country;
-                                    } else if (country == null || (country != null && country.equals("null"))
-                                            && city != null && !city.equals("null")) {
-                                        finalAddress = address + "," + city;
-                                    } else {
-                                        finalAddress = address + "," + city + "," + country;
-                                    }
-                                } else {
-                                    Toast.makeText(UploadActivity.this, "Error while getting location , please restart mobile GPS", Toast.LENGTH_SHORT).show();
-                                }
-                            }
                             Log.e("file.length() : ", "file.length()  : " + file.length());
                             autocompletePlaces.setText(finalAddress);
                             autocompletePlaces.setEnabled(false);
 
                             //captureImage.setImageURI(Uri.parse(ApplicationConstant.FOLDER_PATH+File.separator+ApplicationConstant.IMAGE_NAME+currentDateTimeString+ApplicationConstant.ExTNTION_JPG));
-                            pathtoUpload = ApplicationConstant.FOLDER_PATH + File.separator + currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG;
+                            pathtoUpload = ApplicationConstant.FOLDER_PATH + File.separator + imageName;
                             //compress and set image to image view
-                            imageName = currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG;
-                            compressImage(ApplicationConstant.FOLDER_PATH + File.separator + currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG, ApplicationConstant.MODULE_CAPTURE);
+                            compressImage(ApplicationConstant.FOLDER_PATH + File.separator + imageName, ApplicationConstant.MODULE_CAPTURE);
 
                         }
                     } else if (resultCode == Activity.RESULT_CANCELED) {
@@ -227,21 +338,22 @@ public class UploadActivity extends AppCompatActivity {
                 break;
             case ApplicationConstant.RESULT_OPEN_GALLERY:
                 try {
-                    if (requestCode == ApplicationConstant.RESULT_OPEN_GALLERY && resultCode == RESULT_OK
-                            && null != data) {
+                    if (requestCode == ApplicationConstant.RESULT_OPEN_GALLERY && resultCode == RESULT_OK && null != data) {
                         Uri URI = data.getData();
-                        String[] FILE = {MediaStore.Images.Media.DATA};
-                        Cursor cursor = getContentResolver().query(URI,
-                                FILE, null, null, null);
-
+                        /*String[] FILE = {MediaStore.Images.Media.DATA};
+                        Cursor cursor = getContentResolver().query(URI,FILE, null, null, null);
                         cursor.moveToFirst();
-
                         int columnIndex = cursor.getColumnIndex(FILE[0]);
-                        String ImageDecode = cursor.getString(columnIndex);
-                        cursor.close();
+                        String galleryPath = cursor.getString(columnIndex);
+                        cursor.close();*/
+                        currentDateTimeString = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
-                        pathtoUpload = ImageDecode;
-                        compressImage(pathtoUpload, ApplicationConstant.MODULE_GALLERY);
+                        imageName = currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG;
+
+                        pathtoUpload = ApplicationConstant.FOLDER_PATH + File.separator + imageName;
+
+                        File destFile = new File(pathtoUpload);
+                        copyFile(new File(getPath(data.getData())), destFile,pathtoUpload);
 
                     } else if (resultCode == Activity.RESULT_CANCELED) {
                         Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
@@ -263,9 +375,37 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-    String currentDateTimeString;
-    private File mFileTemp;
-    GPSTracker gps;
+    public String getPath(Uri uri) {
+        String[] FILE = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(uri,FILE, null, null, null);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(FILE[0]);
+        String galleryPath = cursor.getString(columnIndex);
+        cursor.close();
+        return galleryPath;
+    }
+
+    private void copyFile(File sourceFile, File destFile,String pathtoUpload) throws IOException {
+        if (!sourceFile.exists()) {
+            return;
+        }
+        FileChannel source = null;
+        FileChannel destination = null;
+        source = new FileInputStream(sourceFile).getChannel();
+        destination = new FileOutputStream(destFile).getChannel();
+        if (destination != null && source != null) {
+            destination.transferFrom(source, 0, source.size());
+        }
+        if (source != null) {
+            source.close();
+        }
+        if (destination != null) {
+            destination.close();
+        }
+        if(destFile != null){
+            compressImage(pathtoUpload, ApplicationConstant.MODULE_GALLERY);
+        }
+    }
 
     private void openCamera() {
         ///currentDateTimeString =new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a").format(new Date());
@@ -273,14 +413,11 @@ public class UploadActivity extends AppCompatActivity {
         txtDate.setText(currentDateTimeString);
         txtDate.setEnabled(false);
         String state = Environment.getExternalStorageState();
-        File rootDirectory = new File(ApplicationConstant.FOLDER_PATH);
-        if (!rootDirectory.exists()) {
-            rootDirectory.mkdir();
-        }
+        imageName = currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG;
         if (Environment.MEDIA_MOUNTED.equals(state)) {
-            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG);
+            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, imageName);
         } else {
-            mFileTemp = new File(getFilesDir(), currentDateTimeString+"@"+userName+"@"+timestamp + ApplicationConstant.EXTENTION_JPG);
+            mFileTemp = new File(getFilesDir(), imageName);
         }
         /*Uri.fromFile(mFileTemp)*/
         Uri photoURI = null;
@@ -305,30 +442,9 @@ public class UploadActivity extends AppCompatActivity {
 
     private void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-
-        String state = Environment.getExternalStorageState();
-        File rootDirectory = new File(ApplicationConstant.FOLDER_PATH);
-        if (!rootDirectory.exists()) {
-            rootDirectory.mkdir();
-        }
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG);
-        } else {
-            mFileTemp = new File(getFilesDir(), currentDateTimeString+"@"+userName+"@"+timestamp + ApplicationConstant.EXTENTION_JPG);
-        }
-        /*Uri.fromFile(mFileTemp)*/
-        Uri photoURI = null;
-        if (android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23) {
-            photoURI = FileProvider.getUriForFile(UploadActivity.this, BuildConfig.APPLICATION_ID + ".provider", mFileTemp);
-        } else {
-            photoURI = Uri.fromFile(mFileTemp);
-        }
-
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
         startActivityForResult(intent, ApplicationConstant.RESULT_OPEN_GALLERY);
     }
+
 
     private void initViews() {
         imageInfoRelativeLayout = (RelativeLayout) findViewById(R.id.imageInfoRelativeLayout);
@@ -344,134 +460,6 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
-    ProgressDialog dialog;
-    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
-        String path;
-
-        private UploadFileToServer(String path) {
-            this.path = path;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            dialog = new ProgressDialog(UploadActivity.this);
-            dialog.setMessage("Please Wait...");
-            dialog.setIndeterminate(false);
-            dialog.setCancelable(false);
-            dialog.show();
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            return uploadFile(path);
-        }
-
-        @SuppressWarnings("deprecation")
-        private String uploadFile(String filePath) {
-            String result = "";
-            final String boundary = "-------------" + System.currentTimeMillis();
-            MultipartEntityBuilder entity = MultipartEntityBuilder.create();
-            Log.d("path : ", path);
-            URLConnection connection = null;
-            HttpURLConnection httpConn = null;
-            try {
-                entity.setBoundary(boundary);
-                File sourceFile = new File(filePath);
-                entity.addPart("image", new FileBody(sourceFile));
-                java.net.URL url = new URL(ApplicationConstant.ENDPOINT_URL_AI_UPLOAD);
-                connection = url.openConnection();
-                httpConn = (HttpURLConnection) connection;
-                httpConn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
-                httpConn.setConnectTimeout(50000);
-                httpConn.setRequestMethod("POST");
-                httpConn.setDoInput(true);
-                httpConn.setDoOutput(true);
-                httpConn.connect();
-
-                OutputStream os = httpConn.getOutputStream();
-                entity.build().writeTo(os);
-                os.flush();
-                os.close();
-
-                int statusCode;
-                try {
-                    statusCode = httpConn.getResponseCode();
-                } catch (EOFException e) {
-                    e.printStackTrace();
-                    return "";
-                }
-                InputStreamReader isr;
-                if (statusCode != 200 && statusCode != 204 && statusCode != 201) {
-                    isr = new InputStreamReader(
-                            httpConn.getErrorStream());
-                } else {
-                    isr = new InputStreamReader(
-                            httpConn.getInputStream());
-                }
-                BufferedReader br = new BufferedReader(isr);
-                String line;
-                String tempResponse = "";
-                // Create a string using response from web services
-                while ((line = br.readLine()) != null)
-                    tempResponse = tempResponse + line;
-                result = tempResponse;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                showErrorToast();
-                if (e.toString().contains("failed to connect")) {
-                    result = "failed to connect AI Server";
-                }
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (httpConn != null) {
-                    httpConn.disconnect();
-                }
-            }
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            Log.d("ImageUploadService", "Response from server: " + result);
-            super.onPostExecute(result);
-            if (dialog != null && dialog.isShowing()) {
-                dialog.dismiss();
-            }
-            Intent intent = new Intent(UploadActivity.this, IdentificationActivity.class);
-            intent.putExtra("result", result);
-            intent.putExtra("path", path);
-            intent.putExtra("imageName",imageName);
-            intent.putExtra("autocompletePlaces",autocompletePlaces.getText().toString());
-            intent.putExtra("lat",latitude);
-            intent.putExtra("lng",longitude);
-            intent.putExtra("date",txtDate.getText().toString());
-            startActivity(intent);
-            finish();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
-        }
-    }
-
-    private void showErrorToast() {
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), "Failed to connect to Server", Toast.LENGTH_LONG).show();
-            }
-        });
-        finishAffinity();
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
@@ -492,6 +480,24 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
 
+    private void displayDialog(final Context context, String result, String message) {
+        final Dialog fragmentDialog = new Dialog(context);
+        fragmentDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        fragmentDialog.setContentView(R.layout.dialog_popup);
+        fragmentDialog.setCanceledOnTouchOutside(false);
+        TextView tv = (TextView) fragmentDialog.findViewById(R.id.textMessage);
+        tv.setText(message);
+        TextView titleText = (TextView) fragmentDialog.findViewById(R.id.dialogHeading);
+        titleText.setText(result);
+        Button btnLogoutNo = (Button) fragmentDialog.findViewById(R.id.ok);
+        btnLogoutNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentDialog.dismiss();
+            }
+        });
+        fragmentDialog.show();
+    }
 
     public List<Address> getAddress(double lat, double lng) {
         try {
@@ -741,6 +747,7 @@ public class UploadActivity extends AppCompatActivity {
             }
         }
         try {
+            System.out.println("========================="+jsonResults.toString()+"===================================");
             // Create a JSON object hierarchy from the results
             JSONObject jsonObj = new JSONObject(jsonResults.toString());
             JSONArray predsJsonArray = jsonObj.getJSONArray("predictions");
@@ -759,4 +766,134 @@ public class UploadActivity extends AppCompatActivity {
         return resultList;
     }
     /*place coed end*/
+
+    /*ProgressDialog dialog;
+    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
+        String path;
+
+        private UploadFileToServer(String path) {
+            this.path = path;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(UploadActivity.this);
+            dialog.setMessage("Please Wait...");
+            dialog.setIndeterminate(false);
+            dialog.setCancelable(false);
+            dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return uploadFile(path);
+        }
+
+        @SuppressWarnings("deprecation")
+        private String uploadFile(String filePath) {
+            String result = "";
+            final String boundary = "-------------" + System.currentTimeMillis();
+            MultipartEntityBuilder entity = MultipartEntityBuilder.create();
+            Log.d("path : ", path);
+            URLConnection connection = null;
+            HttpURLConnection httpConn = null;
+            try {
+                entity.setBoundary(boundary);
+                File sourceFile = new File(filePath);
+                entity.addPart("image", new FileBody(sourceFile));
+                java.net.URL url = new URL(ApplicationConstant.ENDPOINT_URL_AI_UPLOAD);
+                connection = url.openConnection();
+                httpConn = (HttpURLConnection) connection;
+                httpConn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+                httpConn.setConnectTimeout(50000);
+                httpConn.setRequestMethod("POST");
+                httpConn.setDoInput(true);
+                httpConn.setDoOutput(true);
+                httpConn.connect();
+
+                OutputStream os = httpConn.getOutputStream();
+                entity.build().writeTo(os);
+                os.flush();
+                os.close();
+
+                int statusCode;
+                try {
+                    statusCode = httpConn.getResponseCode();
+                } catch (EOFException e) {
+                    e.printStackTrace();
+                    return "";
+                }
+                InputStreamReader isr;
+                if (statusCode != 200 && statusCode != 204 && statusCode != 201) {
+                    isr = new InputStreamReader(
+                            httpConn.getErrorStream());
+                } else {
+                    isr = new InputStreamReader(
+                            httpConn.getInputStream());
+                }
+                BufferedReader br = new BufferedReader(isr);
+                String line;
+                String tempResponse = "";
+                // Create a string using response from web services
+                while ((line = br.readLine()) != null)
+                    tempResponse = tempResponse + line;
+                result = tempResponse;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                showErrorToast();
+                if (e.toString().contains("failed to connect")) {
+                    result = "failed to connect AI Server";
+                }
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (httpConn != null) {
+                    httpConn.disconnect();
+                }
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("ImageUploadService", "Response from server: " + result);
+            super.onPostExecute(result);
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            Intent intent = new Intent(UploadActivity.this, IdentificationActivity.class);
+            intent.putExtra("result", result);
+            intent.putExtra("path", path);
+            intent.putExtra("imageName",imageName);
+            intent.putExtra("autocompletePlaces",autocompletePlaces.getText().toString());
+            intent.putExtra("lat",latitude);
+            intent.putExtra("lng",longitude);
+            intent.putExtra("date",txtDate.getText().toString());
+            startActivity(intent);
+            finish();
+        }
+    }*/
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+       /* if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }*/
+    }
+
+    private void showErrorToast() {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), "Failed to connect to Server", Toast.LENGTH_LONG).show();
+            }
+        });
+        finishAffinity();
+    }
+
 }

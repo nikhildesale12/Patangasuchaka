@@ -17,6 +17,8 @@ import com.gkvk.patangasuchaka.main.SpeciesSearchActivity;
 import com.gkvk.patangasuchaka.main.UploadActivity;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -44,7 +46,6 @@ public class ViewPagerAdapter extends PagerAdapter {
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view.equals(object);
     }
-
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
@@ -98,4 +99,5 @@ public class ViewPagerAdapter extends PagerAdapter {
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View)object);
     }
+
 }

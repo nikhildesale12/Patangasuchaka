@@ -14,12 +14,19 @@ import com.gkvk.patangasuchaka.bean.RegisterRequest;
 import com.gkvk.patangasuchaka.bean.RegisterResponse;
 import com.gkvk.patangasuchaka.bean.UploadDataToWebRequest;
 import com.gkvk.patangasuchaka.bean.UploadDataToWebResponse;
+import com.gkvk.patangasuchaka.bean.UploadImageToAIResponse;
+import com.gkvk.patangasuchaka.bean.UploadToWebResponse;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 
+import java.util.List;
+
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 
 /**
@@ -57,4 +64,12 @@ public interface ApiService {
 
     @GET(ApplicationConstant.GET_DISTRIBUTION_DATA)
     Call<HistoryResponse> getDistributionData();
+
+    @Multipart
+    @POST(ApplicationConstant.UPLOAD_IMAGE_AI)
+    Call<List<UploadImageToAIResponse>> uploadImageToAI(@Part MultipartBody.Part image);
+
+    @Multipart
+    @POST(ApplicationConstant.UPLOAD_IMAGE_WEB)
+    Call<UploadToWebResponse> uploadImageToWeb(@Part MultipartBody.Part body);
 }

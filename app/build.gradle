@@ -8,8 +8,8 @@ android {
         applicationId "com.gkvk"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.1"
+        versionCode 4
+        versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -52,12 +52,11 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.android.support:support-v4:29.0.0'
     //implementation 'com.android.support:appcompat-v7:29.0.0'
-    implementation 'org.apache.httpcomponents:httpmime:4.5.6'
     implementation 'ch.acra:acra:4.9.2'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.code.gson:gson:2.7'
-    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     //noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:26.1.0'

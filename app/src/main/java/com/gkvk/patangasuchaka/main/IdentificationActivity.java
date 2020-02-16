@@ -24,13 +24,12 @@ import android.widget.Toast;
 import com.gkvk.R;
 import com.gkvk.patangasuchaka.bean.UploadDataToWebRequest;
 import com.gkvk.patangasuchaka.bean.UploadDataToWebResponse;
+import com.gkvk.patangasuchaka.bean.UploadToWebResponse;
 import com.gkvk.patangasuchaka.retrofit.ApiService;
 import com.gkvk.patangasuchaka.util.ApplicationConstant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.entity.mime.content.FileBody;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,14 +44,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Credentials;
 import okhttp3.Headers;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -69,6 +69,8 @@ public class IdentificationActivity extends AppCompatActivity {
     ProgressBar progressBar1,progressBar2,progressBar3;
     Button buttonBackIdentify;
     UploadDataToWebRequest uploadDataToWebRequest = null;
+    String imageName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,21 +79,31 @@ public class IdentificationActivity extends AppCompatActivity {
         initView();
         SharedPreferences sharedPreferences = IdentificationActivity.this.getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
         String userName  = sharedPreferences.getString(ApplicationConstant.KEY_USERNAME, "");
-        Intent intent = getIntent();
-        String jsonResult = intent.getStringExtra("result");
-        String path = intent.getStringExtra("path");
-        String imageName = intent.getStringExtra("imageName");
-        String autocompletePlaces = intent.getStringExtra("autocompletePlaces");
-        String lat = intent.getStringExtra("lat");
-        String lng = intent.getStringExtra("lng");
-        String date = intent.getStringExtra("date");
-        Log.d("Result in Display page:",jsonResult);
-        Log.d("path:",path);
-        Log.d("imageName:",imageName);
-        Log.d("autocompletePlaces:",autocompletePlaces);
-        Log.d("lat:",lat);
-        Log.d("lng:",lng);
-        Log.d("date:",date);
+        Bundle bundle = getIntent().getExtras();
+        String jsonResult = bundle.getString("result");
+        String path = bundle.getString("path");
+        imageName = bundle.getString("imageName");
+        String autocompletePlaces = bundle.getString("autocompletePlaces");
+        double lat = bundle.getDouble("lat");
+        double lng = bundle.getDouble("lng");
+        String date = bundle.getString("date");
+        if (jsonResult != null) {
+            Log.d("Result in Display page:", jsonResult);
+        }
+        if(path != null){
+            Log.d("path:",path);
+        }
+        if(imageName != null){
+            Log.d("imageName:",imageName);
+        }
+        if(autocompletePlaces != null){
+            Log.d("autocompletePlaces:",autocompletePlaces);
+        }
+        Log.d("lat:", String.valueOf(lat));
+        Log.d("lng:", String.valueOf(lng));
+        if(date != null){
+            Log.d("date:",date);
+        }
 
         uploadDataToWebRequest = new UploadDataToWebRequest();
         try {
@@ -99,8 +111,8 @@ public class IdentificationActivity extends AppCompatActivity {
             uploadDataToWebRequest.setUsername(userName);
             uploadDataToWebRequest.setPlace_cap(autocompletePlaces);
             uploadDataToWebRequest.setDate_cap(date);
-            uploadDataToWebRequest.setLat(lat);
-            uploadDataToWebRequest.setLng(lng);
+            uploadDataToWebRequest.setLat(String.valueOf(lat));
+            uploadDataToWebRequest.setLng(String.valueOf(lng));
 
             JSONArray jsonArray = new JSONArray(jsonResult);
             if(jsonArray != null && jsonArray.length()>0) {
@@ -171,10 +183,11 @@ public class IdentificationActivity extends AppCompatActivity {
                     }
                 }
             }
-            /** Upload image to Webapp server */
-            uploadImageToWebAppServer(path,uploadDataToWebRequest);
 
             displayImage.setImageBitmap(BitmapFactory.decodeFile(path));
+
+            /** Upload image to Webapp server */
+            uploadImageToWebAppServer(path,uploadDataToWebRequest);
 
             buttonBackIdentify.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -189,10 +202,80 @@ public class IdentificationActivity extends AppCompatActivity {
     }
 
     private void uploadImageToWebAppServer(String path,UploadDataToWebRequest uploadDataToWebRequest) {
-        new UploadFileToServer(path,uploadDataToWebRequest).execute();
+        //new UploadFileToServer(path,uploadDataToWebRequest).execute();
+        executeUploadService(path,uploadDataToWebRequest);
     }
 
-    ProgressDialog dialog1;
+    ProgressDialog dialog;
+    private void executeUploadService(String path, final UploadDataToWebRequest uploadDataToWebRequest) {
+        try {
+            dialog = new ProgressDialog(IdentificationActivity.this);
+            dialog.setMessage("Please Wait...");
+            dialog.setIndeterminate(false);
+            dialog.setCancelable(false);
+            dialog.show();
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+
+            //Basic Auth
+            final String authToken = Credentials.basic("admin", "1234");
+
+            //Create a new Interceptor.
+            Interceptor headerAuthorizationInterceptor = new Interceptor() {
+                @Override
+                public okhttp3.Response intercept(Chain chain) throws IOException {
+                    okhttp3.Request request = chain.request();
+                    Headers headers = request.headers().newBuilder().add("Authorization", authToken).build();
+                    request = request.newBuilder().headers(headers).build();
+                    return chain.proceed(request);
+                }
+            };
+
+            final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .addInterceptor(headerAuthorizationInterceptor)
+                    .build();
+
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(ApplicationConstant.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .client(okHttpClient)
+                    .build();
+            ApiService service = retrofit.create(ApiService.class);
+            File file = new File(path);
+            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            MultipartBody.Part body = MultipartBody.Part.createFormData("file", imageName, requestFile);
+            Call<UploadToWebResponse> call = service.uploadImageToWeb(body);
+            call.enqueue(new Callback<UploadToWebResponse>() {
+                @Override
+                public void onResponse(Call<UploadToWebResponse> call, Response<UploadToWebResponse> response) {
+                    if (dialog != null && dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
+                    if (response != null && response.body() != null) {
+                        if (response.body().getMessage() != null && response.body().getMessage().equalsIgnoreCase("successful")) {
+                            uploadDataToWebAppServer(uploadDataToWebRequest);
+                        } else {
+                            Toast.makeText(IdentificationActivity.this, "Failed to upload image on server", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<UploadToWebResponse> call, Throwable t) {
+                    if (dialog != null && dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
+                    displayDialog("Result", t.toString());
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /*ProgressDialog dialog1;
     private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
         String path;
         UploadDataToWebRequest uploadDataToWebRequest;
@@ -303,74 +386,99 @@ public class IdentificationActivity extends AppCompatActivity {
                 Toast.makeText(IdentificationActivity.this,"Failed to upload image on server",Toast.LENGTH_LONG).show();
             }
         }
-    }
-    ProgressDialog dialog;
+    }*/
+
+    ProgressDialog dialog1;
     private void uploadDataToWebAppServer(UploadDataToWebRequest uploadDataToWebRequest) {
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Please Wait...");
-        dialog.setIndeterminate(false);
-        dialog.setCancelable(false);
-        dialog.show();
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
+        try {
+            dialog1 = new ProgressDialog(this);
+            dialog1.setMessage("Please Wait...");
+            dialog1.setIndeterminate(false);
+            dialog1.setCancelable(false);
+            dialog1.show();
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
 
-        //Basic Auth
-        final String authToken = Credentials.basic("admin", "1234");
+            //Basic Auth
+            final String authToken = Credentials.basic("admin", "1234");
 
-        //Create a new Interceptor.
-        Interceptor headerAuthorizationInterceptor = new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                okhttp3.Request request = chain.request();
-                Headers headers = request.headers().newBuilder().add("Authorization", authToken).build();
-                request = request.newBuilder().headers(headers).build();
-                return chain.proceed(request);
-            }
-        };
-
-        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .readTimeout(30, TimeUnit.SECONDS)
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .addInterceptor(headerAuthorizationInterceptor)
-                .build();
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(ApplicationConstant.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(okHttpClient)
-                .build();
-        ApiService service = retrofit.create(ApiService.class);
-        Call<UploadDataToWebResponse> call = null;
-        if(uploadDataToWebRequest.getButt_category()!=null && uploadDataToWebRequest.getButt_category().equalsIgnoreCase(ApplicationConstant.Butterfly))
-        {
-            call = service.uploadDataToWebServerButterFly(uploadDataToWebRequest);
-        }else
-        if(uploadDataToWebRequest.getButt_category()!=null && uploadDataToWebRequest.getButt_category().equalsIgnoreCase(ApplicationConstant.Moth))
-        {
-            call = service.uploadDataToWebServerMoth(uploadDataToWebRequest);
-        }
-
-        call.enqueue(new Callback<UploadDataToWebResponse>() {
-            @Override
-            public void onResponse(Call<UploadDataToWebResponse> call, Response<UploadDataToWebResponse> response) {
-                if (dialog != null && dialog.isShowing()) {
-                    dialog.dismiss();
+            //Create a new Interceptor.
+            Interceptor headerAuthorizationInterceptor = new Interceptor() {
+                @Override
+                public okhttp3.Response intercept(Chain chain) throws IOException {
+                    okhttp3.Request request = chain.request();
+                    Headers headers = request.headers().newBuilder().add("Authorization", authToken).build();
+                    request = request.newBuilder().headers(headers).build();
+                    return chain.proceed(request);
                 }
-                if (response != null && response.body() != null) {
-                    if (response.body().getStatus()) {
-                        displayDialog( "Result", response.body().getMessage());
-                    }else{
-                        displayDialog( "Result", "Failed to upload data");
+            };
+
+            final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .addInterceptor(headerAuthorizationInterceptor)
+                    .build();
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(ApplicationConstant.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .client(okHttpClient)
+                    .build();
+            ApiService service = retrofit.create(ApiService.class);
+            Call<UploadDataToWebResponse> call = null;
+            if (uploadDataToWebRequest.getButt_category() != null && uploadDataToWebRequest.getButt_category().equalsIgnoreCase(ApplicationConstant.Moth)) {
+                call = service.uploadDataToWebServerMoth(uploadDataToWebRequest);
+            } else {
+                call = service.uploadDataToWebServerButterFly(uploadDataToWebRequest);
+            }
+
+            call.enqueue(new Callback<UploadDataToWebResponse>() {
+                @Override
+                public void onResponse(Call<UploadDataToWebResponse> call, Response<UploadDataToWebResponse> response) {
+                    if (dialog1 != null && dialog1.isShowing()) {
+                        dialog1.dismiss();
+                    }
+                    if (response != null && response.body() != null) {
+                        if (response.body().getStatus()) {
+                            displayDialog("Result", response.body().getMessage());
+                        } else {
+                            displayDialog("Result", "Failed to upload data");
+                        }
                     }
                 }
-            }
-            @Override
-            public void onFailure(Call<UploadDataToWebResponse> call, Throwable t) {
-                if (dialog != null && dialog.isShowing()) {
-                    dialog.dismiss();
+
+                @Override
+                public void onFailure(Call<UploadDataToWebResponse> call, Throwable t) {
+                    if (dialog1 != null && dialog1.isShowing()) {
+                        dialog1.dismiss();
+                    }
+                    displayDialog("Result", t.toString());
                 }
-                displayDialog("Result", t.toString());
-            }
-        });
+            });
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void initView() {
+        displayImage = (ImageView) findViewById(R.id.displayImage);
+        textSciName1 = (TextView) findViewById(R.id.textSciName1);
+        textSciName2 = (TextView) findViewById(R.id.textSciName2);
+        textSciName3 = (TextView) findViewById(R.id.textSciName3);
+        textComName1 = (TextView) findViewById(R.id.textComName1);
+        textComName2 = (TextView) findViewById(R.id.textComName2);
+        textComName3 = (TextView) findViewById(R.id.textComName3);
+        textProbability1 = (TextView) findViewById(R.id.textProbability1);
+        textProbability2 = (TextView) findViewById(R.id.textProbability2);
+        textProbability3 = (TextView) findViewById(R.id.textProbability3);
+        textCategory1 = (TextView) findViewById(R.id.textCategory1);
+        textCategory2 = (TextView) findViewById(R.id.textCategory2);
+        textCategory3 = (TextView) findViewById(R.id.textCategory3);
+        result3 = (RelativeLayout) findViewById(R.id.result3);
+        result2 = (RelativeLayout) findViewById(R.id.result2);
+        progressBar1 = (ProgressBar) findViewById(R.id.progressBar1);
+        progressBar2 = (ProgressBar) findViewById(R.id.progressBar2);
+        progressBar3 = (ProgressBar) findViewById(R.id.progressBar3);
+        buttonBackIdentify = (Button) findViewById(R.id.buttonBackIdentify);
     }
 
     private void displayDialog(String result, String message) {
@@ -401,27 +509,5 @@ public class IdentificationActivity extends AppCompatActivity {
             }
         });
         finishAffinity();
-    }
-
-    private void initView() {
-        displayImage = (ImageView) findViewById(R.id.displayImage);
-        textSciName1 = (TextView) findViewById(R.id.textSciName1);
-        textSciName2 = (TextView) findViewById(R.id.textSciName2);
-        textSciName3 = (TextView) findViewById(R.id.textSciName3);
-        textComName1 = (TextView) findViewById(R.id.textComName1);
-        textComName2 = (TextView) findViewById(R.id.textComName2);
-        textComName3 = (TextView) findViewById(R.id.textComName3);
-        textProbability1 = (TextView) findViewById(R.id.textProbability1);
-        textProbability2 = (TextView) findViewById(R.id.textProbability2);
-        textProbability3 = (TextView) findViewById(R.id.textProbability3);
-        textCategory1 = (TextView) findViewById(R.id.textCategory1);
-        textCategory2 = (TextView) findViewById(R.id.textCategory2);
-        textCategory3 = (TextView) findViewById(R.id.textCategory3);
-        result3 = (RelativeLayout) findViewById(R.id.result3);
-        result2 = (RelativeLayout) findViewById(R.id.result2);
-        progressBar1 = (ProgressBar) findViewById(R.id.progressBar1);
-        progressBar2 = (ProgressBar) findViewById(R.id.progressBar2);
-        progressBar3 = (ProgressBar) findViewById(R.id.progressBar3);
-        buttonBackIdentify = (Button) findViewById(R.id.buttonBackIdentify);
     }
 }

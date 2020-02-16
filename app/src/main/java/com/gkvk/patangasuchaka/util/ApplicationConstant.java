@@ -69,6 +69,10 @@ public class ApplicationConstant {
     public static final String UPLOAD_DATA_MOTH_URL = "/pathanga_api/index.php/api_auth/Imagesync/imagemoth";
     public static final String GET_DISTRIBUTION_DATA ="/pathanga_api/index.php/api_auth/Authentication/distribution" ;
     public static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
+    public static final String  UPLOAD_IMAGE_WEB = "/pathanga_api/index.php/api_auth/Imagesync/upload";
+
+    public static final String BASE_URL_AI = "http://45.117.30.211:8080";
+    public static final String UPLOAD_IMAGE_AI = "/classify";
 
     public static final String KEY_ID = "KEY_ID";
     public static final String KEY_USERNAME = "KEY_USERNAME";
@@ -77,9 +81,8 @@ public class ApplicationConstant {
     public static final String KEY_PROFILE_IMG = "KEY_PROFILE_IMG";
     public static final String TYPE_AUTOCOMPLETE = "/autocomplete";
     public static final String OUT_JSON = "/json";
-    //debug
-//    public static final String API_KEY = "AIzaSyCoNT5vDSVQmxhG2kS_JXsozKtym48r_54";
     public static final String API_KEY = "AIzaSyCRIriw_45fLM8_Qa-K2MNj5FC32JfRljQ";
+//    public static final String API_KEY = "AIzaSyCJJ_ZusJnAmD0KAD1qYttbXXJgCB8WlFI";
     public static final String Butterfly="Butterfly";
     public static final String Moth = "Moth";
 
@@ -139,7 +142,7 @@ public class ApplicationConstant {
     }
 
     /*No Internet Connection*/
-    public static void dispalyDialogInternet(final Context context , final String title, String message, boolean cancelDialog , final boolean isFinish) {
+    public static void displayDialogInternet(final Context context , final String title, String message, boolean cancelDialog , final boolean isFinish) {
         final Dialog internetConn = new Dialog(context);
         internetConn.requestWindowFeature(Window.FEATURE_NO_TITLE);
         internetConn.setContentView(R.layout.dialog_popup);

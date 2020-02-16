@@ -166,7 +166,7 @@ public class SignUpActivity extends AppCompatActivity {
                     if (response.body().getStatus()) {
                         dispalyDialog(SignUpActivity.this, "One more step", "Check email for verification");
                     }else{
-                        ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Failed", "Failed to register user !!!", false, false);
+                        ApplicationConstant.displayDialogInternet(SignUpActivity.this, "Failed", "Failed to register user !!!", false, false);
                     }
                 } else if(response != null && response.errorBody() != null){
                     BufferedReader reader = null;
@@ -182,9 +182,9 @@ public class SignUpActivity extends AppCompatActivity {
                     }
 
                     String finallyError = sb.toString();
-                    ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Result", finallyError, false, false);
+                    ApplicationConstant.displayDialogInternet(SignUpActivity.this, "Result", finallyError, false, false);
                 } else{
-                    ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Failed", "Failed to register user !!!", false, false);
+                    ApplicationConstant.displayDialogInternet(SignUpActivity.this, "Failed", "Failed to register user !!!", false, false);
                 }
             }
             @Override
@@ -192,7 +192,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                ApplicationConstant.dispalyDialogInternet(SignUpActivity.this, "Result", t.toString(), false, false);
+                ApplicationConstant.displayDialogInternet(SignUpActivity.this, "Result", t.toString(), false, false);
             }
         });
     }

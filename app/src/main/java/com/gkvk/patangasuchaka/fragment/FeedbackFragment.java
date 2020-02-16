@@ -98,31 +98,32 @@ public class FeedbackFragment extends Fragment {
         btnFeedbacksubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(editTextFBName.getText().toString().length()==0){
+                if(ApplicationConstant.isNetworkAvailable(getContext())) {
+                    if (editTextFBName.getText().toString().length() == 0) {
+                        editTextFBName.requestFocus();
+                        editTextFBName.setError("Please Enter Full Name");
+                        //Toast.makeText(getContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
+                    } else if (editTextFBEmailId.getText().toString().length() == 0) {
+                        editTextFBName.setError(null);
+                        editTextFBEmailId.requestFocus();
+                        editTextFBEmailId.setError("Please Enter EmailId");
+                        //Toast.makeText(getContext(),"Please enter Emai id",Toast.LENGTH_SHORT).show();
+                    } else if (editTextFBContact.getText().toString().length() == 0) {
+                        editTextFBEmailId.setError(null);
+                        editTextFBContact.requestFocus();
+                        editTextFBContact.setError("Please Enter Contact No");
+                        //Toast.makeText(getContext(),"Please enter contact",Toast.LENGTH_SHORT).show();
 
-                    editTextFBName.requestFocus();
-                    editTextFBName.setError("Please Enter Full Name");
-                    //Toast.makeText(getContext(),"Please enter Name",Toast.LENGTH_SHORT).show();
-
-                } else if(editTextFBEmailId.getText().toString().length()==0){
-                    editTextFBName.setError(null);
-                    editTextFBEmailId.requestFocus();
-                    editTextFBEmailId.setError("Please Enter EmailId");
-                    //Toast.makeText(getContext(),"Please enter Emai id",Toast.LENGTH_SHORT).show();
-                }
-                else if(editTextFBContact.getText().toString().length()==0){
-                    editTextFBEmailId.setError(null);
-                    editTextFBContact.requestFocus();
-                    editTextFBContact.setError("Please Enter Contact No");
-                    //Toast.makeText(getContext(),"Please enter contact",Toast.LENGTH_SHORT).show();
-
-                } else if(editText_FBComment.getText().toString().length()==0){
-                    editTextFBContact.setError(null);
-                    editText_FBComment.requestFocus();
-                    editText_FBComment.setError("Please Give Feedback");
-                    //Toast.makeText(getContext(),"Please enter Feedback",Toast.LENGTH_SHORT).show();
-                }else {
-                    executeFeedbackService(view);
+                    } else if (editText_FBComment.getText().toString().length() == 0) {
+                        editTextFBContact.setError(null);
+                        editText_FBComment.requestFocus();
+                        editText_FBComment.setError("Please Give Feedback");
+                        //Toast.makeText(getContext(),"Please enter Feedback",Toast.LENGTH_SHORT).show();
+                    } else {
+                        executeFeedbackService(view);
+                    }
+                }else{
+                    ApplicationConstant.displayDialogInternet(getContext(),"Connection Error","Check internet connection",false,false);
                 }
             }
 
@@ -179,9 +180,9 @@ public class FeedbackFragment extends Fragment {
                 }
                 if (response != null && response.body() != null) {
                     if (response.body().getStatus()) {
-                        dispalyDialog(view.getContext(), "Result", response.body().getMessage());
+                        displayDialog(view.getContext(), "Result", response.body().getMessage());
                     }else{
-                        dispalyDialog(view.getContext(), "Result", "Failed to submit your feedback");
+                        displayDialog(view.getContext(), "Result", "Failed to submit your feedback");
                     }
                 }
             }
@@ -190,37 +191,33 @@ public class FeedbackFragment extends Fragment {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                dispalyDialog(view.getContext(), "Result", t.toString());
+                displayDialog(view.getContext(), "Result", t.toString());
             }
         });
     }
 
 
-    private void dispalyDialog(final Context context, String result, String message) {
-        final Dialog interrnetConnection = new Dialog(context);
-        interrnetConnection.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        interrnetConnection.setContentView(R.layout.dialog_popup);
-        interrnetConnection.setCanceledOnTouchOutside(false);
-        TextView tv = (TextView) interrnetConnection.findViewById(R.id.textMessage);
+    private void displayDialog(final Context context, String result, String message) {
+        final Dialog fragmentDialog = new Dialog(context);
+        fragmentDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        fragmentDialog.setContentView(R.layout.dialog_popup);
+        fragmentDialog.setCanceledOnTouchOutside(false);
+        TextView tv = (TextView) fragmentDialog.findViewById(R.id.textMessage);
         tv.setText(message);
-        TextView titleText = (TextView) interrnetConnection.findViewById(R.id.dialogHeading);
+        TextView titleText = (TextView) fragmentDialog.findViewById(R.id.dialogHeading);
         titleText.setText(result);
-        Button btnLogoutNo = (Button) interrnetConnection.findViewById(R.id.ok);
+        Button btnLogoutNo = (Button) fragmentDialog.findViewById(R.id.ok);
         btnLogoutNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                interrnetConnection.dismiss();
-//                        Intent i = new Intent(view.getContext(),MainActivity.class);
-//                        startActivity(i);
-//                        activity.finish();
-//                        activity.finishAffinity();
+                fragmentDialog.dismiss();
                 ((MainActivity) getActivity()).setTitle("Home");
                 Fragment fragment = new HomeFragment();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
 
             }
         });
-        interrnetConnection.show();
+        fragmentDialog.show();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -233,12 +230,6 @@ public class FeedbackFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        /*if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }*/
     }
 
     @Override

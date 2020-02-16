@@ -113,37 +113,15 @@ public class GoogleMapActivity extends FragmentActivity implements OnMapReadyCal
                         markerOptions.title(historyDataList.get(i).getOneCommonName());
                         markerOptions.snippet(historyDataList.get(i).getPlaceCap());
 
-                    /*Location locations = locationManager.getLastKnownLocation(provider);
-                    List<String> providerList = locationManager.getAllProviders();
-                    if (null != locations && null != providerList && providerList.size() > 0) {
-                        double longitude = locations.getLongitude();
-                        double latitude = locations.getLatitude();
-
-                        Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-                        try {
-                            List<Address> listAddresses = geocoder.getFromLocation(latitude,
-                                    longitude, 1);
-                            if (null != listAddresses && listAddresses.size() > 0) {
-                                String state = listAddresses.get(0).getAdminArea();
-                                String country = listAddresses.get(0).getCountryName();
-                                String subLocality = listAddresses.get(0).getSubLocality();
-
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }*/
                         //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
                         BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.markericon);
                         markerOptions.icon(icon);
                         mCurrLocationMarker = mMap.addMarker(markerOptions);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.zoomTo(4));
-//                    if (mGoogleApiClient != null) {
-//                        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-//                    }
                     }
                 }else{
+                    if(historyDataList.size() ==1)
                     displayDialog("Location details not available");
                 }
             }
@@ -151,95 +129,19 @@ public class GoogleMapActivity extends FragmentActivity implements OnMapReadyCal
                 displayDialog("Location not available");
         }
     }
-    /*protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-        mGoogleApiClient.connect();
-    }*/
+
     @Override
     public void onConnected(Bundle bundle) {
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(1000);
         mLocationRequest.setFastestInterval(1000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-        /*if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,mLocationRequest,this);
-        }*/
     }
     @Override
     public void onConnectionSuspended(int i) {
     }
     @Override
     public void onLocationChanged(Location loc) {
-        //mLastLocation = location;
-        //if (mCurrLocationMarker != null) {
-        //    mCurrLocationMarker.remove();
-        //}
-        /*if(historyDataList !=null) {
-            for(int i=0;i<historyDataList.size();i++) {
-                //Showing Current Location Marker on Map
-                if (historyDataList.get(i).getLat() != null && historyDataList.get(i).getLat().length() > 0) {
-                    LatLng latLng = new LatLng(Double.parseDouble(historyDataList.get(i).getLat()), Double.parseDouble(historyDataList.get(i).getLng()));
-                    MarkerOptions markerOptions = new MarkerOptions();
-                    markerOptions.position(latLng);
-                    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                    String provider = locationManager.getBestProvider(new Criteria(), true);
-                    if (ActivityCompat.checkSelfPermission(this,
-                            Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                                    != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
-                    Location locations = locationManager.getLastKnownLocation(provider);
-                    List<String> providerList = locationManager.getAllProviders();
-                    if (null != locations && null != providerList && providerList.size() > 0) {
-                        double longitude = locations.getLongitude();
-                        double latitude = locations.getLatitude();
-                        Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-                        try {
-                            List<Address> listAddresses = geocoder.getFromLocation(latitude,
-                                    longitude, 1);
-                            if (null != listAddresses && listAddresses.size() > 0) {
-                                String state = listAddresses.get(0).getAdminArea();
-                                String country = listAddresses.get(0).getCountryName();
-                                String subLocality = listAddresses.get(0).getSubLocality();
-                                markerOptions.title(historyDataList.get(i).getOneCommonName());
-                                markerOptions.snippet(historyDataList.get(i).getPlaceCap());
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    //markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
-                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.markericon);
-                    markerOptions.icon(icon);
-                    mCurrLocationMarker = mMap.addMarker(markerOptions);
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(4));
-                    if (mGoogleApiClient != null) {
-                        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-                    }
-                }else{
-                    if(historyDataList!=null && historyDataList.size()==1){
-                        if(internetConn != null && internetConn.isShowing()){
-
-                        }else{
-                            displayDialog("Location not available");
-                        }
-                    }
-                }
-            }
-        }else{
-            if(internetConn != null && internetConn.isShowing()){
-
-            }else{
-                displayDialog("Data not available");
-            }
-        }*/
     }
 
     private void displayDialog(String message) {

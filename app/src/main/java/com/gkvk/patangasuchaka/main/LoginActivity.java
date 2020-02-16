@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (ApplicationConstant.isNetworkAvailable(LoginActivity.this)) {
                         executeLoginService();
                     } else {
-                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Internet Connection Issue", "Please check internet connection ...", false, false);
+                        ApplicationConstant.displayDialogInternet(LoginActivity.this, "Internet Connection Issue", "Please check internet connection ...", false, false);
                     }
                 }
             }
@@ -160,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }else{
-                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
+                        ApplicationConstant.displayDialogInternet(LoginActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
                     }
                 }
             }
@@ -170,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                     dialog.dismiss();
                 }
                 //ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Result", t.toString(), false, false);
-                ApplicationConstant.dispalyDialogInternet(LoginActivity.this, "Invalid credentials", "Invalid Credentials or verification is pending ", false, false);
+                ApplicationConstant.displayDialogInternet(LoginActivity.this, "Invalid credentials", "Invalid Credentials or verification is pending ", false, false);
 
             }
         });
@@ -259,9 +259,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (response != null && response.body() != null) {
                     if (response.body().getStatus()) {
-                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this,"Result",response.body().getData(),false,false);
+                        ApplicationConstant.displayDialogInternet(LoginActivity.this,"Result",response.body().getData(),false,false);
                     }else{
-                        ApplicationConstant.dispalyDialogInternet(LoginActivity.this,"Result","Failed to send password reset link",false,false);
+                        ApplicationConstant.displayDialogInternet(LoginActivity.this,"Result","Failed to send password reset link",false,false);
                     }
                 }
             }
@@ -274,7 +274,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                ApplicationConstant.dispalyDialogInternet(LoginActivity.this,"Result",t.getMessage(),false,false);
+                ApplicationConstant.displayDialogInternet(LoginActivity.this,"Result",t.getMessage(),false,false);
             }
         });
     }
