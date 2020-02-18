@@ -122,11 +122,11 @@ public class GoogleMapActivity extends FragmentActivity implements OnMapReadyCal
                     }
                 }else{
                     if(historyDataList.size() ==1)
-                    displayDialog("Location details not available");
+                    displayDialog("Species details not available");
                 }
             }
         }else{
-                displayDialog("Location not available");
+            displayDialog("Species not available");
         }
     }
 

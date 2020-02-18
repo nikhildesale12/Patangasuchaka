@@ -175,29 +175,13 @@ public class DistributionSearchActivity extends AppCompatActivity {
                     Set<String> addressSet = new HashSet<>();
                     hashMap = new HashMap<>();
                     for (int i=0;i<response.body().getData().size();i++){
-                        /*if(	response.body().getData().get(i).getPlaceCap() != null && response.body().getData().get(i).getPlaceCap().length()>0 &&
-                                (response.body().getData().get(i).getLat() == null || (response.body().getData().get(i).getLat() != null &&  response.body().getData().get(i).getLat().trim().length()==0))
-                                ||
-                                (response.body().getData().get(i).getLng() == null || (response.body().getData().get(i).getLng() != null && response.body().getData().get(i).getLng().trim().length()==0))){
-                            Geocoder coder = new Geocoder(DistributionSearchActivity.this);
-                            List<Address> address;
-                            try {
-                                address = coder.getFromLocationName(response.body().getData().get(i).getPlaceCap(), 5);
-                                Address location = address.get(0);
-                                response.body().getData().get(i).setLat(String.valueOf(location.getLatitude()));
-                                response.body().getData().get(i).setLng(String.valueOf(location.getLongitude()));
-                                System.out.println("Updated Lat "+i+":"+String.valueOf(location.getLatitude()));
-                                System.out.println("Updated Lng "+i+":"+String.valueOf(location.getLongitude()));
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
-                        }*/
-                        butterflySet.add(response.body().getData().get(i).getOneCommonName());
-                        hashMap.put(response.body().getData().get(i).getOneCommonName(),response.body().getData().get(i));
+                        if(response.body().getData().get(i).getLng() != null && response.body().getData().get(i).getLng().trim().length()>0) {
+                            butterflySet.add(response.body().getData().get(i).getOneCommonName());
+                            hashMap.put(response.body().getData().get(i).getOneCommonName(),response.body().getData().get(i));
 
-                        addressSet.add(response.body().getData().get(i).getPlaceCap());
-                        hashMap.put(response.body().getData().get(i).getPlaceCap(),response.body().getData().get(i));
-
+                            addressSet.add(response.body().getData().get(i).getPlaceCap());
+                            hashMap.put(response.body().getData().get(i).getPlaceCap(),response.body().getData().get(i));
+                        }
                     }
                     butterflyList = convertSetToList(butterflySet);
                     addressList = convertSetToList(addressSet);

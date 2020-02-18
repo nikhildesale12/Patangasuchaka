@@ -30,7 +30,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wiliam Snoe"
+                android:text="User Full Name"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:textSize="21sp"/>
@@ -41,7 +41,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wiliam Snoe"
+                android:text="Username"
                 android:textColor="#fff"
                 android:textSize="20sp"/>
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nilimapatil@gmail.com"
+                android:text="email id"
                 android:textColor="#fff" />
 
         </LinearLayout>
