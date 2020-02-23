@@ -1,8 +1,12 @@
 <resources>
     <!--Debug key-->
-<!--
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDB89-SMhUtPWW-jw4yzBUzJNijmcgk8MI</string>
--->
+
+
+<!--    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDB89-SMhUtPWW-jw4yzBUzJNijmcgk8MI</string>-->
+
+
    <!--Replease-->
+
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAlmb2zJOU_ACT80GQxfFdEMtpfYOrOg3A</string>
+
 </resources>

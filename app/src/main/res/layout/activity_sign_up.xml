@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".patangasuchaka.main.SignUpActivity">
+    tools:context=".main.SignUpActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -122,7 +122,7 @@
                     android:orientation="horizontal"
                     android:weightSum="1">
 
-                    <com.gkvk.patangasuchaka.bean.CaptchaImageView
+                    <com.gkvk.bean.CaptchaImageView
                         android:id="@+id/captcha_image_view"
                         android:layout_width="0dp"
                         android:layout_height="36dp"

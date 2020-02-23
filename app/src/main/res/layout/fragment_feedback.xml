@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".patangasuchaka.fragment.FeedbackFragment">
+    tools:context=".fragment.FeedbackFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -99,17 +99,42 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/hint" />
 
-            <Button
-                android:id="@+id/btnFeedbacksubmit"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editText_FBComment"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="80dp"
-                android:background="@drawable/btn_shape_capsule"
-                android:padding="20dp"
-                android:text="Send Feedback">
-            </Button>
+                android:orientation="horizontal"
+                android:id="@+id/buttonLayout"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:weightSum="1"
+                android:layout_below="@id/editText_FBComment">
+
+                <Button
+                    android:id="@+id/btnFeedbacksubmit"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="80dp"
+                    android:background="@drawable/btn_shape_capsule"
+                    android:padding="20dp"
+                    android:text="Send"/>
+
+                <Button
+                    android:id="@+id/btnFeedbackback"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="80dp"
+                    android:background="@drawable/btn_shape_capsule"
+                    android:padding="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Back"/>
+
+            </LinearLayout>
+
+
         </RelativeLayout>
     </ScrollView>
 

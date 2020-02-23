@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:background="@drawable/gradient"
-    tools:context=".patangasuchaka.fragment.ProfileFragment">
+    tools:context=".fragment.ProfileFragment">
 
         <LinearLayout
             android:id="@+id/layout_profile"

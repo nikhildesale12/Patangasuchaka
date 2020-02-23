@@ -20,7 +20,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".patangasuchaka.util.MyApplication"
+        android:name=".util.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/appicon_new"
         android:label="@string/app_name"
@@ -28,7 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".patangasuchaka.main.LargeImageActivity"></activity>
+        <activity android:name=".main.LargeImageActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -40,36 +40,35 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
-            android:name=".patangasuchaka.main.GoogleMapActivity"
+            android:name=".main.GoogleMapActivity"
             android:label="@string/title_activity_google_map" />
         <activity
-            android:name=".patangasuchaka.main.SignUpActivity"
+            android:name=".main.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".patangasuchaka.main.LoginActivity"
+            android:name=".main.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".patangasuchaka.main.DistributionSearchActivity"
+            android:name=".main.DistributionSearchActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".patangasuchaka.main.MainActivity"
+            android:name=".main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".patangasuchaka.main.IdentificationActivity"
+            android:name=".main.IdentificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".patangasuchaka.main.UploadActivity"
+            android:name=".main.UploadActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".patangasuchaka.main.DashboardActivity"
+            android:name=".main.DashboardActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".patangasuchaka.main.SpeciesSearchActivity"
+            android:name=".main.SpeciesSearchActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".patangasuchaka.entry.SplashNewActivity"
+            android:name=".entry.SplashNewActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/splash_new"
-    tools:context="com.gkvk.patangasuchaka.entry.SplashNewActivity">
+    tools:context=".entry.SplashNewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

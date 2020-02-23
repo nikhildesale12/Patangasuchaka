@@ -4,10 +4,26 @@
         android:layout_width = "match_parent"
         android:gravity = "center"
         android:layout_height = "match_parent"
-        tools:context = ".patangasuchaka.fragment.IntroductionFragment"
-        android:orientation = "vertical">
+        tools:context = ".fragment.IntroductionFragment"
+        android:orientation = "vertical"
+        android:weightSum="1">
+
         <WebView
             android:id = "@+id/web_view"
             android:layout_width = "match_parent"
-            android:layout_height = "match_parent" />
+            android:layout_height = "0dp"
+            android:layout_weight="0.93"/>
+
+        <Button
+            android:id="@+id/backFromView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.07"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/btn_shape_capsule_back"
+            android:text="Back"/>
+
 </LinearLayout>

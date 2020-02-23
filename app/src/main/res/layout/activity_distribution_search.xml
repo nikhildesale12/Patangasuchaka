@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".patangasuchaka.main.DistributionSearchActivity">
+    tools:context=".main.DistributionSearchActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarDistribution"
