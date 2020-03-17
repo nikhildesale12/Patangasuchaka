@@ -1,7 +1,9 @@
 package com.gkvk.main;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
 import androidx.core.content.FileProvider;
 
 import android.app.Activity;
@@ -44,6 +46,7 @@ import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,6 +59,8 @@ import com.gkvk.util.ApplicationConstant;
 import com.gkvk.util.GPSTracker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,7 +97,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UploadActivity extends AppCompatActivity {
+public class UploadActivity extends AppCompatActivity implements CropImageView.OnGetCroppedImageCompleteListener, CropImageView.OnSetImageUriCompleteListener {
     RelativeLayout imageInfoRelativeLayout;
     double latitude = 0;
     double longitude = 0;
@@ -102,6 +107,20 @@ public class UploadActivity extends AppCompatActivity {
     String pathtoUpload;
     String imageName;
     EditText txtDate;
+    LinearLayout croplinearlayout;
+    LinearLayout mainlinearlayout;
+    Button buttonCrop ;
+    ImageView buttonGoToCrop;
+    Uri imageUri;
+    private CropImageView mCropImageView;
+    private TextView mProgressViewText;
+    private View mProgressView;
+
+    @Override
+    public void onSupportActionModeStarted(@NonNull ActionMode mode) {
+        super.onSupportActionModeStarted(mode);
+    }
+
     AutoCompleteTextView autocompletePlaces;
     String userName;
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -209,6 +228,24 @@ public class UploadActivity extends AppCompatActivity {
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
+            }
+        });
+
+        buttonGoToCrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                croplinearlayout.setVisibility(View.VISIBLE);
+                mainlinearlayout.setVisibility(View.GONE);
+                mCropImageView.setImageUriAsync(imageUri);
+            }
+        });
+
+        buttonCrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCropImageView.getCroppedImageAsync();
+                mProgressViewText.setText("Cropping...");
+                mProgressView.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -323,7 +360,9 @@ public class UploadActivity extends AppCompatActivity {
                             pathtoUpload = ApplicationConstant.FOLDER_PATH + File.separator + imageName;
                             //compress and set image to image view
                             compressImage(ApplicationConstant.FOLDER_PATH + File.separator + imageName, ApplicationConstant.MODULE_CAPTURE);
-
+                            //imageUri = Uri.parse(pathtoUpload);
+                            //imageUri = CropImage.getPickImageResultUri(this, data);
+                            imageUri = Uri.parse("file://"+getIntent().getExtras().getString("imageUri"));
                         }
                     } else if (resultCode == Activity.RESULT_CANCELED) {
                         Toast.makeText(this, "Image not capture", Toast.LENGTH_SHORT).show();
@@ -354,6 +393,8 @@ public class UploadActivity extends AppCompatActivity {
 
                         File destFile = new File(pathtoUpload);
                         copyFile(new File(getPath(data.getData())), destFile,pathtoUpload);
+                        //imageUri = Uri.parse(pathtoUpload);
+                        imageUri = CropImage.getPickImageResultUri(this, data);
 
                     } else if (resultCode == Activity.RESULT_CANCELED) {
                         Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
@@ -452,6 +493,13 @@ public class UploadActivity extends AppCompatActivity {
         captureImage = (ImageView) findViewById(R.id.selectedImage);
         autocompletePlaces = (AutoCompleteTextView) findViewById(R.id.autocompletePlaces);
         txtDate = (EditText) findViewById(R.id.txtDate);
+        croplinearlayout = (LinearLayout) findViewById(R.id.croplinearlayout);
+        mainlinearlayout = (LinearLayout) findViewById(R.id.mainlinearlayout);
+        buttonCrop = (Button) findViewById(R.id.buttonCrop);
+        buttonGoToCrop = (ImageView) findViewById(R.id.buttonGoToCrop);
+        mProgressViewText = (TextView) findViewById(R.id.ProgressViewText);
+        mCropImageView = (CropImageView) findViewById(R.id.CropImageView);
+        mProgressView = findViewById(R.id.ProgressView);
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new
@@ -894,6 +942,42 @@ public class UploadActivity extends AppCompatActivity {
             }
         });
         finishAffinity();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mCropImageView.setOnSetImageUriCompleteListener(this);
+        mCropImageView.setOnGetCroppedImageCompleteListener(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mCropImageView.setOnSetImageUriCompleteListener(null);
+        mCropImageView.setOnGetCroppedImageCompleteListener(null);
+    }
+
+    @Override
+    public void onSetImageUriComplete(CropImageView cropImageView, Uri uri, Exception error) {
+        mProgressView.setVisibility(View.INVISIBLE);
+        if (error != null) {
+            Log.e("Crop", "Failed to load image for cropping onSetImageUriComplete", error);
+            Toast.makeText(this, "Something went wrong, try again", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onGetCroppedImageComplete(CropImageView view, Bitmap bitmap, Exception error) {
+        mProgressView.setVisibility(View.INVISIBLE);
+        if (error == null) {
+            if (bitmap != null) {
+                mCropImageView.setImageBitmap(bitmap);
+            }
+        } else {
+            Log.e("Crop", "Failed to crop image onGetCroppedImageComplete", error);
+            Toast.makeText(this, "Something went wrong, try again", Toast.LENGTH_LONG).show();
+        }
     }
 
 }
