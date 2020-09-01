@@ -26,7 +26,6 @@ import android.widget.Toast;
 import com.gkvk.R;
 import com.gkvk.bean.SpeciesData;
 import com.gkvk.adapter.ButterflyAdapter;
-import com.gkvk.bean.SpeciesData;
 
 import org.json.JSONArray;
 import org.json.JSONException;

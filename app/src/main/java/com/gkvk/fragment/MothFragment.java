@@ -69,14 +69,13 @@ public class MothFragment extends Fragment implements View.OnClickListener{
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
         new loadDataFromAsset(view).execute();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
-            }
+        }
 
             @Override
             public boolean onQueryTextChange(String newText) {

@@ -47,8 +47,8 @@ public class ApplicationConstant {
     public static final String FOLDER_PATH = Environment.getExternalStorageDirectory() + File.separator + "PATANGASUCHAKA" ;
     //public static final String IMAGE_NAME = "Upload_" ;
 
-    public static final String ENDPOINT_URL_AI_UPLOAD = "http://45.117.30.211:8080/classify";
-    public static final String ENDPOINT_URL_WEB_UPLOAD = "http://www.pathangasuchaka.in/pathanga_api/index.php/api_auth/Imagesync/upload";
+   // public static final String ENDPOINT_URL_AI_UPLOAD = "http://45.117.30.211:8080/classify";
+   // public static final String ENDPOINT_URL_WEB_UPLOAD = "http://www.pathangasuchaka.in/pathanga_api/index.php/api_auth/Imagesync/upload";
     public static final String EXTENTION_JPG=".jpg";
     public static final String MY_PREFS_NAME = "myPref";
     public static final String MY_PREFS_NAME_INTRO = "myPrefIntro";
@@ -70,7 +70,7 @@ public class ApplicationConstant {
     public static final String UPLOAD_DATA_MOTH_URL = "/pathanga_api/index.php/api_auth/Imagesync/imagemoth";
     public static final String GET_DISTRIBUTION_DATA ="/pathanga_api/index.php/api_auth/Authentication/distribution" ;
     public static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
-    public static final String  UPLOAD_IMAGE_WEB = "/pathanga_api/index.php/api_auth/Imagesync/upload";
+    public static final String UPLOAD_IMAGE_WEB = "/pathanga_api/index.php/api_auth/Imagesync/upload";
 
     public static final String BASE_URL_AI = "http://45.117.30.211:8080";
     public static final String UPLOAD_IMAGE_AI = "/classify";

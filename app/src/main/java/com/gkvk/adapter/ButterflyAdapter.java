@@ -21,6 +21,7 @@ public class ButterflyAdapter extends RecyclerView.Adapter<ButterflyAdapter.MyVi
 
     private Context mContext;
     private List<SpeciesData> butterflyList;
+    private List<SpeciesData> butterflyFullList;
     SpeciesFilter speciesFilter ;
 
     @Override
@@ -45,6 +46,7 @@ public class ButterflyAdapter extends RecyclerView.Adapter<ButterflyAdapter.MyVi
 
     public ButterflyAdapter(List<SpeciesData> butterflyList,List<SpeciesData> butterflyListAll) {
         this.butterflyList = butterflyList;
+        this.butterflyFullList = butterflyList;
     }
 
     @Override
@@ -80,6 +82,7 @@ public class ButterflyAdapter extends RecyclerView.Adapter<ButterflyAdapter.MyVi
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
             // We implement here the filter logic
+            butterflyList = butterflyFullList;
             if (constraint == null || constraint.length() == 0) {
                 // No filter implemented we return all the list
                 results.values = butterflyList;

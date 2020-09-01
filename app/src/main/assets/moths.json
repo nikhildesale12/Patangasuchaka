@@ -1,2002 +1,4446 @@
 [
-    {
-        "CN": "NA",
-        "SPS_list": "Abaciscus tristis"
-    },
-    {
-        "CN": "Castor Semi-Looper",
-        "SPS_list": "Achaea janata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Achaea serva"
-    },
-    {
-        "CN": "Bee Robber",
-        "SPS_list": "Acherontia lachesis"
-    },
-    {
-        "CN": "Eastern Death's Head Hawkmoth",
-        "SPS_list": "Acherontia styx"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Acolutha pictaria"
-    },
-    {
-        "CN": "Pale Shoulder",
-        "SPS_list": "Acontia lucida"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Acosmeryx anceus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Acosmeryx naga"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Acosmeryx pseudonaga"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Acosmeryx shervillii"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Acropteris iphiata"
-    },
-    {
-        "CN": "Malaysian Moon Moth",
-        "SPS_list": "Actias maenas"
-    },
-    {
-        "CN": "Indian Moon Moth",
-        "SPS_list": "Actias selene"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Adites frigida"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Aegocera venulia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Aethaloessa calidalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Aetholix flavibasalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Agathia codina"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Agathia laetata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Agathia lycaenaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Agathodes ostentalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Aglaomorpha plagiata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Agrioglypta eurytusalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Agrioglypta itysalis"
-    },
-    {
-        "CN": "Convolvulus Hawkmoth",
-        "SPS_list": "Agrius convolvuli"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Albara reversaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Alcis maculata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Aloa lactinea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Altha subnotata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Amata cyssea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Amata passalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Amata sperbius"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Amblychia angeronaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ambulyx canescens"
-    },
-    {
-        "CN": "Cinnamon Gliding Hawkmoth",
-        "SPS_list": "Ambulyx moorei"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ambulyx ochracea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ambulyx sericeipennis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Amerila astreus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Amesia sanguiflua"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ampelophaga rubiginosa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Amplypterus panopus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Angonyx testacea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Anisoneura aluco"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Anisoneura salebrosa"
-    },
-    {
-        "CN": "Tropical Anomis",
-        "SPS_list": "Anomis flava"
-    },
-    {
-        "CN": "Assam Silkmoth ",
-        "SPS_list": "Antheraea assamensis"
-    },
-    {
-        "CN": "Oak Tasar Silk Moth",
-        "SPS_list": "Antheraea frithi"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Antheraea helferi"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Antheraea paphia"
-    },
-    {
-        "CN": "Chinese Tussar Moth",
-        "SPS_list": "Antheraea pernyi"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Anticarsia irrorata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Antipercnia belluaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Antitrygodes divisaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Aporandria specularia"
-    },
-    {
-        "CN": "Apsarasa radians",
-        "SPS_list": "Apsarasa radians"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Archaeoattacus edwardsii"
-    },
-    {
-        "CN": "Ramie Moth ",
-        "SPS_list": "Arcte coerula"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Arctioblepsis rubida"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Areas galactina"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Argina astrea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Argyrocosma inductaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Arsacia rectalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Artena dotata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Arthroschista hilaralis"
-    },
-    {
-        "CN": "Tropical Tiger Moth",
-        "SPS_list": "Asota caricae"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Asota egens"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Asota ficus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Asota heliconia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Asota plaginota"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Asota plana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Asota producta"
-    },
-    {
-        "CN": "Atlas Moth",
-        "SPS_list": "Attacus atlas"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Attacus taprobanis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Autocharis fessalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Barsine euprepioides"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Bastilla acuta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Bastilla amygdalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Bastilla arcuata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Bastilla crameri"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Bastilla fulvotaenia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Bastilla joviana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Berta chrysolineata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Biston bengaliaria"
-    },
-    {
-        "CN": "Peppered Moth ",
-        "SPS_list": "Biston betularia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Biston panterinaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Biston regalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Biston suppressaria"
-    },
-    {
-        "CN": "Dotted Sable",
-        "SPS_list": "Bocchoris inspersalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Borbacha pardaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Botyodes asialis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Botyodes diniasalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Bradina diagonalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Brahmaea hearseyi"
-    },
-    {
-        "CN": "Wallich's Owl Moth",
-        "SPS_list": "Brahmaea wallichii"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Buzara onelia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cadarena pudoraria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Caeneressa diaphana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Calindoea argentalis"
-    },
-    {
-        "CN": "Grote's Tussock Moth",
-        "SPS_list": "Calliteara grotei"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Carea angulata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Carea varipes"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Carriola ecnomoda"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Catephia linteola"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cechetra lineosa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Celenna festivaria"
-    },
-    {
-        "CN": "Pellucid Hawkmoth",
-        "SPS_list": "Cephonodes hylas"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chabula acamasalis"
-    },
-    {
-        "CN": "Triangular-striped Moth ",
-        "SPS_list": "Chalciope mygdon"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chasmina candida"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chiasmia eleonora"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chiasmia emersaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chiasmia fidoniata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chiasmia nora"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Choreutis ophiosema"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chorodna strixaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chrysaeglia magnifica"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Chrysocraspeda faganaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cirrhochrista brizoalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cirrhochrista fumipalpis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Clanis bilineata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cleora fraterna"
-    },
-    {
-        "CN": "Rice Leaf-Roller",
-        "SPS_list": "Cnaphalocrocis medinalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Comibaena attenuata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Comibaena cassidara"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Comostola laesaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Comostola pyrrhogona"
-    },
-    {
-        "CN": "Yellow Peach Moth",
-        "SPS_list": "Conogethes punctiferalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Corymica deducta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Creatonotos gangis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Creatonotos transiens"
-    },
-    {
-        "CN": "Cricula Silkmoth",
-        "SPS_list": "Cricula trifenestrata"
-    },
-    {
-        "CN": "Eastern Streaked Plusia",
-        "SPS_list": "Ctenoplusia albostriata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cyana coccinea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cyana puella"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cyclidia substigmaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cyclodes omma"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cyclosia panthona"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Cyclosia papilionaris"
-    },
-    {
-        "CN": "Drury's Jewel",
-        "SPS_list": "Cydalima laticostalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Daddala lucilla"
-    },
-    {
-        "CN": "Jade Hawkmoth",
-        "SPS_list": "Daphnis hypothous"
-    },
-    {
-        "CN": "Oleander Hawkmoth",
-        "SPS_list": "Daphnis nerii"
-    },
-    {
-        "CN": "Elephant Hawkmoth",
-        "SPS_list": "Deilephila elpenor"
-    },
-    {
-        "CN": "Cucumber Moth",
-        "SPS_list": "Diaphania indica"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Dichocrocis zebralis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Dichromia sagitta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Dolbina inexacta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Drepana pallida"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Duomitus ceramica"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Dyrzela plagiata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Dysallacta negatalis"
-    },
-    {
-        "CN": "Jigsaw",
-        "SPS_list": "Dysgonia torrida"
-    },
-    {
-        "CN": "False Tiger Moth ",
-        "SPS_list": "Dysphania militaris"
-    },
-    {
-        "CN": "Blue Tiger Moth",
-        "SPS_list": "Dysphania percota"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Earias cupreoviridis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Earias flavida"
-    },
-    {
-        "CN": "Egyptian Bollworm",
-        "SPS_list": "Earias insulana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Earias vittella"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ecliptopera rectilinea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Egnasia ephyrodalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Elibia dolichus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eligma narcissus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Endocrossis flavibasalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Enpinanga assamensis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Entomogramma fautrix"
-    },
-    {
-        "CN": "Spotted Episparis ",
-        "SPS_list": "Episparis liturata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Episparis tortuosalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Episteme adulatrix"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Episteme vetula"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ercheia cyllaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Erebomorpha fulgurita"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Erebus caprimulgus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Erebus ephesperis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Erebus gemmans"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Erebus hieroglyphica"
-    },
-    {
-        "CN": "Common Owl Moth ",
-        "SPS_list": "Erebus macrops"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eressa confinis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ericeia eriophora"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ericeia inangulata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ericeia pertendens"
-    },
-    {
-        "CN": "Red Slug Caterpillar",
-        "SPS_list": "Eterusia aedea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eublemma abrupta"
-    },
-    {
-        "CN": "Banner",
-        "SPS_list": "Eublemma anachoresis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eublemma roseonivea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Euchromia polymena"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eucyclodes gavissima"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eucyclodes semialba"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eudocima homaena"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eudocima hypermnestra"
-    },
-    {
-        "CN": "Dot-underwing Moth",
-        "SPS_list": "Eudocima materna"
-    },
-    {
-        "CN": "Common Fruit-Piercing Moth ",
-        "SPS_list": "Eudocima phalonia"
-    },
-    {
-        "CN": "Green Fruit-piercing Moth",
-        "SPS_list": "Eudocima salaminia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eumeta variegata"
-    },
-    {
-        "CN": "Green Rippled Hawkmoth",
-        "SPS_list": "Eupanacra busiris"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eupanacra mydon"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Euplocia membliaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eupterote undata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eurrhyparodes bracteolalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Eurrhyparodes tricoloralis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Euthrix laeta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Exsula dentatrix"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Fascellina chromataria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Fascellina plagiata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Filodes fulvidorsalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Formofentonia orbifer"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Gasterocome pannosaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Gazalina chrysolopha"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Glanycus insolitus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Glycythyma chrysorycta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Glyphodes actorionalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Glyphodes bicolor"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Glyphodes bivitralis"
-    },
-    {
-        "CN": "Jack Fruit Borer",
-        "SPS_list": "Glyphodes caesalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Glyphodes canthusalis"
-    },
-    {
-        "CN": "Swan Plant Flower Moth",
-        "SPS_list": "Glyphodes onychinalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Glyphodes stolalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Gonitis mesogona"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Gonodontis clelia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Grammodes geometrica"
-    },
-    {
-        "CN": "The Geometrician",
-        "SPS_list": "Grammodes stolida"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hamodes propitia"
-    },
-    {
-        "CN": "Cotton Leaf Roller ",
-        "SPS_list": "Haritalodes derogata"
-    },
-    {
-        "CN": "Cotton Bollworm Moth ",
-        "SPS_list": "Helicoverpa armigera"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hemithea tritonaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hemonia orbiferana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Heortia vitessoides"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Herpetogramma cynaralis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hesudra divisa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Heterocnephes lymphatalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Heterostegane subtessellata"
-    },
-    {
-        "CN": "Vine Hawkmoth",
-        "SPS_list": "Hippotion celerio"
-    },
-    {
-        "CN": "Swinhoe's Striated Hawkmoth",
-        "SPS_list": "Hippotion rosetta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hippotion velox"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Histia flabellicornis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Homodes crocea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Homodes vivida"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Horithyatira decorata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hulodes caranea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hyblaea firmamentum"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hyblaea puera"
-    },
-    {
-        "CN": "Ornate Hydriris Moth",
-        "SPS_list": "Hydriris ornatalis"
-    },
-    {
-        "CN": "Bedstraw Hawkmoth ",
-        "SPS_list": "Hyles gallii"
-    },
-    {
-        "CN": "Striped Hawkmoth",
-        "SPS_list": "Hyles livornica"
-    },
-    {
-        "CN": "Spotted Beet Webworm Moth",
-        "SPS_list": "Hymenia perspectalis"
-    },
-    {
-        "CN": "Lantana Defoliator",
-        "SPS_list": "Hypena laceratalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hyperythra lutea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hypocala deflorata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hypocala subsatura"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hypochrosis hyadaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hypomecis cineracea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hypomecis transcissa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hypopyra vespertilio"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hyposidra infixaria"
-    },
-    {
-        "CN": "Black Looper",
-        "SPS_list": "Hyposidra talaca"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Hyposidra violescens"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Idaea costiguttata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Idaea macrospila"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Idaea vacillata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ischyja ferrifracta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ischyja manlia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Isocentris filalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Karana gemmifera"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Krananda lucidaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Krananda semihyalina"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lamprosema commixta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lamprosema tampiusalis"
-    },
-    {
-        "CN": "Apple Hawkmoth",
-        "SPS_list": "Langia zenzeroides"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lebeda nobilis"
-    },
-    {
-        "CN": "Eggplant Fruit and Shoot Borer",
-        "SPS_list": "Leucinodes orbonalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Loboschiza koenigiana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Locharna strigipennis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Loepa katinka"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lopharthrum comprimens"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lophophelma vigens"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Luxiaria phyllosaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lyclene arcuata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lyclene undulosa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lygniodes hypoleuca"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lymantria concolor"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lymantria marginata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lymantria mathura"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Lymantria semicincta"
-    },
-    {
-        "CN": "Tropical Swallowtail Moth",
-        "SPS_list": "Lyssa zampa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Macaldenia palumba"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Macrobrochis gigas"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Macrocilix maia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Macrocilix mysticata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Macroglossum bombylans"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Macroglossum gyrans"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Macroglossum neotroglodytus"
-    },
-    {
-        "CN": "Maile Pilau Hornworm",
-        "SPS_list": "Macroglossum pyrrhosticta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Macroglossum sitiene"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Maliattha separata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Maliattha signifera"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Mangina argus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Maruca amboinalis"
-    },
-    {
-        "CN": "Mung Bean Moth",
-        "SPS_list": "Maruca vitrata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Marumba cristata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Marumba dyras"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Marumba sperchius"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Maxates coelataria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Maxates thetydaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Megacorma obliqua"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Meganoton nyctiphanes"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Metanastria gemella"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Metanastria hyrtaca"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Metapercnia ductaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Metoeca foedalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Microblepsis leucosticta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Micronia aculeata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Milionia basalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Miltochrista dentifasciata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Mimeusemia postica"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Miresa bracteata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Mixochlora vittata"
-    },
-    {
-        "CN": "Sugarcane Looper",
-        "SPS_list": "Mocis frugalis"
-    },
-    {
-        "CN": "Brown-striped Semilooper",
-        "SPS_list": "Mocis undata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Morwennius decoratus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nacna malachitis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nausinoe geometralis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Negeta contrariata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Neocerura liturata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Neochera dominia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Neochera inops"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Neogurelca hyas"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nephele hespera"
-    },
-    {
-        "CN": "Footman Moth",
-        "SPS_list": "Nepita conferta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Netria multispinae"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Netria viridescens"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nevrina procopia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nola lucidalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Notarcha aurolinealis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Numenes siletti"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nyctemera adversata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nyctemera arctata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nyctemera carissima"
-    },
-    {
-        "CN": "Marbled White Moth ",
-        "SPS_list": "Nyctemera coleta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Nyctemera lacticinia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Obeidia lucifera"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Odontopera bilinearia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Oeonistis altica"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Olene inclusa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Olene mendosa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Olepa ricini"
-    },
-    {
-        "CN": "Bean Leafroller",
-        "SPS_list": "Omiodes diemenalis"
-    },
-    {
-        "CN": "Bean-leaf Webworm Moth",
-        "SPS_list": "Omiodes indicata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ommatophora luminosa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Omphisa anastomosalis"
-    },
-    {
-        "CN": "Green Drab",
-        "SPS_list": "Ophiusa tirhaca"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ophthalmitis herbidaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Oraesia emarginata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Oreta extensa"
-    },
-    {
-        "CN": "Cocoa Tussock Moth",
-        "SPS_list": "Orgyia postica"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Orthocabera sericea"
-    },
-    {
-        "CN": "Gem Moth",
-        "SPS_list": "Orthonama obstipata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Orudiza protheclaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Orybina flaviplaga"
-    },
-    {
-        "CN": "Longan Semi-Looper",
-        "SPS_list": "Oxyodes scrobiculata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pachynoa sabelialis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pagyda salvalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Palpoctenidia phoenicosoma"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Paracrama dulcissima"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Paracymoriza vagalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Paralebeda plagifera"
-    },
-    {
-        "CN": "Hydrilla Leafcutter Moth",
-        "SPS_list": "Parapoynx diminutalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Parapoynx fluctuosalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Parapoynx stagnalis"
-    },
-    {
-        "CN": "Blue-striped Nettle Grub",
-        "SPS_list": "Parasa lepida"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Parasa pastoralis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pareuchaetes pseudoinsulata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Parotis marginata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Parum colligata"
-    },
-    {
-        "CN": "Mango Shoot Borer",
-        "SPS_list": "Penicillaria jocosatrix"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Penicillifera apicalis"
-    },
-    {
-        "CN": "Green Pergesa Hawkmoth",
-        "SPS_list": "Pergesa acteus"
-    },
-    {
-        "CN": "Poinciana Looper",
-        "SPS_list": "Pericyma cruegeri"
-    },
-    {
-        "CN": "Banyan Tussock Moth",
-        "SPS_list": "Perina nuda"
-    },
-    {
-        "CN": "Grote's Buff-Tip",
-        "SPS_list": "Phalera grotei"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Phazaca theclata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Phlogophora albovittata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Phocoderma velutina"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Phyllodes eyndhovii"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pidorus glaucopis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pindara illibata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pingasa ruginaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Platyja umbrina"
-    },
-    {
-        "CN": "Snake Vine Moth",
-        "SPS_list": "Plusiodonta coelonota"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Plusiopalpa adrasta"
-    },
-    {
-        "CN": "Diamondback Moth",
-        "SPS_list": "Plutella xylostella"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Plutodes costatus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Plutodes exquisita"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Plutodes flavescens"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pogonopygia nigralbata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Polydesma boarmoides"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Polytela gloriosae"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Polythlipta divaricata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Problepsis albidior"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Problepsis vulgaris"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Prophantis adusta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Protuliocnemis partita"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pseudeuchlora kafebera"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pseudomicronia advocataria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Psilalcis albibasis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Psilogramma discistriga"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Psilogramma increta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Psimada quadripennis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pycnarmon cribrata"
-    },
-    {
-        "CN": "Chequered Snout",
-        "SPS_list": "Pygospila tyres"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pyrausta phoenicealis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Pyrinioides sinuosus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ramadasa pavo"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Rehimena phrynealis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Retina rubrivitta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Rhagastis castor"
-    },
-    {
-        "CN": "Vestal",
-        "SPS_list": "Rhodometra sacraria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Ruttenstorferia bipartita"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Sameodes cancellalis"
-    },
-    {
-        "CN": "Canning's Lesser Atlas Moth",
-        "SPS_list": "Samia canningii"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Sarbanissa albifascia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Saroba pustulifera"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Saturnia thibeta"
-    },
-    {
-        "CN": "Rice Yellow Stem Borer",
-        "SPS_list": "Scirpophaga incertulas"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Scopelodes sericea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Scopula emissaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Scopula opicata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Scopula pulchellata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Semiothisops macariata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Serrodes campana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Siglophora ferreilutea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Siglophora sanguinolenta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Singara diversalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Sinna extrema"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Somena scintillans"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Somera viridifusca"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Spirama spp"
-    },
-    {
-        "CN": "Oriental Leafworm Moth",
-        "SPS_list": "Spodoptera litura"
-    },
-    {
-        "CN": "Hawaiian Beet Webworm Moth",
-        "SPS_list": "Spoladea recurvalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Stauropus alternus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Streblote siva"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Sympis rufibasis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Synclera traducalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Syngamia falsidicalis"
-    },
-    {
-        "CN": "Syntomoides imaon",
-        "SPS_list": "Syntomoides imaon"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Syntypistis comatus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Talanga sexpunctalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Tanaorhinus viridiluteatus"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Tatobotys biannulalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Tephriopis divulsa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Terastia egialealis"
-    },
-    {
-        "CN": "Common Butterfly Moth ",
-        "SPS_list": "Tetragonus catamitus"
-    },
-    {
-        "CN": "Levant Hawkmoth",
-        "SPS_list": "Theretra alecto"
-    },
-    {
-        "CN": "Boisduval's Hawkmoth",
-        "SPS_list": "Theretra boisduvalii"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Theretra clotho"
-    },
-    {
-        "CN": "Pale Brown Hawkmoth",
-        "SPS_list": "Theretra latreillii"
-    },
-    {
-        "CN": "Yam Hawkmoth",
-        "SPS_list": "Theretra nessus"
-    },
-    {
-        "CN": "White-banded Hunter Hawkmoth",
-        "SPS_list": "Theretra oldenlandiae"
-    },
-    {
-        "CN": "White-edged Hunter Hawkmoth",
-        "SPS_list": "Theretra pallicosta"
-    },
-    {
-        "CN": "Brown-Banded Hunter Hawkmoth",
-        "SPS_list": "Theretra silhetensis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Thinopteryx crocoptera"
-    },
-    {
-        "CN": "Yellow Underwing",
-        "SPS_list": "Thyas coronata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Thyas honesta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Thyas juno"
-    },
-    {
-        "CN": "Peach Blossom Moth",
-        "SPS_list": "Thyatira batis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Thyrassia penangae"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Thysanoplusia intermixta"
-    },
-    {
-        "CN": "Slender Burnished Brass ",
-        "SPS_list": "Thysanoplusia orichalcea"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Tinolius eburneigutta"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Tinolius hypsana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Titulcia confictella"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Toccolosida rubriceps"
-    },
-    {
-        "CN": "Rose Myrtle Lappet Moth",
-        "SPS_list": "Trabala vishnou"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Trachea auriplena"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Traminda aventiaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Traminda mundissima"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Tridrepana flava"
-    },
-    {
-        "CN": "Triangles",
-        "SPS_list": "Trigonodes hyppasia"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Trilocha varians"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Trotocraspeda divaricata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Trypanophora semihyalina"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Tyana falcata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Tyspanodes linealis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Urapteroides astheniata"
-    },
-    {
-        "CN": "Heliotrope Moth",
-        "SPS_list": "Utetheisa pulchelloides"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Vamuna alboluteola"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Vamuna remelana"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Westermannia superba"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Xandrames dholaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Xandrames latiferaria"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Xanthodes intersepta"
-    },
-    {
-        "CN": "Transverse Moth",
-        "SPS_list": "Xanthodes transversa"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Xanthorhoe saturata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Xenochroa chlorostigma"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Xyleutes persona"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Xyleutes strix"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Yepcalphis dilectissima"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Zeheba aureata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Zeuzera multistrigata"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Zitha torridalis"
-    },
-    {
-        "CN": "NA",
-        "SPS_list": "Zurobata vacillans"
-    }
-]
+        {
+            "SPS_list": "Abaciscus tristis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Abraxas sylvata",
+            "CN": "Clouded Magpie Moth"
+        },
+        {
+            "SPS_list": "Acantholipes trajecta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Acasis viretata",
+            "CN": "Yellow-Barred Brindle Moth"
+        },
+        {
+            "SPS_list": "Achaea janata",
+            "CN": "Castor Semi-Looper Moth"
+        },
+        {
+            "SPS_list": "Achaea serva",
+            "CN": "Papillon Moth"
+        },
+        {
+            "SPS_list": "Acherontia atropos",
+            "CN": "Death's Head HawkMoth"
+        },
+        {
+            "SPS_list": "Acherontia lachesis",
+            "CN": "Bee Robber Moth"
+        },
+        {
+            "SPS_list": "Acherontia styx",
+            "CN": "Eastern Death's Head Hawkmoth"
+        },
+        {
+            "SPS_list": "Achyra nudalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Achyra rantalis",
+            "CN": "Garden Webworm Moth"
+        },
+        {
+            "SPS_list": "Acolutha pictaria",
+            "CN": "Anterior Brown Belt Moth"
+        },
+        {
+            "SPS_list": "Acolutha pulchella",
+            "CN": "Pro-Brown Belt Moth"
+        },
+        {
+            "SPS_list": "Acontia lucida",
+            "CN": "Pale Shoulder"
+        },
+        {
+            "SPS_list": "Acontia marmoralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Acosmerycoides harterti",
+            "CN": "Harterte's HawkMoth"
+        },
+        {
+            "SPS_list": "Acosmeryx anceus",
+            "CN": "Hawk Moth Species"
+        },
+        {
+            "SPS_list": "Acosmeryx naga",
+            "CN": "Naga Hawk Moth"
+        },
+        {
+            "SPS_list": "Acosmeryx pseudonaga",
+            "CN": "Dull Forest Hawk Moth"
+        },
+        {
+            "SPS_list": "Acosmeryx shervillii",
+            "CN": "Hawk Moth Species"
+        },
+        {
+            "SPS_list": "Acrobasis demotella",
+            "CN": "Walnut Shoot Moth"
+        },
+        {
+            "SPS_list": "Acropteris iphiata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Actias artemis",
+            "CN": "Japanese Luna Moth"
+        },
+        {
+            "SPS_list": "Actias maenas",
+            "CN": "Malaysian Moon Moth"
+        },
+        {
+            "SPS_list": "Actias ningpoana",
+            "CN": "Chinese Moon Moth"
+        },
+        {
+            "SPS_list": "Actias parasinensis",
+            "CN": "Moon Moth"
+        },
+        {
+            "SPS_list": "Actias selene",
+            "CN": "Indian Moon Moth"
+        },
+        {
+            "SPS_list": "Adaina ambrosiae",
+            "CN": "Ambrosia Plume Moth"
+        },
+        {
+            "SPS_list": "Adaina microdactyla",
+            "CN": "Hemp-agrimony Plume Moth"
+        },
+        {
+            "SPS_list": "Adisura marginalis",
+            "CN": "New Pod Borer"
+        },
+        {
+            "SPS_list": "Adites frigida",
+            "CN": "Footman Moth/Lichen Moth"
+        },
+        {
+            "SPS_list": "Adoxophyes privatana",
+            "CN": "Appleleaf-curling Moth"
+        },
+        {
+            "SPS_list": "Adrapsa ablualis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Adris tyrannus",
+            "CN": "Fallen Leaf Mimicking Moth"
+        },
+        {
+            "SPS_list": "Aedia leucomelas",
+            "CN": "The Sorcerer "
+        },
+        {
+            "SPS_list": "Aegocera venulia",
+            "CN": "White and Red Masked Noctuid Moth"
+        },
+        {
+            "SPS_list": "Aemene taprobanis",
+            "CN": "Erebid Moth"
+        },
+        {
+            "SPS_list": "Aethaloessa calidalis",
+            "CN": "Flaming Strange Wild Moth"
+        },
+        {
+            "SPS_list": "Aethaloessa floridalis",
+            "CN": "Florid Pearl Moth"
+        },
+        {
+            "SPS_list": "Aetholix flavibasalis",
+            "CN": "Yellow Wood Moth"
+        },
+        {
+            "SPS_list": "Agathia carissima",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Agathia codina",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Agathia diversiformis",
+            "CN": "Short-tailed blue-foot moth"
+        },
+        {
+            "SPS_list": "Agathia hemithearia",
+            "CN": "Black Cloud Moth"
+        },
+        {
+            "SPS_list": "Agathia laetata",
+            "CN": "Y-Stripe Brilliant Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Agathia lycaenaria",
+            "CN": "Bright Green Moth"
+        },
+        {
+            "SPS_list": "Agathia visenda",
+            "CN": "Cyanocephalus cyanus"
+        },
+        {
+            "SPS_list": "Agathodes ostentalis",
+            "CN": "Coral Tree Moth"
+        },
+        {
+            "SPS_list": "Aglaomorpha plagiata",
+            "CN": "Arctiine Tiger Moth"
+        },
+        {
+            "SPS_list": "Agonopterix pulvipennella",
+            "CN": "Goldenrod Leaffolder Moth"
+        },
+        {
+            "SPS_list": "Agonopterix thelmae",
+            "CN": "Thelma's Agonopterix Moth"
+        },
+        {
+            "SPS_list": "Agrioglypta eurytusalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Agrioglypta itysalis",
+            "CN": "Multi Panel Wing Moth"
+        },
+        {
+            "SPS_list": "Agriphila straminella",
+            "CN": "Pearl Veneer"
+        },
+        {
+            "SPS_list": "Agrius cingulata",
+            "CN": "Pink-spotted HawkMoth"
+        },
+        {
+            "SPS_list": "Agrius convolvuli",
+            "CN": "Convolvulus Hawkmoth"
+        },
+        {
+            "SPS_list": "Agrotera basinotata",
+            "CN": "Yellow-Brown Pyralid Moth"
+        },
+        {
+            "SPS_list": "Agrotis ipsilon",
+            "CN": "Ipsilon Dart Moth"
+        },
+        {
+            "SPS_list": "Agrotis spinifera",
+            "CN": "Gregson's Dart"
+        },
+        {
+            "SPS_list": "Albara reversaria",
+            "CN": "Brown line hook moth"
+        },
+        {
+            "SPS_list": "Alcis admissaria",
+            "CN": "Big Frost Moth"
+        },
+        {
+            "SPS_list": "Alcis jubata",
+            "CN": "Dotted Carpet"
+        },
+        {
+            "SPS_list": "Alcis maculata",
+            "CN": "Reticulated frost moth"
+        },
+        {
+            "SPS_list": "Aloa lactinea",
+            "CN": "Red costate tiger Moth"
+        },
+        {
+            "SPS_list": "Alsophila pometaria",
+            "CN": "Fall Cankerworm Moth "
+        },
+        {
+            "SPS_list": "Altha nivea",
+            "CN": "Cup Moth"
+        },
+        {
+            "SPS_list": "Altha subnotata",
+            "CN": "Gelatin Slug Moth"
+        },
+        {
+            "SPS_list": "Amata bicincta ",
+            "CN": "Nine-Spotted Moth/ Hand Maiden Moth"
+        },
+        {
+            "SPS_list": "Amata cyssea",
+            "CN": "Seven-Spotted Moth"
+        },
+        {
+            "SPS_list": "Amata huebneri",
+            "CN": "Tiger Moth"
+        },
+        {
+            "SPS_list": "Amata passalis",
+            "CN": "Wasp Moth"
+        },
+        {
+            "SPS_list": "Amata phegea",
+            "CN": "Yellow Belted Burnet"
+        },
+        {
+            "SPS_list": "Amata sperbius",
+            "CN": "Wasp Moth/ Silver Wing Moth"
+        },
+        {
+            "SPS_list": "Amblychia angeronaria",
+            "CN": "Alternaria/Leaf Mimicking Moth"
+        },
+        {
+            "SPS_list": "Ambulyx canescens",
+            "CN": "Grey Gliding Hawk Moth"
+        },
+        {
+            "SPS_list": "Ambulyx liturata",
+            "CN": "Violet Gliding Hawk Moth"
+        },
+        {
+            "SPS_list": "Ambulyx moorei",
+            "CN": "Cinnamon Gliding HawkMoth "
+        },
+        {
+            "SPS_list": "Ambulyx ochracea",
+            "CN": "Ochreous gliding hawkMoth"
+        },
+        {
+            "SPS_list": "Ambulyx sericeipennis",
+            "CN": "Common gliding hawkMoth"
+        },
+        {
+            "SPS_list": "Ambulyx substrigilis",
+            "CN": "Dark-based gliding hawkMoth"
+        },
+        {
+            "SPS_list": "Amerila astreus",
+            "CN": "Arctiine Tiger Moth"
+        },
+        {
+            "SPS_list": "Amesia sanguiflua",
+            "CN": "Glazed Firefly Moth"
+        },
+        {
+            "SPS_list": "Ammatho cuneonotatus",
+            "CN": "Footman Moth Species "
+        },
+        {
+            "SPS_list": "Ampelophaga rubiginosa",
+            "CN": "Daytime Moth"
+        },
+        {
+            "SPS_list": "Amplypterus panopus",
+            "CN": "Mango hawkMoth"
+        },
+        {
+            "SPS_list": "Amyna axis",
+            "CN": "Oriental Eight-Spot "
+        },
+        {
+            "SPS_list": "Amyna natalis",
+            "CN": "Ilima Moth"
+        },
+        {
+            "SPS_list": "Amyna punctum",
+            "CN": "Winter Form Button Nose Moth"
+        },
+        {
+            "SPS_list": "Anadevidia peponis",
+            "CN": "Spodoptera litura"
+        },
+        {
+            "SPS_list": "Anarta trifolii",
+            "CN": "The Nutmeg"
+        },
+        {
+            "SPS_list": "Anavitrinella pampinaria",
+            "CN": "Common Gray"
+        },
+        {
+            "SPS_list": "Angonyx testacea",
+            "CN": "Northern dark-green hawkMoth"
+        },
+        {
+            "SPS_list": "Anisephyra ocularia",
+            "CN": "Four-ringed yellow ruler moth"
+        },
+        {
+            "SPS_list": "Anisoneura aluco",
+            "CN": "Bark Moth"
+        },
+        {
+            "SPS_list": "Anisoneura salebrosa",
+            "CN": "Scattered Moth"
+        },
+        {
+            "SPS_list": "Anoba pectinata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Anomis flava",
+            "CN": "Tropical Anomis"
+        },
+        {
+            "SPS_list": "Antheraea assamensis",
+            "CN": "Assam Silkmoth "
+        },
+        {
+            "SPS_list": "Antheraea frithi",
+            "CN": "Oak Tasar Silk Moth"
+        },
+        {
+            "SPS_list": "Antheraea helferi",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Antheraea paphia",
+            "CN": "Indian Tasar Moth"
+        },
+        {
+            "SPS_list": "Antheraea pernyi",
+            "CN": "Chinese Tussar Moth "
+        },
+        {
+            "SPS_list": "Antheraea yamamai",
+            "CN": "Japanese Silk Moth"
+        },
+        {
+            "SPS_list": "Anticarsia irrorata",
+            "CN": "The owl Moth"
+        },
+        {
+            "SPS_list": "Antigastra catalaunalis",
+            "CN": "Sesame Leafroller"
+        },
+        {
+            "SPS_list": "Antipercnia belluaria",
+            "CN": "Polkadot Moth"
+        },
+        {
+            "SPS_list": "Antitrygodes divisaria",
+            "CN": "Green Spotted Moth"
+        },
+        {
+            "SPS_list": "Anua coronata",
+            "CN": "Yellow Underwing"
+        },
+        {
+            "SPS_list": "Aphomia sociella",
+            "CN": "Bee Moth "
+        },
+        {
+            "SPS_list": "Aplochlora vivilaca",
+            "CN": "Four-pointed Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Apocalypsis velox",
+            "CN": "Bald Hawk Moth"
+        },
+        {
+            "SPS_list": "Aporandria specularia",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Aporodes floralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Apsarasa radians",
+            "CN": "Radiata Spodoptera Moth"
+        },
+        {
+            "SPS_list": "Arcesis threnodes",
+            "CN": "Tortricid Moth"
+        },
+        {
+            "SPS_list": "Archaeoattacus edwardsii",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Arcte coerula",
+            "CN": "Ramie Moth "
+        },
+        {
+            "SPS_list": "Arctioblepsis rubida",
+            "CN": "Black Veined Moth/Pyralid Snout Moth"
+        },
+        {
+            "SPS_list": "Areas galactina",
+            "CN": "Arctiine Tiger Moth"
+        },
+        {
+            "SPS_list": "Argina astrea",
+            "CN": "Crotalaria Pod Borer"
+        },
+        {
+            "SPS_list": "Argyrocosma inductaria",
+            "CN": "White Green Moth"
+        },
+        {
+            "SPS_list": "Arichanna transfasciata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Arippara indicator",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Arna bipunctapex",
+            "CN": "Yellow Tussock Moth"
+        },
+        {
+            "SPS_list": "Arsacia rectalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Artaxa guttata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Artena dotata",
+            "CN": "Owlet Moth"
+        },
+        {
+            "SPS_list": "Artena submira",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Arthroschista hilaralis",
+            "CN": "Kadam Defoliator"
+        },
+        {
+            "SPS_list": "Ascotis selenaria",
+            "CN": "Giant Looper"
+        },
+        {
+            "SPS_list": "Asota caricae",
+            "CN": "Tropical Tiger Moth"
+        },
+        {
+            "SPS_list": "Asota egens",
+            "CN": "Snouted Tiger Moth"
+        },
+        {
+            "SPS_list": "Asota ficus",
+            "CN": "Two Spot Tiger Moth"
+        },
+        {
+            "SPS_list": "Asota heliconia",
+            "CN": "White Banded Sount Tiger Moth"
+        },
+        {
+            "SPS_list": "Asota paphos",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Asota plaginota",
+            "CN": "Snouted Tiger Moth"
+        },
+        {
+            "SPS_list": "Asota plana",
+            "CN": "Long-Spotted Lamp Moth"
+        },
+        {
+            "SPS_list": "Asota producta",
+            "CN": "Snouted Tiger Moth"
+        },
+        {
+            "SPS_list": "Asota tortuosa",
+            "CN": "Torsion Moth"
+        },
+        {
+            "SPS_list": "Aspitates ochrearia",
+            "CN": "Yellow Belle "
+        },
+        {
+            "SPS_list": "Asthena undulata",
+            "CN": "Pape Ripple Moth"
+        },
+        {
+            "SPS_list": "Ataboruza divisa",
+            "CN": "Chromephore Moth"
+        },
+        {
+            "SPS_list": "Athetis bremusa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Attacus atlas",
+            "CN": "Atlas Moth"
+        },
+        {
+            "SPS_list": "Attacus taprobanis",
+            "CN": "Atlas Moth"
+        },
+        {
+            "SPS_list": "Attatha regalis",
+            "CN": "Four Eared Donkey Moth"
+        },
+        {
+            "SPS_list": "Autocharis fessalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Autocharis hedyphaes",
+            "CN": "Frill Line Moth"
+        },
+        {
+            "SPS_list": "Baorisa hieroglyphica",
+            "CN": "Picasso Moth"
+        },
+        {
+            "SPS_list": "Barsine euprepioides",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Barsine striata",
+            "CN": "Footman Moth"
+        },
+        {
+            "SPS_list": "Bastilla acuta",
+            "CN": "Scarf Moth"
+        },
+        {
+            "SPS_list": "Bastilla amygdalis",
+            "CN": "Regula Moth"
+        },
+        {
+            "SPS_list": "Bastilla arcuata",
+            "CN": "Swallowtail Moth"
+        },
+        {
+            "SPS_list": "Bastilla crameri",
+            "CN": "Noctuoid Moth"
+        },
+        {
+            "SPS_list": "Bastilla fulvotaenia",
+            "CN": "Yellow Turban Moth"
+        },
+        {
+            "SPS_list": "Bastilla joviana",
+            "CN": "Round Back Moth"
+        },
+        {
+            "SPS_list": "Bastilla maturata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Bastilla simillima",
+            "CN": "Southern Carnation Moth"
+        },
+        {
+            "SPS_list": "Belippa horrida",
+            "CN": "Backspine Moth"
+        },
+        {
+            "SPS_list": "Berta chrysolineata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Bertula abjudicalis",
+            "CN": "Pseudo-Breasted Moth"
+        },
+        {
+            "SPS_list": "Biston bengaliaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Biston betularia",
+            "CN": "Peppered Moth"
+        },
+        {
+            "SPS_list": "Biston panterinaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Biston regalis",
+            "CN": "Blue pine defoliator"
+        },
+        {
+            "SPS_list": "Biston suppressaria",
+            "CN": "The tea looper"
+        },
+        {
+            "SPS_list": "Blasticorhinus rivulosa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Blastobasis glandulella",
+            "CN": "Acorn Moth "
+        },
+        {
+            "SPS_list": "Blepharoctenucha virescens",
+            "CN": "Black-brown Geomete"
+        },
+        {
+            "SPS_list": "Blepharomastix ranalis",
+            "CN": "Hollow-spotted Blepharomastix Moth "
+        },
+        {
+            "SPS_list": "Bocchoris inspersalis",
+            "CN": "Dotted Sable"
+        },
+        {
+            "SPS_list": "Bombyx huttoni",
+            "CN": "Chocolate-Tip Silk Moth"
+        },
+        {
+            "SPS_list": "Borbacha pardaria",
+            "CN": "Leopard Moth"
+        },
+        {
+            "SPS_list": "Botyodes asialis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Botyodes diniasalis",
+            "CN": "Yellow-Winged Leaf Moth"
+        },
+        {
+            "SPS_list": "Botyodes principalis",
+            "CN": "Rhubarb Moth"
+        },
+        {
+            "SPS_list": "Bradina admixtalis",
+            "CN": "Long tail Crambid Moth"
+        },
+        {
+            "SPS_list": "Bradina diagonalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Brahmaea hearseyi",
+            "CN": "The Brahmin Moth"
+        },
+        {
+            "SPS_list": "Brahmaea wallichii",
+            "CN": "Wallich's Owl Moth"
+        },
+        {
+            "SPS_list": "Britha biguttata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Brithys crini",
+            "CN": "Lily Borer"
+        },
+        {
+            "SPS_list": "Brunia antica",
+            "CN": "Lichens Moth"
+        },
+        {
+            "SPS_list": "Buckleria paludum",
+            "CN": "Saubdew Plume Moth"
+        },
+        {
+            "SPS_list": "Buzara onelia",
+            "CN": "Purple Palm Moth"
+        },
+        {
+            "SPS_list": "Cadarena pudoraria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Caduca albopunctata",
+            "CN": "White-Spotted Cardan Moth"
+        },
+        {
+            "SPS_list": "Caeneressa diaphana",
+            "CN": "Fresh Deer Moth"
+        },
+        {
+            "SPS_list": "Calesia dasypterus",
+            "CN": "Hairy Moth"
+        },
+        {
+            "SPS_list": "Calindoea argentalis",
+            "CN": "Thyridid Leaf Moth "
+        },
+        {
+            "SPS_list": "Calledapteryx dryopterata",
+            "CN": "Brown Scoopwing"
+        },
+        {
+            "SPS_list": "Calletaera postvittata",
+            "CN": "Black Line Moth"
+        },
+        {
+            "SPS_list": "Calletaera subexpressa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Callidrepana argenteola",
+            "CN": "Hooktip Moth Species"
+        },
+        {
+            "SPS_list": "Callidrepana patrana",
+            "CN": "Fivefold Tree"
+        },
+        {
+            "SPS_list": "Calliteara angulata",
+            "CN": "Horned Tussock Moth"
+        },
+        {
+            "SPS_list": "Calliteara grotei",
+            "CN": "Grote's Tussock Moth"
+        },
+        {
+            "SPS_list": "Calliteara horsfieldii",
+            "CN": "Horsfield's Tussock Moth"
+        },
+        {
+            "SPS_list": "Callopistria repleta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Camptomastix hisbonalis",
+            "CN": "Longbeard Moth"
+        },
+        {
+            "SPS_list": "Campylotes histrionicus",
+            "CN": "Day-Flying Moth"
+        },
+        {
+            "SPS_list": "Cania bandura",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Cania bilinea",
+            "CN": "Banded Tea Moth"
+        },
+        {
+            "SPS_list": "Canucha specularis",
+            "CN": "Hooktip Moth"
+        },
+        {
+            "SPS_list": "Caradrina clavipalpis",
+            "CN": "Pale Mottled Willow Moth"
+        },
+        {
+            "SPS_list": "Carea angulata",
+            "CN": "Nolid Moth"
+        },
+        {
+            "SPS_list": "Carea varipes",
+            "CN": "Lotus Mist Ocher Moth"
+        },
+        {
+            "SPS_list": "Carriola ecnomoda",
+            "CN": "Tussok Moth"
+        },
+        {
+            "SPS_list": "Catephia linteola",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Catocala macula",
+            "CN": "Spotted Moth"
+        },
+        {
+            "SPS_list": "Catoria olivescens",
+            "CN": "Olive Green Moth"
+        },
+        {
+            "SPS_list": "Catoria sublavaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Cechenena aegrota",
+            "CN": "Hawk Moth"
+        },
+        {
+            "SPS_list": "Cechenena helops",
+            "CN": "Spotted Green Hawk Moth"
+        },
+        {
+            "SPS_list": "Cechetra lineosa",
+            "CN": "Brown-Green Dorsal Hawkmoth"
+        },
+        {
+            "SPS_list": "Celenna festivaria",
+            "CN": "Green Moth"
+        },
+        {
+            "SPS_list": "Cephonodes hylas",
+            "CN": "Pellucid HawkMoth"
+        },
+        {
+            "SPS_list": "Ceratarcha umbrosa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ceratomia catalpae",
+            "CN": "Catalpa Sphinx"
+        },
+        {
+            "SPS_list": "Cerura vinula",
+            "CN": "Puss Moth"
+        },
+        {
+            "SPS_list": "Cerynea punctilinealis",
+            "CN": "Front Crested Spots and Squiggles Moth"
+        },
+        {
+            "SPS_list": "Ceryx imaon",
+            "CN": "Handmaiden Moth"
+        },
+        {
+            "SPS_list": "Chabula acamasalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chadisra bipartita",
+            "CN": "Canoe Moth"
+        },
+        {
+            "SPS_list": "Chalcidica mineus",
+            "CN": "Beetle Mimicking Moth"
+        },
+        {
+            "SPS_list": "Chalcidoptera emissalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chalciope mygdon",
+            "CN": "Triangular-striped Moth"
+        },
+        {
+            "SPS_list": "Chalcocelis albiguttatus",
+            "CN": "Cup Moth"
+        },
+        {
+            "SPS_list": "Chalcoscelides castaneipars",
+            "CN": "Frame Moth"
+        },
+        {
+            "SPS_list": "Chasmina candida",
+            "CN": "Silver-White Moth"
+        },
+        {
+            "SPS_list": "Chiasmia eleonora",
+            "CN": "White Banded Moth"
+        },
+        {
+            "SPS_list": "Chiasmia emersaria",
+            "CN": "Pente Tasil Moth"
+        },
+        {
+            "SPS_list": "Chiasmia fidoniata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chiasmia hebesata",
+            "CN": "Six Window Tailed Moth"
+        },
+        {
+            "SPS_list": "Chiasmia monticolaria",
+            "CN": "Double Black Spotted Moth"
+        },
+        {
+            "SPS_list": "Chiasmia nora",
+            "CN": "Banded Geometrid"
+        },
+        {
+            "SPS_list": "Chiasmia ozararia",
+            "CN": "Straight-Tailed Moth"
+        },
+        {
+            "SPS_list": "Chiasmia perfusaria",
+            "CN": "Brown Banded Tail Moth"
+        },
+        {
+            "SPS_list": "Chloroclystis conversa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chloroclystis rubroviridis",
+            "CN": "Small Winged Moth"
+        },
+        {
+            "SPS_list": "Chlorodontopera discospilata",
+            "CN": "Four-Eyed Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Chloropteryx tepperaria",
+            "CN": "Angle-Winged Emerald Moth"
+        },
+        {
+            "SPS_list": "Chlororithra fea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chlumetia transversa",
+            "CN": "Mango Shoot Borer"
+        },
+        {
+            "SPS_list": "Choreutis ophiosema",
+            "CN": "Mistura Moth"
+        },
+        {
+            "SPS_list": "Choreutis orthogona",
+            "CN": "Straight Mulberry Moth/Metal Mark Moth"
+        },
+        {
+            "SPS_list": "Chorodna moorei",
+            "CN": "White-bottomed Moth"
+        },
+        {
+            "SPS_list": "Chorodna ochreimacula",
+            "CN": "Yellow Wither Moth"
+        },
+        {
+            "SPS_list": "Chorodna strixaria",
+            "CN": "Frog Mouth Tree Hugger Moth"
+        },
+        {
+            "SPS_list": "Chrysaeglia magnifica",
+            "CN": "Flash Moth"
+        },
+        {
+            "SPS_list": "Chrysoclista linneella",
+            "CN": "Linden Bark Borer Moth "
+        },
+        {
+            "SPS_list": "Chrysocraspeda abhadraca",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chrysocraspeda faganaria",
+            "CN": "Yellow-Edged Chiroptera Moth"
+        },
+        {
+            "SPS_list": "Chrysocraspeda sanguinea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chrysodeixis acuta",
+            "CN": "Tunbridge Wells Gem"
+        },
+        {
+            "SPS_list": "Chrysodeixis eriosoma",
+            "CN": "Green Garden Looper "
+        },
+        {
+            "SPS_list": "Chrysopera combinans",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chrysorabdia bivitta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Chrysoteuchia culmella",
+            "CN": "Garden Grass-Veneer "
+        },
+        {
+            "SPS_list": "Chrysoteuchia topiarius",
+            "CN": "Topiary Grass-Veneer"
+        },
+        {
+            "SPS_list": "Circobotys aurealis",
+            "CN": "Golden sickle-winged wild borer"
+        },
+        {
+            "SPS_list": "Cirrhochrista annulifera",
+            "CN": "Long Nose Moth"
+        },
+        {
+            "SPS_list": "Cirrhochrista brizoalis",
+            "CN": "Yellow Margin Moth"
+        },
+        {
+            "SPS_list": "Cirrhochrista fumipalpis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Clanis bilineata",
+            "CN": "Two-lined velvet hawkMoth"
+        },
+        {
+            "SPS_list": "Clanis titan",
+            "CN": "Scare Velvet Hawk Moth"
+        },
+        {
+            "SPS_list": "Clanis undulosa",
+            "CN": "Wavy Velvet HawkMoth"
+        },
+        {
+            "SPS_list": "Cleora alienaria",
+            "CN": "Sawgrass Moth"
+        },
+        {
+            "SPS_list": "Cleora contiguata",
+            "CN": "Sawfoot Moth"
+        },
+        {
+            "SPS_list": "Cleora fraterna",
+            "CN": "Black-Rumped Sawgrass Moth"
+        },
+        {
+            "SPS_list": "Cleora injectaria",
+            "CN": "Black Stalker Moth"
+        },
+        {
+            "SPS_list": "Clepsis clemensiana",
+            "CN": "Clemens' Clepsis Moth "
+        },
+        {
+            "SPS_list": "Cnaphalocrocis medinalis",
+            "CN": "Rice Leaf-Roller"
+        },
+        {
+            "SPS_list": "Cnaphalocrocis poeyalis",
+            "CN": "Lesser Rice-Leafroller "
+        },
+        {
+            "SPS_list": "Cnaphalocrocis trapezalis",
+            "CN": "Trapeze Moth"
+        },
+        {
+            "SPS_list": "Coenodomus dudgeoni",
+            "CN": "Pyralid Moth"
+        },
+        {
+            "SPS_list": "Collix ghosha",
+            "CN": "Stellate Moth"
+        },
+        {
+            "SPS_list": "Comibaena attenuata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Comibaena cassidara",
+            "CN": "Four Brown Spot Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Comibaena fuscidorsata",
+            "CN": "Dark Spotted Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Comibaena pictipennis",
+            "CN": "Great brown spot green ruler Moth"
+        },
+        {
+            "SPS_list": "Comocritis albicapilla",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Comostola cedilla",
+            "CN": "Green Lantern Moth"
+        },
+        {
+            "SPS_list": "Comostola chlorargyra",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Comostola laesaria",
+            "CN": "Small Four-Ringed Moth"
+        },
+        {
+            "SPS_list": "Comostola meritaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Comostola pyrrhogona",
+            "CN": "Red-Edged Aquarium Moth"
+        },
+        {
+            "SPS_list": "Comostola subtiliaria",
+            "CN": "Four-spotted Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Comostola turgescens",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Condate purpurea",
+            "CN": "Purple Ochre Moth"
+        },
+        {
+            "SPS_list": "Condica illecta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Condica vecors",
+            "CN": "Dusky Groundling"
+        },
+        {
+            "SPS_list": "Condylolomia participalis",
+            "CN": "Drab Condylolomia Moth"
+        },
+        {
+            "SPS_list": "Condylorrhiza vestigialis",
+            "CN": "Alamo Moth "
+        },
+        {
+            "SPS_list": "Conogethes pluto",
+            "CN": "Yellow peach Moth/Alpinia Stem-borer"
+        },
+        {
+            "SPS_list": "Conogethes punctiferalis",
+            "CN": "Yellow Peach Moth/Castor capsule borer"
+        },
+        {
+            "SPS_list": "Conogethes semifascialis",
+            "CN": "Brown Patched Spotty Orange Moth"
+        },
+        {
+            "SPS_list": "Corgatha dictaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Corymica arnearia",
+            "CN": "White-Spotted Round Window Moth"
+        },
+        {
+            "SPS_list": "Corymica deducta",
+            "CN": "Brown-Banded Round Window Moth"
+        },
+        {
+            "SPS_list": "Corymica pryeri",
+            "CN": "Full Moon Round Window Moth"
+        },
+        {
+            "SPS_list": "Corymica spatiosa",
+            "CN": "Fine Line Round Window Yellow Moth"
+        },
+        {
+            "SPS_list": "Cotachena pubescens",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Craspedortha porphyria",
+            "CN": "Purple hawk Moth"
+        },
+        {
+            "SPS_list": "Creatonotos gangis",
+            "CN": "Black-Striped Grey Tiger Moth"
+        },
+        {
+            "SPS_list": "Creatonotos transiens",
+            "CN": "Eight-Point Grey Tiger Moth"
+        },
+        {
+            "SPS_list": "Cricula trifenestrata",
+            "CN": "Cricula SilkMoth "
+        },
+        {
+            "SPS_list": "Crithote pallivarga",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Crocidolomia pavonana",
+            "CN": "Cabbage Cluster Caterpillar"
+        },
+        {
+            "SPS_list": "Crocidolomia suffusalis",
+            "CN": "Black-Striped Cabbage Moth"
+        },
+        {
+            "SPS_list": "Crocidosema plebejana",
+            "CN": "Cotton Tipworm Moth"
+        },
+        {
+            "SPS_list": "Crypsiptya coclesalis",
+            "CN": "Bamboo leaf roller moth"
+        },
+        {
+            "SPS_list": "Ctenoplusia albostriata",
+            "CN": "Eastern Streaked Plusia "
+        },
+        {
+            "SPS_list": "Ctenoplusia furcifera",
+            "CN": "Compact Comb Moth"
+        },
+        {
+            "SPS_list": "Ctenoplusia placida",
+            "CN": "Lead Pattern Comb Moth"
+        },
+        {
+            "SPS_list": "Culladia hastiferalis",
+            "CN": "Rolled Wing Moth"
+        },
+        {
+            "SPS_list": "Curoba sangarida",
+            "CN": "Arctiid moth"
+        },
+        {
+            "SPS_list": "Cusiala boarmioides",
+            "CN": "White Wave Moth"
+        },
+        {
+            "SPS_list": "Cyana bellissima",
+            "CN": "Lichen moth"
+        },
+        {
+            "SPS_list": "Cyana coccinea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Cyana peregrina",
+            "CN": "Lichen Moth"
+        },
+        {
+            "SPS_list": "Cyana puella",
+            "CN": "Red Striped Tiger Moth"
+        },
+        {
+            "SPS_list": "Cyclidia rectificata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Cyclidia substigmaria",
+            "CN": "Hook Moth"
+        },
+        {
+            "SPS_list": "Cyclodes omma",
+            "CN": "Eye Armyworm Moth"
+        },
+        {
+            "SPS_list": "Cyclosia midama",
+            "CN": "Chalcosiine Day-Flying Moth"
+        },
+        {
+            "SPS_list": "Cyclosia panthona",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Cyclosia papilionaris",
+            "CN": "Drury's Jewel "
+        },
+        {
+            "SPS_list": "Cyclothea disjuncta",
+            "CN": "Emarald Moth"
+        },
+        {
+            "SPS_list": "Cydalima laticostalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Cydalima perspectalis",
+            "CN": "Box Tree Moth "
+        },
+        {
+            "SPS_list": "Cyme euprepioides",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Daddala lucilla",
+            "CN": "Torchmoth"
+        },
+        {
+            "SPS_list": "Dalima patularia",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Daphnis hypothous",
+            "CN": "Jade Hawkmoth"
+        },
+        {
+            "SPS_list": "Daphnis nerii",
+            "CN": "Oleander Hawkmoth"
+        },
+        {
+            "SPS_list": "Dasyboarmia subpilosa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Dasychira chekiangensis",
+            "CN": "Zhejiang Tussock Moth"
+        },
+        {
+            "SPS_list": "Deilephila elpenor",
+            "CN": "Elephant HawkMoth "
+        },
+        {
+            "SPS_list": "Derambila dentifera",
+            "CN": "Fine Flour Moth"
+        },
+        {
+            "SPS_list": "Desmia funeralis",
+            "CN": "Grape Leaffolder Moth"
+        },
+        {
+            "SPS_list": "Deuterocopus socotranus",
+            "CN": "Plume moth"
+        },
+        {
+            "SPS_list": "Diacme adipaloides",
+            "CN": "Darker Diacme Moth "
+        },
+        {
+            "SPS_list": "Diacme elealis",
+            "CN": "Paler Diacme Moth "
+        },
+        {
+            "SPS_list": "Diacrotricha fasciola",
+            "CN": "Starfruit Plume Moth"
+        },
+        {
+            "SPS_list": "Diaphania costata",
+            "CN": "White Palpita Moth"
+        },
+        {
+            "SPS_list": "Diaphania indica",
+            "CN": "Cucumber Moth"
+        },
+        {
+            "SPS_list": "Diasemia accalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Diasemiopsis ramburialis",
+            "CN": "Black and White Tatty Moth"
+        },
+        {
+            "SPS_list": "Dichocrocis zebralis",
+            "CN": "Carabid Moth"
+        },
+        {
+            "SPS_list": "Dichomeris heriguronis",
+            "CN": "Black-edged Dichomeris Moth/ Black-edged Carbatina Moth"
+        },
+        {
+            "SPS_list": "Dichromia sagitta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Diduga flavicostata",
+            "CN": "Gouda Edge Moss Moth"
+        },
+        {
+            "SPS_list": "Dierna patibulum",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Digrammia continuata",
+            "CN": "Curve-lined Angle"
+        },
+        {
+            "SPS_list": "Dindica polyphaenaria",
+            "CN": "Yellow peak moth"
+        },
+        {
+            "SPS_list": "Dischidesia cinerea",
+            "CN": "White Saw Moth"
+        },
+        {
+            "SPS_list": "Discoglypha locupletata",
+            "CN": "Silver Palm Pattern Moth"
+        },
+        {
+            "SPS_list": "Dolbina inexacta",
+            "CN": "White Star Hawk Moth"
+        },
+        {
+            "SPS_list": "Doloessa viridis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Drapetodes mitaria",
+            "CN": "Yellow Hook Moth"
+        },
+        {
+            "SPS_list": "Drepana falcataria",
+            "CN": "Pebble Hook-Tip"
+        },
+        {
+            "SPS_list": "Drepana pallida",
+            "CN": "Little Hook Moth"
+        },
+        {
+            "SPS_list": "Drosophantis caeruleata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Dudua aprobola",
+            "CN": "Grizzly Leaf Roller Moth"
+        },
+        {
+            "SPS_list": "Duomitus ceramica",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Dyrzela plagiata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Dysaethria quadricaudata",
+            "CN": "Four-Pointed Two-Tailed Moth"
+        },
+        {
+            "SPS_list": "Dysallacta negatalis",
+            "CN": "Carabid Moth"
+        },
+        {
+            "SPS_list": "Dysgonia algira",
+            "CN": "The Passenger"
+        },
+        {
+            "SPS_list": "Dysgonia stuposa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Dysgonia torrida",
+            "CN": "Jigsaw"
+        },
+        {
+            "SPS_list": "Dysphania militaris",
+            "CN": "False Tiger Moth"
+        },
+        {
+            "SPS_list": "Dysphania palmyra",
+            "CN": "Blue Tiger Moth"
+        },
+        {
+            "SPS_list": "Dysphania percota",
+            "CN": "Blue Tiger Moth"
+        },
+        {
+            "SPS_list": "Dysphania subrepleta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Earias cupreoviridis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Earias flavida",
+            "CN": "Yellow Diamond Moth"
+        },
+        {
+            "SPS_list": "Earias insulana",
+            "CN": "Egyptian Bollworm "
+        },
+        {
+            "SPS_list": "Earias vittella",
+            "CN": "Spotted Bollworm"
+        },
+        {
+            "SPS_list": "Ecliptopera delecta",
+            "CN": "Triangular Tooth Moth"
+        },
+        {
+            "SPS_list": "Ecliptopera rectilinea",
+            "CN": "Earthy Tooth Moth"
+        },
+        {
+            "SPS_list": "Ectomyelois ceratoniae",
+            "CN": "Locust Bean Moth"
+        },
+        {
+            "SPS_list": "Ectropis bhurmitra",
+            "CN": "Burmese Engrailed Moth"
+        },
+        {
+            "SPS_list": "Ectropis crepuscularia",
+            "CN": "Small Engrailed"
+        },
+        {
+            "SPS_list": "Egnasia ephyrodalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eilema sororcula",
+            "CN": "Orange Footman "
+        },
+        {
+            "SPS_list": "Elibia dolichus",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eligma narcissus",
+            "CN": "Narcissus Moth"
+        },
+        {
+            "SPS_list": "Elophila responsalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Elusa antennata",
+            "CN": "Sooty huddle Moth"
+        },
+        {
+            "SPS_list": "Emmelina monodactyla",
+            "CN": "Morning-glory Plume Moth "
+        },
+        {
+            "SPS_list": "Endocrossis caldusalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Endocrossis flavibasalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Endotricha mesenterialis",
+            "CN": "Yellow-Banded Horned Borer Moth"
+        },
+        {
+            "SPS_list": "Endotricha olivacealis",
+            "CN": "Olive Green Horn Borer Moth"
+        },
+        {
+            "SPS_list": "Endotricha repandalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Endrosis sarcitrella",
+            "CN": "White-shouldered House Moth "
+        },
+        {
+            "SPS_list": "Enispa elataria",
+            "CN": "Small White Spot Powder Swallow Moth"
+        },
+        {
+            "SPS_list": "Enpinanga assamensis",
+            "CN": "Assam hawkMoth"
+        },
+        {
+            "SPS_list": "Entomogramma fautrix",
+            "CN": "Nocturid Moth"
+        },
+        {
+            "SPS_list": "Enyo lugubris",
+            "CN": "Mournful Sphinx "
+        },
+        {
+            "SPS_list": "Eoophyla conjunctalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eoophyla sejunctalis",
+            "CN": "Dimorphic Macalla Moth "
+        },
+        {
+            "SPS_list": "Epipaschia superatalis",
+            "CN": "Dimorphic Macalla Moth"
+        },
+        {
+            "SPS_list": "Epirrhoe alternata",
+            "CN": "Common Carpet Moth"
+        },
+        {
+            "SPS_list": "Episparis costistriga",
+            "CN": "Brown Kite Moth"
+        },
+        {
+            "SPS_list": "Episparis liturata",
+            "CN": "Spotted Episparis "
+        },
+        {
+            "SPS_list": "Episparis tortuosalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Episteme adulatrix",
+            "CN": "Blue-spotted Forester Moth"
+        },
+        {
+            "SPS_list": "Episteme vetula",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Erasmia pulchella",
+            "CN": "Banksia Firefly Moth"
+        },
+        {
+            "SPS_list": "Erastria cruentaria",
+            "CN": "Thin-Lined Erastria"
+        },
+        {
+            "SPS_list": "Ercheia cyllaria",
+            "CN": "Squirrel Moth"
+        },
+        {
+            "SPS_list": "Erebomorpha fulguraria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Erebomorpha fulgurita",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Erebus caprimulgus",
+            "CN": "Heteromorpha Moth"
+        },
+        {
+            "SPS_list": "Erebus ephesperis",
+            "CN": "Demon Eye Moth"
+        },
+        {
+            "SPS_list": "Erebus gemmans",
+            "CN": "Jade Thread Moth"
+        },
+        {
+            "SPS_list": "Erebus hieroglyphica",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eressa confinis",
+            "CN": "Spotted Deer Moth"
+        },
+        {
+            "SPS_list": "Eretmocera impactella",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ericeia eriophora",
+            "CN": "Scaly Moth"
+        },
+        {
+            "SPS_list": "Ericeia inangulata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ericeia pertendens",
+            "CN": "Globus Moth"
+        },
+        {
+            "SPS_list": "Eterusia aedea",
+            "CN": "Red Slug Caterpillar"
+        },
+        {
+            "SPS_list": "Ernolatia moorei",
+            "CN": "Big Black Spot White Silkworm Moth"
+        },
+        {
+            "SPS_list": "Etanna breviuscula",
+            "CN": "Pigeonpea Pod Borer "
+        },
+        {
+            "SPS_list": "Eterusia aedea",
+            "CN": "Red Slug Caterpillar "
+        },
+        {
+            "SPS_list": "Ethmia bipunctella",
+            "CN": "Viper's Bugloss Moth "
+        },
+        {
+            "SPS_list": "Ethmia lineatonotella",
+            "CN": "Line Sieve Moth"
+        },
+        {
+            "SPS_list": "Etiella zinckenella",
+            "CN": "Gold-banded Etiella Moth"
+        },
+        {
+            "SPS_list": "Eublemma abrupta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eublemma accedens",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eublemma anachoresis",
+            "CN": "Banner Moth"
+        },
+        {
+            "SPS_list": "Eublemma baccalix",
+            "CN": "Box hunting Moth"
+        },
+        {
+            "SPS_list": "Eublemma cochylioides",
+            "CN": "The pink-barred eublemma"
+        },
+        {
+            "SPS_list": "Eublemma dimidialis",
+            "CN": "Banner Moth"
+        },
+        {
+            "SPS_list": "Eublemma olivacea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eublemma parva",
+            "CN": "Small Marbled"
+        },
+        {
+            "SPS_list": "Eublemma rivula",
+            "CN": "Midline Hunter Moth"
+        },
+        {
+            "SPS_list": "Eublemma roseana",
+            "CN": "Arrow Headed Moth"
+        },
+        {
+            "SPS_list": "Eublemma roseonivea",
+            "CN": "Rose Halo Hunter Moth"
+        },
+        {
+            "SPS_list": "Euchromia polymena",
+            "CN": "Painted Handmaiden Moth "
+        },
+        {
+            "SPS_list": "Eucyclodes gavissima",
+            "CN": "Dry Spot Green Moth"
+        },
+        {
+            "SPS_list": "Eucyclodes semialba",
+            "CN": "Half-Brown Cucurbita Moth"
+        },
+        {
+            "SPS_list": "Eudocima homaena",
+            "CN": "Deciduous Moth"
+        },
+        {
+            "SPS_list": "Euchromius ocellea",
+            "CN": "Belted Grass-Veneer "
+        },
+        {
+            "SPS_list": "Euclasta vitralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eucyclodes albisparsa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eucyclodes semialba",
+            "CN": "Half-Brown Cucurbita Moth"
+        },
+        {
+            "SPS_list": "Eudocima hypermnestra",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eudocima materna",
+            "CN": "Dot-underwing Moth "
+        },
+        {
+            "SPS_list": "Eudocima phalonia",
+            "CN": "Common Fruit-Piercing Moth"
+        },
+        {
+            "SPS_list": "Eudocima salaminia",
+            "CN": "Green Fruit-piercing Moth"
+        },
+        {
+            "SPS_list": "Eudocima sikhimensis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eumelea biflavata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eumelea florinata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eumelea ludovicata",
+            "CN": "Orpiment Moth"
+        },
+        {
+            "SPS_list": "Eumelea rosalia",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eumeta variegata",
+            "CN": "Paulownia Bagworm Moth "
+        },
+        {
+            "SPS_list": "Eumorpha achemon",
+            "CN": "Achemon Sphinx "
+        },
+        {
+            "SPS_list": "Eupanacra busiris",
+            "CN": "Green Rippled HawkMoth"
+        },
+        {
+            "SPS_list": "Eupanacra mydon",
+            "CN": "Common rippled hawkMoth"
+        },
+        {
+            "SPS_list": "Eupanacra variolosa",
+            "CN": "Grown rippled hawkMoth"
+        },
+        {
+            "SPS_list": "Eupatula macrops",
+            "CN": "Common Owl Moth "
+        },
+        {
+            "SPS_list": "Eupithecia subfuscata",
+            "CN": "Grey Pug Moth"
+        },
+        {
+            "SPS_list": "Euplocia membliaria",
+            "CN": "Lead Moth"
+        },
+        {
+            "SPS_list": "Eupterote asclepiades",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eupterote undata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eurrhyparodes bracteolalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eurrhyparodes tricoloralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Eustixia pupula",
+            "CN": "Spotted Peppergrass Moth "
+        },
+        {
+            "SPS_list": "Euthrix laeta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Exelastis pumilio",
+            "CN": "Dwarf Plume Moth"
+        },
+        {
+            "SPS_list": "Exsula dentatrix",
+            "CN": "Five-Spotted Tiger Moth"
+        },
+        {
+            "SPS_list": "Fascellina chromataria",
+            "CN": "Brown Notch Moth"
+        },
+        {
+            "SPS_list": "Fascellina plagiata",
+            "CN": "Green Notch Moth"
+        },
+        {
+            "SPS_list": "Filodes fulvidorsalis",
+            "CN": "Yellow-Ridged Silkworm Moth"
+        },
+        {
+            "SPS_list": "Fodina contigua",
+            "CN": "White Rune Carpet Moth"
+        },
+        {
+            "SPS_list": "Formofentonia orbifer",
+            "CN": "Brown-Topped Moth"
+        },
+        {
+            "SPS_list": "Gabala argentata",
+            "CN": "Silver spot masonry tumor Moth"
+        },
+        {
+            "SPS_list": "Galleria mellonella",
+            "CN": "Greater Wax Moth"
+        },
+        {
+            "SPS_list": "Gasterocome pannosaria",
+            "CN": "Double-Framed Moon Moth"
+        },
+        {
+            "SPS_list": "Gatesclarkeana idia",
+            "CN": "Peach Leaf Roller Moth"
+        },
+        {
+            "SPS_list": "Gathynia fumicosta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Gazalina chrysolopha",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Gerdana caritella",
+            "CN": "Gerdana Moth"
+        },
+        {
+            "SPS_list": "Gesonia obeditalis",
+            "CN": "Even Double Spotted Moth"
+        },
+        {
+            "SPS_list": "Gillmeria pallidactyla",
+            "CN": "Yarrow Plume Moth"
+        },
+        {
+            "SPS_list": "Glanycus insolitus",
+            "CN": "Red Cicada Window Moth"
+        },
+        {
+            "SPS_list": "Glycythyma chrysorycta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Glyphodes actorionalis",
+            "CN": "Three-Spotted Silkworm Moth"
+        },
+        {
+            "SPS_list": "Glyphodes bicolor",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Glyphodes bivitralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Glyphodes caesalis",
+            "CN": "Jack Fruit Borer "
+        },
+        {
+            "SPS_list": "Glyphodes canthusalis",
+            "CN": "Bright Spotted Silkworm Moth"
+        },
+        {
+            "SPS_list": "Glyphodes extorris",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Glyphodes onychinalis",
+            "CN": "Swan Plant Flower Moth"
+        },
+        {
+            "SPS_list": "Glyphodes pyloalis",
+            "CN": "Lesser Mulberry Snout"
+        },
+        {
+            "SPS_list": "Glyphodes stolalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Gonitis involuta",
+            "CN": "Jute Looper "
+        },
+        {
+            "SPS_list": "Gonitis mesogona",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Gonodontis clelia",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Gonodontis pallida",
+            "CN": "Null-Spotted Moth"
+        },
+        {
+            "SPS_list": "Grammodes geometrica",
+            "CN": "Elephant Moth"
+        },
+        {
+            "SPS_list": "Grammodes stolida",
+            "CN": "The Geometrician "
+        },
+        {
+            "SPS_list": "Gymnoscelis  rufifasciata",
+            "CN": "Double-striped Pug "
+        },
+        {
+            "SPS_list": "Gynautocera papilionaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Habrosyne pyritoides",
+            "CN": "Buff Arches "
+        },
+        {
+            "SPS_list": "Hamodes propitia",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Haploa contigua",
+            "CN": "Neighbor Moth"
+        },
+        {
+            "SPS_list": "Haritalodes derogata",
+            "CN": "Cotton Leaf Roller"
+        },
+        {
+            "SPS_list": "Helcystogramma hibisci",
+            "CN": "Black eyed fish face Moth"
+        },
+        {
+            "SPS_list": "Helicoverpa armigera",
+            "CN": "Cotton Bollworm Moth "
+        },
+        {
+            "SPS_list": "Helicoverpa zea",
+            "CN": "Corn Earworm Moth "
+        },
+        {
+            "SPS_list": "Hellula rogatalis",
+            "CN": "Cabbage Webworm Moth"
+        },
+        {
+            "SPS_list": "Hellula undalis",
+            "CN": "Old World Webworm"
+        },
+        {
+            "SPS_list": "Hemithea tritonaria",
+            "CN": "Rusty Scaly Moth"
+        },
+        {
+            "SPS_list": "Hemithea wuka",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hemonia orbiferana",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Heortia vitessoides",
+            "CN": "Pseudotooth Borer Moth"
+        },
+        {
+            "SPS_list": "Herochroma cristata",
+            "CN": "Pagoda Moth"
+        },
+        {
+            "SPS_list": "Herpetogramma bipunctalis",
+            "CN": "Southern Beet Webworm Moth"
+        },
+        {
+            "SPS_list": "Herpetogramma cynaralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Herpetogramma licarsisalis",
+            "CN": "Grass Webworm Moth"
+        },
+        {
+            "SPS_list": "Herpetogramma phaeopteralis",
+            "CN": "Dusky Herpetogramma Moth"
+        },
+        {
+            "SPS_list": "Hesudra divisa",
+            "CN": "Bipartite moth"
+        },
+        {
+            "SPS_list": "Heterocnephes lymphatalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Heterostegane subtessellata",
+            "CN": "Four Fold Moth"
+        },
+        {
+            "SPS_list": "Hipoepa biasalis",
+            "CN": "Double-Arc Moth"
+        },
+        {
+            "SPS_list": "Hippotion boerhaviae",
+            "CN": "Pale Striated Hawk Moth/Vine Hawk Moth"
+        },
+        {
+            "SPS_list": "Hippotion celerio",
+            "CN": "Vine HawkMoth"
+        },
+        {
+            "SPS_list": "Hippotion rosetta",
+            "CN": "Swinhoe's Striated HawkMoth"
+        },
+        {
+            "SPS_list": "Hippotion velox",
+            "CN": "Dark Striated HawkMoth"
+        },
+        {
+            "SPS_list": "Histia flabellicornis",
+            "CN": "Wood Firefly Moth"
+        },
+        {
+            "SPS_list": "Hodebertia testalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hofmannophila pseudospretella",
+            "CN": "Brown House Moth"
+        },
+        {
+            "SPS_list": "Homodes bracteigutta",
+            "CN": "Rhino beetle rider Moth"
+        },
+        {
+            "SPS_list": "Homodes crocea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Homodes vivida",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Horithyatira decorata",
+            "CN": "Ripple Moth"
+        },
+        {
+            "SPS_list": "Hulodes caranea",
+            "CN": "Wood Moth"
+        },
+        {
+            "SPS_list": "Hyalobathra aequalis",
+            "CN": "Wild borer"
+        },
+        {
+            "SPS_list": "Hyalobathra minialis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hyblaea firmamentum",
+            "CN": "Flame Camel Moth"
+        },
+        {
+            "SPS_list": "Hyblaea puera",
+            "CN": "The Teak defoliator "
+        },
+        {
+            "SPS_list": "Hydrillodes lentalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hydriris ornatalis",
+            "CN": "Ornate Hydriris Moth"
+        },
+        {
+            "SPS_list": "Hyles gallii",
+            "CN": "Bedstraw HawkMoth "
+        },
+        {
+            "SPS_list": "Hyles livornica",
+            "CN": "Striped HawkMoth "
+        },
+        {
+            "SPS_list": "Hymenia perspectalis",
+            "CN": "Spotted Beet Webworm Moth"
+        },
+        {
+            "SPS_list": "Hymenoptychis sordida",
+            "CN": "Pneumatophore Moth"
+        },
+        {
+            "SPS_list": "Hypagyrtis unipunctata",
+            "CN": "One-spotted Variant"
+        },
+        {
+            "SPS_list": "Hypena laceratalis",
+            "CN": "Lantana Defoliator"
+        },
+        {
+            "SPS_list": "Hypena obacerralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hypersypnoides submarginata",
+            "CN": "Spotted kidney Moth"
+        },
+        {
+            "SPS_list": "Hyperythra lutea",
+            "CN": "Yellow Ruler Moth"
+        },
+        {
+            "SPS_list": "Hypocala deflorata",
+            "CN": "Variable Yellow Underwing "
+        },
+        {
+            "SPS_list": "Hypocala subsatura",
+            "CN": "Apple Hawk Moth"
+        },
+        {
+            "SPS_list": "Hypochrosis hyadaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hypochrosis pyrrhophaeata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hypomecis cineracea",
+            "CN": "Toothbrush Moth"
+        },
+        {
+            "SPS_list": "Hypomecis separata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hypomecis transcissa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hypopyra vespertilio",
+            "CN": "Color-Changing Moth"
+        },
+        {
+            "SPS_list": "Hyposidra infixaria",
+            "CN": "Yellow Hook Moth"
+        },
+        {
+            "SPS_list": "Hyposidra talaca",
+            "CN": "Black Looper "
+        },
+        {
+            "SPS_list": "Hyposidra violescens",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Hypospila bolinoides",
+            "CN": "Black Mask Moth"
+        },
+        {
+            "SPS_list": "Hypsopygia costalis",
+            "CN": "Clover Hayworm Moth"
+        },
+        {
+            "SPS_list": "Hypsopygia mauritialis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Idaea aversata",
+            "CN": "Riband Wave "
+        },
+        {
+            "SPS_list": "Idaea chotaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Idaea costiguttata",
+            "CN": "Three-Line Bogey Moth"
+        },
+        {
+            "SPS_list": "Idaea craspedota",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Idaea macrospila",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Idaea ptyonopoda",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Idaea vacillata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Idaea violacea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ilexia intractata",
+            "CN": "Black-dotted Ruddy Moth"
+        },
+        {
+            "SPS_list": "Iotaphora iridicolor",
+            "CN": "Iridicolour Emerald"
+        },
+        {
+            "SPS_list": "Ischnurges gratiosalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ischyja ferrifracta",
+            "CN": "Narrow Blue Striped Moth"
+        },
+        {
+            "SPS_list": "Ischyja hemiphaea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ischyja manlia",
+            "CN": "Blue Striped Moth"
+        },
+        {
+            "SPS_list": "Isocentris filalis",
+            "CN": "Yellow-Winged Long-Distance Wild Borer"
+        },
+        {
+            "SPS_list": "Isturgia disputaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Kamalia priapus",
+            "CN": "Puss Moth"
+        },
+        {
+            "SPS_list": "Karana gemmifera",
+            "CN": "Split Armyworm"
+        },
+        {
+            "SPS_list": "Krananda falcata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Krananda latimarginaria",
+            "CN": "Triangle Moth"
+        },
+        {
+            "SPS_list": "Krananda lucidaria",
+            "CN": "Three-Spotted Moth"
+        },
+        {
+            "SPS_list": "Krananda oliveomarginata",
+            "CN": "Grey-Green Glass Ruler Moth"
+        },
+        {
+            "SPS_list": "Krananda semihyalina",
+            "CN": "Glass Ruler Moth"
+        },
+        {
+            "SPS_list": "Labdia semicoccinea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lagoptera juno",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lamprosema commixta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lamprosema foedalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lamprosema tampiusalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Langia zenzeroides",
+            "CN": "Apple HawkMoth "
+        },
+        {
+            "SPS_list": "Lantanophaga pusillidactylus",
+            "CN": "Lantana Plume Moth"
+        },
+        {
+            "SPS_list": "Laspeyria ruficeps",
+            "CN": "Rufous Hook-Tip"
+        },
+        {
+            "SPS_list": "Lebeda nobilis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lecithocera terrigena",
+            "CN": "Pine Caterpillar Moth"
+        },
+        {
+            "SPS_list": "Leptomiza calcearia",
+            "CN": "Brown saw edge Moth"
+        },
+        {
+            "SPS_list": "Leucania yu",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Leucinodes cordalis",
+            "CN": "Poroporo Fruit Borer"
+        },
+        {
+            "SPS_list": "Leucinodes orbonalis",
+            "CN": "Eggplant Fruit and Shoot Borer "
+        },
+        {
+            "SPS_list": "Loboschiza koenigiana",
+            "CN": "The orange tortricid Moth/ Leaf webber"
+        },
+        {
+            "SPS_list": "Locastra muscosalis",
+            "CN": "Defoliated Foliage Borer"
+        },
+        {
+            "SPS_list": "Locharna strigipennis",
+            "CN": "Yellow Tussock Moth"
+        },
+        {
+            "SPS_list": "Loepa katinka",
+            "CN": "Golden Emperor Moth"
+        },
+        {
+            "SPS_list": "Loepa sikkima",
+            "CN": "Golden Emperor Moth"
+        },
+        {
+            "SPS_list": "Lomographa inamata",
+            "CN": "Yellow Daeso Moth"
+        },
+        {
+            "SPS_list": "Lomographa vestaliata",
+            "CN": "White Spring Moth"
+        },
+        {
+            "SPS_list": "Lopharthrum comprimens",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lophophelma calaurops",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lophophelma erionoma",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lophophelma funebrosa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lophophelma luteipes",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lophophelma vigens",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lophophleps purpurea",
+            "CN": "Three Line Shield Moth"
+        },
+        {
+            "SPS_list": "Lophophleps triangularis",
+            "CN": "Triangular Wave"
+        },
+        {
+            "SPS_list": "Luxiaria mitorrhaphes",
+            "CN": "Double Spotted Hook Moth"
+        },
+        {
+            "SPS_list": "Luxiaria phyllosaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lyclene arcuata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lyclene undulosa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lygniodes hypoleuca",
+            "CN": "White-Rimmed Phantom Carmenmoth"
+        },
+        {
+            "SPS_list": "Lymantria concolor",
+            "CN": "Tussock Moth/ Network Moth"
+        },
+        {
+            "SPS_list": "Lymantria dispar",
+            "CN": "Gypsy Moth"
+        },
+        {
+            "SPS_list": "Lymantria iris",
+            "CN": "Crescent Moth"
+        },
+        {
+            "SPS_list": "Lymantria marginata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lymantria mathura",
+            "CN": "Rosy gypsy Moth/ Pink gypsy Moth"
+        },
+        {
+            "SPS_list": "Lymantria monacha",
+            "CN": "Black Arches "
+        },
+        {
+            "SPS_list": "Lymantria semicincta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Lyssa zampa",
+            "CN": "Tropical Swallowtail Moth"
+        },
+        {
+            "SPS_list": "Mabra eryxalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Mabra nigriscripta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Macaldenia palumba",
+            "CN": "White Spotted Moth"
+        },
+        {
+            "SPS_list": "Macaria aemulataria",
+            "CN": "Common Angle"
+        },
+        {
+            "SPS_list": "Macrobrochis gigas",
+            "CN": "Giant Moth"
+        },
+        {
+            "SPS_list": "Macrocilix maia",
+            "CN": "Barbed Dumbbell Band Hook Moth"
+        },
+        {
+            "SPS_list": "Macrocilix mysticata",
+            "CN": "Dumbbell Band Hook Moth"
+        },
+        {
+            "SPS_list": "Macroglossum belis",
+            "CN": "Yellow-Belted Hawkmoth"
+        },
+        {
+            "SPS_list": "Macroglossum bombylans",
+            "CN": "Humble hummingbird hawkMoth"
+        },
+        {
+            "SPS_list": "Macroglossum corythus corythus",
+            "CN": "Flat-billed hawk Moth"
+        },
+        {
+            "SPS_list": "Macroglossum divergens",
+            "CN": "Nine-Section Wood Long-Beaked Hawkmoth"
+        },
+        {
+            "SPS_list": "Macroglossum gyrans",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Macroglossum neotroglodytus",
+            "CN": "Purple dwarf hummingbird"
+        },
+        {
+            "SPS_list": "Macroglossum nycteris",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Macroglossum passalus",
+            "CN": "Phoebe Hawkmoth"
+        },
+        {
+            "SPS_list": "Macroglossum pyrrhosticta",
+            "CN": "Maile Pilau Hornworm"
+        },
+        {
+            "SPS_list": "Macroglossum saga",
+            "CN": "Wave Spotted Long Beak Hawk Moth"
+        },
+        {
+            "SPS_list": "Macroglossum sitiene",
+            "CN": "Crisp-banded hummingbird hawkMoth"
+        },
+        {
+            "SPS_list": "Maliattha separata",
+            "CN": "Points Naw Army Moth"
+        },
+        {
+            "SPS_list": "Maliattha signifera",
+            "CN": "Mark Naw Army Moth"
+        },
+        {
+            "SPS_list": "Mangina argus",
+            "CN": "Crotalaria Podborer"
+        },
+        {
+            "SPS_list": "Manoba brunellus",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Maruca amboinalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Maruca vitrata",
+            "CN": "Mung Bean Moth"
+        },
+        {
+            "SPS_list": "Marumba cristata",
+            "CN": "Common striped HawkMoth"
+        },
+        {
+            "SPS_list": "Marumba dyras",
+            "CN": "Lime Six-Pointed Hawkmoth"
+        },
+        {
+            "SPS_list": "Marumba sperchius",
+            "CN": "Lily Six-Pointed Hawkmoth"
+        },
+        {
+            "SPS_list": "Mataeomera semialba",
+            "CN": "White horse Moth"
+        },
+        {
+            "SPS_list": "Maurilia iconica",
+            "CN": "Variable nolid Moth"
+        },
+        {
+            "SPS_list": "Maxates coelataria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Maxates thetydaria",
+            "CN": "Green-Banded Acupuncture Moth"
+        },
+        {
+            "SPS_list": "Mecodina albodentata",
+            "CN": "White Tooth Moth"
+        },
+        {
+            "SPS_list": "Mecodina praecipua",
+            "CN": "Longhorned Moth"
+        },
+        {
+            "SPS_list": "Medasina creataria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Megacorma obliqua",
+            "CN": "Black-belted hawkMoth"
+        },
+        {
+            "SPS_list": "Megalorhipida leucodactylus",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Meganola minuscula",
+            "CN": "Confused Meganola Moth"
+        },
+        {
+            "SPS_list": "Meganoton analis",
+            "CN": "Grey double-bristled hawkMoth"
+        },
+        {
+            "SPS_list": "Meganoton nyctiphanes",
+            "CN": "Dull double-bristled hawkMoth"
+        },
+        {
+            "SPS_list": "Melanolophia canadaria",
+            "CN": "Canadian Melanolophia Moth "
+        },
+        {
+            "SPS_list": "Mesoptila melanolopha",
+            "CN": "Stephen Moth"
+        },
+        {
+            "SPS_list": "Metaemene atrigutta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Metalectra discalis",
+            "CN": "Common Fungus Moth"
+        },
+        {
+            "SPS_list": "Metanastria gemella",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Metanastria hyrtaca",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Metapercnia ductaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Metoeca nymphulalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Metorthocheilus emarginata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Microblepsis leucosticta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Micronia aculeata",
+            "CN": "Little Swallow Moth"
+        },
+        {
+            "SPS_list": "Milionia basalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Miltochrista alikangiae",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Miltochrista arcuata",
+            "CN": "Moss moss Moth"
+        },
+        {
+            "SPS_list": "Miltochrista conjunctana",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Miltochrista dentifasciata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Mimeusemia postica",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Mimorista subcostalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Miresa argentifera kwangtungensis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Miresa bracteata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Miresa fulgida",
+            "CN": "Cup Moth"
+        },
+        {
+            "SPS_list": "Mixochlora vittata",
+            "CN": "Three-Forged Sickle-Winged Green Ruler"
+        },
+        {
+            "SPS_list": "Mocis frugalis",
+            "CN": "Sugarcane Looper"
+        },
+        {
+            "SPS_list": "Mocis latipes",
+            "CN": "Small Mocis Moth"
+        },
+        {
+            "SPS_list": "Mocis undata",
+            "CN": "Brown-striped Semilooper "
+        },
+        {
+            "SPS_list": "Monopis crocicapitella",
+            "CN": "Bird Nest Moth"
+        },
+        {
+            "SPS_list": "Monopis dorsistrigella",
+            "CN": "Skunkback Monopis Moth"
+        },
+        {
+            "SPS_list": "Monopis monachella",
+            "CN": "White-headed Monopis Moth"
+        },
+        {
+            "SPS_list": "Monopis pavlovskii",
+            "CN": "Pavlovski's Monopis Moth"
+        },
+        {
+            "SPS_list": "Morwennius decoratus",
+            "CN": "Ornamented hawkMoth"
+        },
+        {
+            "SPS_list": "Musotima suffusalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Mythimna separata",
+            "CN": "Northern Armyworm/ Oriental armyworm"
+        },
+        {
+            "SPS_list": "Nacna malachitis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nacoleia charesalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nagadeba indecoralis",
+            "CN": "Little Naomi Moth"
+        },
+        {
+            "SPS_list": "Nausinoe geometralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nausinoe perspectata",
+            "CN": "Moire Leaf Moth"
+        },
+        {
+            "SPS_list": "Naxidia punctata",
+            "CN": "Flax gray wave Moth"
+        },
+        {
+            "SPS_list": "Negeta contrariata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Neocerura liturata",
+            "CN": "New Sawboat Moth"
+        },
+        {
+            "SPS_list": "Neochera dominia",
+            "CN": "Whitening Moth"
+        },
+        {
+            "SPS_list": "Neochera inops",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Neogurelca hyas",
+            "CN": "Concave Hawkmoth"
+        },
+        {
+            "SPS_list": "Neohipparchus vallata",
+            "CN": "Two-Lined New Green Moth"
+        },
+        {
+            "SPS_list": "Neomusotima fuscolinealis",
+            "CN": "Crab clover"
+        },
+        {
+            "SPS_list": "Nephele hespera",
+            "CN": "Crepuscular hawkMoth"
+        },
+        {
+            "SPS_list": "Nepita conferta",
+            "CN": "Footman Moth"
+        },
+        {
+            "SPS_list": "Netria multispinae",
+            "CN": "Thorax Moth"
+        },
+        {
+            "SPS_list": "Netria viridescens",
+            "CN": "Small Pike Moth"
+        },
+        {
+            "SPS_list": "Nevrina procopia",
+            "CN": "Wheel Moth"
+        },
+        {
+            "SPS_list": "Niphopyralis chionesis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nippoptilia cinctipedalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nodaria externalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nola analis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nola fasciata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nola lucidalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nola pumila",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nomophila noctuella",
+            "CN": "Rush Veneer"
+        },
+        {
+            "SPS_list": "Noorda blitealis",
+            "CN": "Moringa Moth"
+        },
+        {
+            "SPS_list": "Nordstromia duplicata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nordstromia semililacina",
+            "CN": "Black-Spotted Moth"
+        },
+        {
+            "SPS_list": "Nosophora dispilalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nosophora semitritalis",
+            "CN": "Tea mustard borer   "
+        },
+        {
+            "SPS_list": "Notarcha aurolinealis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Notarcha tigrina",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Numenes siletti",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nyctemera adversata",
+            "CN": "White Butterfly Moth"
+        },
+        {
+            "SPS_list": "Nyctemera arctata",
+            "CN": "Butterfly Moth"
+        },
+        {
+            "SPS_list": "Nyctemera baulus",
+            "CN": "Asian Magpie Moth"
+        },
+        {
+            "SPS_list": "Nyctemera coleta",
+            "CN": "Marbled White Moth/ White tiger Moth"
+        },
+        {
+            "SPS_list": "Nyctemera lacticinia",
+            "CN": "Five-Pointed Butterfly Moth"
+        },
+        {
+            "SPS_list": "Nyctemera mulleri carissima",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Nycterosea obstipata",
+            "CN": "Gem Moth "
+        },
+        {
+            "SPS_list": "Nygmia plana",
+            "CN": "Tussok Moth"
+        },
+        {
+            "SPS_list": "Obeidia lucifera",
+            "CN": "Satan Leopard Moth"
+        },
+        {
+            "SPS_list": "Ocinara albicollis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Odontodes aleuca",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Odontopera albiguttulata",
+            "CN": "Silver Horned Moth"
+        },
+        {
+            "SPS_list": "Odontopera bilinearia",
+            "CN": "Double Horned Silver Heart Moth"
+        },
+        {
+            "SPS_list": "Oenospila flavifusata",
+            "CN": "Red saw Moth"
+        },
+        {
+            "SPS_list": "Oeonistis altica",
+            "CN": "Lichen Moth"
+        },
+        {
+            "SPS_list": "Olene inclusa",
+            "CN": "Tussok Moth"
+        },
+        {
+            "SPS_list": "Olene mendosa",
+            "CN": "Tussok Moth"
+        },
+        {
+            "SPS_list": "Olepa ricini",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Omiodes diemenalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Omiodes indicata",
+            "CN": "Bean-leaf Webworm Moth"
+        },
+        {
+            "SPS_list": "Omiodes tristrialis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ommatophora luminosa",
+            "CN": "Eyecatcher Moth"
+        },
+        {
+            "SPS_list": "Omphisa anastomosalis",
+            "CN": "The sweetpotato vineborer"
+        },
+        {
+            "SPS_list": "Operophtera brumata",
+            "CN": "Winter Moth "
+        },
+        {
+            "SPS_list": "Ophisma gravata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ophiusa disjungens",
+            "CN": "Guava Moth"
+        },
+        {
+            "SPS_list": "Ophiusa tirhaca",
+            "CN": "Green Drab"
+        },
+        {
+            "SPS_list": "Ophiusa trapezium",
+            "CN": "Straight's Button Moth"
+        },
+        {
+            "SPS_list": "Ophthalmitis herbidaria",
+            "CN": "Sawgrass Moth"
+        },
+        {
+            "SPS_list": "Opisthograptis molleri",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Oraesia emarginata",
+            "CN": "Fruit piercing Moth"
+        },
+        {
+            "SPS_list": "Oreta extensa",
+            "CN": "L-Stripe Hook Moth"
+        },
+        {
+            "SPS_list": "Oreta griseotincta",
+            "CN": "Nigra Moth"
+        },
+        {
+            "SPS_list": "Oreta loochooana",
+            "CN": "Elderberry Moth"
+        },
+        {
+            "SPS_list": "Oreta rosea",
+            "CN": "Rose Hooktip"
+        },
+        {
+            "SPS_list": "Orgyia antiqua",
+            "CN": "Rusty tussock Moth/Vapourer Moth"
+        },
+        {
+            "SPS_list": "Orgyia leucostigma",
+            "CN": "White-marked Tussock Moth"
+        },
+        {
+            "SPS_list": "Orgyia postica",
+            "CN": "Cocoa Tussock Moth"
+        },
+        {
+            "SPS_list": "Ornithospila submonstrans",
+            "CN": "Green geometrid Moth"
+        },
+        {
+            "SPS_list": "Orthocabera ocernaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Orthocabera sericea",
+            "CN": "Diagonal Belt Moth"
+        },
+        {
+            "SPS_list": "Orthonama obstipata",
+            "CN": "Gem Moth "
+        },
+        {
+            "SPS_list": "Orudiza protheclaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Orvasca subnotata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Orybina flaviplaga",
+            "CN": "Golden Double Moth"
+        },
+        {
+            "SPS_list": "Ostrinia furnacalis",
+            "CN": "Asian Corn Borer"
+        },
+        {
+            "SPS_list": "Ostrinia penitalis",
+            "CN": "American Lotus Borer Moth"
+        },
+        {
+            "SPS_list": "Othreis homaena",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ourapteryx clara",
+            "CN": "White Broadtail Moth"
+        },
+        {
+            "SPS_list": "Ourapteryx nivea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ourapteryx podaliriata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ourapteryx sambucaria",
+            "CN": "Swallow-tailed Moth"
+        },
+        {
+            "SPS_list": "Ourapteryx sciticaudaria",
+            "CN": "Yellow-tailed Moth"
+        },
+        {
+            "SPS_list": "Oxymacaria temeraria",
+            "CN": "Dark-Edged Truncated Moth"
+        },
+        {
+            "SPS_list": "Oxyodes scrobiculata",
+            "CN": "Longan Semi-Looper"
+        },
+        {
+            "SPS_list": "Ozarba punctigera",
+            "CN": "Point Scar Army Worm Moth"
+        },
+        {
+            "SPS_list": "Pachynoa purpuralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pachynoa sabelialis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Padenia duplicana",
+            "CN": "Stripe footman Moth"
+        },
+        {
+            "SPS_list": "Padenia transversa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pagyda botydalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pagyda salvalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Paliga machoeralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Palirisa cervina",
+            "CN": "Brown Belt Moth"
+        },
+        {
+            "SPS_list": "Palpita annulifer",
+            "CN": "Crambid Moth"
+        },
+        {
+            "SPS_list": "Palpita flegia",
+            "CN": "Satin White Palpita"
+        },
+        {
+            "SPS_list": "Palpita vitrealis",
+            "CN": "Jasmine Moth"
+        },
+        {
+            "SPS_list": "Palpoctenidia phoenicosoma",
+            "CN": "Purple Horn Moth"
+        },
+        {
+            "SPS_list": "Pandesma quenavadi",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Paracataclysta fuscalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Paracrama dulcissima",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Paracymoriza vagalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Paralebeda plagifera",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Paramaxates taiwana",
+            "CN": "Taiwanese Parasawwing Moth"
+        },
+        {
+            "SPS_list": "Parapediasia teterrellus",
+            "CN": "Bluegrass Webworm Moth"
+        },
+        {
+            "SPS_list": "Parapoynx allionealis",
+            "CN": "Watermilfoil Leafcutter Moth"
+        },
+        {
+            "SPS_list": "Parapoynx crisonalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Parapoynx diminutalis",
+            "CN": "Hydrilla Leafcutter Moth "
+        },
+        {
+            "SPS_list": "Parapoynx fluctuosalis",
+            "CN": "Corrugated Hydra Moth"
+        },
+        {
+            "SPS_list": "Parapoynx stagnalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Parasa chloris",
+            "CN": "Smaller Parasa Moth "
+        },
+        {
+            "SPS_list": "Parasa darma",
+            "CN": "Cup Moth"
+        },
+        {
+            "SPS_list": "Parasa lepida",
+            "CN": "Blue-striped Nettle Grub "
+        },
+        {
+            "SPS_list": "Parasa pastoralis",
+            "CN": "Spotted Green Spiny Moth"
+        },
+        {
+            "SPS_list": "Parasa pseudorepanda",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Parasa repanda",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pareuchaetes pseudoinsulata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pareumelea eugeniata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Parotis marginata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Parotis punctiferalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Parum colligata",
+            "CN": "Moon Hawkmoth"
+        },
+        {
+            "SPS_list": "Patania balteata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Patania iopasalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Patania silicalis",
+            "CN": "Herbivorous Pleuroptya Moth"
+        },
+        {
+            "SPS_list": "Pelagodes antiquadraria",
+            "CN": "Sea Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Pelagodes subquadraria",
+            "CN": "Asiatic Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Penicillaria jocosatrix",
+            "CN": "Mango Shoot Borer "
+        },
+        {
+            "SPS_list": "Penicillifera apicalis",
+            "CN": "Bombycid Silkmoth"
+        },
+        {
+            "SPS_list": "Pergesa acteus",
+            "CN": "Green Pergesa HawkMoth"
+        },
+        {
+            "SPS_list": "Pericyma cruegeri",
+            "CN": "Poinciana Looper "
+        },
+        {
+            "SPS_list": "Peridrome orbicularis",
+            "CN": "Broad Winged Tiger Moth"
+        },
+        {
+            "SPS_list": "Perina nuda",
+            "CN": "Banyan Tussock Moth "
+        },
+        {
+            "SPS_list": "Perixera illepidaria",
+            "CN": "Rhododendron spp"
+        },
+        {
+            "SPS_list": "Petavia attenuata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Petelia medardaria",
+            "CN": "8 Spot Smiley Hugger Moth/Golden Spot Streaky Hugger Moth "
+        },
+        {
+            "SPS_list": "Phalera grotei",
+            "CN": "Grote's Buff-Tip"
+        },
+        {
+            "SPS_list": "Phauda flammans",
+            "CN": "Red Hair Moth/vermilion Moth"
+        },
+        {
+            "SPS_list": "Phazaca kosemponicola",
+            "CN": "Kaftan Moth"
+        },
+        {
+            "SPS_list": "Phazaca theclata",
+            "CN": "Household Casebearer"
+        },
+        {
+            "SPS_list": "Phereoeca uterella",
+            "CN": "Pot Nest Moth"
+        },
+        {
+            "SPS_list": "Phlogophora albovittata",
+            "CN": "Jujube Spiny Moth"
+        },
+        {
+            "SPS_list": "Phlossa conjuncta",
+            "CN": "Jujube Moth"
+        },
+        {
+            "SPS_list": "Phocoderma velutina",
+            "CN": "Slug Moth"
+        },
+        {
+            "SPS_list": "Phricanthes flexilineana",
+            "CN": "Leaf Roller moth"
+        },
+        {
+            "SPS_list": "Phycodes minor",
+            "CN": "Fig Leaf roller"
+        },
+        {
+            "SPS_list": "Phyllodes eyndhovii",
+            "CN": "Firefly Moth"
+        },
+        {
+            "SPS_list": "Pidorus gemina",
+            "CN": "White-Banded Jewel"
+        },
+        {
+            "SPS_list": "Pidorus glaucopis",
+            "CN": "Chalcosiine Day-Flying Moths"
+        },
+        {
+            "SPS_list": "Pilocrocis ramentalis",
+            "CN": "Scraped Pilocrocis Moth"
+        },
+        {
+            "SPS_list": "Pindara illibata",
+            "CN": "Carpenter Moth"
+        },
+        {
+            "SPS_list": "Pingasa chlora",
+            "CN": "Flower-eating caterpillar"
+        },
+        {
+            "SPS_list": "Pingasa lariaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pingasa rubicunda",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pingasa rubimontana",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pingasa ruginaria",
+            "CN": "Looper Moth"
+        },
+        {
+            "SPS_list": "Platycerota vitticostata",
+            "CN": "Flower Moth"
+        },
+        {
+            "SPS_list": "Platyja umbrina",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Platyja umminia",
+            "CN": "four eye owlet Moth/Slender Moth"
+        },
+        {
+            "SPS_list": "Platyptilia carduidactylus",
+            "CN": "Artichoke Plume Moth"
+        },
+        {
+            "SPS_list": "Plecoptera recta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Plecoptera reflexa",
+            "CN": "Shisham Defoliator Moth"
+        },
+        {
+            "SPS_list": "Plodia interpunctella",
+            "CN": "Indian Meal Moth"
+        },
+        {
+            "SPS_list": "Plusiodonta coelonota",
+            "CN": "Snake Vine Moth"
+        },
+        {
+            "SPS_list": "Plusiopalpa adrasta",
+            "CN": "Copper Spodoptera"
+        },
+        {
+            "SPS_list": "Plutella xylostella",
+            "CN": "Diamondback Moth"
+        },
+        {
+            "SPS_list": "Plutodes costatus",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Plutodes exquisita",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Plutodes flavescens",
+            "CN": "Dogs Paw Moth"
+        },
+        {
+            "SPS_list": "Pogonopygia nigralbata",
+            "CN": "Double-Rowed Moth"
+        },
+        {
+            "SPS_list": "Poliana natalensis",
+            "CN": "Natal Sphinx"
+        },
+        {
+            "SPS_list": "Poliobotys ablactalis",
+            "CN": "Pearl Grey Moth"
+        },
+        {
+            "SPS_list": "Polydesma boarmoides",
+            "CN": "Curvy Moth"
+        },
+        {
+            "SPS_list": "Polygrammodes flavidalis",
+            "CN": "Ironweed Root Moth "
+        },
+        {
+            "SPS_list": "Polytela gloriosae",
+            "CN": "Lily Moth"
+        },
+        {
+            "SPS_list": "Polythlipta divaricata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Prismosticta fenestrata",
+            "CN": "Small Window Moth"
+        },
+        {
+            "SPS_list": "Problepsis albidior",
+            "CN": "Binocular sclerotium Moth"
+        },
+        {
+            "SPS_list": "Problepsis vulgaris",
+            "CN": "Eye Looper Moth"
+        },
+        {
+            "SPS_list": "Progonia oileusalis",
+            "CN": "Triangle Moth"
+        },
+        {
+            "SPS_list": "Prophantis adusta",
+            "CN": "Yellow-margin Pyrus Moth"
+        },
+        {
+            "SPS_list": "Protonoceras capitalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Protuliocnemis castalaria",
+            "CN": "Spring silk Moth"
+        },
+        {
+            "SPS_list": "Protuliocnemis partita",
+            "CN": "Scaly moth"
+        },
+        {
+            "SPS_list": "Pseudeuchlora kafebera",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pseudoblabes oophora",
+            "CN": "Yellow Border Footman"
+        },
+        {
+            "SPS_list": "Pseudomicronia advocataria",
+            "CN": "Swallow Moth"
+        },
+        {
+            "SPS_list": "Psilalcis albibasis",
+            "CN": "White base frost-foot moth"
+        },
+        {
+            "SPS_list": "Psilogramma discistriga",
+            "CN": "Large Brown Hawk Moth"
+        },
+        {
+            "SPS_list": "Psilogramma increta",
+            "CN": "Frost Hawk Moth"
+        },
+        {
+            "SPS_list": "Psilogramma menephron",
+            "CN": "Privet HawkMoth"
+        },
+        {
+            "SPS_list": "Psilogramma vates",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Psimada quadripennis",
+            "CN": "Porphyra Vulgaris Moths"
+        },
+        {
+            "SPS_list": "Psyche casta",
+            "CN": "Common Bagworm Moth"
+        },
+        {
+            "SPS_list": "Psyra conferta",
+            "CN": "Yellow Velvet Moth"
+        },
+        {
+            "SPS_list": "Pterophorus pentadactyla",
+            "CN": "White Plume Moth"
+        },
+        {
+            "SPS_list": "Ptyomaxia syntaractis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pycnarmon cribrata",
+            "CN": "Paulownia Leaf Roller Moth"
+        },
+        {
+            "SPS_list": "Pygospila tyres",
+            "CN": "Chequered Snout Moth"
+        },
+        {
+            "SPS_list": "Pyloetis mimosae",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Pyralis farinalis",
+            "CN": "Meal Moth "
+        },
+        {
+            "SPS_list": "Pyralis manihotalis",
+            "CN": "Tropical Meal Moth"
+        },
+        {
+            "SPS_list": "Pyralis pictalis",
+            "CN": "Painted Meal Moth"
+        },
+        {
+            "SPS_list": "Pyrausta aurata",
+            "CN": "Mint Moth "
+        },
+        {
+            "SPS_list": "Pyrausta orphisalis",
+            "CN": "Orange Mint Moth "
+        },
+        {
+            "SPS_list": "Pyrausta ostrinalis",
+            "CN": "Scarce Purple and Gold"
+        },
+        {
+            "SPS_list": "Pyrausta phoenicealis",
+            "CN": "Phoenicean Pyrausta"
+        },
+        {
+            "SPS_list": "Pyrausta pseudonythesalis",
+            "CN": "A Crambid Snout Moth"
+        },
+        {
+            "SPS_list": "Pyrausta signatalis",
+            "CN": "Raspberry Pyrausta Moth"
+        },
+        {
+            "SPS_list": "Pyrinioides sinuosus",
+            "CN": "Calendula moth"
+        },
+        {
+            "SPS_list": "Pyrrhia umbra",
+            "CN": "Bordered Sallow"
+        },
+        {
+            "SPS_list": "Racotis boarmiaria",
+            "CN": "Wrinkle Moth"
+        },
+        {
+            "SPS_list": "Rajendra biguttata",
+            "CN": "Indian Tiger Moth"
+        },
+        {
+            "SPS_list": "Ramadasa pavo",
+            "CN": "Pavo Moth"
+        },
+        {
+            "SPS_list": "Rehimena phrynealis",
+            "CN": "Yellow-spotted purple-winged wild borer"
+        },
+        {
+            "SPS_list": "Retina rubrivitta",
+            "CN": "Burnet Moth"
+        },
+        {
+            "SPS_list": "Rhagastis castor",
+            "CN": "Taiwan hawkmoth"
+        },
+        {
+            "SPS_list": "Rhagastis olivacea",
+            "CN": "Hawk Moth Species"
+        },
+        {
+            "SPS_list": "Rhimphalea ochalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Rhimphaliodes macrostigma",
+            "CN": "Snout Moth"
+        },
+        {
+            "SPS_list": "Rhodometra sacraria",
+            "CN": "Vestal "
+        },
+        {
+            "SPS_list": "Rindgea s-signata",
+            "CN": "Signate Looper Moth "
+        },
+        {
+            "SPS_list": "Risoba obstructa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Rusicada combinans",
+            "CN": "Even mallow moth"
+        },
+        {
+            "SPS_list": "Ruttellerona pallicostaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Ruttellerona pseudocessaria",
+            "CN": "Sawtail Moth"
+        },
+        {
+            "SPS_list": "Ruttenstorferia bipartita",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Sameodes cancellalis",
+            "CN": "Reticulated arch-winged wild borer"
+        },
+        {
+            "SPS_list": "Samia canningii",
+            "CN": "Canning's Lesser Atlas Moth"
+        },
+        {
+            "SPS_list": "Samia cynthia",
+            "CN": "Ailanthus SilkMoth"
+        },
+        {
+            "SPS_list": "Sarbanissa albifascia",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Sarcinodes aequilinearia",
+            "CN": "Silver sand moth"
+        },
+        {
+            "SPS_list": "Saroba pustulifera",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Sarobides inconclusa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Saturnia anna",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Saturnia simla",
+            "CN": "Lower Himalayan Emperor Moth"
+        },
+        {
+            "SPS_list": "Saturnia thibeta",
+            "CN": "Himalayan Emperor Moth"
+        },
+        {
+            "SPS_list": "Saturnia zuleika",
+            "CN": "Mottled Empoeror Moth"
+        },
+        {
+            "SPS_list": "Saucrobotys futilalis",
+            "CN": "Dogbane Saucrobotys Moth"
+        },
+        {
+            "SPS_list": "Scenedra decoratalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Schistophleps bipuncta",
+            "CN": "Pearl moth"
+        },
+        {
+            "SPS_list": "Schizura ipomaeae",
+            "CN": "Morning-glory Prominent "
+        },
+        {
+            "SPS_list": "Scirpophaga incertulas",
+            "CN": "Rice Yellow Stem Borer"
+        },
+        {
+            "SPS_list": "Scopelodes sericea",
+            "CN": "Cup Moth"
+        },
+        {
+            "SPS_list": "Scopelodes testacea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Scopula benitaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Scopula emissaria",
+            "CN": "Two-pointed Limestone Moth"
+        },
+        {
+            "SPS_list": "Scopula fibulata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Scopula floslactata",
+            "CN": "Cream Wave"
+        },
+        {
+            "SPS_list": "Scopula inductata",
+            "CN": "Soft-lined Wave"
+        },
+        {
+            "SPS_list": "Scopula limboundata",
+            "CN": "Large Lace-border Moth"
+        },
+        {
+            "SPS_list": "Scopula opicata",
+            "CN": "Silver Moth"
+        },
+        {
+            "SPS_list": "Scopula pulchellata",
+            "CN": "Xiuyan ruler moth"
+        },
+        {
+            "SPS_list": "Scopula rubraria",
+            "CN": "Plantain Moth"
+        },
+        {
+            "SPS_list": "Scopula umbilicata",
+            "CN": "Swag-lined Wave Moth"
+        },
+        {
+            "SPS_list": "Selepa discigera",
+            "CN": "Long Snout Wooly Leg Eye Moth "
+        },
+        {
+            "SPS_list": "Semiothisa emersaria",
+            "CN": "Geomatrid Moth Species"
+        },
+        {
+            "SPS_list": "Semiothisops macariata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Serrodes campana",
+            "CN": "Bell spotted wing moth"
+        },
+        {
+            "SPS_list": "Serrodes partita",
+            "CN": "Catapult Moth"
+        },
+        {
+            "SPS_list": "Siglophora ferreilutea",
+            "CN": "Rusty spotted moth"
+        },
+        {
+            "SPS_list": "Siglophora sanguinolenta",
+            "CN": "Inner Yellow Spotted Moth"
+        },
+        {
+            "SPS_list": "Simplicia bimarginata",
+            "CN": "Thick-winged Moth"
+        },
+        {
+            "SPS_list": "Simplicia cornicalis",
+            "CN": "Lesser caterpillar Moth"
+        },
+        {
+            "SPS_list": "Singara diversalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Sinna extrema",
+            "CN": "Walnut Leopard Moth"
+        },
+        {
+            "SPS_list": "Sisyrophora pfeifferae",
+            "CN": "Pearly Crambid Moth"
+        },
+        {
+            "SPS_list": "Somatina plynusaria",
+            "CN": "Polkadot Moth"
+        },
+        {
+            "SPS_list": "Somena scintillans",
+            "CN": "Black-winged Yellow Tussock Moth"
+        },
+        {
+            "SPS_list": "Somera viridifusca",
+            "CN": "Sezhou Moth"
+        },
+        {
+            "SPS_list": "Spaniocentra hollowayi",
+            "CN": "Greenfoot Moth"
+        },
+        {
+            "SPS_list": "Sphenarches anisodactylus",
+            "CN": "Geranium Plume Moth"
+        },
+        {
+            "SPS_list": "Sphingomorpha chlorea",
+            "CN": "Sundowner Moth"
+        },
+        {
+            "SPS_list": "Sphrageidus similis",
+            "CN": "Swan Moth"
+        },
+        {
+            "SPS_list": "Spirama helicina",
+            "CN": "Owlet Moth"
+        },
+        {
+            "SPS_list": "Spirama retorta",
+            "CN": "Indian Owlet Moth"
+        },
+        {
+            "SPS_list": "Spirama spp",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Spodoptera exigua",
+            "CN": "Beet Armyworm Moth"
+        },
+        {
+            "SPS_list": "Spodoptera frugiperda",
+            "CN": "Fall Armyworm Moth"
+        },
+        {
+            "SPS_list": "Spodoptera litura",
+            "CN": "Oriental Leafworm Moth"
+        },
+        {
+            "SPS_list": "Spodoptera mauritia",
+            "CN": "Lawn Armyworm Moth"
+        },
+        {
+            "SPS_list": "Spodoptera pecten",
+            "CN": "Spodoptera litura"
+        },
+        {
+            "SPS_list": "Spoladea recurvalis",
+            "CN": "Hawaiian Beet Webworm Moth "
+        },
+        {
+            "SPS_list": "Stathmopoda auriferella",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Stauropus alternus",
+            "CN": "Fluffy Green Moth"
+        },
+        {
+            "SPS_list": "Stauropus fagi",
+            "CN": "Lobster Moth "
+        },
+        {
+            "SPS_list": "Stegasta bosqueella",
+            "CN": "Red-necked Peanutworm Moth"
+        },
+        {
+            "SPS_list": "Stegasta variana",
+            "CN": "Long Goat Horned Concealer Moth"
+        },
+        {
+            "SPS_list": "Stenodacma pyrrhodes",
+            "CN": "Plume Moth Species"
+        },
+        {
+            "SPS_list": "Stenoptilodes taprobanes",
+            "CN": "Plume Moth Species"
+        },
+        {
+            "SPS_list": "Stictane rectilinea",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Streblote siva",
+            "CN": "Jujube Lappet Moth"
+        },
+        {
+            "SPS_list": "Susica sinensis",
+            "CN": "Limacodid Cup Moth"
+        },
+        {
+            "SPS_list": "Symmoracma minoralis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Sympis rufibasis",
+            "CN": "Hemlock Moth"
+        },
+        {
+            "SPS_list": "Synclera traducalis",
+            "CN": "Variegated Pearl Moth"
+        },
+        {
+            "SPS_list": "Syngamia falsidicalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Syntomoides imaon",
+            "CN": "Syntomoides Imaon Moth"
+        },
+        {
+            "SPS_list": "Syngamia latimarginalis",
+            "CN": "Grass Moth Species"
+        },
+        {
+            "SPS_list": "Syntypistis comatus",
+            "CN": "White Spotted Crotch Moth"
+        },
+        {
+            "SPS_list": "Syntypistis pallidifascia",
+            "CN": "Prominent Moth/Rhizome Moth"
+        },
+        {
+            "SPS_list": "Talanga sexpunctalis",
+            "CN": "Wild Moth"
+        },
+        {
+            "SPS_list": "Tamba lala",
+            "CN": "Latan Moth"
+        },
+        {
+            "SPS_list": "Tanaoctenia haliaria",
+            "CN": "Green-winged Teapot Moth"
+        },
+        {
+            "SPS_list": "Tanaorhinus viridiluteata",
+            "CN": "Two-spotted Sickle-winged Green Ruler Moth"
+        },
+        {
+            "SPS_list": "Tasta micaceata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Tathorhynchus exsiccata",
+            "CN": "Alfalfa Looper Moth"
+        },
+        {
+            "SPS_list": "Tatobotys biannulalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Tatobotys janapalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Teldenia specca",
+            "CN": "Drepanid Moth"
+        },
+        {
+            "SPS_list": "Tephriopis divulsa",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Terastia egialealis",
+            "CN": "Spotted Durian Fruit Borer Moth"
+        },
+        {
+            "SPS_list": "Terastia meticulosalis",
+            "CN": "Erythrina Borer Moth"
+        },
+        {
+            "SPS_list": "Tetragonus catamitus",
+            "CN": "Common Butterfly Moth "
+        },
+        {
+            "SPS_list": "Teulisna tumida",
+            "CN": "Concalyx moth"
+        },
+        {
+            "SPS_list": "Thalassodes immissaria",
+            "CN": "Green Moth"
+        },
+        {
+            "SPS_list": "Thalassodes quadraria",
+            "CN": "Green Tree Emarald Moth"
+        },
+        {
+            "SPS_list": "Theretra alecto",
+            "CN": "Levant Hawkmoth"
+        },
+        {
+            "SPS_list": "Theretra boisduvalii",
+            "CN": "Boisduval's Hawkmoth"
+        },
+        {
+            "SPS_list": "Theretra clotho",
+            "CN": "Common Hunter HawkMoth"
+        },
+        {
+            "SPS_list": "Theretra latreillii",
+            "CN": "Pale Brown Hawkmoth"
+        },
+        {
+            "SPS_list": "Theretra nessus",
+            "CN": "Yam Hawkmoth"
+        },
+        {
+            "SPS_list": "Theretra oldenlandiae",
+            "CN": "White-banded Hunter Hawkmoth"
+        },
+        {
+            "SPS_list": "Theretra pallicosta",
+            "CN": "White-edged Hunter Hawkmoth"
+        },
+        {
+            "SPS_list": "Theretra silhetensis",
+            "CN": "Brown-Banded Hunter Hawkmoth"
+        },
+        {
+            "SPS_list": "Theretra suffusa",
+            "CN": "HawkMoth"
+        },
+        {
+            "SPS_list": "Thinopteryx crocoptera",
+            "CN": "Yellow Butterfly Moth"
+        },
+        {
+            "SPS_list": "Thyas coronata",
+            "CN": "Yellow Underwing Moth"
+        },
+        {
+            "SPS_list": "Thyas honesta",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Thyatira batis",
+            "CN": "Peach Blossom Moth"
+        },
+        {
+            "SPS_list": "Thyrassia penangae",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Thysanoidma octalis",
+            "CN": "Eight-Spotted Winged Water Moth"
+        },
+        {
+            "SPS_list": "Thysanoplusia intermixta",
+            "CN": "Spodoptera litura"
+        },
+        {
+            "SPS_list": "Thysanoplusia orichalcea",
+            "CN": "Slender Burnished Brass Moth"
+        },
+        {
+            "SPS_list": "Timandra convectaria",
+            "CN": "Acanthus Moth"
+        },
+        {
+            "SPS_list": "Timandromorpha energes",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Tinea apicimaculella",
+            "CN": "Dark-collared Tinea Moth"
+        },
+        {
+            "SPS_list": "Tinolius eburneigutta",
+            "CN": "Owlet Moth"
+        },
+        {
+            "SPS_list": "Tinolius hypsana",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Tiracola aureata",
+            "CN": "Spodoptera frugiperda"
+        },
+        {
+            "SPS_list": "Tiracola plagiata",
+            "CN": "Cacao Armyworm"
+        },
+        {
+            "SPS_list": "Tiruvaca subcostalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Titulcia confictella",
+            "CN": "Spotted Moth/ Mirror Moth"
+        },
+        {
+            "SPS_list": "Toccolosida rubriceps",
+            "CN": "Zhu Shuobo"
+        },
+        {
+            "SPS_list": "Tornos scolopacinaria",
+            "CN": "Dimorphic Gray"
+        },
+        {
+            "SPS_list": "Trabala vishnou",
+            "CN": "Rose Myrtle Lappet Moth"
+        },
+        {
+            "SPS_list": "Trachea auriplena",
+            "CN": "Spodoptera litura"
+        },
+        {
+            "SPS_list": "Traminda aventiaria",
+            "CN": "Cross-line Wave Moth"
+        },
+        {
+            "SPS_list": "Traminda mundissima",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Trichoplusia ni",
+            "CN": "Cabbage Looper Moth"
+        },
+        {
+            "SPS_list": "Tridrepana arikana",
+            "CN": "Black and Yellow Hook Moth"
+        },
+        {
+            "SPS_list": "Tridrepana flava",
+            "CN": "Yellow Hook Moth"
+        },
+        {
+            "SPS_list": "Trigonodes hyppasia",
+            "CN": "Triangles Moth"
+        },
+        {
+            "SPS_list": "Trilocha varians",
+            "CN": "Triangular Moth"
+        },
+        {
+            "SPS_list": "Trotocraspeda divaricata",
+            "CN": "Golden Beetle Moth"
+        },
+        {
+            "SPS_list": "Trischalis subaurana",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Trypanophora semihyalina",
+            "CN": "Deer Moth"
+        },
+        {
+            "SPS_list": "Tyana falcata",
+            "CN": "Green Horn Moth"
+        },
+        {
+            "SPS_list": "Tyana marina",
+            "CN": "Nolid Moth"
+        },
+        {
+            "SPS_list": "Tyspanodes hypsalis",
+            "CN": "Yellow-black striped Moth"
+        },
+        {
+            "SPS_list": "Tyspanodes linealis",
+            "CN": "Teenas Blue Vein Footman Moth"
+        },
+        {
+            "SPS_list": "Urapteroides astheniata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Uresiphita gilvata",
+            "CN": "Wandering Sunset "
+        },
+        {
+            "SPS_list": "Uresiphita polygonalis maorialis",
+            "CN": "Kowhai Moth"
+        },
+        {
+            "SPS_list": "Uresiphita quinquigera",
+            "CN": "Beetle Moth"
+        },
+        {
+            "SPS_list": "Utetheisa lotrix",
+            "CN": "Crotalaria Moth"
+        },
+        {
+            "SPS_list": "Utetheisa pulchella",
+            "CN": "Crimson-speckled Flunkey Moth"
+        },
+        {
+            "SPS_list": "Utetheisa pulchelloides",
+            "CN": "Heliotrope Moth"
+        },
+        {
+            "SPS_list": "Vamuna alboluteola",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Vamuna remelana",
+            "CN": "Footman Moth"
+        },
+        {
+            "SPS_list": "Vitessa suradeva",
+            "CN": "Pyralid Moth"
+        },
+        {
+            "SPS_list": "Westermannia superba",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Xandrames dholaria",
+            "CN": "Jade Arm Moth"
+        },
+        {
+            "SPS_list": "Xandrames latiferaria",
+            "CN": "Scratched Jade Arm Moth"
+        },
+        {
+            "SPS_list": "Xanthodes albago",
+            "CN": "Cream Drab "
+        },
+        {
+            "SPS_list": "Xanthodes intersepta",
+            "CN": "Yellow Spodoptera"
+        },
+        {
+            "SPS_list": "Xanthodes transversa",
+            "CN": "Transverse Moth"
+        },
+        {
+            "SPS_list": "Xanthorhoe saturata",
+            "CN": "Yinghuang Ruler Moth"
+        },
+        {
+            "SPS_list": "Xenochroa chlorostigma",
+            "CN": "Nolid Moth"
+        },
+        {
+            "SPS_list": "Xerodes contiguaria",
+            "CN": "White-Spotted Truncated Moth"
+        },
+        {
+            "SPS_list": "Xerodes ypsaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Xyleutes persona",
+            "CN": "Carpenter moth"
+        },
+        {
+            "SPS_list": "Xyleutes strix",
+            "CN": "Goat Moth"
+        },
+        {
+            "SPS_list": "Yashmakia suffusa",
+            "CN": "Wutu Flower Moth"
+        },
+        {
+            "SPS_list": "Yepcalphis dilectissima",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Yponomeuta cagnagella",
+            "CN": "Spindle Ermine Moth"
+        },
+        {
+            "SPS_list": "Yponomeuta evonymella",
+            "CN": "Bird-cherry Ermine Moth"
+        },
+        {
+            "SPS_list": "Zale lunata",
+            "CN": "Lunate Zale Moth "
+        },
+        {
+            "SPS_list": "Zamarada eogenaria",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Zeheba aureata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Zeheba lucidata",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Zeuzera coffeae",
+            "CN": "The Red Coffee Borer/ Coffee Carpenter Moth"
+        },
+        {
+            "SPS_list": "Zeuzera multistrigata",
+            "CN": "Leopard Moth"
+        },
+        {
+            "SPS_list": "Zeuzera pyrina",
+            "CN": "Wood Leopard Moth"
+        },
+        {
+            "SPS_list": "Ziridava xylinaria",
+            "CN": "Indistinct Carpet Moth"
+        },
+        {
+            "SPS_list": "Zitha torridalis",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Zonoplusia ochreata",
+            "CN": "Pennywort Cutworm Moth"
+        },
+        {
+            "SPS_list": "Zurobata vacillans",
+            "CN": "Not Available"
+        },
+        {
+            "SPS_list": "Zythos avellanea",
+            "CN": "Chocolate Red Zythos Moth"
+        }
+ ]

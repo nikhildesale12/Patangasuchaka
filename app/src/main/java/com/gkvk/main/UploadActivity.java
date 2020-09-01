@@ -4,13 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.ActionMode;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -59,15 +59,11 @@ import com.gkvk.util.ApplicationConstant;
 import com.gkvk.util.GPSTracker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -86,7 +82,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Credentials;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -97,7 +92,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UploadActivity extends AppCompatActivity implements CropImageView.OnGetCroppedImageCompleteListener, CropImageView.OnSetImageUriCompleteListener {
+public class UploadActivity extends AppCompatActivity {
     RelativeLayout imageInfoRelativeLayout;
     double latitude = 0;
     double longitude = 0;
@@ -107,14 +102,12 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
     String pathtoUpload;
     String imageName;
     EditText txtDate;
-    LinearLayout croplinearlayout;
     LinearLayout mainlinearlayout;
-    Button buttonCrop ;
     ImageView buttonGoToCrop;
     Uri imageUri;
-    private CropImageView mCropImageView;
     private TextView mProgressViewText;
     private View mProgressView;
+    public static final int REQUEST_IMAGE = 100;
 
     @Override
     public void onSupportActionModeStarted(@NonNull ActionMode mode) {
@@ -123,7 +116,7 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
 
     AutoCompleteTextView autocompletePlaces;
     String userName;
-    private int mYear, mMonth, mDay, mHour, mMinute;
+    private int mYear, mMonth, mDay;
     Timestamp timestampObj ;
     long timestamp;
     String currentDateTimeString;
@@ -159,8 +152,8 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
                 ApplicationConstant.showSettingsAlert(UploadActivity.this);
             }
         }
-        //File rootDirectory = new File(ApplicationConstant.FOLDER_PATH);
-        File rootDirectory = new File(Environment.getExternalStorageDirectory(), ApplicationConstant.FOLDER_PATH);
+        File rootDirectory = new File(ApplicationConstant.FOLDER_PATH);
+//      File rootDirectory = new File(Environment.getExternalStorageDirectory(), ApplicationConstant.FOLDER_PATH);
         if (!rootDirectory.exists()) {
             rootDirectory.mkdir();
         }
@@ -185,11 +178,14 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
             }
         });
 
+        ImagePickerActivity.clearCache(this);
+
         Intent intent = getIntent();
         String fromModule = intent.getStringExtra(ApplicationConstant.FROM_MODULE);
         if (fromModule.equals(ApplicationConstant.MODULE_CAPTURE)) {
             //imageInfoRelativeLayout.setVisibility(View.INVISIBLE);
             openCamera();
+            //launchCameraIntent();
         } else if (fromModule.equals(ApplicationConstant.MODULE_GALLERY)) {
             //imageInfoRelativeLayout.setVisibility(View.VISIBLE);
             openGallery();
@@ -234,20 +230,45 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
         buttonGoToCrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                croplinearlayout.setVisibility(View.VISIBLE);
-                mainlinearlayout.setVisibility(View.GONE);
-                mCropImageView.setImageUriAsync(imageUri);
-            }
-        });
 
-        buttonCrop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCropImageView.getCroppedImageAsync();
-                mProgressViewText.setText("Cropping...");
-                mProgressView.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    private void launchCameraIntent() {
+
+        currentDateTimeString = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        txtDate.setText(currentDateTimeString);
+        txtDate.setEnabled(false);
+        String state = Environment.getExternalStorageState();
+        imageName = currentDateTimeString+"@"+userName+"@"+timestamp+ ApplicationConstant.EXTENTION_JPG;
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            mFileTemp = new File(ApplicationConstant.FOLDER_PATH, imageName);
+        } else {
+            mFileTemp = new File(getFilesDir(), imageName);
+        }
+        /*Uri.fromFile(mFileTemp)*/
+        Uri photoURI = null;
+        if (android.os.Build.VERSION.SDK_INT >= ApplicationConstant.API_LEVEL_23) {
+            photoURI = FileProvider.getUriForFile(UploadActivity.this, BuildConfig.APPLICATION_ID + ".provider", mFileTemp);
+        } else {
+            photoURI = Uri.fromFile(mFileTemp);
+        }
+
+        Intent intent = new Intent(UploadActivity.this, ImagePickerActivity.class);
+        intent.putExtra(ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION, ImagePickerActivity.REQUEST_IMAGE_CAPTURE);
+
+        // setting aspect ratio
+        intent.putExtra(ImagePickerActivity.INTENT_LOCK_ASPECT_RATIO, true);
+        intent.putExtra(ImagePickerActivity.INTENT_ASPECT_RATIO_X, 1); // 16x9, 1x1, 3:4, 3:2
+        intent.putExtra(ImagePickerActivity.INTENT_ASPECT_RATIO_Y, 1);
+
+        // setting maximum bitmap width and height
+        intent.putExtra(ImagePickerActivity.INTENT_SET_BITMAP_MAX_WIDTH_HEIGHT, true);
+        intent.putExtra(ImagePickerActivity.INTENT_BITMAP_MAX_WIDTH, 1000);
+        intent.putExtra(ImagePickerActivity.INTENT_BITMAP_MAX_HEIGHT, 1000);
+
+        startActivityForResult(intent, REQUEST_IMAGE);
     }
 
     private void getLocationDetail() {
@@ -360,7 +381,7 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
                             pathtoUpload = ApplicationConstant.FOLDER_PATH + File.separator + imageName;
                             //compress and set image to image view
                             compressImage(ApplicationConstant.FOLDER_PATH + File.separator + imageName, ApplicationConstant.MODULE_CAPTURE);
-                            //imageUri = Uri.parse(pathtoUpload);
+                            imageUri = Uri.parse(pathtoUpload);
                             //imageUri = CropImage.getPickImageResultUri(this, data);
                             imageUri = Uri.parse("file://"+getIntent().getExtras().getString("imageUri"));
                         }
@@ -394,7 +415,6 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
                         File destFile = new File(pathtoUpload);
                         copyFile(new File(getPath(data.getData())), destFile,pathtoUpload);
                         //imageUri = Uri.parse(pathtoUpload);
-                        imageUri = CropImage.getPickImageResultUri(this, data);
 
                     } else if (resultCode == Activity.RESULT_CANCELED) {
                         Toast.makeText(this, "Image not selected", Toast.LENGTH_SHORT).show();
@@ -410,10 +430,28 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
                             .show();
                 }
                 break;
-            default:
+             case REQUEST_IMAGE:
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri uri = data.getParcelableExtra("path");
+                    try {
+                        // You can update this bitmap to your server
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
 
+                        // loading profile image from local cache
+                        loadProfile(uri.toString());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            default:
                 break;
         }
+    }
+
+    private void loadProfile(String url) {
+        Log.d("", "Image cache path: " + url);
+        captureImage.setImageURI(Uri.parse(url));
     }
 
     public String getPath(Uri uri) {
@@ -493,13 +531,8 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
         captureImage = (ImageView) findViewById(R.id.selectedImage);
         autocompletePlaces = (AutoCompleteTextView) findViewById(R.id.autocompletePlaces);
         txtDate = (EditText) findViewById(R.id.txtDate);
-        croplinearlayout = (LinearLayout) findViewById(R.id.croplinearlayout);
         mainlinearlayout = (LinearLayout) findViewById(R.id.mainlinearlayout);
-        buttonCrop = (Button) findViewById(R.id.buttonCrop);
         buttonGoToCrop = (ImageView) findViewById(R.id.buttonGoToCrop);
-        mProgressViewText = (TextView) findViewById(R.id.ProgressViewText);
-        mCropImageView = (CropImageView) findViewById(R.id.CropImageView);
-        mProgressView = findViewById(R.id.ProgressView);
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new
@@ -947,37 +980,11 @@ public class UploadActivity extends AppCompatActivity implements CropImageView.O
     @Override
     protected void onStart() {
         super.onStart();
-        mCropImageView.setOnSetImageUriCompleteListener(this);
-        mCropImageView.setOnGetCroppedImageCompleteListener(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mCropImageView.setOnSetImageUriCompleteListener(null);
-        mCropImageView.setOnGetCroppedImageCompleteListener(null);
-    }
-
-    @Override
-    public void onSetImageUriComplete(CropImageView cropImageView, Uri uri, Exception error) {
-        mProgressView.setVisibility(View.INVISIBLE);
-        if (error != null) {
-            Log.e("Crop", "Failed to load image for cropping onSetImageUriComplete", error);
-            Toast.makeText(this, "Something went wrong, try again", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    @Override
-    public void onGetCroppedImageComplete(CropImageView view, Bitmap bitmap, Exception error) {
-        mProgressView.setVisibility(View.INVISIBLE);
-        if (error == null) {
-            if (bitmap != null) {
-                mCropImageView.setImageBitmap(bitmap);
-            }
-        } else {
-            Log.e("Crop", "Failed to crop image onGetCroppedImageComplete", error);
-            Toast.makeText(this, "Something went wrong, try again", Toast.LENGTH_LONG).show();
-        }
     }
 
 }

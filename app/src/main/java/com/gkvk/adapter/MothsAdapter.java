@@ -20,6 +20,7 @@ public class MothsAdapter extends RecyclerView.Adapter<MothsAdapter.MyViewHolder
 
     private Context mContext;
     private List<SpeciesData> mothsList;
+    private List<SpeciesData> mothsListFullList;
     SpeciesFilter mothsFilter ;
 
     @Override
@@ -44,6 +45,7 @@ public class MothsAdapter extends RecyclerView.Adapter<MothsAdapter.MyViewHolder
 
     public MothsAdapter(List<SpeciesData> butterflyList) {
         this.mothsList = butterflyList;
+        this.mothsListFullList = butterflyList;
     }
 
     @Override
@@ -79,6 +81,7 @@ public class MothsAdapter extends RecyclerView.Adapter<MothsAdapter.MyViewHolder
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
             // We implement here the filter logic
+            mothsList = mothsListFullList;
             if (constraint == null || constraint.length() == 0) {
                 // No filter implemented we return all the list
                 results.values = mothsList;
@@ -107,7 +110,7 @@ public class MothsAdapter extends RecyclerView.Adapter<MothsAdapter.MyViewHolder
         protected void publishResults(CharSequence constraint,FilterResults results) {
         // Now we have to inform the adapter about the new list filtered
             mothsList = (List<SpeciesData>) results.values;
-                notifyDataSetChanged();
+            notifyDataSetChanged();
         }
     }
 }
