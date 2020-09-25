@@ -8,8 +8,8 @@ android {
         applicationId "com.gkvk"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 7
-        versionName "1.4"
+        versionCode 8
+        versionName "1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
     }
@@ -66,9 +66,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.github.yalantis:ucrop:2.2.2'
-    //Butterknife
-    //implementation 'com.jakewharton:butterknife:10.0.0'
-    //annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
     //dexter permissions
     implementation "com.karumi:dexter:5.0.0"
@@ -83,13 +80,8 @@ dependencies {
     // circular imageview
     implementation 'com.mikhaellopez:circularimageview:3.2.0'
 
-    //Glide
-//    implementation 'com.github.bumptech.glide:glide:4.7.1'
-//    implementation 'com.github.bumptech.glide:annotations:4.7.1'
-//    implementation('com.github.bumptech.glide:okhttp3-integration:4.0.0') {
-//        exclude group: 'glide-parent'
-//    }
-//    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
-
     implementation 'com.github.yalantis:ucrop:2.2.2'
+    //Butterknife
+    //implementation 'com.jakewharton:butterknife:8.8.1'
+    //annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

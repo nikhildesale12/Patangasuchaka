@@ -84,6 +84,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
             holder.textViewPlace.setText("NA");
         }
 
+        if(history.getImage().contains("Mob20")) {
+            history.setImage(history.getImage().replace("Mob20", "20"));
+        }
+
         Glide.with(mContext)
                 .load(history.getImage())
                 .placeholder(R.drawable.logo)

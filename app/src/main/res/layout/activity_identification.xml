@@ -22,7 +22,7 @@
             android:layout_weight="0.40"
             android:background="@drawable/image_border"
             android:padding="3dp"
-            android:src="@drawable/select_image" />
+            android:src="@drawable/select_image_old" />
 
         <LinearLayout
             android:layout_width="match_parent"

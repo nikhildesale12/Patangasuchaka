@@ -189,6 +189,7 @@ public class UploadActivity extends AppCompatActivity {
         } else if (fromModule.equals(ApplicationConstant.MODULE_GALLERY)) {
             //imageInfoRelativeLayout.setVisibility(View.VISIBLE);
             openGallery();
+//            launchGalleryIntent();
         }
 
         buttonAnalyze.setOnClickListener(new View.OnClickListener() {
@@ -233,6 +234,22 @@ public class UploadActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void launchGalleryIntent() {
+
+        Intent intent = new Intent(UploadActivity.this, ImagePickerActivity.class);
+        intent.putExtra(ImagePickerActivity.INTENT_IMAGE_PICKER_OPTION, ImagePickerActivity.REQUEST_GALLERY_IMAGE);
+
+        // setting aspect ratio
+        intent.putExtra(ImagePickerActivity.INTENT_LOCK_ASPECT_RATIO, true);
+        intent.putExtra(ImagePickerActivity.INTENT_ASPECT_RATIO_X, 1); // 16x9, 1x1, 3:4, 3:2
+        intent.putExtra(ImagePickerActivity.INTENT_ASPECT_RATIO_Y, 1);
+        startActivityForResult(intent, REQUEST_IMAGE);
+
+        //Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        //startActivityForResult(intent, ApplicationConstant.RESULT_OPEN_GALLERY);
+
     }
 
     private void launchCameraIntent() {
@@ -801,7 +818,8 @@ public class UploadActivity extends AppCompatActivity {
         try {
             StringBuilder sb = new StringBuilder(ApplicationConstant.PLACES_API_BASE + ApplicationConstant.TYPE_AUTOCOMPLETE + ApplicationConstant.OUT_JSON);
             sb.append("?key=" + ApplicationConstant.API_KEY);
-            sb.append("&components=");
+            //sb.append("&components=");
+            sb.append("&components=country:in");
             sb.append("&input=" + URLEncoder.encode(input, "utf8"));
 
             URL url = new URL(sb.toString());

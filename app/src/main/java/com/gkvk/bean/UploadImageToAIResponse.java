@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class UploadImageToAIResponse {
 
+
     @SerializedName("choice")
     @Expose
     private Integer choice;
@@ -18,6 +19,9 @@ public class UploadImageToAIResponse {
     @SerializedName("probability")
     @Expose
     private String probability;
+    @SerializedName("category")
+    @Expose
+    private String category;
 
     public Integer getChoice() {
         return choice;
@@ -51,4 +55,11 @@ public class UploadImageToAIResponse {
         this.probability = probability;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

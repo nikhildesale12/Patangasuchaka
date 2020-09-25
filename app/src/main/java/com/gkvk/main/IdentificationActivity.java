@@ -413,10 +413,10 @@ public class IdentificationActivity extends AppCompatActivity {
                     .build();
             ApiService service = retrofit.create(ApiService.class);
             Call<UploadDataToWebResponse> call = null;
-            if (uploadDataToWebRequest.getButt_category() != null && uploadDataToWebRequest.getButt_category().equalsIgnoreCase(ApplicationConstant.Moth)) {
-                call = service.uploadDataToWebServerMoth(uploadDataToWebRequest);
-            } else {
+            if (uploadDataToWebRequest.getButt_category() != null && uploadDataToWebRequest.getButt_category().equalsIgnoreCase(ApplicationConstant.Butterfly)) {
                 call = service.uploadDataToWebServerButterFly(uploadDataToWebRequest);
+            } else {
+                call = service.uploadDataToWebServerMoth(uploadDataToWebRequest);
             }
 
             call.enqueue(new Callback<UploadDataToWebResponse>() {
@@ -429,6 +429,10 @@ public class IdentificationActivity extends AppCompatActivity {
                         if (response.body().getStatus()) {
                             displayDialog("Result", response.body().getMessage());
                         } else {
+                            displayDialog("Result", "Failed to upload data");
+                        }
+                    }else{
+                        if(response != null && response.errorBody() !=null){
                             displayDialog("Result", "Failed to upload data");
                         }
                     }
