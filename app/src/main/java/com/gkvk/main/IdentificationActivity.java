@@ -245,8 +245,12 @@ public class IdentificationActivity extends AppCompatActivity {
                         if (response.body().getMessage() != null && response.body().getMessage().equalsIgnoreCase("successful")) {
                             uploadDataToWebAppServer(uploadDataToWebRequest);
                         } else {
-                            Toast.makeText(IdentificationActivity.this, "Failed to upload image on server", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(IdentificationActivity.this, "Failed to upload image on server", Toast.LENGTH_LONG).show();
+                            displayDialog("Result", "Failed to upload image on server");
                         }
+                    }else{
+                        //Toast.makeText(IdentificationActivity.this, "Failed to upload image on server", Toast.LENGTH_LONG).show();
+                        displayDialog("Result", "Failed to upload image on server");
                     }
                 }
 
@@ -427,7 +431,8 @@ public class IdentificationActivity extends AppCompatActivity {
                     }
                     if (response != null && response.body() != null) {
                         if (response.body().getStatus()) {
-                            displayDialog("Result", response.body().getMessage());
+                            //displayDialog("Result", response.body().getMessage());
+                            Toast.makeText(IdentificationActivity.this,"Uploaded Successfully",Toast.LENGTH_SHORT).show();
                         } else {
                             displayDialog("Result", "Failed to upload data");
                         }

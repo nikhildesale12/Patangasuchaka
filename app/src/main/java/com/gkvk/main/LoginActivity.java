@@ -422,7 +422,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     if (dialog != null && dialog.isShowing()) {
                         dialog.dismiss();
                     }
-                    if (response.body().getData().getId() != null) {
+                    if (response.body().getData() != null) {
 
                         SharedPreferences.Editor editor1 = getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE).edit();
                         editor1.putBoolean(ApplicationConstant.KEY_IS_LOGIN,true);
@@ -438,8 +438,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
-                    }else{
-                        ApplicationConstant.displayDialogInternet(LoginActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
+                    }else {
+                        if (response.body().getMessage().contains("Account Added successfully")) {
+                            ApplicationConstant.displayDialogInternet(LoginActivity.this, "Account Added Successfully", "Now you are ready to go, Please try again", false, false);
+                        } else {
+                            ApplicationConstant.displayDialogInternet(LoginActivity.this, "Invalid credentials", "Email and password does not match !!!", false, false);
+                        }
                     }
                 }
             }
