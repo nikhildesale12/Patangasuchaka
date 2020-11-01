@@ -7,6 +7,8 @@ import com.gkvk.bean.ForgotPassRequest;
 import com.gkvk.bean.ForgotPassResponse;
 import com.gkvk.bean.HistoryRequest;
 import com.gkvk.bean.HistoryResponse;
+import com.gkvk.bean.LoginGoogleRequest;
+import com.gkvk.bean.LoginNewResponse;
 import com.gkvk.bean.LoginRequest;
 import com.gkvk.bean.ProfileRequest;
 import com.gkvk.bean.ProfileResponse;
@@ -36,7 +38,7 @@ import retrofit2.http.Part;
 public interface ApiService {
 
     @POST(ApplicationConstant.LOGIN_SERVICE_URL)
-    Call<CommonResponse> loginService(@Body LoginRequest loginRequest);
+    Call<LoginNewResponse> loginService(@Body LoginRequest loginRequest);
 
     @POST(ApplicationConstant.FORGOTPASS_SERVICE_URL)
     Call<ForgotPassResponse> forgotPassService(@Body ForgotPassRequest forgotPassRequest);
@@ -72,4 +74,8 @@ public interface ApiService {
     @Multipart
     @POST(ApplicationConstant.UPLOAD_IMAGE_WEB)
     Call<UploadToWebResponse> uploadImageToWeb(@Part MultipartBody.Part body);
+
+    @POST(ApplicationConstant.LOGIN_GOOGLE_SERVICE_URL)
+    Call<LoginNewResponse> loginGoogleService(@Body LoginGoogleRequest loginRequest);
+
 }

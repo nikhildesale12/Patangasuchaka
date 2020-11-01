@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1022961380028",
+    "firebase_url": "https://patangasuchaka.firebaseio.com",
+    "project_id": "patangasuchaka",
+    "storage_bucket": "patangasuchaka.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022961380028:android:cb7a5d451e2fddd611beb9",
+        "android_client_info": {
+          "package_name": "com.gkvk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022961380028-2d0bgma0q4mdcloeul1huirn1fqjd6b9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gkvk",
+            "certificate_hash": "245a162caf6d55af4db9db906d4931958381b47e"
+          }
+        },
+        {
+          "client_id": "1022961380028-81u8q7k4je9tdl7ooj6k71iudgj1ltrv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtoumQE0LuI3TbBu3Ojg1o7O6C9ADxkYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022961380028-81u8q7k4je9tdl7ooj6k71iudgj1ltrv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

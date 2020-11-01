@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.gkvk.R;
 import com.gkvk.bean.CommonResponse;
 import com.gkvk.bean.HistoryRequest;
@@ -37,6 +38,7 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
@@ -172,7 +174,25 @@ public class ProfileFragment extends Fragment {
                         fullname_Profile.setText(response.body().getData().getFullName());
                         username_Profile.setText(response.body().getData().getUsername());
                         email_Profile.setText(response.body().getData().getEmail());
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences(ApplicationConstant.MY_PREFS_NAME, MODE_PRIVATE);
+                        String userImagePath = sharedPreferences.getString(ApplicationConstant.KEY_PROFILE_IMG, "");
+                        if(userImagePath != null && userImagePath.length()>0){
+                            //load from server direclty
+                            Glide.with(getContext())
+                                    .load(userImagePath)
+                                    .placeholder(R.drawable.logo)
+                                    .error(R.drawable.logo)
+                                    .into(profile_image);
+                        }else{
+                            //load from local google signin
+                            String userImagePathGoogle = sharedPreferences.getString(ApplicationConstant.KEY_PROFILE_IMG_GOOGLE, "");
 
+                            Glide.with(getContext())
+                                    .load(userImagePathGoogle)
+                                    .placeholder(R.drawable.logo)
+                                    .error(R.drawable.logo)
+                                    .into(profile_image);
+                        }
                     }else{
                         //set data from sharedpreference
                     }

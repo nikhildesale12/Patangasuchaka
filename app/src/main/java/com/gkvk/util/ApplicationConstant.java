@@ -60,6 +60,7 @@ public class ApplicationConstant {
 
     public static final String BASE_URL = "http://www.pathangasuchaka.in";
     public static final String LOGIN_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/login";
+    public static final String LOGIN_GOOGLE_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/googlelogin";
     public static final String FORGOTPASS_SERVICE_URL ="/pathanga_api/index.php/api_auth/Authentication/passreset" ;
     public static final String SIGNUP_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/registration";
     public static final String FEEDBACK_SERVICE_URL = "/pathanga_api/index.php/api_auth/Authentication/feedback";
@@ -80,12 +81,16 @@ public class ApplicationConstant {
     public static final String KEY_EMAIL = "KEY_EMAIL";
     public static final String KEY_FULL_NAME = "KEY_FULL_NAME";
     public static final String KEY_PROFILE_IMG = "KEY_PROFILE_IMG";
+    public static final String KEY_PROFILE_IMG_GOOGLE = "KEY_PROFILE_IMG_GOOGLE";
+
     public static final String TYPE_AUTOCOMPLETE = "/autocomplete";
     public static final String OUT_JSON = "/json";
     public static final String API_KEY = "AIzaSyCRIriw_45fLM8_Qa-K2MNj5FC32JfRljQ";
 //    public static final String API_KEY = "AIzaSyCJJ_ZusJnAmD0KAD1qYttbXXJgCB8WlFI";
     public static final String Butterfly="Butterfly";
     public static final String Moth = "Moth";
+
+    public static final String USER_PHOTO = "UserPhoto.jpeg";
 
     public static boolean checkPermission(Context context) {
         int FirstPermissionResult = ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION);
