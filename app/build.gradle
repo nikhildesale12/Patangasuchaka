@@ -8,8 +8,8 @@ android {
         applicationId "com.gkvk"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 8
-        versionName "1.5"
+        versionCode 9
+        versionName "1.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
     }
@@ -91,4 +91,11 @@ dependencies {
     //Butterknife
     //implementation 'com.jakewharton:butterknife:8.8.1'
     //annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+}
+
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
